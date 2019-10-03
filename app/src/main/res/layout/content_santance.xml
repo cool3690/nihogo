@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Santance"
+    tools:showIn="@layout/santance">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <TextView
+            android:id="@+id/chinese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="ch"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/jp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chinese"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:gravity="center"
+            android:text="jp"
+            android:textSize="19sp" />
+
+        <Button
+            android:id="@+id/bt1"
+            style="@style/btn_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jp"
+            android:layout_marginTop="10dp"
+            android:text="bt1" />
+
+        <Button
+            android:id="@+id/bt2"
+            style="@style/btn_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bt1"
+            android:layout_marginTop="29dp"
+            android:text="bt2" />
+
+        <Button
+            android:id="@+id/bt3"
+            style="@style/btn_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:layout_below="@id/bt2"
+            android:text="bt3" />
+
+        <Button
+            android:id="@+id/bt0"
+            style="@style/btn_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bt3"
+            android:layout_marginTop="29dp"
+            android:text="bt0" />
+
+        <Button
+            android:id="@+id/ok"
+            style="@style/btn_primary3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bt0"
+            android:layout_marginTop="24dp"
+            android:text="確認" />
+
+        <ImageView
+            android:id="@+id/btnpre"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/aki_pre" />
+
+        <ImageView
+            android:id="@+id/btnnext"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/aki_next" />
+
+
+    </RelativeLayout>
+</ScrollView>

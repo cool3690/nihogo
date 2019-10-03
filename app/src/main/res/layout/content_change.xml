@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Change"
+    tools:showIn="@layout/change">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/aki_bg1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="401dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="輸入金錢"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="日幣台幣換算"
+            android:textSize="18dp" />
+
+        <RadioGroup
+            android:id="@+id/rg"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input"
+            android:layout_marginTop="6dp">
+
+            <RadioButton
+                android:id="@+id/tw"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="台幣" />
+
+            <RadioButton
+                android:id="@+id/jp"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="日幣" />
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rg"
+
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="15dp"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showtw"
+            android:layout_marginTop="9dp"
+            android:text="到價通知低於" />
+
+        <Spinner
+            android:id="@+id/inputrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showtw"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/check"
+            android:ems="10" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_below="@id/textView4"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/aki_money" />
+
+        <ImageView
+            android:id="@+id/jpimg"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/rg"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/aki_jp" />
+
+        <ImageView
+            android:id="@+id/twimg"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/jpimg"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/aki_tw" />
+
+        <TextView
+            android:id="@+id/showtw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/show"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="22dp"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tshow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputrate"
+            android:layout_marginTop="10dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tshow"
+            android:layout_marginTop="20dp"
+            android:text=" 注意：到價通知功能會在清除快取後，自動關閉通知。"
+            android:textAllCaps="false"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

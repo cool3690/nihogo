@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:fillViewport="true"
+    tools:context=".Menushow"
+    tools:showIn="@layout/menushow">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/aki_bg">
+
+        <ImageView
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            app:srcCompat="@drawable/aki_courseh" />
+
+        <ImageView
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/btn5"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/aki_rateh" />
+
+        <ImageView
+            android:id="@+id/btn3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/btn2"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/aki_newh" />
+        <!--
+                <ImageView
+                    android:id="@+id/btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/btn3"
+                    android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/aki_basich" />
+          -->
+                <ImageView
+                    android:id="@+id/btn5"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/btn1"
+                    android:layout_marginTop="8dp"
+                    app:srcCompat="@drawable/aki_testh" />
+
+    </RelativeLayout>
+</ScrollView>

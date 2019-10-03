@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Basicmenu"
+    tools:showIn="@layout/basicmenu">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/aki_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+    <ImageView
+        android:id="@+id/hira"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="150dp"
+        app:srcCompat="@drawable/aki_hira"/>
+
+        <ImageView
+            android:id="@+id/kata"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/hira"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/aki_kata" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

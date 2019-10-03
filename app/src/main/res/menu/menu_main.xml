@@ -1,0 +1,47 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.aki2.MainActivity">
+
+    <item
+        android:id="@+id/login"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:title="@string/login"/>
+    <item
+        android:id="@+id/cart"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/cart"/>
+    <item
+        android:id="@+id/menu"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/menu"/>
+    <item
+        android:id="@+id/mon"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="匯率換算"/>
+    <item
+        android:id="@+id/news"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="日文新聞"/>
+    <item
+        android:id="@+id/mymenu"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="主頁"/>
+    <item
+        android:id="@+id/apply"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="帳號申請"/>
+
+    <item
+        android:id="@+id/lesson"
+        android:orderInCategory="100"
+        android:title="日文教學"
+        app:showAsAction="never" />
+</menu>
