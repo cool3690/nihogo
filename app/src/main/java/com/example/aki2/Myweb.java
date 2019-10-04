@@ -48,7 +48,7 @@ public class Myweb extends AppCompatActivity {
         myweb.getSettings().setBuiltInZoomControls(true);
         myweb.getSettings().setJavaScriptEnabled(true);
         myweb.setWebViewClient(new WebViewClient());
-        myweb.loadUrl("http://akkyschool.com/test2/goods_select.php");
+        myweb.loadUrl("http://akkyschool.com/goods_select.php");
     }
     public void onBackPressed() {
         if (myweb.canGoBack()) {
