@@ -27,7 +27,7 @@ import java.io.IOException;
 
 public class Audit extends AppCompatActivity {
     ImageView send;
-    EditText name,phone;
+    EditText name,phone,remark;
     Spinner choose;
     String sel="";
     String course[]=new String[1];
@@ -45,7 +45,7 @@ public class Audit extends AppCompatActivity {
                 .detectDiskReads()
                 .detectDiskWrites()
                 .detectNetwork()
-                .penaltyLog() 
+                .penaltyLog()
                 .build());
         StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
                 .detectLeakedSqlLiteObjects()
@@ -80,7 +80,7 @@ public class Audit extends AppCompatActivity {
         name=(EditText)findViewById(R.id.name);
         phone=(EditText)findViewById(R.id.phone);
         choose=(Spinner)findViewById(R.id.choose);
-
+        remark=(EditText)findViewById(R.id.remark);
         ArrayAdapter<String> choosespn=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,course);
 
         choose.setAdapter(choosespn);
@@ -106,7 +106,7 @@ public class Audit extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             try{
-                dbaudit.executeQuery(name.getText().toString(),phone.getText().toString(),myname);
+                dbaudit.executeQuery(name.getText().toString(),phone.getText().toString(),myname,remark.getText().toString());
                 mytoast("成功送出");
             }
             catch(Exception ex){}

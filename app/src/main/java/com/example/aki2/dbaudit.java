@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class dbaudit {
-    public static String executeQuery(String name,String phone,String choose) {
+    public static String executeQuery(String name,String phone,String choose,String remark) {
         String result = ""; 
        
         try {   
@@ -26,6 +26,7 @@ public class dbaudit {
             params.add(new BasicNameValuePair("name", name));
             params.add(new BasicNameValuePair("phone", phone));
             params.add(new BasicNameValuePair("choose", choose));
+            params.add(new BasicNameValuePair("remark", remark));
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());
