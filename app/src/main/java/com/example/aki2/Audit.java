@@ -32,6 +32,7 @@ public class Audit extends AppCompatActivity {
     String sel="";
     String course[]=new String[1];
     String account="";
+    String myname="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,10 +63,10 @@ public class Audit extends AppCompatActivity {
 
             for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
             {	 JSONObject jsonData = jsonArray.getJSONObject(i);
-                String name=jsonData.getString("name");
+                 myname=jsonData.getString("name");
 
                 String content=jsonData.getString("content");
-                String tmp=name+content;
+                String tmp=myname+content;
                 tmp.split(" ");
                 tmp.replaceAll("（","(");
                 tmp.replaceAll("）",")");
@@ -105,7 +106,7 @@ public class Audit extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             try{
-                dbaudit.executeQuery(name.getText().toString(),phone.getText().toString(),sel);
+                dbaudit.executeQuery(name.getText().toString(),phone.getText().toString(),myname);
                 mytoast("成功送出");
             }
             catch(Exception ex){}
