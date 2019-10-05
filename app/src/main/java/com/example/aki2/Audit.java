@@ -45,7 +45,7 @@ public class Audit extends AppCompatActivity {
                 .detectDiskReads()
                 .detectDiskWrites()
                 .detectNetwork()
-                .penaltyLog()
+                .penaltyLog() 
                 .build());
         StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
                 .detectLeakedSqlLiteObjects()
