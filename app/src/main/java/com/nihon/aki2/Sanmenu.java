@@ -91,7 +91,7 @@ public class Sanmenu extends AppCompatActivity {
                         }
 
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                      //  e.printStackTrace();
                     }
                     intent = new Intent(Sanmenu.this, Santance.class);
                     Bundle bundle=new Bundle();

@@ -68,7 +68,7 @@ public class GMailSender extends javax.mail.Authenticator
         }
         catch (Exception e)
         {
-            Log.e("", e.getMessage());
+            //Log.e("", e.getMessage());
         }
     }
 

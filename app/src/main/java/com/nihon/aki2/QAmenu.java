@@ -91,7 +91,7 @@ public class QAmenu extends AppCompatActivity {
                         }
 
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                     //   e.printStackTrace();
                     }
                     intent = new Intent(QAmenu.this, QA.class);
                     Bundle bundle=new Bundle();

@@ -204,9 +204,9 @@ public class Basich extends AppCompatActivity {
         try {
             mediaplayer.prepare();
         } catch (IllegalStateException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
         mediaplayer.start(); //開始播放
       /*

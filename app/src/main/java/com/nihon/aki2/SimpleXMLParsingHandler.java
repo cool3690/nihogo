@@ -75,25 +75,26 @@ public abstract class SimpleXMLParsingHandler extends DefaultHandler
                              String qName, Attributes atts) throws SAXException
 
     {
-
+/*
         if (isDebugMode())
 
         {
 
-            Log.v(TAG, "startElement:    qName=" + qName);
+           // Log.v(TAG, "startElement:    qName=" + qName);
 
             for (int i = 0; i < atts.getLength(); i++)
 
             {
+                atts.getQName(i);
+                atts.getValue(i);
+               // Log.v(TAG, "\t\t atts[" + i + "]getQName=" + atts.getQName(i));
 
-                Log.v(TAG, "\t\t atts[" + i + "]getQName=" + atts.getQName(i));
-
-                Log.v(TAG, "\t\t atts[" + i + "]getValue=" + atts.getValue(i));
+               // Log.v(TAG, "\t\t atts[" + i + "]getValue=" + atts.getValue(i));
 
             }
 
         }
-
+*/
         in_node.push(qName);
 
     }
@@ -114,9 +115,9 @@ public abstract class SimpleXMLParsingHandler extends DefaultHandler
 
     {
 
-        if (isDebugMode())
+       // if (isDebugMode())
 
-            Log.v(TAG, "endElement:    qName=" + qName);
+         //   Log.v(TAG, "endElement:    qName=" + qName);
 
         in_node.pop();
 
@@ -136,9 +137,9 @@ public abstract class SimpleXMLParsingHandler extends DefaultHandler
 
         // printNodePos();
 
-        if (isDebugMode())
+       // if (isDebugMode())
 
-            Log.v(TAG, "\t characters:    ch=" + fetchStr);
+           // Log.v(TAG, "\t characters:    ch=" + fetchStr);
 
         characters(fetchStr);
 
@@ -228,7 +229,7 @@ public abstract class SimpleXMLParsingHandler extends DefaultHandler
     }
 
 
-
+/*
     public void setDebugMode(boolean debugMode)
 
     {
@@ -246,5 +247,5 @@ public abstract class SimpleXMLParsingHandler extends DefaultHandler
         return debugMode;
 
     }
-
+*/
 }

@@ -33,7 +33,7 @@ public class JobSchedulerService extends JobService {
     private boolean jobcancel=false;
     @Override
     public boolean onStartJob(JobParameters jobParameters ) {
-        Log.d(TAG, "JobSchedulerService onStartJob");
+     //   Log.d(TAG, "JobSchedulerService onStartJob");
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()

@@ -88,7 +88,7 @@ public class Forgot extends AppCompatActivity {
              }
 
              catch (Exception e)
-             {e.printStackTrace();
+             {//e.printStackTrace();
              }
          }
 

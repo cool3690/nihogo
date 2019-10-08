@@ -51,7 +51,7 @@ public class RssNewsXMLParsingHandler extends SimpleXMLParsingHandler
 
         // 解析結果回報
 
-        Log.v(TAG, String.format("RssNews Count=%d", Arr_RssNews.length));
+     //   Log.v(TAG, String.format("RssNews Count=%d", Arr_RssNews.length));
 
         return new Object[] { Arr_RssNews };
 

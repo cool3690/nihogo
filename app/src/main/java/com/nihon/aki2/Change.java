@@ -333,15 +333,16 @@ public void jprate(){
      JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
    int result=scheduler.schedule(jobInfo);
    if(result==JobScheduler.RESULT_SUCCESS){
-       Log.d(TAG, "test ok!");
+       //Log.d(TAG, "test ok!");
 
    }
-   else {Log.d(TAG,"fail");}
+   else {//Log.d(TAG,"fail");
+   }
  }
  public void canceljob(){
         JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
         scheduler.cancel(123);
-     Log.d(TAG,"cancel");
+     //Log.d(TAG,"cancel");
  }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
