@@ -89,7 +89,7 @@ public class Mymenu extends AppCompatActivity {
 
                 case MotionEvent.ACTION_DOWN:
                     btn1.setImageResource(R.drawable.aki_menuh);
-
+                    //h
                     break;
                 case MotionEvent.ACTION_UP:
                     btn1.setImageResource(R.drawable.aki_menu);
