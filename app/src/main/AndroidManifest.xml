@@ -36,14 +36,17 @@
         <activity
             android:name="com.nihon.aki2.Basich"
             android:label="@string/title_activity_basich"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.nihon.aki2.Basicmenu"
             android:label="@string/title_activity_basicmenu"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.nihon.aki2.Basic"
             android:label="@string/title_activity_basic"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.nihon.aki2.QAmenu"

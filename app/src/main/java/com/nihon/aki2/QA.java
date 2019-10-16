@@ -24,9 +24,9 @@ TextView Q1,txtResult;
 ImageView nextpage,prepage;
 RadioGroup radioGroup;
 RadioButton a1,a2,a3,a4;
-boolean lock=true;
+boolean lock=true,anstmp=true;
 String ans="",account="",passwd="",mych="";
-int num=3;
+int num=3,yes=0,no=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,23 +105,27 @@ int num=3;
                  if(lock==true){ show (p);}
                     else{}
                     txtResult.setText("正確答案是:  "+ans  );
-
+mytoast(yes+"");
                 }
             };
 
     void show (int p){
-        if(ans.equals(p+"")){mytoast("正解!");}
-        else{mytoast("錯誤!");}
+        if(ans.equals(p+"")){mytoast("正解!");anstmp=true;}
+        else{mytoast("錯誤!");anstmp=false;}
 
     }
 public void next(){
   num++;
     lock=false;
     radioGroup.clearCheck();
-
+ if(anstmp==true){yes++;}
+ else{no++;}
     String result = dbQA.executeQuery(num+"",mych);
     if(result.contains("null")){ num--;
     mytoast("本題為最後一題");
+    //if(yes<0){yes=yes*(-1);}
+        mytoast(yes+"/"+no);
+
     }
 
     txtResult.setText(" ");
@@ -164,43 +168,7 @@ public void next(){
             return true;
         }
     };
-/*
-    private  ImageView.OnClickListener page=new ImageView.OnClickListener(){
-        @Override
-        public void onClick(View v) {
-            num++;
-            lock=false;
-            radioGroup.clearCheck();
 
-            String result = dbQA.executeQuery(num+"",mych);
-            if(result.contains("null")){ num--;}
-
-            txtResult.setText(" ");
-            String topic="";
-            try{
-                JSONArray jsonArray = new JSONArray(result);
-
-                int k=0;
-                // bt.setText("更多資訊");
-                for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
-                {
-                    JSONObject jsonData = jsonArray.getJSONObject(i);
-                    topic=jsonData.getString("Q1");
-                    Q1.setText(topic);
-                    a1.setText(jsonData.getString("A1"));
-                    a2.setText(jsonData.getString("A2"));
-                    a3.setText(jsonData.getString("A3"));
-                    a4.setText(jsonData.getString("A4"));
-                    ans=jsonData.getString("ans");
-                }
-
-            }
-
-            catch(Exception e){}
-            lock=true;
-        }
-    };
-    */
     private  ImageView.OnTouchListener pagepre=new ImageView.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -221,6 +189,8 @@ public void pre(){
     num--;
     lock=false;
     radioGroup.clearCheck();
+    if(anstmp==true){yes++;}
+    else{no++;}
     txtResult.setText(" ");
     String result = dbQA.executeQuery(num+"",mych);
     if(result.contains("null")){ num++;

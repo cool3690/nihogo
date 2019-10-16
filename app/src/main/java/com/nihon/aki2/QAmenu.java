@@ -83,7 +83,7 @@ public class QAmenu extends AppCompatActivity {
                         JSONArray jsonArray = new JSONArray(result);
 
                         int k=0;
-                        for(int i = 0; i < 1; i++) //代理或主管有工號者顯示
+                        for(int i = 0; i < 1; i++)
                         {	 JSONObject jsonData = jsonArray.getJSONObject(i);
 
                             ans=jsonData.getString("num");
