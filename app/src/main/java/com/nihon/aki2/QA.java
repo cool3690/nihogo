@@ -105,7 +105,7 @@ int num=3,yes=0,no=0;
                  if(lock==true){ show (p);}
                     else{}
                     txtResult.setText("正確答案是:  "+ans  );
-mytoast(yes+"");
+//mytoast(yes+"");
                 }
             };
 
@@ -124,7 +124,14 @@ public void next(){
     if(result.contains("null")){ num--;
     mytoast("本題為最後一題");
     //if(yes<0){yes=yes*(-1);}
-        mytoast(yes+"/"+no);
+       // mytoast(yes+"/"+no);
+        Intent intent=new Intent();
+        intent.setClass(QA.this,Keka.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("NO", no+"");
+        bundle.putString("YES", yes+"");
+        intent.putExtras(bundle);
+        startActivity(intent);
 
     }
 

@@ -12,8 +12,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
-
-        android:name="com.nihon.aki2.GlobalVariable"
+        android:name=".GlobalVariable"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,39 +21,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-       
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.nihon.aki2.Myweb"
-            android:label="@string/title_activity_myweb"
+            android:name=".Keka"
+            android:label="@string/title_activity_keka"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.nihon.aki2.Audit"
-            android:label="@string/title_activity_audit"
+            android:name=".Myweb"
+            android:label="@string/title_activity_myweb"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Basich"
+            android:name=".Audit"
+            android:label="@string/title_activity_audit"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Basich"
             android:label="@string/title_activity_basich"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Basicmenu"
+            android:name=".Basicmenu"
             android:label="@string/title_activity_basicmenu"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Basic"
+            android:name=".Basic"
             android:label="@string/title_activity_basic"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.QAmenu"
+            android:name=".QAmenu"
             android:label="@string/title_activity_qamenu"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Sanmenu"
+            android:name=".Sanmenu"
             android:label="@string/title_activity_sanmenu"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -64,43 +68,43 @@
             android:required="false" />
 
         <activity
-            android:name="com.nihon.aki2.Notes"
+            android:name=".Notes"
             android:label="@string/title_activity_notes"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Shiken"
+            android:name=".Shiken"
             android:label="@string/title_activity_shiken"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Santance"
+            android:name=".Santance"
             android:label="@string/title_activity_santance"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Lesson"
+            android:name=".Lesson"
             android:label="@string/title_activity_lesson"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.QA"
+            android:name=".QA"
             android:label="@string/title_activity_q"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Forgot"
+            android:name=".Forgot"
             android:label="@string/title_activity_forgot"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Apply"
+            android:name=".Apply"
             android:label="@string/title_activity_apply"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
-            android:name="com.nihon.aki2.BootCompletedReceiver"
+            android:name=".BootCompletedReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -110,37 +114,37 @@
         </receiver>
 
         <activity
-            android:name="com.nihon.aki2.Menushow"
+            android:name=".Menushow"
             android:label="@string/title_activity_menushow"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/aki"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.News"
+            android:name=".News"
             android:label="@string/title_activity_news"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Mcart"
+            android:name=".Mcart"
             android:label="@string/title_activity_mcart"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Login"
+            android:name=".Login"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Change"
+            android:name=".Change"
             android:label="@string/title_activity_change"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nihon.aki2.Mymenu"
+            android:name=".Mymenu"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -152,7 +156,7 @@
         </activity>
 
         <service
-            android:name="com.nihon.aki2.JobSchedulerService"
+            android:name=".JobSchedulerService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
