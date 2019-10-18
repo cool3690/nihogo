@@ -41,30 +41,30 @@
             android:id="@+id/listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/videoWebView"
+            android:layout_below="@+id/imgshow"
+            android:layout_marginTop="1dp"
             android:scrollingCache="true"
-            android:smoothScrollbar="true"
-            android:layout_marginTop="10dp" />
+            android:smoothScrollbar="true" />
 
 
         <ImageView
             android:id="@+id/imgshow"
-            android:layout_width="233dp"
-            android:layout_height="67dp"
+            android:layout_width="227dp"
+            android:layout_height="55dp"
             android:layout_below="@id/tv2"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="1dp"
-            android:src="@drawable/aki_01"
-            app:srcCompat="@android:color/background_light" />
+            android:src="@drawable/logo"/>
 
         <TextView
             android:id="@+id/tv2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/listview"
+            android:layout_below="@id/videoWebView"
             android:layout_gravity="center"
             android:layout_marginTop="1dp"
             android:gravity="center"
-            android:text="課程視聽"
+            android:text="課程試聽"
             android:textSize="18sp" />
 
     </RelativeLayout>
