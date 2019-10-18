@@ -1,6 +1,7 @@
 package com.nihon.aki2;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,6 +14,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     ListView listview;
     ImageView imgshow;
     String account="",passwd="",Lname="",course_num="";
+    RecyclerView recyclerView;
+    Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
 
     // private  Button  bt;
 
@@ -70,7 +75,17 @@ public class MainActivity extends AppCompatActivity {
             Lname=bundle.getString("NAME");
             passwd=bundle.getString("PASSWD");
         }
-        */
+*/
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/xmkqU_M21lk\" frameborder=\"0\" allowfullscreen></iframe>") );
+/**/
+        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
+
+        recyclerView.setAdapter(videoAdapter);
+
 TextView tv2=(TextView) findViewById(R.id.tv2);
         tv2.setTypeface(Typeface.createFromAsset(getAssets(), "nihon.ttf"));
         imgshow=(ImageView)findViewById(R.id.imgshow);

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -13,9 +14,7 @@
         android:layout_height="match_parent"
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
-        android:background="@drawable/aki_bg1"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:background="@drawable/aki_bg1">
 
 
         <TextView
@@ -24,25 +23,36 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="日文課程"
             android:textColor="@android:color/background_dark"
             android:textSize="22sp"
             android:textStyle="bold" />
+        <WebView
+            android:id="@+id/videoWebView"
+            android:layout_width="match_parent"
+            android:layout_below="@id/textView"
+            android:layout_marginTop="5dp"
+            android:layout_height="180dp">
+        </WebView>
+
 
         <ListView
             android:id="@+id/listview"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_below="@+id/textView"
-            android:layout_marginTop="15dp" />
+            android:layout_height="match_parent"
+            android:layout_below="@+id/videoWebView"
+            android:scrollingCache="true"
+            android:smoothScrollbar="true"
+            android:layout_marginTop="10dp" />
+
 
         <ImageView
             android:id="@+id/imgshow"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@id/listview"
-            android:layout_marginTop="51dp"
+            android:layout_width="233dp"
+            android:layout_height="67dp"
+            android:layout_below="@id/tv2"
+            android:layout_marginTop="1dp"
             android:src="@drawable/aki_01"
             app:srcCompat="@android:color/background_light" />
 
@@ -52,11 +62,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/listview"
             android:layout_gravity="center"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="1dp"
             android:gravity="center"
-            android:text="課程預告"
-            android:textSize="24sp" />
+            android:text="課程視聽"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+</ScrollView>
