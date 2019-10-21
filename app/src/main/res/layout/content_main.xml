@@ -49,7 +49,7 @@
 
         <ImageView
             android:id="@+id/imgshow"
-            android:layout_width="227dp"
+            android:layout_width="wrap_content"
             android:layout_height="55dp"
             android:layout_below="@id/tv2"
             android:layout_centerHorizontal="true"
