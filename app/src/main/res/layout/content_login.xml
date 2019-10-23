@@ -63,6 +63,7 @@
             android:layout_marginTop="80dp"
             android:text="登入"
             app:srcCompat="@drawable/login" />
+        <!--
         <Button
             android:id="@+id/forget"
             style="@style/btn_primary2"
@@ -71,5 +72,6 @@
             android:layout_below="@id/btn"
             android:layout_marginTop="18dp"
             android:text="忘記密碼" />
+            -->
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

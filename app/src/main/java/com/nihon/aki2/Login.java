@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class Login extends AppCompatActivity {
     private TextView acc,pwd;
     private  ImageView  btn;
-    private Button  forget;
+   // private Button  forget;
     String mycart="",account="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +48,12 @@ public class Login extends AppCompatActivity {
         if(intent != null && intent.getExtras() != null ) {
             mycart = bundle.getString("CART");
         }
-        forget=(Button)findViewById(R.id.forget);
+        //forget=(Button)findViewById(R.id.forget);
         acc=(TextView)findViewById(R.id.acc);
         pwd=(TextView)findViewById(R.id.pwd);
         btn=(ImageView)findViewById(R.id.btn);
         btn.setOnClickListener(btnlogin);
-        forget.setOnClickListener(btnforget);
+      //  forget.setOnClickListener(btnforget);
         SharedPreferences remdname=getPreferences(Activity.MODE_PRIVATE);
         String name_str=remdname.getString("emp_id", "");
         String pass_str=remdname.getString("passwd", "");
