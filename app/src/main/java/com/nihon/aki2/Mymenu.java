@@ -9,8 +9,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.StrictMode;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,22 +20,25 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Mymenu extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4;
     String key="";
    String account="",passwd="";
     public static final String KEY = "com.example.aki2";
+   // private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mymenu);
-        /*
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.icon);
-      getSupportActionBar().setDisplayShowTitleEnabled(false);//不顯示 title
-      */
+
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -56,7 +60,53 @@ public class Mymenu extends AppCompatActivity {
         String h = sharedPreferences.getString("input" , "0");
         //mytoast(h);
         schedulejob(h);
+        /*
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        */
+        /*
+        mMyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    //Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
+            }
+        });
 
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when the ad is displayed.
+            }
+        });
+        */
     }
     public void schedulejob(String tmp){
 
@@ -89,6 +139,11 @@ public class Mymenu extends AppCompatActivity {
 
                 case MotionEvent.ACTION_DOWN:
                     btn1.setImageResource(R.drawable.aki_menuh);
+                    /*
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    }
+                    */
                     //h
                     break;
                 case MotionEvent.ACTION_UP:
@@ -101,6 +156,7 @@ public class Mymenu extends AppCompatActivity {
             return true;
         }
     };
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

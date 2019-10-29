@@ -7,8 +7,8 @@ import android.app.job.JobService;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.StrictMode;
-import android.support.annotation.RequiresApi;
-import android.util.Log;
+import androidx.annotation.RequiresApi;
+
 import android.os.Handler;
 import android.view.Gravity;
 import android.widget.Toast;

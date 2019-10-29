@@ -2,17 +2,23 @@ package com.nihon.aki2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+
 public class Menushow extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4,btn5;
     String account="",passwd="";
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +42,33 @@ public class Menushow extends AppCompatActivity {
         btn3.setOnTouchListener(b3);
        // btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
+        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        mAdView = findViewById(R.id.adView);
+        /*
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+*/
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
 
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+            }
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
     }
 
     private ImageView.OnTouchListener b1=new ImageView.OnTouchListener(){
@@ -102,7 +134,7 @@ public class Menushow extends AppCompatActivity {
 
     private ImageView.OnTouchListener b4=new ImageView.OnTouchListener(){
         @Override
-        public boolean onTouch(View v, MotionEvent event){//購物
+        public boolean onTouch(View v, MotionEvent event){//購物，50音
             switch (event.getAction()){
 
                 case MotionEvent.ACTION_DOWN:
