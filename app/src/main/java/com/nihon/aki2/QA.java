@@ -16,6 +16,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,6 +31,7 @@ RadioButton a1,a2,a3,a4;
 boolean lock=true,anstmp=true;
 String ans="",account="",passwd="",mych="";
 int num=3,yes=0,no=0;
+    private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +98,29 @@ int num=3,yes=0,no=0;
         nextpage.setOnTouchListener(page);
        prepage.setOnTouchListener(pagepre);
        // prepage.setOnClickListener(pagepre2);
+        loadInterstitialAd();
+    }
+    private void loadInterstitialAd() {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3776286057149986/3596969621");
+        mInterstitialAd.setAdListener(new AdListener() {
 
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+              if(mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
     }
     private RadioGroup.OnCheckedChangeListener answer=
             new RadioGroup.OnCheckedChangeListener(){
@@ -225,42 +252,7 @@ public void pre(){
     catch(Exception e){}
     lock=true;
 }
-/*
-    private  ImageView.OnClickListener pagepre2=new ImageView.OnClickListener(){
-        @Override
-        public void onClick(View v) {
-            num--;
-            lock=false;
-          radioGroup.clearCheck();
-          txtResult.setText(" ");
-            String result = dbQA.executeQuery(num+"",mych);
-            if(result.contains("null")){ num++;}
 
-            String topic="";
-            try{
-                JSONArray jsonArray = new JSONArray(result);
-
-                for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
-                {
-                    JSONObject jsonData = jsonArray.getJSONObject(i);
-                    topic=jsonData.getString("Q1");
-                    Q1.setText(topic);
-                    a1.setText(jsonData.getString("A1"));
-                    a2.setText(jsonData.getString("A2"));
-                    a3.setText(jsonData.getString("A3"));
-                    a4.setText(jsonData.getString("A4"));
-                    ans=jsonData.getString("ans");
-                }
-
-            }
-
-            catch(Exception e){}
-            lock=true;
-        }
-
-
-    };
-*/
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_SHORT);

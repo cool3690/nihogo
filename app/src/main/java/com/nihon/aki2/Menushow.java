@@ -19,6 +19,7 @@ public class Menushow extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4,btn5;
     String account="",passwd="";
     private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,24 +45,13 @@ public class Menushow extends AppCompatActivity {
         btn5.setOnTouchListener(b5);
         MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
         mAdView = findViewById(R.id.adView);
-        /*
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-*/
+
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         mAdView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                // Code to be executed when an ad request fails.
             }
             @Override
             public void onAdOpened() {
@@ -147,25 +137,7 @@ public class Menushow extends AppCompatActivity {
                     Intent intent=new Intent();
                     intent.setClass(Menushow.this,Basicmenu.class);
                     startActivity(intent);
-                    /*
-                    btn4.setImageResource(R.drawable.aki_carth);
-                    if(account=="" || account==null){
-                        Intent intent=new Intent();
-                        intent.setClass(Menushow.this,Login.class);
-                        Bundle bundle=new Bundle();
-                        bundle.putString("CART", "cart");
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-                    else{
-                        Intent intent=new Intent();
-                        intent.setClass(Menushow.this, Mcart.class);
-                        Bundle bundle=new Bundle();
-                        bundle.putString("ACCOUNT", account);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-                    */
+
                     break;
             }
             return true;

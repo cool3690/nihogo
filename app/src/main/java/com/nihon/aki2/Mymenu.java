@@ -33,7 +33,7 @@ public class Mymenu extends AppCompatActivity {
     String key="";
    String account="",passwd="";
     public static final String KEY = "com.example.aki2";
-   // private InterstitialAd mInterstitialAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,55 +58,9 @@ public class Mymenu extends AppCompatActivity {
         btn1.setOnTouchListener(b1);
         SharedPreferences sharedPreferences = getSharedPreferences("data" , MODE_PRIVATE);
         String h = sharedPreferences.getString("input" , "0");
-        //mytoast(h);
+
         schedulejob(h);
-        /*
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        */
-        /*
-        mMyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                } else {
-                    //Log.d("TAG", "The interstitial wasn't loaded yet.");
-                }
-            }
-        });
 
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-            }
-
-        });
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                // Code to be executed when an ad request fails.
-            }
-
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when the ad is displayed.
-            }
-        });
-        */
     }
     public void schedulejob(String tmp){
 
@@ -139,11 +93,7 @@ public class Mymenu extends AppCompatActivity {
 
                 case MotionEvent.ACTION_DOWN:
                     btn1.setImageResource(R.drawable.aki_menuh);
-                    /*
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                    }
-                    */
+
                     //h
                     break;
                 case MotionEvent.ACTION_UP:

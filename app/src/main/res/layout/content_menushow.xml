@@ -64,7 +64,7 @@
             android:layout_alignParentBottom="true"
 
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3776286057149986/9451221092">
+            ads:adUnitId="@string/idban">
         </com.google.android.gms.ads.AdView>
 
     </RelativeLayout>

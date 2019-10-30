@@ -18,6 +18,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -28,6 +32,7 @@ public class Basic extends AppCompatActivity {
     ImageView nextpage,prepage;
     Button btsong;
     RadioGroup radioGroup;
+    private InterstitialAd mInterstitialAd;
     RadioButton a1,a2,a3,a4;
     public MediaPlayer mediaplayer;
    int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko,R.raw.sa, R.raw.shi, R.raw.su, R.raw.se, R.raw.so,
@@ -103,7 +108,29 @@ public class Basic extends AppCompatActivity {
         btsong.setOnClickListener(btnsong);
 
         // prepage.setOnClickListener(pagepre2);
+        loadInterstitialAd();
+    }
+    private void loadInterstitialAd() {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3776286057149986/3596969621");
+        mInterstitialAd.setAdListener(new AdListener() {
 
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                if(mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
     }
     private RadioGroup.OnCheckedChangeListener answer=
             new RadioGroup.OnCheckedChangeListener(){

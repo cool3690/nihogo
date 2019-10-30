@@ -52,4 +52,6 @@
     <string name="title_activity_audit">Audit</string>
     <string name="title_activity_myweb">Myweb</string>
     <string name="title_activity_keka">Keka</string>
+    <string name="idin">ca-app-pub-3776286057149986/3596969621</string>
+    <string name="idban">ca-app-pub-3776286057149986/9451221092</string>
 </resources>

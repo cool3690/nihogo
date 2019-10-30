@@ -15,13 +15,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import org.json.JSONArray;
 
 public class Apply extends AppCompatActivity {
     private TextView phone,pass,name,email;
     String account="",passwd="";
     boolean check=true;
-    private Button  forget;
+    private AdView mAdView;
+    //private Button  forget;
     ImageView ok;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +56,25 @@ public class Apply extends AppCompatActivity {
         name=(TextView)findViewById(R.id.name);
         email=(TextView)findViewById(R.id.email);
         ok=(ImageView)findViewById(R.id.ok);
-        forget=(Button)findViewById(R.id.forget);
+       // forget=(Button)findViewById(R.id.forget);
         ok.setOnClickListener(okbtn);
-        forget.setOnClickListener(forgetbtn);
+       // forget.setOnClickListener(forgetbtn);
+        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
     }
     private ImageView.OnClickListener okbtn= new ImageView.OnClickListener(){
         @Override

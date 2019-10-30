@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg"
+        android:background="@drawable/aki_bg"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
         tools:layout_editor_absoluteX="8dp"

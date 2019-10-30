@@ -18,6 +18,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -28,6 +32,7 @@ public class Basich extends AppCompatActivity {
     ImageView nextpage,prepage;
     RadioGroup radioGroup;
     Button btsong;
+    private InterstitialAd mInterstitialAd;
     RadioButton a1,a2,a3,a4;
     boolean lock=true;
     String ans="",account="",passwd="";
@@ -100,7 +105,29 @@ public class Basich extends AppCompatActivity {
         prepage.setOnTouchListener(pagepre);
         btsong.setOnClickListener(btnsong);
         // prepage.setOnClickListener(pagepre2);
+        loadInterstitialAd();
+    }
+    private void loadInterstitialAd() {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3776286057149986/3596969621");
+        mInterstitialAd.setAdListener(new AdListener() {
 
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                if(mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
     }
     private RadioGroup.OnCheckedChangeListener answer=
             new RadioGroup.OnCheckedChangeListener(){

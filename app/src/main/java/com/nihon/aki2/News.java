@@ -15,6 +15,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,6 +35,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class News extends AppCompatActivity {
 ListView newlist;
 Button ok;
+    private AdView mAdView;
     String account="",passwd="";
     private static final String trgUrl ="https://www3.nhk.or.jp/rss/news/cat0.xml";
     private static final String TAG = "XMLParserTest";
@@ -89,7 +95,22 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
 
         // 設定 lstPrefer 元件 ItemClick 事件的 listener 為 lstPreferListener
         newlist.setOnItemClickListener(lstPreferListener);
+        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        mAdView = findViewById(R.id.adView);
 
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
     }/*
     Handler mHandler = new Handler()
     {
