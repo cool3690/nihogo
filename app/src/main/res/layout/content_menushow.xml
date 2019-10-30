@@ -59,12 +59,12 @@
             android:id="@+id/adView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btn3"
+
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
 
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            ads:adUnitId="ca-app-pub-3776286057149986/9451221092">
         </com.google.android.gms.ads.AdView>
 
     </RelativeLayout>
