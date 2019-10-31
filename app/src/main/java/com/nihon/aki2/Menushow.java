@@ -1,23 +1,31 @@
 package com.nihon.aki2;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
 
+import org.json.JSONArray;
+
 public class Menushow extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4,btn5;
-    String account="",passwd="";
+    String account="",passwd="",names="";
     private AdView mAdView;
 
     @Override
@@ -32,6 +40,8 @@ public class Menushow extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
+        //mytoast(account+"\n"+passwd+"\n"+names);
         btn1=(ImageView)findViewById(R.id.btn1);
 
        btn2=(ImageView)findViewById(R.id.btn2);
@@ -162,12 +172,19 @@ public class Menushow extends AppCompatActivity {
             return true;
         }
     };
+    private void mytoast(String str)
+    {
+        Toast toast=Toast.makeText(this, str, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -224,6 +241,18 @@ public class Menushow extends AppCompatActivity {
             Intent intent=new Intent();
             intent.setClass(Menushow.this, MainActivity.class);
             startActivity(intent);
+        }
+        if (id == R.id.about) {
+            new AlertDialog.Builder(Menushow.this)
+                    .setTitle("版權所有")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
+                        }
+                    })
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }

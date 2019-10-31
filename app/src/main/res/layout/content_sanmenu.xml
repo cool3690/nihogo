@@ -10,10 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:background="@drawable/aki_bg1"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:background="@drawable/aki_bg1">
 
         <ListView
             android:paddingLeft="60dp"
@@ -38,6 +35,17 @@
             android:textColor="@color/design_default_color_primary_dark"
             android:textSize="24sp"
             android:textStyle="bold" />
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/idban">
+        </com.google.android.gms.ads.AdView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.nihon.aki2;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -14,6 +16,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +32,7 @@ public class Sanmenu extends AppCompatActivity {
     Button ok;
     String account="",passwd="";
     ArrayList<Jsan> jsans=new ArrayList<Jsan>();
-
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +75,22 @@ public class Sanmenu extends AppCompatActivity {
          menulist.setTextFilterEnabled(true);
        menulist.setSelector(R.drawable.green);
         menulist.setOnItemClickListener(lstPreferListener);
+        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
        /*  */
     }
     private ListView.OnItemClickListener lstPreferListener=
@@ -181,6 +204,18 @@ public class Sanmenu extends AppCompatActivity {
             Intent intent=new Intent();
             intent.setClass(Sanmenu.this, MainActivity.class);
             startActivity(intent);
+        }
+        if (id == R.id.about) {
+            new AlertDialog.Builder(Sanmenu.this)
+                    .setTitle("版權所有")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
+                        }
+                    })
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }

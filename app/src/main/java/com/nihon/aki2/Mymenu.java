@@ -1,8 +1,10 @@
 package com.nihon.aki2;
 
+import android.app.AlertDialog;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -31,7 +33,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 public class Mymenu extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4;
     String key="";
-   String account="",passwd="";
+   String account="",passwd="",names="";
     public static final String KEY = "com.example.aki2";
 
     @Override
@@ -169,6 +171,18 @@ public class Mymenu extends AppCompatActivity {
             Intent intent=new Intent();
             intent.setClass(Mymenu.this, MainActivity.class);
             startActivity(intent);
+        }
+        if (id == R.id.about) {
+            new AlertDialog.Builder(Mymenu.this)
+                    .setTitle("版權所有")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
+                        }
+                    })
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }

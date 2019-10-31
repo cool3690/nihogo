@@ -44,4 +44,9 @@
         android:orderInCategory="100"
         android:title="日文教學"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/about"
+        android:orderInCategory="100"
+        android:title="關於"
+        app:showAsAction="never" />
 </menu>

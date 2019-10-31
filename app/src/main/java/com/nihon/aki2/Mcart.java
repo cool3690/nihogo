@@ -311,6 +311,18 @@ public class Mcart extends AppCompatActivity {
             intent.setClass(Mcart.this, MainActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.about) {
+            new AlertDialog.Builder(Mcart.this)
+                    .setTitle("版權所有")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
+                        }
+                    })
+                    .show();
+        }
         return super.onOptionsItemSelected(item);
     }
     private void mytoast(String str)

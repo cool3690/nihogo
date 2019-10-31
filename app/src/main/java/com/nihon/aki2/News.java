@@ -1,5 +1,7 @@
 package com.nihon.aki2;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -266,6 +268,18 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
             Intent intent=new Intent();
             intent.setClass(News.this, MainActivity.class);
             startActivity(intent);
+        }
+        if (id == R.id.about) {
+            new AlertDialog.Builder(News.this)
+                    .setTitle("版權所有")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
+                        }
+                    })
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }
