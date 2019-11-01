@@ -27,8 +27,9 @@ public class Audit extends AppCompatActivity {
     Spinner choose;
     String sel="";
     String course[]=new String[1];
-    String account="";
+    String account="",names="",passwd="";
     String myname="";
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,10 @@ public class Audit extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
+        GlobalVariable Account = (GlobalVariable)getApplicationContext();
+        account=Account.getAccount();
+        passwd=Account.getPasswd();
+        names=Account.getNames();
         String result = dbcourse.executeQuery();
 
         try{
@@ -118,6 +123,13 @@ public class Audit extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
     @Override
@@ -158,7 +170,7 @@ public class Audit extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Audit.this, Mymenu.class);
+            intent.setClass(Audit.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

@@ -36,7 +36,8 @@ String ans="",myans="_____",myans2="_____",myans3="_____",myans4="_____";
 String anstotal="",mych="";
 int num=4,len=0;
 String [] contain=new String[4];
-    String account="",passwd="";
+    String account="",passwd="",names="";
+    private Menu menu;
     private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,9 @@ String [] contain=new String[4];
                 .build());
 
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
+        account=Account.getAccount();
+        passwd=Account.getPasswd();
+        names=Account.getNames();
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
 
@@ -357,8 +361,16 @@ String [] contain=new String[4];
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -397,7 +409,7 @@ String [] contain=new String[4];
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Santance.this, Mymenu.class);
+            intent.setClass(Santance.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

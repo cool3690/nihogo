@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class Sanmenu extends AppCompatActivity {
     ListView menulist;
     Button ok;
-    String account="",passwd="";
+    String account="",passwd="",names="";  private Menu menu;
     ArrayList<Jsan> jsans=new ArrayList<Jsan>();
     private AdView mAdView;
     @Override
@@ -60,9 +60,7 @@ public class Sanmenu extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
-        /*
-
-        */
+        names=Account.getNames();
         for(int i=1;i<=k;i++){
             Jsan jsan = new Jsan("Lesson"+i);
 
@@ -140,8 +138,16 @@ public class Sanmenu extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);
@@ -186,7 +192,7 @@ public class Sanmenu extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Sanmenu.this, Mymenu.class);
+            intent.setClass(Sanmenu.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

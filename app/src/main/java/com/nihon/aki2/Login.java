@@ -31,7 +31,8 @@ public class Login extends AppCompatActivity {
     private  ImageView  btn;
     private AdView mAdView;
    // private Button  forget;
-    String mycart="",account="",names="";
+    String mycart="",account="",names="",passwd="";
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,10 @@ public class Login extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
+        GlobalVariable Account = (GlobalVariable)getApplicationContext();
+        account=Account.getAccount();
+        passwd=Account.getPasswd();
+        names=Account.getNames();
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
         if(intent != null && intent.getExtras() != null ) {
@@ -150,8 +155,16 @@ public class Login extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);
@@ -196,7 +209,7 @@ public class Login extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Login.this, Mymenu.class);
+            intent.setClass(Login.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

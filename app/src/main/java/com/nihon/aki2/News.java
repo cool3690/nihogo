@@ -38,7 +38,7 @@ public class News extends AppCompatActivity {
 ListView newlist;
 Button ok;
     private AdView mAdView;
-    String account="",passwd="";
+    String account="",passwd="",names="";  private Menu menu;
     private static final String trgUrl ="https://www3.nhk.or.jp/rss/news/cat0.xml";
     private static final String TAG = "XMLParserTest";
     private static final String url ="https://www3.nhk.or.jp/news/";
@@ -61,6 +61,7 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
         for(int i=0;i<10;i++){link[i]="";}
         Arr_RssNews = getRssNews();
         if (Arr_RssNews != null)
@@ -178,8 +179,16 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);
@@ -250,7 +259,7 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(News.this, Mymenu.class);
+            intent.setClass(News.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

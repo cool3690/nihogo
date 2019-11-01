@@ -21,7 +21,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 public class Basicmenu extends AppCompatActivity {
-    String account="",passwd="";
+    String account="",passwd="",names="";
+    private Menu menu;
     private ImageView hira,kata;
     private AdView mAdView;
     @Override
@@ -47,6 +48,7 @@ public class Basicmenu extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
         hira=(ImageView)findViewById(R.id.hira);
         kata=(ImageView)findViewById(R.id.kata);
         hira.setOnTouchListener(hirabtn);
@@ -121,8 +123,16 @@ public class Basicmenu extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -161,7 +171,7 @@ public class Basicmenu extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Basicmenu.this, Mymenu.class);
+            intent.setClass(Basicmenu.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

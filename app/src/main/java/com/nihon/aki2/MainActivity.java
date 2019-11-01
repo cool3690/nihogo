@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Team> teams = new ArrayList<Team>();
     ListView listview;
     ImageView imgshow;
-    String account="",passwd="",Lname="",course_num="";
+    String account="",passwd="",names="",course_num="";
+    private Menu menu;
     RecyclerView recyclerView;
     Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
 
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
     /*
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
@@ -259,8 +261,16 @@ TextView tv2=(TextView) findViewById(R.id.tv2);
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);
@@ -306,7 +316,7 @@ TextView tv2=(TextView) findViewById(R.id.tv2);
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(MainActivity.this, Mymenu.class);
+            intent.setClass(MainActivity.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

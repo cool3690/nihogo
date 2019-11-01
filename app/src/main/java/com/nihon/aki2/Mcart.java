@@ -30,7 +30,8 @@ public class Mcart extends AppCompatActivity {
     ListView listview;
     Button buy;
     // private  Button  bt;
-    String account,passwd="",Lname="",course_num="";
+    String account="",passwd="",names="",course_num="";
+    private Menu menu;
     ArrayList num=new ArrayList();
     int total=0;
 
@@ -56,6 +57,7 @@ public class Mcart extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
         if(account.equals(null)){
             Intent intent=new Intent();
             intent.setClass(Mcart.this, Login.class);
@@ -252,8 +254,16 @@ public class Mcart extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -292,7 +302,7 @@ public class Mcart extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Mcart.this, Mymenu.class);
+            intent.setClass(Mcart.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

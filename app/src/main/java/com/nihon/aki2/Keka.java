@@ -17,7 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Keka extends AppCompatActivity {
-String account="",passwd="",yes="",no="";
+String account="",passwd="",yes="",no="",names="";
+private Menu menu;
 TextView ans;
 Button ret;
     @Override
@@ -42,6 +43,7 @@ Button ret;
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
         ans=(TextView)findViewById(R.id.ans);
         ret=(Button)findViewById(R.id.ret);
         Intent intent=this.getIntent();
@@ -70,8 +72,16 @@ Button ret;
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -110,7 +120,7 @@ Button ret;
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Keka.this, Mymenu.class);
+            intent.setClass(Keka.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

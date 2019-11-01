@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Lesson extends AppCompatActivity {
     ListView learn;
     ImageView next,pre;
-    String account="",passwd="";
+    String account="",passwd="",names="";  private Menu menu;
     TextView t;
     int num=1;
     ArrayList<Jnew> jpnews=new ArrayList<Jnew>();
@@ -51,6 +51,7 @@ public class Lesson extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
         t=(TextView) findViewById(R.id.textView5);
        learn=(ListView)findViewById(R.id.learn);
        next=(ImageView)findViewById(R.id.nextpage);
@@ -184,8 +185,16 @@ public class Lesson extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -224,7 +233,7 @@ public class Lesson extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Lesson.this, Mymenu.class);
+            intent.setClass(Lesson.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

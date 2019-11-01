@@ -31,7 +31,8 @@ ImageView nextpage,prepage;
 RadioGroup radioGroup;
 RadioButton a1,a2,a3,a4;
 boolean lock=true,anstmp=true;
-String ans="",account="",passwd="",mych="";
+String ans="",account="",passwd="",mych="",names="";
+private Menu menu;
 int num=3,yes=0,no=0;
     private InterstitialAd mInterstitialAd;
     @Override
@@ -56,7 +57,7 @@ int num=3,yes=0,no=0;
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
-
+        names=Account.getNames();
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
 
@@ -265,8 +266,16 @@ public void pre(){
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -305,7 +314,7 @@ public void pre(){
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(QA.this, Mymenu.class);
+            intent.setClass(QA.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

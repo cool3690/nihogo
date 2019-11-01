@@ -47,7 +47,8 @@ import java.util.TimerTask;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Change extends AppCompatActivity {
-  String account="",passwd="";
+  String account="",passwd="",names="";
+  private Menu menu;
   private static final String TAG="Change";
 ArrayList <Rate> rates=new ArrayList<Rate>();
     List<String> buy = new ArrayList<String>();
@@ -92,9 +93,9 @@ ArrayList <Rate> rates=new ArrayList<Rate>();
         sel=name_str;
         //inputrate.setText(name_str);
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
-        account= Account.getAccount();
+        account=Account.getAccount();
         passwd=Account.getPasswd();
-
+        names=Account.getNames();
 /*
         spn=(Spinner) findViewById(R.id.spn);
         // 建立ArrayAdapter
@@ -294,8 +295,16 @@ public void jprate(){
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);
@@ -383,7 +392,7 @@ public void jprate(){
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Change.this, Mymenu.class);
+            intent.setClass(Change.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

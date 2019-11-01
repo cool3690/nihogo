@@ -25,7 +25,8 @@ import org.json.JSONObject;
 
 public class Shiken extends AppCompatActivity {
 ImageView bt1,bt2,bt3;
-String account="",passwd="";
+String account="",passwd="",names="";
+private Menu menu;
     String mychbun="",mychqa="";
     private AdView mAdView;
     @Override
@@ -50,7 +51,7 @@ String account="",passwd="";
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
-
+        names=Account.getNames();
         bt1=(ImageView)findViewById(R.id.bt01);
         bt2=(ImageView)findViewById(R.id.bt02);
         bt3=(ImageView)findViewById(R.id.bt03);
@@ -175,8 +176,16 @@ String account="",passwd="";
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -215,7 +224,7 @@ String account="",passwd="";
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Shiken.this, Mymenu.class);
+            intent.setClass(Shiken.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

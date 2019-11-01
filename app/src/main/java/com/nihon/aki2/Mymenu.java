@@ -33,7 +33,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 public class Mymenu extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4;
     String key="";
-   String account="",passwd="",names="";
+   String account="",passwd="",names="";  private Menu menu;
     public static final String KEY = "com.example.aki2";
 
     @Override
@@ -55,7 +55,7 @@ public class Mymenu extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
-
+        names=Account.getNames();
         btn1=(ImageView)findViewById(R.id.btn1);
         btn1.setOnTouchListener(b1);
         SharedPreferences sharedPreferences = getSharedPreferences("data" , MODE_PRIVATE);
@@ -153,7 +153,7 @@ public class Mymenu extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Mymenu.this, Mymenu.class);
+            intent.setClass(Mymenu.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

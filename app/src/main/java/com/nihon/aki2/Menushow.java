@@ -27,7 +27,7 @@ public class Menushow extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4,btn5;
     String account="",passwd="",names="";
     private AdView mAdView;
-
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +53,14 @@ public class Menushow extends AppCompatActivity {
         btn3.setOnTouchListener(b3);
        // btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
+        /*
+        if(names!=null ||names!="" ||names!=" "){
+
+            MenuItem Item= menu.findItem(R.id.login);
+            Item.setTitle(names);
+        }
+*/
+
         MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
         mAdView = findViewById(R.id.adView);
 
@@ -70,6 +78,7 @@ public class Menushow extends AppCompatActivity {
             }
         });
     }
+
 
     private ImageView.OnTouchListener b1=new ImageView.OnTouchListener(){
         @Override
@@ -182,6 +191,13 @@ public class Menushow extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
 
@@ -223,7 +239,7 @@ public class Menushow extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Menushow.this, Mymenu.class);
+            intent.setClass(Menushow.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

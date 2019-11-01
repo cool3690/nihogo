@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +15,7 @@ import org.json.JSONObject;
 
 public class Forgot extends AppCompatActivity {
     TextView mymail;
-    String account="",passwd="";
+    String account="",passwd="",names="";
     ImageView send;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -31,7 +31,8 @@ public class QAmenu extends AppCompatActivity {
     private AdView mAdView;
     ListView menulist;
     Button ok;
-    String account="",passwd="";
+    String account="",passwd="",names="";
+    private Menu menu;
     ArrayList<Jsan> jsans=new ArrayList<Jsan>();
 
     @Override
@@ -53,18 +54,16 @@ public class QAmenu extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
+        GlobalVariable Account = (GlobalVariable)getApplicationContext();
+        account=Account.getAccount();
+        passwd=Account.getPasswd();
+        names=Account.getNames();
         int k=0;
        Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
         String bun=bundle.getString("QA");
         k=Integer.parseInt(bun);/* */
         menulist=(ListView)findViewById(R.id.menulist);
-        GlobalVariable Account = (GlobalVariable)getApplicationContext();
-        account=Account.getAccount();
-        passwd=Account.getPasswd();
-
-
-
 
         for(int i=1;i<=k;i++){
             Jsan jsan = new Jsan("Lesson"+i);
@@ -131,8 +130,16 @@ public class QAmenu extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);
@@ -177,7 +184,7 @@ public class QAmenu extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(QAmenu.this, Mymenu.class);
+            intent.setClass(QAmenu.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

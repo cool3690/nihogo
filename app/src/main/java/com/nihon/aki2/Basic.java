@@ -43,7 +43,8 @@ public class Basic extends AppCompatActivity {
 
    // int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko};
     boolean lock=true;
-    String ans="",account="",passwd="";
+    String ans="",account="",passwd="",names="";
+    private Menu menu;
     int num=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class Basic extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
 
         Q1=(TextView)findViewById(R.id.Q1);
         radioGroup=(RadioGroup)findViewById(R.id.radiogroup) ;
@@ -295,8 +297,16 @@ public class Basic extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -335,7 +345,7 @@ public class Basic extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Basic.this, Mymenu.class);
+            intent.setClass(Basic.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {

@@ -26,9 +26,11 @@ import org.json.JSONArray;
 
 public class Apply extends AppCompatActivity {
     private TextView phone,pass,name,email;
-    String account="",passwd="";
+    String account="",passwd="",names="";
+    private Menu menu;
     boolean check=true;
     private AdView mAdView;
+
     //private Button  forget;
     ImageView ok;
     @Override
@@ -53,6 +55,7 @@ public class Apply extends AppCompatActivity {
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
+        names=Account.getNames();
         phone=(TextView)findViewById(R.id.phone);
         pass=(TextView)findViewById(R.id.pass);
         name=(TextView)findViewById(R.id.name);
@@ -101,7 +104,7 @@ public class Apply extends AppCompatActivity {
                String mpass= pass.getText().toString();
                 String mname= name.getText().toString();
                 String memail= email.getText().toString();
-                mytoast("OK! "+tmp);
+                mytoast("帳號申請成功! ");
                 dbinapply.executeQuery(account,mpass,mname,memail);
             }
         }
@@ -146,6 +149,13 @@ public class Apply extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
   
@@ -187,7 +197,7 @@ public class Apply extends AppCompatActivity {
         }
         if (id == R.id.mymenu) {
             Intent intent=new Intent();
-            intent.setClass(Apply.this, Mymenu.class);
+            intent.setClass(Apply.this, Menushow.class);
             startActivity(intent);
         }
         if (id == R.id.apply) {
