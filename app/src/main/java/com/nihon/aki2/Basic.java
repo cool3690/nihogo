@@ -22,7 +22,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,6 +38,8 @@ public class Basic extends AppCompatActivity {
     RadioGroup radioGroup;
     private InterstitialAd mInterstitialAd;
     RadioButton a1,a2,a3,a4;
+    int count=0;
+    private AdView mAdView;
     public MediaPlayer mediaplayer;
    int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko,R.raw.sa, R.raw.shi, R.raw.su, R.raw.se, R.raw.so,
     R.raw.ta, R.raw.chi, R.raw.tsu, R.raw.te, R.raw.to,R.raw.na, R.raw.ni, R.raw.nu, R.raw.ne, R.raw.no,R.raw.ha, R.raw.hi, R.raw.hu, R.raw.he, R.raw.ho,R.raw.ma, R.raw.mi, R.raw.mu,
@@ -112,7 +116,22 @@ public class Basic extends AppCompatActivity {
         btsong.setOnClickListener(btnsong);
 
         // prepage.setOnClickListener(pagepre2);
-        loadInterstitialAd();
+        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
     }
     private void loadInterstitialAd() {
         mInterstitialAd = new InterstitialAd(this);
@@ -256,6 +275,8 @@ public class Basic extends AppCompatActivity {
     public void next(){
         num++;
         lock=false;
+        count++;
+        if(count==10){loadInterstitialAd();}
         radioGroup.clearCheck();
 
         String result = dbbasic.executeQuery(num+"");

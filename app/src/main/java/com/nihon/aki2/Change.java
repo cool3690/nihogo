@@ -156,10 +156,6 @@ rg.setOnCheckedChangeListener(mychange);
                     if (secondLeft < 1) {
                         secondLeft=50;
                         jprate();
-                        // mytoast("run");
-
-
-
                     }
                 }
             });

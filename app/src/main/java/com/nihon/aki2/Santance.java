@@ -30,6 +30,7 @@ import org.json.JSONObject;
 public class Santance extends AppCompatActivity {
 Button bt1,bt2,bt3,bt0,ok;
 ImageView btnpre,btnnext;
+int count=0;
 TextView ch,jp;
 String str1="",str2="",str3="";
 String ans="",myans="_____",myans2="_____",myans3="_____",myans4="_____";
@@ -88,7 +89,7 @@ String [] contain=new String[4];
 
         btnnext.setOnTouchListener(btnext);
         test(num);
-        loadInterstitialAd();
+
 
     }
     private void loadInterstitialAd() {
@@ -200,7 +201,8 @@ String [] contain=new String[4];
             switch(event.getAction()){
                 case MotionEvent.ACTION_DOWN:
                     btnnext.setImageResource(R.drawable.aki_nexth);
-
+                    count++;
+                    if(count==5){ loadInterstitialAd();}
                     break;
                 case MotionEvent.ACTION_UP:
                     btnnext.setImageResource(R.drawable.aki_next);

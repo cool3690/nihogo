@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,6 +32,8 @@ TextView Q1,txtResult;
 ImageView nextpage,prepage;
 RadioGroup radioGroup;
 RadioButton a1,a2,a3,a4;
+    private AdView mAdView;
+int count=0;
 boolean lock=true,anstmp=true;
 String ans="",account="",passwd="",mych="",names="";
 private Menu menu;
@@ -101,7 +105,22 @@ int num=3,yes=0,no=0;
         nextpage.setOnTouchListener(page);
        prepage.setOnTouchListener(pagepre);
        // prepage.setOnClickListener(pagepre2);
-        loadInterstitialAd();
+        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
     }
     private void loadInterstitialAd() {
         mInterstitialAd = new InterstitialAd(this);
@@ -146,6 +165,8 @@ int num=3,yes=0,no=0;
     }
 public void next(){
   num++;
+  count++;
+  if(count==5){  loadInterstitialAd();}
     lock=false;
     radioGroup.clearCheck();
  if(anstmp==true){yes++;}
