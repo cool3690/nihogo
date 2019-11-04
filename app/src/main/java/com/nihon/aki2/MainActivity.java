@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(videoAdapter);
 
 TextView tv2=(TextView) findViewById(R.id.tv2);
-        tv2.setTypeface(Typeface.createFromAsset(getAssets(), "nihon.ttf"));
+
         imgshow=(ImageView)findViewById(R.id.imgshow);
         listview = (ListView) findViewById(R.id.listview);
         listview.setOnItemClickListener(lvonclick);

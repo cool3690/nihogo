@@ -4,9 +4,12 @@ import android.app.AlertDialog;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -22,12 +25,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Mymenu extends AppCompatActivity {
@@ -61,7 +58,17 @@ public class Mymenu extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("data" , MODE_PRIVATE);
         String h = sharedPreferences.getString("input" , "0");
 
-        schedulejob(h);
+
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connManager.getActiveNetworkInfo();
+        if (info == null || !info.isConnected())
+        {
+            mytoast("請開啟網路!");
+        }
+        else{
+            schedulejob(h);
+        }
+
 
     }
     public void schedulejob(String tmp){
@@ -100,9 +107,18 @@ public class Mymenu extends AppCompatActivity {
                     break;
                 case MotionEvent.ACTION_UP:
                     btn1.setImageResource(R.drawable.aki_menu);
-                    Intent intent=new Intent();
-                    intent.setClass(Mymenu.this, Menushow.class);
-                    startActivity(intent);
+
+                    ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo info=connManager.getActiveNetworkInfo();
+                    if (info == null || !info.isConnected())
+                    {
+                        mytoast("請開啟網路!");
+                    }
+                    else{
+                        Intent intent=new Intent();
+                        intent.setClass(Mymenu.this, Menushow.class);
+                        startActivity(intent);
+                    }
                     break;
             }
             return true;

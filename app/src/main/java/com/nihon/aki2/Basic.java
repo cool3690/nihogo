@@ -3,6 +3,7 @@ package com.nihon.aki2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -98,6 +99,7 @@ public class Basic extends AppCompatActivity {
                 JSONObject jsonData = jsonArray.getJSONObject(i);
                 topic=jsonData.getString("Q1");
                 Q1.setText(topic);
+             //   a1.setTypeface(Typeface.createFromAsset(getAssets(), "nihon.ttf"));
                 a1.setText(jsonData.getString("A1"));
                 a2.setText(jsonData.getString("A2"));
                 a3.setText(jsonData.getString("A3"));
