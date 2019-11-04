@@ -53,7 +53,8 @@ public class Basicmenu extends AppCompatActivity {
         kata=(ImageView)findViewById(R.id.kata);
         hira.setOnTouchListener(hirabtn);
         kata.setOnTouchListener(katabtn);
-        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        String myid=getString(R.string.appid);
+        MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
 
         AdRequest adRequest = new AdRequest.Builder().build();

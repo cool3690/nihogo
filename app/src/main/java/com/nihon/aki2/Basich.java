@@ -113,7 +113,8 @@ public class Basich extends AppCompatActivity {
         btsong.setOnClickListener(btnsong);
         // prepage.setOnClickListener(pagepre2);
 
-        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        String myid=getString(R.string.appid);
+        MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
 
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -133,7 +134,8 @@ public class Basich extends AppCompatActivity {
     }
     private void loadInterstitialAd() {
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3776286057149986/3596969621");
+        String st = getString(R.string.idin);
+        mInterstitialAd.setAdUnitId(st);
         mInterstitialAd.setAdListener(new AdListener() {
 
             @Override

@@ -73,7 +73,8 @@ public class Login extends AppCompatActivity {
         String pass_str=remdname.getString("pwd", "");
         acc.setText(name_str);
         pwd.setText(pass_str);
-        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        String myid=getString(R.string.appid);
+        MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
 
         AdRequest adRequest = new AdRequest.Builder().build();

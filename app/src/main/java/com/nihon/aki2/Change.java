@@ -32,6 +32,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -49,6 +54,7 @@ import java.util.TimerTask;
 public class Change extends AppCompatActivity {
   String account="",passwd="",names="";
   private Menu menu;
+    private InterstitialAd mInterstitialAd;
   private static final String TAG="Change";
 ArrayList <Rate> rates=new ArrayList<Rate>();
     List<String> buy = new ArrayList<String>();
@@ -65,6 +71,7 @@ ArrayList <Rate> rates=new ArrayList<Rate>();
     RadioButton jp,tw;
     EditText input;
     Spinner inputrate;
+
     TextView show,showtw,tshow;
     CheckBox check;
     private static final String url ="https://rate.bot.com.tw/xrt?Lang=zh-TW";
@@ -137,8 +144,36 @@ rg.setOnCheckedChangeListener(mychange);
         Date date=new Date();
         String dts=sdf.format(date);
         tshow.setText("現價:"+ Double.parseDouble(buy.get(7))+ "   更新:"+dts);
+        loadInterstitialAd();
     }
+    private void loadInterstitialAd() {
+        mInterstitialAd = new InterstitialAd(this);
+        String st = getString(R.string.idin);
+        mInterstitialAd.setAdUnitId(st);
+        mInterstitialAd.setAdListener(new AdListener() {
 
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                if(mInterstitialAd.isLoaded()) {
+                    try {
+                        Thread.sleep(20000);
+                        mInterstitialAd.show();
+                    } catch (InterruptedException e) {
+                    }
+
+                }
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
+    }
     public void begin() {
         timer.schedule(task, 1000, 1000);
     }

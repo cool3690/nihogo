@@ -11,9 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/aki_bg1"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="85dp">
+        android:background="@drawable/aki_bg1">
 
         <ListView
             android:id="@+id/newlist"

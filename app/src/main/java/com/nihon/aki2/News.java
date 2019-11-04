@@ -98,7 +98,8 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
 
         // 設定 lstPrefer 元件 ItemClick 事件的 listener 為 lstPreferListener
         newlist.setOnItemClickListener(lstPreferListener);
-        MobileAds.initialize(this, "ca-app-pub-3776286057149986~2243725047");
+        String myid=getString(R.string.appid);
+        MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
 
         AdRequest adRequest = new AdRequest.Builder().build();

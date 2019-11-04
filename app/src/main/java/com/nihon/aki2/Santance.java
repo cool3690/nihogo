@@ -94,7 +94,8 @@ String [] contain=new String[4];
     }
     private void loadInterstitialAd() {
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3776286057149986/3596969621");
+        String st = getString(R.string.idin);
+        mInterstitialAd.setAdUnitId(st);
         mInterstitialAd.setAdListener(new AdListener() {
 
             @Override
