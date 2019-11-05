@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Countjlpt"
+    tools:showIn="@layout/countjlpt">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/aki_bg1">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="JLPT考試"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:layout_marginTop="30dp"
+            android:text="報名日期"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sign"
+            android:layout_marginTop="20dp"
+            android:text="考試日期"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/countdown"
+            android:layout_width="match_parent"
+            android:layout_height="199dp"
+            android:layout_below="@id/date"
+            android:layout_marginTop="33dp"
+            android:gravity="center"
+            android:text="倒數"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/return0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/countdown"
+            android:layout_marginTop="20dp"
+            android:text="返回" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

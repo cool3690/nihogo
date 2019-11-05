@@ -46,11 +46,12 @@ public class Menushow extends AppCompatActivity {
 
        btn2=(ImageView)findViewById(R.id.btn2);
         btn3=(ImageView)findViewById(R.id.btn3);
-       // btn4=(ImageView)findViewById(R.id.btn4);
+       btn4=(ImageView)findViewById(R.id.btn4);
         btn5=(ImageView)findViewById(R.id.btn5);
         btn1.setOnTouchListener(b1);
         btn2.setOnTouchListener(b2);
         btn3.setOnTouchListener(b3);
+        btn4.setOnTouchListener(b4);
        // btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
         /*
@@ -149,13 +150,13 @@ public class Menushow extends AppCompatActivity {
 
                 case MotionEvent.ACTION_DOWN:
                    // btn4.setImageResource(R.drawable.aki_shop);
-                    btn4.setImageResource(R.drawable.aki_basich);
+                    btn4.setImageResource(R.drawable.aki_jlpth);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn4.setImageResource(R.drawable.aki_basic);
+                    btn4.setImageResource(R.drawable.aki_jlpt);
                     Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Basicmenu.class);
+                    intent.setClass(Menushow.this,Countjlpt.class);
                     startActivity(intent);
 
                     break;

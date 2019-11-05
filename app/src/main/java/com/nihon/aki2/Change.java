@@ -144,8 +144,9 @@ rg.setOnCheckedChangeListener(mychange);
         Date date=new Date();
         String dts=sdf.format(date);
         tshow.setText("現價:"+ Double.parseDouble(buy.get(7))+ "   更新:"+dts);
-        loadInterstitialAd();
+        //loadInterstitialAd();
     }
+    /*
     private void loadInterstitialAd() {
         mInterstitialAd = new InterstitialAd(this);
         String st = getString(R.string.idin);
@@ -174,6 +175,7 @@ rg.setOnCheckedChangeListener(mychange);
         AdRequest adRequest = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(adRequest);
     }
+    */
     public void begin() {
         timer.schedule(task, 1000, 1000);
     }
