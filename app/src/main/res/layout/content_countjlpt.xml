@@ -46,7 +46,7 @@
         <TextView
             android:id="@+id/countdown"
             android:layout_width="match_parent"
-            android:layout_height="199dp"
+            android:layout_height="98dp"
             android:layout_below="@id/date"
             android:layout_marginTop="33dp"
             android:gravity="center"
@@ -60,5 +60,13 @@
             android:layout_below="@id/countdown"
             android:layout_marginTop="20dp"
             android:text="返回" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/exam" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
