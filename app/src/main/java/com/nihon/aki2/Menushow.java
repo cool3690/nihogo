@@ -52,16 +52,7 @@ public class Menushow extends AppCompatActivity {
         btn2.setOnTouchListener(b2);
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
-       // btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
-        /*
-        if(names!=null ||names!="" ||names!=" "){
-
-            MenuItem Item= menu.findItem(R.id.login);
-            Item.setTitle(names);
-        }
-*/
-
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
