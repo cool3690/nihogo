@@ -23,9 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-
             android:text="授予動詞"
-
             android:textSize="24sp" />
 
         <TextView
@@ -37,46 +35,43 @@
             android:text="題目"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/A1"
-            android:layout_width="135dp"
-            android:layout_height="101dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/Q1"
-            android:layout_marginTop="177dp"
-            android:text="名字A"
-            android:textSize="20sp" />
+            android:layout_marginTop="177dp">
 
-        <ImageView
-            android:id="@+id/left"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/Q1"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="177dp"
-            android:layout_toRightOf="@id/A1"
-            app:srcCompat="@drawable/aki_l" />
+            <TextView
+                android:id="@+id/A1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="名字A"
+                android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/right"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/Q1"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="177dp"
-            android:layout_toRightOf="@id/left"
-            app:srcCompat="@drawable/aki_r" />
+            <ImageView
+                android:id="@+id/left"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight=".2"
+                app:srcCompat="@drawable/aki_l" />
 
-        <TextView
-            android:id="@+id/A2"
-            android:layout_width="130dp"
-            android:layout_height="102dp"
-            android:layout_below="@id/Q1"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="177dp"
-            android:layout_toRightOf="@id/right"
-            android:gravity="right"
-            android:text="名字B"
-            android:textSize="20sp" />
+            <ImageView
+                android:id="@+id/right"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight=".2"
+                app:srcCompat="@drawable/aki_r" />
+
+            <TextView
+                android:id="@+id/A2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="名字B"
+                android:textSize="20sp" />
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/nextpage"
