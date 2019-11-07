@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="50dp"
             app:srcCompat="@drawable/aki_tangoh" />
 
         <ImageView
@@ -37,11 +37,18 @@
             android:id="@+id/bt02"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/bt03"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
 
             app:srcCompat="@drawable/aki_santanh" />
+        <ImageView
+            android:id="@+id/bt04"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/bt02"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/aki_dative" />
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
@@ -54,6 +61,8 @@
             ads:adSize="BANNER"
             ads:adUnitId="@string/idban">
         </com.google.android.gms.ads.AdView>
+
+
 
 
     </RelativeLayout>

@@ -136,7 +136,7 @@ public class Menushow extends AppCompatActivity {
 
     private ImageView.OnTouchListener b4=new ImageView.OnTouchListener(){
         @Override
-        public boolean onTouch(View v, MotionEvent event){//購物，50音
+        public boolean onTouch(View v, MotionEvent event){//JLPT倒數
             switch (event.getAction()){
 
                 case MotionEvent.ACTION_DOWN:
@@ -255,7 +255,7 @@ public class Menushow extends AppCompatActivity {
             new AlertDialog.Builder(Menushow.this)
                     .setTitle("版權所有")
                     .setIcon(R.drawable.ic_launcher)
-                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班")
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふとやま國際學院")
                     .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i)
                         {

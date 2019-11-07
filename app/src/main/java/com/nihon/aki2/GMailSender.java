@@ -1,5 +1,5 @@
 package com.nihon.aki2;
-
+/*
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.mail.Message;
@@ -15,8 +15,11 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.PasswordAuthentication;
 import java.security.Security;
 import java.util.Properties;
+
+import javax.sql.DataSource;
 
 public class GMailSender extends javax.mail.Authenticator
 {
@@ -118,3 +121,4 @@ public class GMailSender extends javax.mail.Authenticator
 
     }
 }
+        */

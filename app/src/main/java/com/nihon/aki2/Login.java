@@ -233,7 +233,7 @@ public class Login extends AppCompatActivity {
             new AlertDialog.Builder(Login.this)
                     .setTitle("版權所有")
                     .setIcon(R.drawable.ic_launcher)
-                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班")
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふとやま國際學院")
                     .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i)
                         {

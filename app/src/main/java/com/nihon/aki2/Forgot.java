@@ -81,10 +81,10 @@ public class Forgot extends AppCompatActivity {
            */
          if(account=="" || account==null){mytoast("無此帳號!");}
          else{
-             GMailSender sender = new GMailSender("chansingmis@gmail.com", "chansingmis5781821");
+             //GMailSender sender = new GMailSender("chansingmis@gmail.com", "chansingmis5781821");
              try
              {
-                 sender.sendMail("你的密碼", name+"你好:\n 你的密碼是:"+passwd, "亞紀塾日語", tmp);
+                // sender.sendMail("你的密碼", name+"你好:\n 你的密碼是:"+passwd, "亞紀塾日語", tmp);
                  mytoast("密碼已寄到您信箱");
              }
 
