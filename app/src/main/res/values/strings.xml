@@ -56,4 +56,5 @@
     <string name="idban">ca-app-pub-3940256099942544/6300978111</string>
     <string name="appid">ca-app-pub-3776286057149986~2243725047</string>
     <string name="title_activity_countjlpt">Countjlpt</string>
+    <string name="title_activity_dative">Dative</string>
 </resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Dative"
+    tools:showIn="@layout/dative">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/aki_bg1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+
+            android:text="授予動詞"
+
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/Q1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:layout_marginTop="25dp"
+            android:text="題目"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/A1"
+            android:layout_width="135dp"
+            android:layout_height="101dp"
+            android:layout_below="@id/Q1"
+            android:layout_marginTop="177dp"
+            android:text="名字A"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/left"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/Q1"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="177dp"
+            android:layout_toRightOf="@id/A1"
+            app:srcCompat="@drawable/aki_l" />
+
+        <ImageView
+            android:id="@+id/right"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/Q1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="177dp"
+            android:layout_toRightOf="@id/left"
+            app:srcCompat="@drawable/aki_r" />
+
+        <TextView
+            android:id="@+id/A2"
+            android:layout_width="130dp"
+            android:layout_height="102dp"
+            android:layout_below="@id/Q1"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="177dp"
+            android:layout_toRightOf="@id/right"
+            android:gravity="right"
+            android:text="名字B"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/nextpage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/aki_next" />
+
+
+        <ImageView
+            android:id="@+id/prepage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/aki_pre" />
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
