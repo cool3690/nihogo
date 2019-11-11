@@ -24,10 +24,12 @@
         <activity
             android:name=".Dative"
             android:label="@string/title_activity_dative"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Countjlpt"
             android:label="@string/title_activity_countjlpt"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Keka"
@@ -37,6 +39,7 @@
         <activity
             android:name=".Myweb"
             android:label="@string/title_activity_myweb"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Audit"

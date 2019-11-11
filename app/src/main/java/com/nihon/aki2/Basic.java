@@ -48,9 +48,9 @@ public class Basic extends AppCompatActivity {
 
    // int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko};
     boolean lock=true;
-    String ans="",account="",passwd="",names="";
+    String account="",passwd="",names="";
     private Menu menu;
-    int num=1;
+    int num=1,ans=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +104,7 @@ public class Basic extends AppCompatActivity {
                 a2.setText(jsonData.getString("A2"));
                 a3.setText(jsonData.getString("A3"));
                 a4.setText(jsonData.getString("A4"));
-                ans=jsonData.getString("ans");
+                ans=jsonData.getInt("ans");
 
             }
 
@@ -175,7 +175,7 @@ public class Basic extends AppCompatActivity {
             };
 
     void show (int p){
-        if(ans.equals(p+"")){mytoast("正解!");}
+        if(ans==p){mytoast("正解!");}
         else{mytoast("錯誤!");}
 
     }
@@ -269,7 +269,7 @@ public class Basic extends AppCompatActivity {
                 a2.setText(jsonData.getString("A2"));
                 a3.setText(jsonData.getString("A3"));
                 a4.setText(jsonData.getString("A4"));
-                ans=jsonData.getString("ans");
+                ans=jsonData.getInt("ans");
             }
             playSong(songfile[num-1]);
         }
@@ -305,7 +305,7 @@ public class Basic extends AppCompatActivity {
                 a2.setText(jsonData.getString("A2"));
                 a3.setText(jsonData.getString("A3"));
                 a4.setText(jsonData.getString("A4"));
-                ans=jsonData.getString("ans");
+                ans=jsonData.getInt("ans");
             }
             playSong(songfile[num-1]);
         }
@@ -394,7 +394,7 @@ public class Basic extends AppCompatActivity {
             new AlertDialog.Builder(Basic.this)
                     .setTitle("版權所有")
                     .setIcon(R.drawable.ic_launcher)
-                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふとやま國際學院")
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふじやま國際學院")
                     .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i)
                         {

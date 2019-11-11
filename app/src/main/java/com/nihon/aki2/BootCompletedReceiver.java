@@ -15,7 +15,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED))
         {
         /* */
-            Toast.makeText(context, "OK ", Toast.LENGTH_LONG).show();
+           // Toast.makeText(context, "OK ", Toast.LENGTH_LONG).show();
           Intent newIntent = new Intent(context, JobSchedulerService.class);
           newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  //注意，必须添加这个标记，否则启动会失败
           context.startActivity(newIntent);

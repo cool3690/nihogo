@@ -67,7 +67,8 @@ private Menu menu;
 
             for(int i = 0; i < jsonArray.length(); i++)
             {	 JSONObject jsonData = jsonArray.getJSONObject(i);
-                mychbun=jsonData.getString("mych");
+                int a=jsonData.getInt("mych");
+                mychbun=a+"";
                // mytoast(mychbun);
             }
 
@@ -75,7 +76,8 @@ private Menu menu;
             for(int i=0;i<jsonArray1.length();i++)
             {
                 JSONObject jsonData=jsonArray1.getJSONObject(i);
-                mychqa=jsonData.getString("mych");
+                int a=jsonData.getInt("mych");
+                mychqa=a+"";
             }
         }
 
@@ -269,7 +271,7 @@ private Menu menu;
             new AlertDialog.Builder(Shiken.this)
                     .setTitle("版權所有")
                     .setIcon(R.drawable.ic_launcher)
-                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふとやま國際學院")
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふじやま國際學院")
                     .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i)
                         {
