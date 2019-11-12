@@ -29,7 +29,7 @@ import org.json.JSONObject;
 public class Login extends AppCompatActivity {
     private TextView acc,pwd;
     private  ImageView  btn;
-    private AdView mAdView;
+ //   private AdView mAdView;
    // private Button  forget;
     String mycart="",account="",names="",passwd="";
     private Menu menu;
@@ -73,6 +73,7 @@ public class Login extends AppCompatActivity {
         String pass_str=remdname.getString("pwd", "");
         acc.setText(name_str);
         pwd.setText(pass_str);
+        /*
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
@@ -90,6 +91,7 @@ public class Login extends AppCompatActivity {
                 // covers the screen.
             }
         });
+        */
 
     }
     private Button.OnClickListener btnforget=new Button.OnClickListener(){

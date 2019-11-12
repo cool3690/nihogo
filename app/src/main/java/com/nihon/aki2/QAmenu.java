@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class QAmenu extends AppCompatActivity {
-    private AdView mAdView;
+    //private AdView mAdView;
     ListView menulist;
     Button ok;
     String account="",passwd="",names="";
@@ -75,6 +75,7 @@ public class QAmenu extends AppCompatActivity {
         menulist.setTextFilterEnabled(true);
         menulist.setSelector(R.drawable.green);
        menulist.setOnItemClickListener(lstPreferListener);
+       /*
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
@@ -92,6 +93,7 @@ public class QAmenu extends AppCompatActivity {
                 // covers the screen.
             }
         });
+        */
     }
     private ListView.OnItemClickListener lstPreferListener=
             new ListView.OnItemClickListener(){

@@ -203,7 +203,8 @@ String [] contain=new String[4];
                 case MotionEvent.ACTION_DOWN:
                     btnnext.setImageResource(R.drawable.aki_nexth);
                     count++;
-                    if(count==5){ loadInterstitialAd();}
+                    if(count==5){ //loadInterstitialAd();
+                    }
                     break;
                 case MotionEvent.ACTION_UP:
                     btnnext.setImageResource(R.drawable.aki_next);

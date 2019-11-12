@@ -29,7 +29,7 @@ public class Apply extends AppCompatActivity {
     String account="",passwd="",names="";
     private Menu menu;
     boolean check=true;
-    private AdView mAdView;
+    //private AdView mAdView;
 
     //private Button  forget;
     ImageView ok;
@@ -61,9 +61,9 @@ public class Apply extends AppCompatActivity {
         name=(TextView)findViewById(R.id.name);
         email=(TextView)findViewById(R.id.email);
         ok=(ImageView)findViewById(R.id.ok);
-       // forget=(Button)findViewById(R.id.forget);
         ok.setOnClickListener(okbtn);
-       // forget.setOnClickListener(forgetbtn);
+
+        /*
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
@@ -81,6 +81,7 @@ public class Apply extends AppCompatActivity {
                 // covers the screen.
             }
         });
+        */
     }
     private ImageView.OnClickListener okbtn= new ImageView.OnClickListener(){
         @Override

@@ -24,11 +24,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Shiken extends AppCompatActivity {
-ImageView bt1,bt2,bt3,bt4;
+ImageView bt1,bt2,bt3;
 String account="",passwd="",names="";
 private Menu menu;
     String mychbun="",mychqa="";
-    private AdView mAdView;
+  //  private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +55,11 @@ private Menu menu;
         bt1=(ImageView)findViewById(R.id.bt01);
         bt2=(ImageView)findViewById(R.id.bt02);
         bt3=(ImageView)findViewById(R.id.bt03);
-        bt4=(ImageView)findViewById(R.id.bt04);
+       // bt4=(ImageView)findViewById(R.id.bt04);
         bt1.setOnTouchListener(bt_1);
         bt2.setOnTouchListener(bt_2);
         bt3.setOnTouchListener(bt_3);
-        bt4.setOnTouchListener(bt_4);
+     //   bt4.setOnTouchListener(bt_4);
         String result = dbmych.executeQuery();
         String result2 = dbmychqa.executeQuery();
         try{
@@ -82,7 +82,7 @@ private Menu menu;
         }
 
         catch(Exception e){}
-      //  mytoast(mychqa);
+     /*
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
@@ -100,6 +100,7 @@ private Menu menu;
                 // covers the screen.
             }
         });
+        */
     }
 
 
@@ -176,11 +177,11 @@ private Menu menu;
             switch (event.getAction()){//句子重組
 
                 case MotionEvent.ACTION_DOWN:
-                    bt4.setImageResource(R.drawable.aki_dativeh);
+                  //  bt4.setImageResource(R.drawable.aki_dativeh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    bt4.setImageResource(R.drawable.aki_dative);
+                   // bt4.setImageResource(R.drawable.aki_dative);
                     Intent intent=new Intent();
                     intent.setClass(Shiken.this,Dative.class);
 

@@ -37,7 +37,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class News extends AppCompatActivity {
 ListView newlist;
 Button ok;
-    private AdView mAdView;
+    //private AdView mAdView;
     String account="",passwd="",names="";  private Menu menu;
     private static final String trgUrl ="https://www3.nhk.or.jp/rss/news/cat0.xml";
     private static final String TAG = "XMLParserTest";
@@ -98,6 +98,7 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
 
         // 設定 lstPrefer 元件 ItemClick 事件的 listener 為 lstPreferListener
         newlist.setOnItemClickListener(lstPreferListener);
+        /*
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
@@ -115,7 +116,10 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
                 // covers the screen.
             }
         });
-    }/*
+        */
+    }
+
+    /*
     Handler mHandler = new Handler()
     {
         @Override

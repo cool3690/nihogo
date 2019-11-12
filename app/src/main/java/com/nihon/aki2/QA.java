@@ -168,7 +168,8 @@ int num=3,yes=0,no=0;
 public void next(){
   num++;
   count++;
-  if(count==5){  loadInterstitialAd();}
+  if(count==5){ // loadInterstitialAd();
+      }
     lock=false;
     radioGroup.clearCheck();
  if(anstmp==true){yes++;}
@@ -261,7 +262,7 @@ public void pre(){
     try{
         JSONArray jsonArray = new JSONArray(result);
 
-        for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
+        for(int i = 0; i < jsonArray.length(); i++)
         {
             JSONObject jsonData = jsonArray.getJSONObject(i);
             topic=jsonData.getString("Q1");

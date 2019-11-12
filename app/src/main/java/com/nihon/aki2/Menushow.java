@@ -26,7 +26,7 @@ import org.json.JSONArray;
 public class Menushow extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4,btn5;
     String account="",passwd="",names="";
-    private AdView mAdView;
+   // private AdView mAdView;
     private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +53,10 @@ public class Menushow extends AppCompatActivity {
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
+      /*
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
+
         mAdView = findViewById(R.id.adView);
 
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -70,6 +72,7 @@ public class Menushow extends AppCompatActivity {
                 // covers the screen.
             }
         });
+        */
     }
 
 

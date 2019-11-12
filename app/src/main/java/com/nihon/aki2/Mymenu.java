@@ -66,7 +66,7 @@ public class Mymenu extends AppCompatActivity {
             mytoast("請開啟網路!");
         }
         else{
-            schedulejob(h);
+           // schedulejob(h);
         }
 
 

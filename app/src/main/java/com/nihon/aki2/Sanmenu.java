@@ -32,7 +32,7 @@ public class Sanmenu extends AppCompatActivity {
     Button ok;
     String account="",passwd="",names="";  private Menu menu;
     ArrayList<Jsan> jsans=new ArrayList<Jsan>();
-    private AdView mAdView;
+   // private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +73,7 @@ public class Sanmenu extends AppCompatActivity {
          menulist.setTextFilterEnabled(true);
        menulist.setSelector(R.drawable.green);
         menulist.setOnItemClickListener(lstPreferListener);
+         /*
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
@@ -90,7 +91,7 @@ public class Sanmenu extends AppCompatActivity {
                 // covers the screen.
             }
         });
-       /*  */
+      */
     }
     private ListView.OnItemClickListener lstPreferListener=
             new ListView.OnItemClickListener(){
