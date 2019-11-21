@@ -34,9 +34,7 @@
             android:layout_below="@id/chinese"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
+            android:layout_marginTop="22dp"
             android:gravity="center"
             android:text="jp"
             android:textSize="19sp" />
@@ -47,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/jp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="21dp"
             android:text="bt1" />
 
         <Button

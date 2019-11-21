@@ -86,7 +86,6 @@ String [] contain=new String[4];
         bt0.setOnClickListener(bt_0);
         ok.setOnClickListener(okbtn);
         btnpre.setOnTouchListener(btpre);
-
         btnnext.setOnTouchListener(btnext);
         test(num);
 

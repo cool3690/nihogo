@@ -52,7 +52,7 @@ public class JobSchedulerService extends JobService {
         SharedPreferences sharedPreferences = getSharedPreferences("data" , MODE_PRIVATE);
         String h = sharedPreferences.getString("input" , "0");
         money=Double.parseDouble(h);
-        handler.postDelayed(showTime,3600000);
+        handler.postDelayed(showTime,5000);
         return true;
     }
 

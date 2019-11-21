@@ -19,7 +19,8 @@
             android:layout_width="237dp"
             android:layout_height="98dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="430dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="200dp"
             app:srcCompat="@drawable/aki_menu" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

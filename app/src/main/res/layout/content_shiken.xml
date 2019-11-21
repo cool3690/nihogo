@@ -23,9 +23,17 @@
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            app:srcCompat="@drawable/aki_tangoh" />
-
+            app:srcCompat="@drawable/aki_basich" />
         <ImageView
+            android:id="@+id/bt02"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/bt01"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/aki_primary1" />
+
+        <!--
+              <ImageView
             android:id="@+id/bt03"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -33,35 +41,27 @@
             android:layout_marginTop="15dp"
             app:srcCompat="@drawable/aki_basich" />
 
-        <ImageView
-            android:id="@+id/bt02"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/bt03"
-            android:layout_marginTop="15dp"
-            app:srcCompat="@drawable/aki_santanh" />
-        <!--
-        <ImageView
-            android:id="@+id/bt04"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/bt02"
-            android:layout_marginTop="15dp"
-            app:srcCompat="@drawable/aki_dative" />
+              <ImageView
+                  android:id="@+id/bt04"
+                  android:layout_width="match_parent"
+                  android:layout_height="100dp"
+                  android:layout_centerHorizontal="true"
+                  android:layout_below="@id/bt02"
+                  android:layout_marginTop="15dp"
+                  app:srcCompat="@drawable/aki_dative" />
 
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/idban">
-        </com.google.android.gms.ads.AdView>
+              <com.google.android.gms.ads.AdView
+                  xmlns:ads="http://schemas.android.com/apk/res-auto"
+                  android:id="@+id/adView"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerHorizontal="true"
+                  android:layout_alignParentBottom="true"
+                  ads:adSize="BANNER"
+                  ads:adUnitId="@string/idban">
+              </com.google.android.gms.ads.AdView>
 
-        -->
+              -->
 
 
     </RelativeLayout>
