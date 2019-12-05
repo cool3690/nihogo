@@ -71,7 +71,7 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
             { Jnew team = new Jnew(Arr_RssNews[i].getTitle());
                 link[i]= Arr_RssNews[i].getLink();
                 jpnews.add(team);
-               // .setTypeface(Typeface.createFromAsset(getAssets(),"fonts/MS-Mincho.ttf"))
+               // .setTypeface(Typeface.createFromAsset(getAssets(),"fonts/MS-incho.ttf"))
             }
         }
 
