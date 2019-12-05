@@ -311,7 +311,7 @@ TextView tv2=(TextView) findViewById(R.id.tv2);
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(MainActivity.this, News.class);
+            intent.setClass(MainActivity.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

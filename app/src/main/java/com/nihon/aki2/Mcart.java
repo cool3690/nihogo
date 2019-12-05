@@ -297,7 +297,7 @@ public class Mcart extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Mcart.this, News.class);
+            intent.setClass(Mcart.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

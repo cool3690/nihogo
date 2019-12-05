@@ -254,7 +254,7 @@ public class Dative extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Dative.this, News.class);
+            intent.setClass(Dative.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

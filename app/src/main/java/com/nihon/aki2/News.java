@@ -3,6 +3,7 @@ package com.nihon.aki2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -70,6 +71,7 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
             { Jnew team = new Jnew(Arr_RssNews[i].getTitle());
                 link[i]= Arr_RssNews[i].getLink();
                 jpnews.add(team);
+               // .setTypeface(Typeface.createFromAsset(getAssets(),"fonts/MS-Mincho.ttf"))
             }
         }
 
@@ -92,9 +94,6 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
         newlist.setAdapter(adapter);
         newlist.setTextFilterEnabled(true);
         newlist.setSelector(R.drawable.green);
-
-
-
 
         // 設定 lstPrefer 元件 ItemClick 事件的 listener 為 lstPreferListener
         newlist.setOnItemClickListener(lstPreferListener);
@@ -259,7 +258,7 @@ ArrayList <Jnew> jpnews=new ArrayList<Jnew>();
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(News.this, News.class);
+            intent.setClass(News.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

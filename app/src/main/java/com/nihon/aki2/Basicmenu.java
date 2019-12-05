@@ -167,7 +167,7 @@ public class Basicmenu extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Basicmenu.this, News.class);
+            intent.setClass(Basicmenu.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

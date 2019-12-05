@@ -333,7 +333,7 @@ public void pre(){
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(QA.this, News.class);
+            intent.setClass(QA.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

@@ -189,7 +189,7 @@ public class Sanmenu extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Sanmenu.this, News.class);
+            intent.setClass(Sanmenu.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

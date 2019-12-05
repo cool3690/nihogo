@@ -103,6 +103,7 @@ public class Basic extends AppCompatActivity {
                 a1.setText(jsonData.getString("A1"));
                 a2.setText(jsonData.getString("A2"));
                 a3.setText(jsonData.getString("A3"));
+
                 a4.setText(jsonData.getString("A4"));
                 ans=jsonData.getInt("ans");
 
@@ -366,7 +367,7 @@ public class Basic extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Basic.this, News.class);
+            intent.setClass(Basic.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

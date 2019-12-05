@@ -115,7 +115,7 @@ Button ret;
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Keka.this, News.class);
+            intent.setClass(Keka.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

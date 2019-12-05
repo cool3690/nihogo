@@ -48,7 +48,8 @@ public class Myweb extends AppCompatActivity {
         myweb.getSettings().setBuiltInZoomControls(true);
         myweb.getSettings().setJavaScriptEnabled(true);
         myweb.setWebViewClient(new WebViewClient());
-        myweb.loadUrl("http://akkyschool.com/goods_select.php");
+        //myweb.loadUrl("http://akkyschool.com/goods_select.php");
+        myweb.loadUrl("https://www3.nhk.or.jp/news/easy/");
     }
     public void onBackPressed() {
         if (myweb.canGoBack()) {
@@ -111,7 +112,7 @@ public class Myweb extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Myweb.this, News.class);
+            intent.setClass(Myweb.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

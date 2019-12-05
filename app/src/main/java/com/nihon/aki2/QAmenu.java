@@ -182,7 +182,7 @@ public class QAmenu extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(QAmenu.this, News.class);
+            intent.setClass(QAmenu.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

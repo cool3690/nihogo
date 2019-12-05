@@ -1,6 +1,7 @@
 package com.nihon.aki2;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,9 @@ public class JnewAdapter extends ArrayAdapter<Jnew> {
         Jnew o = rates.get(position);
         if (o != null) {
             TextView jpnew = (TextView) v.findViewById(R.id.jpnew);
+
+        // jpnew.setTypeface(Typeface.createFromAsset(context.getAssets(),"fonts/genkai-minco.ttf"));
+          //jpnew.setTextSize(25);
             jpnew.setText(String.valueOf(o.getJpnew()));
         }
         return v;

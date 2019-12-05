@@ -147,7 +147,7 @@ public class Countjlpt extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Countjlpt.this, News.class);
+            intent.setClass(Countjlpt.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

@@ -420,7 +420,7 @@ public void jprate(){
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Change.this, News.class);
+            intent.setClass(Change.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

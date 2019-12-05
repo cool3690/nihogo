@@ -207,7 +207,7 @@ public class Login extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Login.this, News.class);
+            intent.setClass(Login.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

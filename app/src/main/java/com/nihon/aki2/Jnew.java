@@ -8,6 +8,7 @@ public class Jnew {
     public Jnew(String jpnew)
     {
         this.setJpnew(jpnew);
+
     }
     public String getJpnew() {
         return jpnew;

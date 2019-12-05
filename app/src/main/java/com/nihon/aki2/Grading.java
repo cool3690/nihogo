@@ -177,7 +177,7 @@ public class Grading extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Grading.this, News.class);
+            intent.setClass(Grading.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

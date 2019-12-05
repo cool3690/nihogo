@@ -194,7 +194,7 @@ public class Apply extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Apply.this, News.class);
+            intent.setClass(Apply.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

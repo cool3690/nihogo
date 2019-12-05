@@ -168,7 +168,7 @@ public class Notes extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Notes.this, News.class);
+            intent.setClass(Notes.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

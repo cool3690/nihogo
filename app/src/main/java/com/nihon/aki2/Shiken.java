@@ -218,7 +218,7 @@ private Menu menu;
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Shiken.this, News.class);
+            intent.setClass(Shiken.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

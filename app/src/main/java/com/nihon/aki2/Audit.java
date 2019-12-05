@@ -165,7 +165,7 @@ public class Audit extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Audit.this, News.class);
+            intent.setClass(Audit.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

@@ -407,7 +407,7 @@ String [] contain=new String[4];
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Santance.this, News.class);
+            intent.setClass(Santance.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

@@ -228,7 +228,7 @@ public class Lesson extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Lesson.this, News.class);
+            intent.setClass(Lesson.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

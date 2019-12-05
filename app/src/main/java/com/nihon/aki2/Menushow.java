@@ -129,7 +129,7 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn3.setImageResource(R.drawable.aki_newh);
                     Intent intent=new Intent();
-                    intent.setClass(Menushow.this,News.class);
+                    intent.setClass(Menushow.this,Myweb.class);
                     startActivity(intent);
                     break;
             }
@@ -230,7 +230,7 @@ public class Menushow extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Menushow.this, News.class);
+            intent.setClass(Menushow.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {

@@ -164,7 +164,7 @@ public class Mymenu extends AppCompatActivity {
         }
         if (id == R.id.news) {
             Intent intent=new Intent();
-            intent.setClass(Mymenu.this, News.class);
+            intent.setClass(Mymenu.this, Myweb.class);
             startActivity(intent);
         }
         if (id == R.id.mymenu) {
