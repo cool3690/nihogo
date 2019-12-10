@@ -15,7 +15,7 @@ android {
         applicationId "com.nihon.aki2"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 14
+        versionCode 16
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,8 +27,7 @@ android {
     }
     useLibrary 'org.apache.http.legacy'
     packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
+
     }
 }
 

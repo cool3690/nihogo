@@ -77,7 +77,13 @@ public class Countjlpt extends AppCompatActivity {
                // String dts=sdf.format(dt);
                 java.util.Date endDate= sdf.parse(sdate);
                 long day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
-                countdown.setText("倒數:\n"+day+"天");
+                if(day<0){
+                    countdown.setText("2020年日檢第一回考試等候公告");
+                }
+                else{
+                    countdown.setText("倒數:\n"+day+"天");
+                }
+
             }
 
 

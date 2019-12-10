@@ -120,7 +120,7 @@ public class Basic extends AppCompatActivity {
 
         // prepage.setOnClickListener(pagepre2);
 
-        String myid=getString(R.string.appid);
+        String myid=getString(R.string.idban);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
 

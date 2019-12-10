@@ -129,6 +129,7 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn3.setImageResource(R.drawable.aki_newh);
                     Intent intent=new Intent();
+                   // mytoast("請稍後");
                     intent.setClass(Menushow.this,Myweb.class);
                     startActivity(intent);
                     break;
@@ -166,6 +167,8 @@ public class Menushow extends AppCompatActivity {
 
                 case MotionEvent.ACTION_DOWN:
                     btn5.setImageResource(R.drawable.aki_test);
+
+                    //mytoast("請稍後");
                     break;
                 case MotionEvent.ACTION_UP:
                     btn5.setImageResource(R.drawable.aki_testh);

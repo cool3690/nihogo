@@ -14,10 +14,18 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 public class Myweb extends AppCompatActivity {
     WebView myweb;
     String account="",passwd="",names="",course_num="";
     private Menu menu;
+    private AdView mAdView;
+    private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +58,24 @@ public class Myweb extends AppCompatActivity {
         myweb.setWebViewClient(new WebViewClient());
         //myweb.loadUrl("http://akkyschool.com/goods_select.php");
         myweb.loadUrl("https://www3.nhk.or.jp/news/easy/");
+        mAdView = findViewById(R.id.adView);
+        String myid=getString(R.string.idban);
+        MobileAds.initialize(this, myid);
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
     }
     public void onBackPressed() {
         if (myweb.canGoBack()) {
@@ -71,7 +97,29 @@ public class Myweb extends AppCompatActivity {
         this.menu = menu;
         return true;
     }
+    private void loadInterstitialAd() {
+        mInterstitialAd = new InterstitialAd(this);
+        String st = getString(R.string.idin);
+        mInterstitialAd.setAdUnitId(st);
+        mInterstitialAd.setAdListener(new AdListener() {
 
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                if(mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
+    }
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);

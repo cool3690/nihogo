@@ -57,6 +57,10 @@ public class Grading extends AppCompatActivity {
         bt1.setOnTouchListener(bt_1);
         bt2.setOnTouchListener(bt_2);
 
+        mydb();
+
+    }
+    public  void mydb(){
         String result = dbmych.executeQuery();
         String result2 = dbmychqa.executeQuery();
         try{
@@ -79,9 +83,7 @@ public class Grading extends AppCompatActivity {
         }
 
         catch(Exception e){}
-
     }
-
     private ImageView.OnTouchListener bt_1=new ImageView.OnTouchListener(){//單字
         @Override
         public boolean onTouch(View v, MotionEvent event){

@@ -34,17 +34,7 @@ public class Basicmenu extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.icon);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectDiskReads()
-                .detectDiskWrites()
-                .detectNetwork()
-                .penaltyLog()
-                .build());
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectLeakedSqlLiteObjects()
-                .penaltyLog()
-                .penaltyDeath()
-                .build());
+
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
@@ -53,23 +43,7 @@ public class Basicmenu extends AppCompatActivity {
         kata=(ImageView)findViewById(R.id.kata);
         hira.setOnTouchListener(hirabtn);
         kata.setOnTouchListener(katabtn);
-        String myid=getString(R.string.appid);
-        MobileAds.initialize(this, myid);
-        mAdView = findViewById(R.id.adView);
 
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-        });
     }
         private ImageView.OnTouchListener hirabtn=new ImageView.OnTouchListener(){
 
@@ -114,12 +88,7 @@ public class Basicmenu extends AppCompatActivity {
         }
     };
 
-    private void mytoast(String str)
-    {
-        Toast toast=Toast.makeText(this, str, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
