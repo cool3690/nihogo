@@ -58,4 +58,6 @@
     <string name="title_activity_countjlpt">Countjlpt</string>
     <string name="title_activity_dative">Dative</string>
     <string name="title_activity_grading">Grading</string>
+    <string name="title_activity_work">工作</string>
+    <string name="title_activity_jobshow">Jobshow</string>
 </resources>

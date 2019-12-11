@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="horizontal"
+android:orientation="vertical"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
 
 
     <TextView
         android:id="@+id/coin"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_weight=".4"
-        android:text="幣別"
-        android:textSize="18sp" />
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:text="職稱"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/buy"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:layout_weight=".3"
-        android:text="買入"
-        android:textSize="16sp" />
+
+        android:text="地點"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/sell"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:layout_weight=".3"
-        android:text="賣出"
-        android:textSize="16sp" />
 
+        android:text="價錢"
+        android:textSize="18sp" />
+<!---->
 </LinearLayout>
