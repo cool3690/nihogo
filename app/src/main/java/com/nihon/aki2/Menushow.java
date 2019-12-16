@@ -110,8 +110,9 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn2.setImageResource(R.drawable.aki_rateh);
                     Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Change.class);
-                    startActivity(intent);
+                  intent.setClass(Menushow.this,Change.class);
+                   startActivity(intent);
+                  //  mytoast("維護中");
                     break;
             }
             return true;

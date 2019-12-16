@@ -25,7 +25,7 @@ public class JobAdapter extends ArrayAdapter<Job> {
         View v = convertView;
         if (v == null) {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = vi.inflate(R.layout.team, null);
+            v = vi.inflate(R.layout.worknote, null);
         }
         Job o = jobs.get(position);
         if (o != null) {

@@ -37,6 +37,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -52,21 +54,21 @@ import java.util.TimerTask;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Change extends AppCompatActivity {
-  String account="",passwd="",names="";
-  private Menu menu;
-    private InterstitialAd mInterstitialAd;
-  private static final String TAG="Change";
-ArrayList <Rate> rates=new ArrayList<Rate>();
+    String account="",passwd="",names="";
+    private Menu menu;
+double sum=0;
+    private static final String TAG="Change";
+
     List<String> buy = new ArrayList<String>();
-    List<String> sell=new ArrayList<String>();
+
     List<String>coin=new ArrayList<String>();
-    ArrayList<Team> teams = new ArrayList<Team>();
+
     private final int interval = 1000; // 1 Second
     private Handler handler = new Handler();
     Timer timer = new Timer();
-   //ListView listv;
-   // Spinner spn;
-   String sel="";
+    //ListView listv;
+    // Spinner spn;
+    String sel="";
     RadioGroup rg;
     RadioButton jp,tw;
     EditText input;
@@ -135,79 +137,49 @@ ArrayList <Rate> rates=new ArrayList<Rate>();
 
         // 設定 spnPrefer 元件 ItemSelected 事件的 listener 為  spnPreferListener
         inputrate.setOnItemSelectedListener(spnPreferListener);
-        jprate();
+     //   jprate();
         input.addTextChangedListener(btinput);
-rg.setOnCheckedChangeListener(mychange);
+        rg.setOnCheckedChangeListener(mychange);
         schedulejob();
-      begin();
+       // begin();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd   HH:mm:ss");
         Date date=new Date();
         String dts=sdf.format(date);
-        tshow.setText("現價:"+ Double.parseDouble(buy.get(7))+ "   更新:"+dts);
+      //  tshow.setText("現價:"+ Double.parseDouble(buy.get(7))+ "   更新:"+dts);
+      myapi();
         //loadInterstitialAd();
     }
     /*
-    private void loadInterstitialAd() {
-        mInterstitialAd = new InterstitialAd(this);
-        String st = getString(R.string.idin);
-        mInterstitialAd.setAdUnitId(st);
-        mInterstitialAd.setAdListener(new AdListener() {
-
+        public void begin() {
+            timer.schedule(task, 1000, 1000)        }
+    /*
+        TimerTask task = new TimerTask() {
             @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                if(mInterstitialAd.isLoaded()) {
-                    try {
-                        Thread.sleep(20000);
-                        mInterstitialAd.show();
-                    } catch (InterruptedException e) {
+            public void run() {
+                // TODO Auto-generated method stub
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // TODO Auto-generated method stub
+                        secondLeft--;
+
+                        if (secondLeft < 1) {
+                            secondLeft=50;
+                          //  jprate();
+                        }
                     }
-
-                }
+                });
             }
-
-            @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
-            }
-        });
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mInterstitialAd.loadAd(adRequest);
-    }
-    */
-    public void begin() {
-        timer.schedule(task, 1000, 1000);
-    }
-
-    TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
-            // TODO Auto-generated method stub
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    // TODO Auto-generated method stub
-                    secondLeft--;
-
-                    if (secondLeft < 1) {
-                        secondLeft=50;
-                        jprate();
-                    }
-                }
-            });
-        }
-    };
-   // private EditText.
-  private TextWatcher btinput= new TextWatcher() {
+        };
+        */
+    // private EditText.
+    private TextWatcher btinput= new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
         }
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            //tw.setChecked(false);
-            //jp.setChecked(false);
         }
 
         @Override
@@ -216,9 +188,6 @@ rg.setOnCheckedChangeListener(mychange);
             {
                 tw.setEnabled(true);
                 jp.setEnabled(true);
-               //tw.setChecked(false);
-               //jp.setChecked(false);
-
             }
 
         }
@@ -228,7 +197,7 @@ rg.setOnCheckedChangeListener(mychange);
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View v,
                                            int position, long id) {
-                   sel=parent.getSelectedItem().toString();
+                    sel=parent.getSelectedItem().toString();
 
                 }
                 @Override
@@ -236,78 +205,102 @@ rg.setOnCheckedChangeListener(mychange);
                 }
             };
     private CheckBox.OnCheckedChangeListener checkbtn=new CheckBox.OnCheckedChangeListener(){
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-        if(check.isChecked()){
-            double money=0;
-            //!TextUtils.isEmpty(inputrate.getText().toString())
-            if(sel!=""){
-                schedulejob();
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+            if(check.isChecked()){
+                double money=0;
+                //!TextUtils.isEmpty(inputrate.getText().toString())
+                if(sel!=""){
+                    schedulejob();
+                }
+            }
+            else{
+                canceljob();
             }
         }
-        else{
-            canceljob();
-        }
-    }
-};
-private RadioGroup.OnCheckedChangeListener mychange =new RadioGroup.OnCheckedChangeListener(){
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        int  p = group.indexOfChild((RadioButton) findViewById(checkedId));	// 選項的索引值
-        int money=0;
-        if(!TextUtils.isEmpty(input.getText().toString())){
+    };
+    private RadioGroup.OnCheckedChangeListener mychange =new RadioGroup.OnCheckedChangeListener(){
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            int  p = group.indexOfChild((RadioButton) findViewById(checkedId));	// 選項的索引值
+            int money=0;
+            if(!TextUtils.isEmpty(input.getText().toString())){
 
 
-            money=Integer.parseInt(input.getText().toString());
+                money=Integer.parseInt(input.getText().toString());
 
-        }
-
-        if (checkedId == R.id.tw){
-
-            double a= Double.parseDouble(buy.get(7));
-            double tmp=money/a;
-            show.setText( String.format("%.2f",tmp)+"日圓");
-            showtw.setText(money+"台幣");
-            tw.setChecked(false);
-
-        }
-         else if(checkedId==R.id.jp){
-
-            double a= Double.parseDouble(buy.get(7));
-            double tmp=money*a;
-            showtw.setText( String.format("%.2f",tmp)+"台幣");
-            show.setText(money+"日圓");
-           jp.setChecked(false);
-        }
-
-    }
-};
-public void jprate(){
-    buy.clear();
-    coin.clear();
-    try{
-        Connection.Response response = Jsoup.connect(url).execute();
-        String body = response.body();
-        Document data =  Jsoup.parse(body);//visible-phone print_hide
-        Elements country=data.select("div[class=visible-phone print_hide]");
-        Elements tds = data.select("td[class=rate-content-cash text-right print_hide]");
-        int i=0;
-
-        for(Element e2: tds)
-        {
-            if(i%2==0 )
-            {buy.add(e2.text());
             }
-            i++;
-        }
 
-        for(Element e1: country)
-        {
-            coin.add(e1.text());
+            if (checkedId == R.id.tw){
+
+              //  double a= Double.parseDouble(buy.get(1));
+                double tmp=money/sum;
+                show.setText( String.format("%.2f",tmp)+"日圓");
+                showtw.setText(money+"台幣");
+                tw.setChecked(false);
+
+            }
+            else if(checkedId==R.id.jp){
+
+            //    double a= Double.parseDouble(buy.get(1));
+                double tmp=money*sum;
+                showtw.setText( String.format("%.2f",tmp)+"台幣");
+                show.setText(money+"日圓");
+                jp.setChecked(false);
+            }
+
         }
+    };
+    public void myapi(){
+        String result = dbchange.executeQuery();
+        String[] split_line =  result.split(",");
+       // String a[]=new String[3];//,b="";
+        double x=0,y=0;
+       for(int i=0;i<split_line.length;i++){
+           if(split_line[i].contains("Exrate") &&split_line[i].contains("USDTWD") ){
+               String a[]=split_line[i].split("Exrate");
+                x=Double.valueOf(a[1].substring(2));
+             //  tshow.setText(a[1].substring(2));
+           }
+           if(split_line[i].contains("Exrate") &&split_line[i].contains("USDJPY")){
+               String b[]=split_line[i].split("Exrate");
+               y=Double.valueOf(b[1].substring(2));
+           }
+           tshow.setText("現價:"+ String.format("%.2f",x/y) +"元");
+       }
+      sum=x/y;
+
+       // buy.add(sum+"");
+     //   tshow.setText(a+b);
     }
-    catch(Exception ex){}
-}
+    /*
+    public void jprate(){
+        buy.clear();
+        coin.clear();
+        try{
+            Connection.Response response = Jsoup.connect(url).execute();
+            String body = response.body();
+            Document data =  Jsoup.parse(body);//visible-phone print_hide
+            Elements country=data.select("div[class=visible-phone print_hide]");
+            Elements tds = data.select("td[class=rate-content-cash text-right print_hide]");
+            int i=0;
+
+            for(Element e2: tds)
+            {
+                if(i%2==0 )
+                {buy.add(e2.text());
+                }
+                i++;
+            }
+
+            for(Element e1: country)
+            {
+                coin.add(e1.text());
+            }
+        }
+        catch(Exception ex){}
+    }
+    */
 /*
     //  定義  onItemSelected 方法
     private Spinner.OnItemSelectedListener spnListener= new Spinner.OnItemSelectedListener(){
@@ -345,48 +338,46 @@ public void jprate(){
         toast.show();
     }
 
- public void schedulejob(){
+    public void schedulejob(){
 
-     ComponentName componentName=new ComponentName(this,JobSchedulerService.class);
-     PersistableBundle bundle = new PersistableBundle();
-     String tmp="0";
-     if(sel!=""){
+        ComponentName componentName=new ComponentName(this,JobSchedulerService.class);
+        PersistableBundle bundle = new PersistableBundle();
+        String tmp="0";
+        if(sel!=""){
 
-         tmp=sel;
-         SharedPreferences sharedPreferences = getSharedPreferences("data" , MODE_PRIVATE);
-         sharedPreferences.edit().putString("input", tmp).apply();
+            tmp=sel;
+            SharedPreferences sharedPreferences = getSharedPreferences("data" , MODE_PRIVATE);
+            sharedPreferences.edit().putString("input", tmp).apply();
 
-         SharedPreferences myrecord=getPreferences(Activity.MODE_PRIVATE);
-         SharedPreferences.Editor edit=myrecord.edit();
-         edit.putString("inputrate", tmp);
-         edit.commit();
-         bundle.putString("INPUT",tmp);
-     }
-    else{
-         bundle.putString("INPUT",tmp);
-       }
+            SharedPreferences myrecord=getPreferences(Activity.MODE_PRIVATE);
+            SharedPreferences.Editor edit=myrecord.edit();
+            edit.putString("inputrate", tmp);
+            edit.commit();
+            bundle.putString("INPUT",tmp);
+        }
+        else{
+            bundle.putString("INPUT",tmp);
+        }
 
-
+ /*
      JobInfo jobInfo= new JobInfo.Builder(123,componentName)
              .setPersisted(true) // 重開機後是否執行
              .setMinimumLatency(3000) // 延遲多久執行
              .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY) //網路條件
              .setExtras(bundle)
              .build();
+
      JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
    int result=scheduler.schedule(jobInfo);
-   if(result==JobScheduler.RESULT_SUCCESS){
-       //Log.d(TAG, "test ok!");
-
-   }
-   else {//Log.d(TAG,"fail");
-   }
- }
- public void canceljob(){
+   if(result==JobScheduler.RESULT_SUCCESS){}
+   else {}
+   */
+    }
+    public void canceljob(){
         JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
         scheduler.cancel(123);
-     //Log.d(TAG,"cancel");
- }
+        //Log.d(TAG,"cancel");
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

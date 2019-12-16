@@ -69,7 +69,7 @@
 
             android:layout_marginLeft="60dp"
             android:layout_marginTop="15dp"
-            android:text="TextView"
+            android:text="0"
             android:textSize="18sp" />
 
         <CheckBox
@@ -121,7 +121,7 @@
             android:layout_below="@id/show"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="22dp"
-            android:text="TextView"
+            android:text="0"
             android:textSize="18sp" />
 
         <TextView
@@ -130,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/inputrate"
             android:layout_marginTop="10dp"
-            android:text="TextView" />
+            android:text=" " />
 
         <TextView
             android:id="@+id/notice"
