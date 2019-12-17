@@ -141,18 +141,18 @@ double sum=0;
         input.addTextChangedListener(btinput);
         rg.setOnCheckedChangeListener(mychange);
         schedulejob();
-       // begin();
+      begin();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd   HH:mm:ss");
         Date date=new Date();
         String dts=sdf.format(date);
-      //  tshow.setText("現價:"+ Double.parseDouble(buy.get(7))+ "   更新:"+dts);
+
       myapi();
         //loadInterstitialAd();
     }
-    /*
+
         public void begin() {
-            timer.schedule(task, 1000, 1000)        }
-    /*
+            timer.schedule(task, 1000, 1000) ;       }
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -165,13 +165,13 @@ double sum=0;
 
                         if (secondLeft < 1) {
                             secondLeft=50;
-                          //  jprate();
+                            myapi();
                         }
                     }
                 });
             }
         };
-        */
+       /*  */
     // private EditText.
     private TextWatcher btinput= new TextWatcher() {
         @Override
