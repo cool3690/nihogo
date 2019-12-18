@@ -49,7 +49,7 @@ public class Work extends AppCompatActivity {
                    bundle.putString("PASS","F");
                    break;
                case R.id.it:
-                   bundle.putString("PASS","I");
+                   bundle.putString("PASS","C");
                    break;
                case R.id.manf:
                    bundle.putString("PASS","M");

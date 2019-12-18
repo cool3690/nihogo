@@ -141,37 +141,38 @@ double sum=0;
         input.addTextChangedListener(btinput);
         rg.setOnCheckedChangeListener(mychange);
         schedulejob();
-      begin();
+     //
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd   HH:mm:ss");
         Date date=new Date();
         String dts=sdf.format(date);
 
       myapi();
+      begin();
         //loadInterstitialAd();
     }
 
-        public void begin() {
-            timer.schedule(task, 1000, 1000) ;       }
+          public void begin() {
+              timer.schedule(task, 1000, 1000) ;       }
 
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // TODO Auto-generated method stub
-                        secondLeft--;
+          TimerTask task = new TimerTask() {
+              @Override
+              public void run() {
+                  // TODO Auto-generated method stub
+                  runOnUiThread(new Runnable() {
+                      @Override
+                      public void run() {
+                          // TODO Auto-generated method stub
+                          secondLeft--;
 
-                        if (secondLeft < 1) {
-                            secondLeft=50;
-                            myapi();
-                        }
-                    }
-                });
-            }
-        };
-       /*  */
+                          if (secondLeft < 1) {
+                              secondLeft=50;
+                              myapi();
+                          }
+                      }
+                  });
+              }
+          };
+      /*  */
     // private EditText.
     private TextWatcher btinput= new TextWatcher() {
         @Override
@@ -266,7 +267,7 @@ double sum=0;
                String b[]=split_line[i].split("Exrate");
                y=Double.valueOf(b[1].substring(2));
            }
-           tshow.setText("現價:"+ String.format("%.2f",x/y) +"元");
+           tshow.setText("現價:"+ String.format("%.3f",x/y) +"元");
        }
       sum=x/y;
 

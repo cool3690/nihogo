@@ -86,8 +86,9 @@ public class Jobshow extends AppCompatActivity {
                 String name=jsonData.getString("name");
                 String place=jsonData.getString("place");
                 String price=jsonData.getString("price");
-
-                Rate rate=new Rate(name,place,price);
+                String type=jsonData.getString("hire_type");
+                String require=jsonData.getString("requirement");
+                Rate rate=new Rate(name,require+"\n"+type+"\n"+place,price);
                 rates.add(rate);
 
 
