@@ -55,6 +55,7 @@ import java.util.TimerTask;
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Change extends AppCompatActivity {
     String account="",passwd="",names="";
+    String body="";
     private Menu menu;
 double sum=0;
     private static final String TAG="Change";
@@ -76,7 +77,8 @@ double sum=0;
 
     TextView show,showtw,tshow;
     CheckBox check;
-    private static final String url ="https://rate.bot.com.tw/xrt?Lang=zh-TW";
+  //  private static final String url ="https://rate.bot.com.tw/xrt?Lang=zh-TW";
+  private static final String url ="https://tw.rter.info/capi.php";
     private int secondLeft = 6;
     String[] Balls= new String[] {"0.24","0.25","0.26","0.27","0.28","0.29","0.3"};
     @Override
@@ -146,9 +148,12 @@ double sum=0;
         Date date=new Date();
         String dts=sdf.format(date);
 
-      myapi();
-      begin();
+
+     // begin();
         //loadInterstitialAd();
+         jprate();
+        begin();
+     //  myapi();
     }
 
           public void begin() {
@@ -165,8 +170,8 @@ double sum=0;
                           secondLeft--;
 
                           if (secondLeft < 1) {
-                              secondLeft=50;
-                              myapi();
+                              secondLeft=500;
+                              jprate();
                           }
                       }
                   });
@@ -253,8 +258,17 @@ double sum=0;
         }
     };
     public void myapi(){
-        String result = dbchange.executeQuery();
-        String[] split_line =  result.split(",");
+       // jprate();
+        String result =body;
+        /*
+       for(int i=0;i<1;i++){
+           result=dbchange.executeQuery();
+           if(result=="" ||result==null || result.equals("null")){i--;}
+       }
+*/
+       //mytoast(result);
+        String[] split_line =  body.split(",");
+        //mytoast(result);
        // String a[]=new String[3];//,b="";
         double x=0,y=0;
        for(int i=0;i<split_line.length;i++){
@@ -274,14 +288,38 @@ double sum=0;
        // buy.add(sum+"");
      //   tshow.setText(a+b);
     }
-    /*
+    /*   */
     public void jprate(){
         buy.clear();
         coin.clear();
         try{
             Connection.Response response = Jsoup.connect(url).execute();
-            String body = response.body();
-            Document data =  Jsoup.parse(body);//visible-phone print_hide
+              body = response.body();
+            //mytoast(body);
+            String[] split_line =  body.split(",");
+            //mytoast(result);
+            // String a[]=new String[3];//,b="";
+            double x=0,y=0;
+            for(int i=0;i<split_line.length;i++){
+
+                if(split_line[i].contains("USDTWD") ){
+                    String a[]=split_line[i].split("Exrate");
+                    //mytoast(a[0]+"\n"+a[1]+"\n"+a[2]);
+                    x=Double.valueOf(a[1].substring(2));
+               //   mytoast(a[1]+"\n");
+
+                }//split_line[i].contains("Exrate") &&
+                if(split_line[i].contains("USDJPY")){
+                    String b[]=split_line[i].split("Exrate");
+                    y=Double.valueOf(b[1].substring(2));
+                }
+              //  mytoast(x+"\n"+y);
+                tshow.setText("現價:"+ String.format("%.3f",x/y) +"元");
+            }
+            sum=x/y;
+          //  Document data =  Jsoup.parse(body);//visible-phone print_hide
+           // mytoast(body);
+           /*
             Elements country=data.select("div[class=visible-phone print_hide]");
             Elements tds = data.select("td[class=rate-content-cash text-right print_hide]");
             int i=0;
@@ -298,10 +336,11 @@ double sum=0;
             {
                 coin.add(e1.text());
             }
+            */
         }
         catch(Exception ex){}
     }
-    */
+
 /*
     //  定義  onItemSelected 方法
     private Spinner.OnItemSelectedListener spnListener= new Spinner.OnItemSelectedListener(){
