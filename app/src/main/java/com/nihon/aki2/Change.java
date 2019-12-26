@@ -153,6 +153,7 @@ double sum=0;
         //loadInterstitialAd();
          jprate();
         begin();
+        tshow.setText("現價:"+ String.format("%.3f",sum) +"元");
      //  myapi();
     }
 
@@ -272,6 +273,7 @@ double sum=0;
        // String a[]=new String[3];//,b="";
         double x=0,y=0;
        for(int i=0;i<split_line.length;i++){
+
            if(split_line[i].contains("Exrate") &&split_line[i].contains("USDTWD") ){
                String a[]=split_line[i].split("Exrate");
                 x=Double.valueOf(a[1].substring(2));
@@ -295,26 +297,22 @@ double sum=0;
         try{
             Connection.Response response = Jsoup.connect(url).execute();
               body = response.body();
-            //mytoast(body);
-            String[] split_line =  body.split(",");
-            //mytoast(result);
-            // String a[]=new String[3];//,b="";
+            String[] split_line =  body.split(", ");
             double x=0,y=0;
             for(int i=0;i<split_line.length;i++){
 
-                if(split_line[i].contains("USDTWD") ){
+                if(split_line[i].contains("TWD") ){
                     String a[]=split_line[i].split("Exrate");
-                    //mytoast(a[0]+"\n"+a[1]+"\n"+a[2]);
                     x=Double.valueOf(a[1].substring(2));
-               //   mytoast(a[1]+"\n");
 
                 }//split_line[i].contains("Exrate") &&
-                if(split_line[i].contains("USDJPY")){
+                if(split_line[i].contains("JPY")){
                     String b[]=split_line[i].split("Exrate");
                     y=Double.valueOf(b[1].substring(2));
+                    //tshow.setText("現價:"+ String.format("%.3f",x/y) +"元");
                 }
               //  mytoast(x+"\n"+y);
-                tshow.setText("現價:"+ String.format("%.3f",x/y) +"元");
+
             }
             sum=x/y;
           //  Document data =  Jsoup.parse(body);//visible-phone print_hide
