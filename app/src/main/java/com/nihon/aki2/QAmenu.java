@@ -62,38 +62,29 @@ public class QAmenu extends AppCompatActivity {
        Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
         String bun=bundle.getString("QA");
+        String level=bundle.getString("LEVEL");
         k=Integer.parseInt(bun);/* */
         menulist=(ListView)findViewById(R.id.menulist);
+        if(level.equals("A")){
+            for(int i=1;i<=12;i++){
+                Jsan jsan = new Jsan("Lesson"+i);
 
-        for(int i=1;i<=k;i++){
-            Jsan jsan = new Jsan("Lesson"+i);
+                jsans.add(jsan);
+            }
+        }
+       else if(level.equals("B")){
+            for(int i=13;i<=k;i++){
+                Jsan jsan = new Jsan("Lesson"+i);
 
-            jsans.add(jsan);
+                jsans.add(jsan);
+            }
         }
         final JsansAdapter adapter = new JsansAdapter(this, R.layout.jsant, jsans);
         menulist.setAdapter(adapter);
         menulist.setTextFilterEnabled(true);
         menulist.setSelector(R.drawable.green);
        menulist.setOnItemClickListener(lstPreferListener);
-       /*
-        String myid=getString(R.string.appid);
-        MobileAds.initialize(this, myid);
-        mAdView = findViewById(R.id.adView);
 
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-        });
-        */
     }
     private ListView.OnItemClickListener lstPreferListener=
             new ListView.OnItemClickListener(){
@@ -114,9 +105,8 @@ public class QAmenu extends AppCompatActivity {
 
                         }
 
-                    } catch (JSONException e) {
-                     //   e.printStackTrace();
-                    }
+                    } catch (JSONException e) { }
+
                     intent = new Intent(QAmenu.this, QA.class);
                     Bundle bundle=new Bundle();
                     int p=position+1;

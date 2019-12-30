@@ -55,18 +55,27 @@ public class Sanmenu extends AppCompatActivity {
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
         String bun=bundle.getString("BUN");
+        String level=bundle.getString("LEVEL");
         int k=Integer.parseInt(bun);
         menulist=(ListView)findViewById(R.id.menulist);
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
         names=Account.getNames();
-        for(int i=1;i<=k;i++){
-            Jsan jsan = new Jsan("Lesson"+i);
+        if(level.equals("A")){
+            for(int i=1;i<=12;i++){
+                Jsan jsan = new Jsan("Lesson"+i);
 
-            jsans.add(jsan);
+                jsans.add(jsan);
+            }
         }
+        else if(level.equals("B")){
+            for(int i=13;i<=k;i++){
+                Jsan jsan = new Jsan("Lesson"+i);
 
+                jsans.add(jsan);
+            }
+        }
 
        final JsansAdapter adapter = new JsansAdapter(this, R.layout.jsant, jsans);
         menulist.setAdapter(adapter);

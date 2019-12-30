@@ -36,6 +36,13 @@
             android:gravity="center"
             android:text="日幣台幣換算"
             android:textSize="18dp" />
+        <TextView
+            android:id="@+id/tshow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView4"
+            android:layout_marginTop="20dp"
+            android:text=" " />
 
         <RadioGroup
             android:id="@+id/rg"
@@ -94,8 +101,8 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
-            android:layout_below="@id/textView4"
-            android:layout_marginTop="20dp"
+            android:layout_below="@id/tshow"
+            android:layout_marginTop="10dp"
             app:srcCompat="@drawable/aki_money" />
 
         <ImageView
@@ -124,20 +131,13 @@
             android:text="0"
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tshow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/inputrate"
-            android:layout_marginTop="10dp"
-            android:text=" " />
 
         <TextView
             android:id="@+id/notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tshow"
-            android:layout_marginTop="20dp"
+            android:layout_below="@+id/check"
+            android:layout_marginTop="16dp"
             android:text=" 注意：到價通知功能會在清除快取後，自動關閉通知。"
             android:textAllCaps="false"
             android:textStyle="bold" />

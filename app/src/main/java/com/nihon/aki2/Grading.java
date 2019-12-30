@@ -26,6 +26,7 @@ import org.json.JSONObject;
 public class Grading extends AppCompatActivity {
     ImageView bt1,bt2;
     String account="",passwd="",names="";
+    String level="";
     private Menu menu;
     String mychbun="",mychqa="";
     @Override
@@ -51,13 +52,16 @@ public class Grading extends AppCompatActivity {
         account=Account.getAccount();
         passwd=Account.getPasswd();
         names=Account.getNames();
+        Intent intent=this.getIntent();
+        Bundle bundle=intent.getExtras();
+        level=bundle.getString("LEVEL");
         bt1=(ImageView)findViewById(R.id.bt01);
         bt2=(ImageView)findViewById(R.id.bt02);
 
         bt1.setOnTouchListener(bt_1);
         bt2.setOnTouchListener(bt_2);
 
-        mydb();
+       // mydb();
 
     }
     public  void mydb(){
@@ -95,11 +99,13 @@ public class Grading extends AppCompatActivity {
                     break;
                 case MotionEvent.ACTION_UP:
                     bt1.setImageResource(R.drawable.aki_tangoh);
+                    mydb();
                     Intent intent=new Intent();
                     intent.setClass(Grading.this,QAmenu.class);
 
                     Bundle bundle=new Bundle();
                     bundle.putString("QA",mychqa);
+                    bundle.putString("LEVEL",level);
                     intent.putExtras(bundle);
 
                     startActivity(intent);
@@ -120,10 +126,12 @@ public class Grading extends AppCompatActivity {
                     break;
                 case MotionEvent.ACTION_UP:
                     bt2.setImageResource(R.drawable.aki_santanh);
+                    mydb();
                     Intent intent=new Intent();
                     intent.setClass(Grading.this,Sanmenu.class);
                     Bundle bundle=new Bundle();
                     bundle.putString("BUN",mychbun);
+                    bundle.putString("LEVEL",level);
                     intent.putExtras(bundle);
                     startActivity(intent);
                     break;

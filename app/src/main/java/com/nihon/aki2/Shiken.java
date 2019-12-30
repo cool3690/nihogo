@@ -24,7 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Shiken extends AppCompatActivity {
-    ImageView bt1,bt2;
+    ImageView bt1,bt2,bt3;
     String account="",passwd="",names="";
     private Menu menu;
     String mychbun="",mychqa="";
@@ -44,9 +44,10 @@ public class Shiken extends AppCompatActivity {
         names=Account.getNames();
         bt1=(ImageView)findViewById(R.id.bt01);
         bt2=(ImageView)findViewById(R.id.bt02);
+        bt3=(ImageView)findViewById(R.id.bt03);
         bt1.setOnTouchListener(bt_1);
         bt2.setOnTouchListener(bt_2);
-
+        bt3.setOnTouchListener(bt_3);
 
     }
 
@@ -74,7 +75,7 @@ public class Shiken extends AppCompatActivity {
     private ImageView.OnTouchListener bt_2=new ImageView.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event){
-            switch (event.getAction()){//句子重組
+            switch (event.getAction()){//句子重組1
 
                 case MotionEvent.ACTION_DOWN:
                     bt2.setImageResource(R.drawable.aki_primary1h);
@@ -83,15 +84,40 @@ public class Shiken extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     bt2.setImageResource(R.drawable.aki_primary1);
                     Intent intent=new Intent();
-                    intent.setClass(Shiken.this,Grading.class);
 
+                    Bundle bundle=new Bundle();
+                    bundle.putString("LEVEL","A");
+                    intent.putExtras(bundle);
+                    intent.setClass(Shiken.this,Grading.class);
                     startActivity(intent);
                     break;
             }
             return true;
         }
     };
+    private ImageView.OnTouchListener bt_3=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){
+            switch (event.getAction()){//句子重組2
 
+                case MotionEvent.ACTION_DOWN:
+                    bt3.setImageResource(R.drawable.aki_primary2h);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    bt3.setImageResource(R.drawable.aki_primary2);
+                    Intent intent=new Intent();
+
+                    Bundle bundle=new Bundle();
+                    bundle.putString("LEVEL","B");
+                    intent.putExtras(bundle);
+                    intent.setClass(Shiken.this,Grading.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
