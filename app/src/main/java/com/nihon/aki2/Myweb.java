@@ -1,18 +1,36 @@
 package com.nihon.aki2;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PixelFormat;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -20,12 +38,22 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
+import org.json.JSONArray;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Vector;
+
 public class Myweb extends AppCompatActivity {
-    WebView myweb;
+    WebView myweb,videoWebView;
     String account="",passwd="",names="",course_num="";
     private Menu menu;
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
+    RecyclerView recyclerView;
+    private int secondLeft = 125;
+    Timer timer = new Timer();
+    Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +80,30 @@ public class Myweb extends AppCompatActivity {
         passwd=Account.getPasswd();
         names=Account.getNames();
          myweb = (WebView) findViewById(R.id.myweb);
-      
+        videoWebView=(WebView)findViewById(R.id.videoWebView);
         myweb.getSettings().setBuiltInZoomControls(true);
         myweb.getSettings().setJavaScriptEnabled(true);
         myweb.setWebViewClient(new WebViewClient());
         //myweb.loadUrl("http://akkyschool.com/goods_select.php");
         myweb.loadUrl("https://www3.nhk.or.jp/news/easy/");
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setVisibility(View.GONE);
+        videoWebView.setVisibility(View.GONE);
+        //   play();
+       begin();
+
+      /*  recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/xmkqU_M21lk\" frameborder=\"0\" allowfullscreen></iframe>") );
+
+        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
+
+       recyclerView.setAdapter(videoAdapter);
+    */
+        /*
         mAdView = findViewById(R.id.adView);
         String myid=getString(R.string.idban);
         MobileAds.initialize(this, myid);
@@ -76,6 +122,41 @@ public class Myweb extends AppCompatActivity {
                 // covers the screen.
             }
         });
+        */
+    }
+    public void begin() {
+        timer.schedule(task, 1000, 1000) ;       }
+
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // TODO Auto-generated method stub
+                    secondLeft--;
+
+                    if (secondLeft==0) {
+                        play();
+
+                    }
+                }
+            });
+        }
+    };
+    public void play(){
+        videoWebView.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/xmkqU_M21lk\" frameborder=\"0\" allowfullscreen></iframe>") );
+
+        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
+
+        recyclerView.setAdapter(videoAdapter);
     }
     public void onBackPressed() {
         if (myweb.canGoBack()) {

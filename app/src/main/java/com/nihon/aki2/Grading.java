@@ -66,7 +66,7 @@ public class Grading extends AppCompatActivity {
     }
     public  void mydb(){
         String result = dbmych.executeQuery();
-        String result2 = dbmychqa.executeQuery();
+
         try{
             JSONArray jsonArray = new JSONArray(result);
 
@@ -76,6 +76,16 @@ public class Grading extends AppCompatActivity {
                 mychbun=a+"";
                 // mytoast(mychbun);
             }
+
+
+        }
+
+        catch(Exception e){}
+    }
+    public  void mydb2(){
+
+        String result2 = dbmychqa.executeQuery();
+        try{
 
             JSONArray jsonArray1=new JSONArray(result2);
             for(int i=0;i<jsonArray1.length();i++)
@@ -99,7 +109,7 @@ public class Grading extends AppCompatActivity {
                     break;
                 case MotionEvent.ACTION_UP:
                     bt1.setImageResource(R.drawable.aki_tangoh);
-                    mydb();
+                    mydb2();
                     Intent intent=new Intent();
                     intent.setClass(Grading.this,QAmenu.class);
 
