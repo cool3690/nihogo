@@ -22,9 +22,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Classinfo"
+            android:label="@string/title_activity_classinfo"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Jobshow"
             android:label="@string/title_activity_jobshow"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Work"
             android:label="@string/title_activity_work"

@@ -1,6 +1,8 @@
 package com.nihon.aki2;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 import org.json.JSONArray;
@@ -11,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,22 +30,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Team> teams = new ArrayList<Team>();
-    ListView listview;
-    ImageView imgshow;
+
+    ImageView classinfo;
+    TextView testinfo,jointime,testtime,countday,more;
+    int cc=0;
     String account="",passwd="",names="",course_num="";
     private Menu menu;
-    RecyclerView recyclerView;
-    Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
 
-    // private  Button  bt;
+    String[] Balls= new String[1] ;
 
     int num=0;
     @Override
@@ -64,138 +68,69 @@ public class MainActivity extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
-
+        Balls[0]="請選擇";
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
         names=Account.getNames();
-    /*
-        Intent intent=this.getIntent();
-        Bundle bundle=intent.getExtras();
-        if(intent != null && intent.getExtras() != null ){
-            account=bundle.getString("ACCOUNT");
-            Lname=bundle.getString("NAME");
-            passwd=bundle.getString("PASSWD");
-        }
-*/
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+        testinfo=(TextView)findViewById(R.id.testinfo);
+        jointime=(TextView)findViewById(R.id.jointime);
+        testtime=(TextView)findViewById(R.id.testtime);
+        countday=(TextView)findViewById(R.id.countday);
+        more=(TextView)findViewById(R.id.more);
+        classinfo=(ImageView)findViewById(R.id.classinfo);
+        classinfo.setOnClickListener(classinfobtn);
+        more.setOnClickListener(morebtn);
+        String result = dbcjlpt.executeQuery();
 
-        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/xmkqU_M21lk\" frameborder=\"0\" allowfullscreen></iframe>") );
-/**/
-        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
-
-        recyclerView.setAdapter(videoAdapter);
-
-TextView tv2=(TextView) findViewById(R.id.tv2);
-
-        imgshow=(ImageView)findViewById(R.id.imgshow);
-        listview = (ListView) findViewById(R.id.listview);
-        listview.setOnItemClickListener(lvonclick);
-        imgshow.setOnClickListener(imgbtn);
-        String result = dbcourse.executeQuery();
-       // Team team;
-     // Team team =new Team("課程","","","時間","價錢");
-       // teams.add(team);
         try{
             JSONArray jsonArray = new JSONArray(result);
 
             int k=0;
-            // bt.setText("更多資訊");
+
             for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
             {	 JSONObject jsonData = jsonArray.getJSONObject(i);
-                String name=jsonData.getString("name");
+                String ssign=jsonData.getString("sign");
+                String sdate=jsonData.getString("date");
+                jointime.setText("網路報名時間:\n"+ssign);
 
-                String week=jsonData.getString("week");
-                String time=jsonData.getString("stime");
-                String price=jsonData.getString("price");
-                String date=jsonData.getString("sdate");
-                String tdate[]=date.split("-");
-                Team  team = new Team(name,"星期"+ week, time,tdate[0],"$"+price);
-                teams.add(team);
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+                Date dt=new Date();
+                // String dts=sdf.format(dt);
+                java.util.Date endDate= sdf.parse(sdate);
+                long day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
+                if(day<0){
+                    countday.setText("2020年日檢第一回考試等候公告");
+                }
+                else{
+                    countday.setText(day+"天後");
+                }
 
             }
-            final TeamsAdapter adapter = new TeamsAdapter(this, R.layout.team, teams);
-            listview.setAdapter(adapter);
-            listview.setTextFilterEnabled(true);
-            listview.setSelector(R.drawable.green);
+
 
         }
 
         catch(Exception e){}
-    //   new Thread(runa).start();
 
 
     }
-    private ImageView.OnClickListener imgbtn=new ImageView.OnClickListener(){
+    private ImageView.OnClickListener classinfobtn=new ImageView.OnClickListener(){
         @Override
         public void onClick(View v) {
             Intent intent=new Intent();
-            intent.setClass(MainActivity.this, Audit.class);
+            intent.setClass(MainActivity.this,Classinfo.class);
             startActivity(intent);
         }
     };
- /*
-    public void setView() {
-        String picturepath ="http://www.chansing.com.tw/A/01.bmp";
-        byte[] data = null;
-        try {
-            data = ImageService.getImage(picturepath);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);// BitmapFactory：圖片工廠！
-            Looper.prepare();// 必須呼叫此方法，要不然會報錯
-            Message msg = new Message();
-            msg.what = 0;
-            msg.obj = bitmap;
-            handler.sendMessage(msg);
-        } catch (Exception e) {}
-    }
-
-    private Handler handler = new Handler() {
+    private TextView.OnClickListener morebtn=new TextView.OnClickListener(){
         @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 0) {
-                imgshow.setImageBitmap((Bitmap) msg.obj);
-            }
-        }
-
-    };
-    private Runnable runa = new Runnable() {
-        @Override
-        public void run() {
-            setView();
+        public void onClick(View v) {
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://www.jlpt.tw/"));
+            startActivity(intent);
         }
     };
-*/
-
-    private ListView.OnItemClickListener lvonclick= new ListView.OnItemClickListener(){
-            @Override
-                public void onItemClick(AdapterView<?> parent, View v,
-                                        int position, long id) {
-                    // 顯示 ListView 的選項內容
-                    String sel=parent.getItemAtPosition(position).toString();
-                    String result =dbcourse.executeQuery();
-                    try{
-                        JSONArray jsonArray = new JSONArray(result);
-                        JSONObject jsonData = jsonArray.getJSONObject(position);
-                        String name=jsonData.getString("name");
-                        String week=jsonData.getString("week");
-                        String time=jsonData.getString("stime");
-                        String price=jsonData.getString("price");
-                        String date=jsonData.getString("sdate");
-                        String content=jsonData.getString("content");
-                        String course_amount=jsonData.getString("course_amount");
-                        course_num=jsonData.getString("course_num");
-                        SpannableString spstr=new SpannableString("課程內容:");
-                        spstr.setSpan(new ForegroundColorSpan(Color.BLUE),0, spstr.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        mydialog(name+"詳細內容","日期:"+date+"\n時間:"+time+"\n星期:"+week+"    堂數:"+course_amount+
-                                "\n費用:"+price+"\n\n",content);
-                    }
-
-                    catch(Exception e){}
-
-                }
-            };
 
     private void mydialog(String str1,String str2,String str3){
         SpannableString spstr=new SpannableString(str1);
@@ -349,42 +284,5 @@ TextView tv2=(TextView) findViewById(R.id.tv2);
         }
         return super.onOptionsItemSelected(item);
     }
-     /*  private Button.OnClickListener bt=new Button.OnClickListener(){
-        @Override
-        public void onClick(View v) {
 
-           new AsyncTask<String, Void, Bitmap>()
-            {
-                @Override
-                protected Bitmap doInBackground(String... params) //實作doInBackground
-                {
-                    String url = params[0];
-                    return getBitmapFromURL(url);
-                }
-
-                @Override
-                protected void onPostExecute(Bitmap result) //當doinbackground完成後
-                {
-                    imgshow.setImageBitmap (result);
-                    super.onPostExecute(result);
-                }
-            }.execute("http://www.chansing.com.tw/A/01.bmp");
-
-        }
-    };
-    private static Bitmap getBitmapFromURL(String imageUrl)
-    {
-        try
-        {
-            URL url = new URL(imageUrl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(input);
-            return bitmap;
-        }
-        catch (IOException e){  return null;}
-    }
-    */
 }

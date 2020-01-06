@@ -60,4 +60,5 @@
     <string name="title_activity_grading">Grading</string>
     <string name="title_activity_work">工作</string>
     <string name="title_activity_jobshow">Jobshow</string>
+    <string name="title_activity_classinfo">課程內容</string>
 </resources>

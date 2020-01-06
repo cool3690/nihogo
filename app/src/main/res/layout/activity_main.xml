@@ -21,7 +21,7 @@ tools:context=".MainActivity">
 </com.google.android.material.appbar.AppBarLayout>
 
 <include layout="@layout/content_main" />
-
+<!--
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
 
@@ -29,5 +29,5 @@ tools:context=".MainActivity">
         android:layout_height="280dp">
 
     </androidx.recyclerview.widget.RecyclerView>
-
+-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
