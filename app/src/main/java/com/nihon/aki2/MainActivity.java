@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     countday.setText("2020年日檢第一回考試等候公告");
                 }
                 else{
-                    countday.setText(day+"天後");
+                    countday.setText("   "+day);
                 }
 
             }
