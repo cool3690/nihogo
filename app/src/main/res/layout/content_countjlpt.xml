@@ -11,9 +11,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingRight="10dp"
+        android:background="@drawable/aki_bg1"
         android:paddingLeft="10dp"
-        android:background="@drawable/aki_bg1">
+        android:paddingRight="10dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/header"
@@ -21,52 +23,131 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
-            android:text="JLPT考試"
+            android:text="留學資訊"
             android:textColor="@color/design_default_color_primary_dark"
             android:textSize="26sp" />
 
         <TextView
             android:id="@+id/sign"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/header"
             android:layout_marginTop="30dp"
-            android:text="報名日期"
+            android:gravity="center"
+            android:text="京都民際日本語学校"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/date"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/sign"
             android:layout_marginTop="20dp"
-            android:text="考試日期"
+            android:gravity="center"
+            android:text="2020年春季短期遊學“櫻”"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date"
+            android:layout_marginTop="12dp"
+            android:text="期間： "
+            android:textColor="@color/colorAccent"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/countdown"
             android:layout_width="match_parent"
-            android:layout_height="98dp"
-            android:layout_below="@id/date"
-            android:layout_marginTop="33dp"
-            android:gravity="center"
-            android:text="倒數"
-            android:textSize="36sp" />
-
-        <Button
-            android:id="@+id/return0"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/countdown"
-            android:layout_marginTop="20dp"
-            android:text="返回" />
+            android:layout_below="@id/date"
+            android:layout_marginTop="47dp"
 
-        <ImageView
-            android:id="@+id/imageView2"
+            android:text="2020年3月25日（三）～4月3日（五） \n每位 125000日圓(含10%消費稅)"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/exam" />
+            android:layout_below="@id/countdown"
+            android:layout_marginTop="12dp"
+            android:text="参加費用："
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView14"
+            android:layout_marginTop="8dp"
+
+            android:text="每位 125000日圓(含10%消費稅)"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView15"
+            android:layout_marginTop="8dp"
+            android:text="＜報名期限＞ "
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/mydate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView13"
+            android:layout_marginTop="9dp"
+
+            android:text=" 2020年2月28日 (星期五）"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mydate"
+            android:layout_marginTop="6dp"
+            android:text="＜參加條件＞"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView16"
+            android:layout_marginTop="5dp"
+            android:text="- 原則需滿18歲以上。未滿18歳之未成年者有意願報名者請與本校聯絡。\n
+- 從初學者到中級。
+"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/bt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/condition"
+            android:background="#9FF34E"
+            android:layout_marginTop="10dp"
+            android:text="詳細內容" />
+
+        <Button
+            android:id="@+id/bt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/condition"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="#9FF34E"
+            android:layout_toRightOf="@id/bt1"
+            android:text="行程" />
+
+
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.nihon.aki2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,6 +30,7 @@ import java.util.Date;
 public class Countjlpt extends AppCompatActivity {
     String account="",passwd="",names="";
     private Menu menu;
+    Button bt1,bt2;
     Button return0;
     TextView sign,date,countdown;
     @Override
@@ -57,46 +59,26 @@ public class Countjlpt extends AppCompatActivity {
         sign=(TextView)findViewById(R.id.sign);
         date=(TextView)findViewById(R.id.date);
         countdown=(TextView)findViewById(R.id.countdown);
-        return0=(Button)findViewById(R.id.return0);
-        return0.setOnClickListener(ret);
-        String result = dbcjlpt.executeQuery();
+        bt1=(Button)findViewById(R.id.bt1);
+        bt2=(Button)findViewById(R.id.bt2);
+        bt1.setOnClickListener(bt01);
+        bt2.setOnClickListener(bt02);
 
-        try{
-            JSONArray jsonArray = new JSONArray(result);
-
-            int k=0;
-
-            for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
-            {	 JSONObject jsonData = jsonArray.getJSONObject(i);
-                String ssign=jsonData.getString("sign");
-                String sdate=jsonData.getString("date");
-                sign.setText("報名日期:"+ssign);
-                date.setText("考試日期:"+sdate);
-                SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
-                Date dt=new Date();
-               // String dts=sdf.format(dt);
-                java.util.Date endDate= sdf.parse(sdate);
-                long day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
-                if(day<0){
-                    countdown.setText("2020年日檢第一回考試等候公告");
-                }
-                else{
-                    countdown.setText("倒數:\n"+day+"天");
-                }
-
-            }
-
-
-        }
-
-        catch(Exception e){}
 
     }
-    private Button.OnClickListener ret=new Button.OnClickListener(){
+    private Button.OnClickListener bt01=new Button.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent intent=new Intent();
-            intent.setClass(Countjlpt.this, Menushow.class);
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://akkyschool.com/228.pdf"));
+            startActivity(intent);
+        }
+    };
+    private Button.OnClickListener bt02=new Button.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://akkyschool.com/2282.pdf"));
             startActivity(intent);
         }
     };
