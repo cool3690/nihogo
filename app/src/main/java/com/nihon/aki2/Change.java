@@ -1,4 +1,5 @@
 package com.nihon.aki2;
+import android.accounts.Account;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.job.JobInfo;
@@ -51,6 +52,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Pattern;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Change extends AppCompatActivity {
@@ -78,7 +80,7 @@ double sum=0;
     TextView show,showtw,tshow;
     CheckBox check;
   //  private static final String url ="https://rate.bot.com.tw/xrt?Lang=zh-TW";
-  private static final String url ="https://tw.rter.info/capi.php";
+  private static final String url ="http://akkyschool.com/cram/a.php";//https://tw.rter.info/capi.php
     private int secondLeft = 6;
     String[] Balls= new String[] {"0.24","0.25","0.26","0.27","0.28","0.29","0.3"};
     @Override
@@ -99,10 +101,7 @@ double sum=0;
         tshow=(TextView)findViewById(R.id.tshow);
         check.setOnCheckedChangeListener(checkbtn);
         showtw=(TextView)findViewById(R.id.showtw);
-        SharedPreferences myrecord=getPreferences(Activity.MODE_PRIVATE);
-        String name_str=myrecord.getString("inputrate", "");
-        sel=name_str;
-        //inputrate.setText(name_str);
+
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
@@ -139,7 +138,7 @@ double sum=0;
 
         // 設定 spnPrefer 元件 ItemSelected 事件的 listener 為  spnPreferListener
         inputrate.setOnItemSelectedListener(spnPreferListener);
-     //   jprate();
+
         input.addTextChangedListener(btinput);
         rg.setOnCheckedChangeListener(mychange);
         schedulejob();
@@ -147,14 +146,9 @@ double sum=0;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd   HH:mm:ss");
         Date date=new Date();
         String dts=sdf.format(date);
-
-
-     // begin();
-        //loadInterstitialAd();
-         jprate();
+         jprate2();
         begin();
         tshow.setText("現價:"+ String.format("%.3f",sum) +"元");
-     //  myapi();
     }
 
           public void begin() {
@@ -172,7 +166,7 @@ double sum=0;
 
                           if (secondLeft < 1) {
                               secondLeft=500;
-                              jprate();
+                              jprate2();
                           }
                       }
                   });
@@ -258,39 +252,28 @@ double sum=0;
 
         }
     };
-    public void myapi(){
-       // jprate();
-        String result =body;
-        /*
-       for(int i=0;i<1;i++){
-           result=dbchange.executeQuery();
-           if(result=="" ||result==null || result.equals("null")){i--;}
-       }
-*/
-       //mytoast(result);
-        String[] split_line =  body.split(",");
-        //mytoast(result);
-       // String a[]=new String[3];//,b="";
-        double x=0,y=0;
-       for(int i=0;i<split_line.length;i++){
 
-           if(split_line[i].contains("Exrate") &&split_line[i].contains("USDTWD") ){
-               String a[]=split_line[i].split("Exrate");
-                x=Double.valueOf(a[1].substring(2));
-             //  tshow.setText(a[1].substring(2));
-           }
-           if(split_line[i].contains("Exrate") &&split_line[i].contains("USDJPY")){
-               String b[]=split_line[i].split("Exrate");
-               y=Double.valueOf(b[1].substring(2));
-           }
-           tshow.setText("現價:"+ String.format("%.3f",x/y) +"元");
-       }
-      sum=x/y;
+    public void jprate2(){
+        String a=dbchange2.executeQuery();
 
-       // buy.add(sum+"");
-     //   tshow.setText(a+b);
+       // Pattern pattern = Pattern.compile("^[-\\+]?[.\\d]*$");
+
+       // if( pattern.matcher(a).matches()){}
+
+            sum= Double.valueOf(a);
+            if(sum>0){
+                GlobalVariable Account = (GlobalVariable)getApplicationContext();
+                Account.setDollar(sum);
+            }
+            else{
+                GlobalVariable Account = (GlobalVariable)getApplicationContext();
+                sum=Account.getDollar();
+            }
+
+
+
     }
-    /*   */
+
     public void jprate(){
         buy.clear();
         coin.clear();
