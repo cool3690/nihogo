@@ -84,6 +84,13 @@
             android:layout_marginTop="24dp"
             android:text="確認" />
 
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ok"
+            android:layout_marginTop="7dp"
+            android:text="如需修改選項，再次點擊選項即可" />
         <ImageView
             android:id="@+id/btnpre"
             android:layout_width="70dp"
@@ -100,6 +107,8 @@
             android:layout_marginBottom="10dp"
             android:layout_alignParentRight="true"
             app:srcCompat="@drawable/aki_next" />
+
+
 
 
     </RelativeLayout>
