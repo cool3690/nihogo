@@ -17,7 +17,10 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +35,11 @@ public class Countjlpt extends AppCompatActivity {
     private Menu menu;
     Button bt1,bt2;
     Button return0;
-    TextView sign,date,countdown;
+    long x=0;
+    Spinner spinner;
+    TextView sign,date,countdown,textview15,mydate,condition;
+
+    String[] Balls= new String[] {"京都民際日本語学校","富士山國際學院"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,27 +66,78 @@ public class Countjlpt extends AppCompatActivity {
         sign=(TextView)findViewById(R.id.sign);
         date=(TextView)findViewById(R.id.date);
         countdown=(TextView)findViewById(R.id.countdown);
+        textview15=(TextView)findViewById(R.id.textView15);
+        mydate=(TextView)findViewById(R.id.mydate);
+        condition=(TextView)findViewById(R.id.condition);
+        spinner=(Spinner)findViewById(R.id.spinner);
         bt1=(Button)findViewById(R.id.bt1);
         bt2=(Button)findViewById(R.id.bt2);
         bt1.setOnClickListener(bt01);
         bt2.setOnClickListener(bt02);
+        ArrayAdapter<String> adapterBalls=new ArrayAdapter<String>
+                (this,android.R.layout.simple_spinner_item,Balls);
 
+        // 設定Spinner顯示的格式
+        adapterBalls.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // 設定Spinner的資料來源
+        spinner.setAdapter(adapterBalls);
+        spinner.setOnItemSelectedListener(spnPreferListener);
 
     }
+    private Spinner.OnItemSelectedListener spnPreferListener=
+            new Spinner.OnItemSelectedListener(){
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View v,
+                                           int position, long id) {
+
+                x=id;
+                  if(id==0){
+                      sign.setText("京都民際日本語学校");
+                      date.setText("2020年春季短期遊學“櫻”");
+                      countdown.setText("2020年3月25日（三）～4月3日（五） \\n每位 125000日圓(含10%消費稅)");
+                      textview15.setText("每位 125000日圓(含10%消費稅)");
+                      mydate.setText("2020年2月28日 (星期五）");
+                      condition.setText("- 原則需滿18歲以上。未滿18歳之未成年者有意願報名者請與本校聯絡。\\n\n" +
+                              "- 從初學者到中級。");
+                  }
+                  else{
+                      sign.setText("富士山國際學院");
+                      date.setText("");
+                      countdown.setText("每年10 月或 4月開學");
+                      textview15.setText("1,441,000日圓\n（入學繳納金，2年學費)");
+                      mydate.setText("每年1月～4月底 \n 8月～11月底");
+                      condition.setText("需通過日本語能力測驗N5");
+                  }
+
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    // TODO Auto-generated method stub
+                }
+            };
     private Button.OnClickListener bt01=new Button.OnClickListener(){
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("http://akkyschool.com/228.pdf"));
+            if(x==0){
+                intent.setData(Uri.parse("http://akkyschool.com/228.pdf"));
+            }
+            else{
+                intent.setData(Uri.parse("http://akkyschool.com/301.pdf"));
+            }
             startActivity(intent);
         }
     };
     private Button.OnClickListener bt02=new Button.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("http://akkyschool.com/2282.pdf"));
-            startActivity(intent);
+            if(x==0){
+                Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://akkyschool.com/2282.pdf"));
+                startActivity(intent);
+            }
+           else{}
         }
     };
     @Override

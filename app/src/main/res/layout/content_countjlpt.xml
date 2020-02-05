@@ -6,16 +6,44 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Countjlpt"
-    tools:showIn="@layout/countjlpt">
 
+    tools:showIn="@layout/countjlpt">
+<!--
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011"
+        tools:layout_editor_absoluteX="0dp">
+
+       <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="scrollable" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" />
+
+    </LinearLayout>
+-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/aki_bg1"
+        android:layout_marginTop="40dp"
+
+        android:background="@drawable/aki_map"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        >
 
         <TextView
             android:id="@+id/header"
@@ -27,12 +55,19 @@
             android:textColor="@color/design_default_color_primary_dark"
             android:textSize="26sp" />
 
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:layout_marginTop="7dp" />
+
         <TextView
             android:id="@+id/sign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/header"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="37dp"
             android:gravity="center"
             android:text="京都民際日本語学校"
             android:textSize="24sp" />
@@ -149,5 +184,7 @@
             android:text="行程" />
 
 
+
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

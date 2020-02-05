@@ -252,7 +252,12 @@ double sum=0;
 
         }
     };
-
+    public void store(double str){
+        SharedPreferences myrecord=getPreferences(Activity.MODE_PRIVATE);
+        SharedPreferences.Editor edit=myrecord.edit();
+        edit.putFloat("sum", (float) str );
+        edit.commit();
+    }
     public void jprate2(){
         String a=dbchange2.executeQuery();
 
@@ -264,10 +269,15 @@ double sum=0;
             if(sum>0){
                 GlobalVariable Account = (GlobalVariable)getApplicationContext();
                 Account.setDollar(sum);
+                store(sum);
+
             }
             else{
-                GlobalVariable Account = (GlobalVariable)getApplicationContext();
-                sum=Account.getDollar();
+                SharedPreferences remdname=getPreferences(Activity.MODE_PRIVATE);
+                float name_str=remdname.getFloat("sum", 0.0f);
+              //  GlobalVariable Account = (GlobalVariable)getApplicationContext();
+                //sum=Account.getDollar();
+                sum=name_str;
             }
 
 

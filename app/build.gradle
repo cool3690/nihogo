@@ -15,7 +15,7 @@ android {
         applicationId "com.nihon.aki2"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 24
+        versionCode 25
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -48,4 +50,5 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
+    implementation 'com.android.support:design:28.1.0'
 }
