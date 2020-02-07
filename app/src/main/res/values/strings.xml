@@ -61,4 +61,9 @@
     <string name="title_activity_work">工作</string>
     <string name="title_activity_jobshow">Jobshow</string>
     <string name="title_activity_classinfo">課程內容</string>
+    <string name="title_activity_info">Info</string>
+    <string name="tab_text_1">京都民際日本語學校</string>
+    <string name="tab_text_2">富士山國際學院</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

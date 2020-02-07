@@ -117,6 +117,7 @@ public class Mymenu extends AppCompatActivity {
                     else{
                         Intent intent=new Intent();
                         intent.setClass(Mymenu.this, Menushow.class);
+                        //    intent.setClass(Mymenu.this, Info.class);
                         startActivity(intent);
                     }
                     break;

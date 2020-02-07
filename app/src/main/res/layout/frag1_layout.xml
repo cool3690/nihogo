@@ -1,50 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Countjlpt"
-
-    tools:showIn="@layout/countjlpt">
-<!--
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="2dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.011"
-        tools:layout_editor_absoluteX="0dp">
-
-       <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabMode="scrollable" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff" />
-
-
-    </LinearLayout>
-    -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="1dp"
-
         android:background="@drawable/aki_map"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        >
+        android:paddingRight="10dp">
 
         <TextView
             android:id="@+id/header"
@@ -55,30 +18,23 @@
             android:text="留學資訊"
             android:textColor="@color/design_default_color_primary_dark"
             android:textSize="26sp" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/header"
-            android:layout_marginTop="7dp" />
-
-        <TextView
-            android:id="@+id/sign"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/header"
-            android:layout_marginTop="37dp"
-            android:gravity="center"
-            android:text="京都民際日本語学校"
-            android:textSize="24sp" />
-
+        <!--
+                <TextView
+                    android:id="@+id/sign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/header"
+                    android:layout_marginTop="17dp"
+                    android:gravity="center"
+                    android:text="京都民際日本語学校"
+                    android:textSize="24sp" />
+        -->
         <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sign"
-            android:layout_marginTop="20dp"
+            android:layout_below="@id/header"
+            android:layout_marginTop="13dp"
             android:gravity="center"
             android:text="2020年春季短期遊學“櫻”"
             android:textSize="26sp" />
@@ -169,8 +125,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/condition"
-            android:background="#9FF34E"
             android:layout_marginTop="10dp"
+            android:background="#9FF34E"
             android:text="詳細內容" />
 
         <Button
@@ -180,12 +136,10 @@
             android:layout_below="@id/condition"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:background="#9FF34E"
             android:layout_toRightOf="@id/bt1"
+            android:background="#9FF34E"
             android:text="行程" />
 
 
-
     </RelativeLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

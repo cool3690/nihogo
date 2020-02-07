@@ -8,9 +8,12 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.StrictMode;
 import android.view.Gravity;
@@ -28,6 +31,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Countjlpt extends AppCompatActivity {
@@ -39,6 +43,7 @@ public class Countjlpt extends AppCompatActivity {
     Spinner spinner;
     TextView sign,date,countdown,textview15,mydate,condition;
 
+    private String[] titles = new String[]{"京都民際日本語学校","富士山國際學院"};
     String[] Balls= new String[] {"京都民際日本語学校","富士山國際學院"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,7 @@ public class Countjlpt extends AppCompatActivity {
         account=Account.getAccount();
         passwd=Account.getPasswd();
         names=Account.getNames();
+        /* */
         sign=(TextView)findViewById(R.id.sign);
         date=(TextView)findViewById(R.id.date);
         countdown=(TextView)findViewById(R.id.countdown);
@@ -84,7 +90,28 @@ public class Countjlpt extends AppCompatActivity {
         spinner.setAdapter(adapterBalls);
         spinner.setOnItemSelectedListener(spnPreferListener);
 
+    //    init();
     }
+    /*
+    private void init() {
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        for(int i=0;i<titles.length;i++){
+            fragments.add(new TabFragment());
+            tabLayout.addTab(tabLayout.newTab());
+        }
+
+        tabLayout.setupWithViewPager(viewPager,false);
+        pagerAdapter = new FmPagerAdapter(fragments,getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
+
+        for(int i=0;i<titles.length;i++){
+            tabLayout.getTabAt(i).setText(titles[i]);
+        }
+    }
+    */
     private Spinner.OnItemSelectedListener spnPreferListener=
             new Spinner.OnItemSelectedListener(){
                 @Override

@@ -153,7 +153,7 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn4.setImageResource(R.drawable.aki_jlpt);
                     Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Countjlpt.class);
+                    intent.setClass(Menushow.this,Info.class);
                     //Work
                     startActivity(intent);
 
