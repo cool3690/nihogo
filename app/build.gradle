@@ -4,12 +4,12 @@ android {
 
     signingConfigs {
         config {
-            keyAlias 'key0'
+            keyAlias 'n2'
             keyPassword '123456'
-            storeFile file('C:/Users/ASUS/Documents/android/aki2/nihongo.jks')
+            storeFile file('C:/Users/ASUS/.android/n2.jks')
             storePassword '123456'
         }
-    }
+    }//C:\Users\ASUS\.android\n2.jks
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.nihon.aki2"

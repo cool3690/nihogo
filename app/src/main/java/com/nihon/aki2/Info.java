@@ -143,7 +143,9 @@ public class Info extends AppCompatActivity {
                 case 1:
                     fragment = new Frag2();
                     break;
-
+                case 2:
+                    fragment=new Frag3();
+                    break;
             }
             return fragment;
          //   return PlaceholderFragment.newInstance(position + 1);
@@ -152,7 +154,7 @@ public class Info extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 3;
         }
     }
 }
