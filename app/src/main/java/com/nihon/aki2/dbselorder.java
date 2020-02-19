@@ -20,7 +20,7 @@ public class dbselorder {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/selorderdate.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selorderdate.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
            // params.add(new BasicNameValuePair("emp_id", emp_id));
           

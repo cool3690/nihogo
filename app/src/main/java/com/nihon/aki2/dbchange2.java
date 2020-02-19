@@ -20,7 +20,7 @@ public class dbchange2 {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/a.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/a.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             //params.add(new BasicNameValuePair("id", id));
 

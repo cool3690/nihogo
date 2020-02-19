@@ -21,7 +21,7 @@ public class dbincart {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/incert.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/incert.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
            // params.add(new BasicNameValuePair("emp_id", emp_id));
             params.add(new BasicNameValuePair("account",account));

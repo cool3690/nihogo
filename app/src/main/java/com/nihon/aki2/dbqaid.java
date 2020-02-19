@@ -21,7 +21,7 @@ public class dbqaid {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/qaid.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/qaid.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
 
             params.add(new BasicNameValuePair("mych", mych));

@@ -21,7 +21,7 @@ public class dbsantance {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/selsantance.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selsantance.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("id", id));
             params.add(new BasicNameValuePair("mych", mych));

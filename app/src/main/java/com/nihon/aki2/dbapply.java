@@ -21,7 +21,7 @@ public class dbapply {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/apply.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/apply.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("account", account));
 

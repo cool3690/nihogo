@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "30978502564",
+    "firebase_url": "https://nihon-aki.firebaseio.com",
+    "project_id": "nihon-aki",
+    "storage_bucket": "nihon-aki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30978502564:android:3d3df0c796a42474e51b31",
+        "android_client_info": {
+          "package_name": "com.nihon.aki2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30978502564-vooeem5kqpj1mmrb4uqemi5e5uvtnn2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrwL9uZlYd0r6sA7z0HdVHwRi4H881RjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30978502564-vooeem5kqpj1mmrb4uqemi5e5uvtnn2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

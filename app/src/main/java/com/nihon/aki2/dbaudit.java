@@ -21,7 +21,7 @@ public class dbaudit {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/inaudit.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/inaudit.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("name", name));
             params.add(new BasicNameValuePair("phone", phone));

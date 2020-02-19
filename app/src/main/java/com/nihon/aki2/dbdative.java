@@ -21,7 +21,7 @@ public class dbdative {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/seldative.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/seldative.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("id", id));
 

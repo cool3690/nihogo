@@ -21,7 +21,7 @@ public class dbdelcart {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://akkyschool.com/cram/delcert.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/delcert.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
            // params.add(new BasicNameValuePair("emp_id", emp_id));
             params.add(new BasicNameValuePair("account",account));
