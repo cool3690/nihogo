@@ -2,6 +2,10 @@ package com.nihon.aki2;
 
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -18,6 +22,7 @@ import android.webkit.WebViewClient;
 public class Comic extends AppCompatActivity {
     WebView myweb;
     String account="",passwd="",names="",course_num="";
+    private AdView mAdView;
     private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +55,7 @@ public class Comic extends AppCompatActivity {
         myweb.setWebViewClient(new WebViewClient());
        // https://www.ganganonline.com/
         myweb.loadUrl("https://tonarinoyj.jp/episode/13932016480028985383");
-
+        myad();
 
 
     }
@@ -61,5 +66,26 @@ public class Comic extends AppCompatActivity {
         }
 
         super.onBackPressed();
+    }
+    public void myad() {
+        String myid = getString(R.string.idban);
+        MobileAds.initialize(this, myid);
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
+
     }
 }

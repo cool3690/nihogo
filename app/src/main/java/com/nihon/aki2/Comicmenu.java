@@ -3,6 +3,10 @@ package com.nihon.aki2;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -16,6 +20,7 @@ import android.widget.ImageView;
 
 public class Comicmenu extends AppCompatActivity {
 ImageView com1;
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,7 @@ ImageView com1;
         setSupportActionBar(toolbar);
         com1=(ImageView) findViewById(R.id.com1);
         com1.setOnTouchListener(com1btn);
+        myad();
     }
 
     private ImageView.OnTouchListener com1btn=new ImageView.OnTouchListener(){
@@ -47,4 +53,26 @@ ImageView com1;
             return true;
         }
     };
+
+    public void myad() {
+        String myid = getString(R.string.idban);
+        MobileAds.initialize(this, myid);
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        });
+
+    }
 }
