@@ -17,8 +17,7 @@ import java.util.ArrayList;
 
 public class dbqaid {
     public static String executeQuery(String mych) {
-        String result = ""; 
-       
+        String result = "";
         try {   
             HttpClient httpClient = new DefaultHttpClient();
             HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/qaid.php");

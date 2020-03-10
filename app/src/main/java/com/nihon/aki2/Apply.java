@@ -29,6 +29,7 @@ public class Apply extends AppCompatActivity {
     String account="",passwd="",names="";
     private Menu menu;
     boolean check=true;
+    MCrypt mcrypt = new MCrypt();
     //private AdView mAdView;
 
     //private Button  forget;
@@ -107,7 +108,17 @@ public class Apply extends AppCompatActivity {
                 String mname= name.getText().toString();
                 String memail= email.getText().toString();
                 mytoast("帳號申請成功! ");
-                dbinapply.executeQuery(account,mpass,mname,memail);
+                try {
+                    MCrypt mcrypt = new MCrypt();
+
+                    String encrypted = MCrypt.bytesToHex( mcrypt.encrypt(mpass) );
+
+                    dbinapply.executeQuery(account,encrypted,mname,memail);
+                   // String decrypted = new String( mcrypt.decrypt( encrypted ) );
+
+                } catch( Exception e ) {  }
+
+
             }
         }
     };

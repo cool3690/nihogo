@@ -22,10 +22,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Comicmenu"
+            android:label="@string/title_activity_comicmenu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Comic"
+            android:label="@string/title_activity_comic"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Info"
             android:label="@string/title_activity_info"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Classinfo"
             android:label="@string/title_activity_classinfo"

@@ -29,6 +29,7 @@ import org.json.JSONObject;
 public class Login extends AppCompatActivity {
     private TextView acc,pwd;
     private  ImageView  btn;
+    MCrypt mcrypt = new MCrypt();
  //   private AdView mAdView;
    // private Button  forget;
     String mycart="",account="",names="",passwd="";
@@ -114,7 +115,18 @@ public class Login extends AppCompatActivity {
             GlobalVariable Account = (GlobalVariable)getApplicationContext();
             Account.setAccount(account);
             Account.setPasswd(passwd);
-            String result =dblogin.executeQuery(account,passwd);
+            String result ="";
+            try {
+                MCrypt mcrypt = new MCrypt();
+
+               String encrypted = MCrypt.bytesToHex( mcrypt.encrypt(passwd) );
+                result =dblogin.executeQuery(account,encrypted);
+
+               // String decrypted = new String( mcrypt.decrypt( encrypted ) );
+
+            } catch( Exception e ) {
+            }
+
 
             try{
                 JSONArray jsonArray = new JSONArray(result);

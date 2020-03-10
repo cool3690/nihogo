@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class Sanmenu extends AppCompatActivity {
     ListView menulist;
     Button ok;
-    String account="",passwd="",names="";  private Menu menu;
+    String account="",passwd="",names="",level="";  private Menu menu;
     ArrayList<Jsan> jsans=new ArrayList<Jsan>();
    // private AdView mAdView;
     @Override
@@ -55,7 +55,7 @@ public class Sanmenu extends AppCompatActivity {
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
         String bun=bundle.getString("BUN");
-        String level=bundle.getString("LEVEL");
+         level=bundle.getString("LEVEL");
         int k=Integer.parseInt(bun);
         menulist=(ListView)findViewById(R.id.menulist);
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
@@ -109,7 +109,16 @@ public class Sanmenu extends AppCompatActivity {
                                         int position, long id) {
 
                     Intent intent= null;
-                    String result = dbsanid.executeQuery(position+1+"");
+                    String result="";
+                    int p=0;
+                    if(level.equals("A")){
+                        result = dbsanid.executeQuery(position+1+"");
+                        p=position+1;
+                    }
+                   else if(level.equals("B")){
+                        result = dbsanid.executeQuery(position+13+"");
+                        p=position+13;
+                    }
                     String ans="";
                     try{
                         JSONArray jsonArray = new JSONArray(result);
@@ -127,8 +136,9 @@ public class Sanmenu extends AppCompatActivity {
                     }
                     intent = new Intent(Sanmenu.this, Santance.class);
                     Bundle bundle=new Bundle();
-                    int p=position+1;
+                    //p=position+1;
                     String mych=p+"";
+                   // mytoast(mych+"  "+ans);
                     bundle.putString("MYCH",mych);
                     bundle.putString("NUM",ans);
                     intent.putExtras(bundle);

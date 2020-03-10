@@ -32,6 +32,7 @@ public class QAmenu extends AppCompatActivity {
     ListView menulist;
     Button ok;
     String account="",passwd="",names="";
+    String level="";
     private Menu menu;
     ArrayList<Jsan> jsans=new ArrayList<Jsan>();
 
@@ -62,7 +63,7 @@ public class QAmenu extends AppCompatActivity {
        Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
         String bun=bundle.getString("QA");
-        String level=bundle.getString("LEVEL");
+          level=bundle.getString("LEVEL");
         k=Integer.parseInt(bun);/* */
         menulist=(ListView)findViewById(R.id.menulist);
         if(level.equals("A")){
@@ -92,7 +93,16 @@ public class QAmenu extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View v,
                                         int position, long id) {
                     Intent intent= null;
-                    String result = dbqaid.executeQuery(position+1+"");
+                    String result = "";
+                    int p=0;
+                    if(level.equals("A")){
+                        result = dbqaid.executeQuery(position+1+"");
+                        p=position+1;
+                    }
+                    else if(level.equals("B")){
+                        result = dbqaid.executeQuery(position+13+"");
+                        p=position+13;
+                    }
                     String ans="";
                     try{
                         JSONArray jsonArray = new JSONArray(result);
@@ -109,7 +119,7 @@ public class QAmenu extends AppCompatActivity {
 
                     intent = new Intent(QAmenu.this, QA.class);
                     Bundle bundle=new Bundle();
-                    int p=position+1;
+                   // int p=position+1;
 
                     String mych=p+"";
                     bundle.putString("MYCH",mych);

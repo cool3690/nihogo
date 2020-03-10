@@ -14,8 +14,7 @@
         android:background="@drawable/aki_bg"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+       >
 
         <EditText
             android:id="@+id/mymail"
