@@ -38,11 +38,11 @@ ImageView com1;
             switch (event.getAction()) {//課程
 
                 case MotionEvent.ACTION_DOWN:
-                    com1.setImageResource(R.drawable.aki_primary1h);
+                    com1.setImageResource(R.drawable.aki_super);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    com1.setImageResource(R.drawable.aki_primary1);
+                    com1.setImageResource(R.drawable.aki_super);
                     Intent intent = new Intent();
                     intent.setClass(Comicmenu.this, Comic.class);
                     //Work.class

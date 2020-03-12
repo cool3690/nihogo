@@ -18,8 +18,8 @@
         <ImageView
             android:id="@+id/com1"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/aki_primary1" />
+            android:layout_height="130dp"
+            app:srcCompat="@drawable/aki_super" />
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"

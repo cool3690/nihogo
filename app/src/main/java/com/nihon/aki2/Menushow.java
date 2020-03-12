@@ -24,7 +24,7 @@ import com.google.android.gms.ads.MobileAds;
 import org.json.JSONArray;
 
 public class Menushow extends AppCompatActivity {
-    ImageView btn1,btn2,btn3,btn4,btn5;
+    ImageView btn1,btn2,btn3,btn4,btn5,btn6;
     String account="",passwd="",names="";
    // private AdView mAdView;
     private Menu menu;
@@ -48,11 +48,13 @@ public class Menushow extends AppCompatActivity {
         btn3=(ImageView)findViewById(R.id.btn3);
        btn4=(ImageView)findViewById(R.id.btn4);
         btn5=(ImageView)findViewById(R.id.btn5);
+        btn6=(ImageView)findViewById(R.id.btn6);
         btn1.setOnTouchListener(b1);
         btn2.setOnTouchListener(b2);
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
+        btn6.setOnTouchListener(b6);
       /*
         String myid=getString(R.string.appid);
         MobileAds.initialize(this, myid);
@@ -176,6 +178,27 @@ public class Menushow extends AppCompatActivity {
                     btn5.setImageResource(R.drawable.aki_testh);
                     Intent intent=new Intent();
                     intent.setClass(Menushow.this,Shiken.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
+    private ImageView.OnTouchListener b6=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){
+            switch (event.getAction()){//課程
+
+                case MotionEvent.ACTION_DOWN:
+                    btn6.setImageResource(R.drawable.aki_comic1);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    btn6.setImageResource(R.drawable.aki_comic);
+                    Intent intent=new Intent();
+                    intent.setClass(Menushow.this, Comicmenu.class);
+                    //Work.class
+                    //  intent.setClass(Menushow.this,Myweb.class);
                     startActivity(intent);
                     break;
             }
