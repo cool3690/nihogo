@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.nihon.aki2.mydb.dbsantance;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -186,7 +187,15 @@ String [] contain=new String[4];
             ans=ans.replace("）","");
             ans=ans.replace("（","");
             ans=  ans.replace(" ","");
-            if(tmp.contains(ans)){mytoast("正解!");}
+            if(tmp.contains(ans)){mytoast("正解!");
+                num++;
+                String result = dbsantance.executeQuery(num+"",mych);
+                if(result.contains("null")){ num--;mytoast("本題為最後一題");}
+                else{
+                    clean();
+                    test(num);
+                }
+            }
 
             else{mytoast(ans);
                 clean();

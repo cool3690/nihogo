@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.mydb;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

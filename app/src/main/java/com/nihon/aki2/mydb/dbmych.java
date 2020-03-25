@@ -1,9 +1,4 @@
-package com.nihon.aki2;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+package com.nihon.aki2.mydb;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,20 +7,22 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 
-public class dbselcartshow {
-    public static String executeQuery(String account) {
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class dbmych {
+    public static String executeQuery() {
         String result = ""; 
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selcertshow.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/mychbun.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-           // params.add(new BasicNameValuePair("emp_id", emp_id));
-            params.add(new BasicNameValuePair("account",account));
-          
+
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());

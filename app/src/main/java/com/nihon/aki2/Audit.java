@@ -18,6 +18,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.nihon.aki2.mydb.dbaudit;
+import com.nihon.aki2.mydb.dbcourse;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 

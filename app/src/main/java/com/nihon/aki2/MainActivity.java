@@ -1,9 +1,7 @@
 package com.nihon.aki2;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,13 +10,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -29,13 +24,14 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.nihon.aki2.mydb.dbcjlpt;
+import com.nihon.aki2.mydb.dbdelcart;
+import com.nihon.aki2.mydb.dbincart;
+import com.nihon.aki2.mydb.dbselcart;
 
 
 public class MainActivity extends AppCompatActivity {

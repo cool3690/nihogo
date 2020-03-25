@@ -1,9 +1,4 @@
-package com.nihon.aki2;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+package com.nihon.aki2.mydb;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,17 +10,21 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 
-public class dbincart {
-    public static String executeQuery(String account,String course_num) {
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class dbcjlpt {
+    public static String executeQuery() {
         String result = ""; 
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/incert.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/countjlpt.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-           // params.add(new BasicNameValuePair("emp_id", emp_id));
-            params.add(new BasicNameValuePair("account",account));
-            params.add(new BasicNameValuePair("course_num",course_num));
+         //   params.add(new BasicNameValuePair("sign", sign));
+            //params.add(new BasicNameValuePair("date", date));
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());

@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.mydb;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,15 +15,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class dbqaid {
-    public static String executeQuery(String mych) {
-        String result = "";
+public class dbbasic {
+    public static String executeQuery(String id) {
+        String result = ""; 
+       
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/qaid.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selbasic.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("id", id));
 
-            params.add(new BasicNameValuePair("mych", mych));
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());

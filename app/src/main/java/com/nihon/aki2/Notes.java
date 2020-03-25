@@ -16,6 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nihon.aki2.mydb.dbcourse;
+import com.nihon.aki2.mydb.dbselorderid;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -69,8 +72,8 @@ public class Notes extends AppCompatActivity {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
         Date dt=new Date();
         String dts=sdf.format(dt);
-        String result2 =dbselorderid.executeQuery(account,dts);
-        String result =dbcourse.executeQuery();
+        String result2 = dbselorderid.executeQuery(account,dts);
+        String result = dbcourse.executeQuery();
 
         Team team =new Team("課程","星期","時間","日期","價錢");
         teams.add(team);

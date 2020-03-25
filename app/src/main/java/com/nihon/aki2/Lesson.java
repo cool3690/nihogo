@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nihon.aki2.mydb.dblesson;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 

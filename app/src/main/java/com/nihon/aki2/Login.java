@@ -18,10 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.nihon.aki2.mydb.dblogin;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -120,7 +117,7 @@ public class Login extends AppCompatActivity {
                 MCrypt mcrypt = new MCrypt();
 
                String encrypted = MCrypt.bytesToHex( mcrypt.encrypt(passwd) );
-                result =dblogin.executeQuery(account,encrypted);
+                result = dblogin.executeQuery(account,encrypted);
 
                // String decrypted = new String( mcrypt.decrypt( encrypted ) );
 

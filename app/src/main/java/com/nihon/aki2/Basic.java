@@ -3,7 +3,6 @@ package com.nihon.aki2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -26,6 +25,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.nihon.aki2.mydb.dbbasic;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -176,7 +176,7 @@ public class Basic extends AppCompatActivity {
             };
 
     void show (int p){
-        if(ans==p){mytoast("正解!");}
+        if(ans==p){mytoast("正解!");next();}
         else{mytoast("錯誤!");}
 
     }

@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.nihon.aki2.mydb.dbcourse;
+import com.nihon.aki2.mydb.dbdelcart;
+import com.nihon.aki2.mydb.dbincart;
+import com.nihon.aki2.mydb.dbselcart;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

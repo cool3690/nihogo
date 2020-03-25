@@ -1,4 +1,9 @@
-package com.nihon.aki2;
+package com.nihon.aki2.mydb;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -10,21 +15,16 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-
-public class dbsanid {
-    public static String executeQuery(String mych) {
+public class dblogin {
+    public static String executeQuery(String account,String passwd) {
         String result = ""; 
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/sanid.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/login.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-
-            params.add(new BasicNameValuePair("mych", mych));
+            params.add(new BasicNameValuePair("account", account));
+            params.add(new BasicNameValuePair("passwd",passwd));
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());

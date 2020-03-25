@@ -23,6 +23,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.nihon.aki2.mydb.dbQA;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -155,14 +156,14 @@ int num=3,yes=0,no=0;
                     p++;
                  if(lock==true){ show (p);}
                     else{}
-                    txtResult.setText("正確答案是:  "+ans  );
+
 //mytoast(yes+"");
                 }
             };
 
     void show (int p){
-        if(ans.equals(p+"")){mytoast("正解!");anstmp=true;}
-        else{mytoast("錯誤!");anstmp=false;}
+        if(ans.equals(p+"")){mytoast("正解!");anstmp=true; next();}
+        else{mytoast("錯誤!");anstmp=false;txtResult.setText("正確答案是:  "+ans  );}
 
     }
 public void next(){
@@ -179,6 +180,7 @@ public void next(){
     mytoast("本題為最後一題");
     //if(yes<0){yes=yes*(-1);}
        // mytoast(yes+"/"+no);
+
         Intent intent=new Intent();
         intent.setClass(QA.this,Keka.class);
         Bundle bundle=new Bundle();

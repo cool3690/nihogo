@@ -25,6 +25,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.nihon.aki2.mydb.dbbasich;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -181,7 +182,7 @@ public class Basich extends AppCompatActivity {
         }
     };
     void show (int p){
-        if(ans==p){mytoast("正解!");}
+        if(ans==p){mytoast("正解!");next();}
         else{mytoast("錯誤!");}
 
     }

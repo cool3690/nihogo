@@ -1,5 +1,8 @@
 package com.nihon.aki2;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.gms.ads.AdListener;
@@ -11,7 +14,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.StrictMode;
 import android.view.Menu;
@@ -19,7 +21,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class Comic extends AppCompatActivity {
+public class Childweb extends AppCompatActivity {
     WebView myweb;
     String account="",passwd="",names="",course_num="";
     private AdView mAdView;
@@ -27,7 +29,7 @@ public class Comic extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.comic);
+        setContentView(R.layout.childweb);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.icon);
@@ -53,12 +55,22 @@ public class Comic extends AppCompatActivity {
         myweb.getSettings().setBuiltInZoomControls(true);
         myweb.getSettings().setJavaScriptEnabled(true);
         myweb.setWebViewClient(new WebViewClient());
-       // https://www.ganganonline.com/
-        myweb.loadUrl("https://tonarinoyj.jp/episode/13933686331604558285");
-        myad();
+      //  https://happylilac.net/movie/movie-age4/
+        myweb.loadUrl("https://www.youtube.com/watch?v=HVeStkkEmKo&list=PLGk6k-qblF0UKfGi3aTELXvUSnYOMgAqn");
+        myweb.scrollTo(0,1400);
+
+        //myad();
 
 
     }
+
+
+    public void onLoadResource(WebView view, String url) {
+
+        myweb.scrollTo(0,1400);
+
+    }
+
     public void onBackPressed() {
         if (myweb.canGoBack()) {
             myweb.goBack();
@@ -86,6 +98,5 @@ public class Comic extends AppCompatActivity {
                 // covers the screen.
             }
         });
-
     }
 }

@@ -1,8 +1,6 @@
 package com.nihon.aki2;
-import android.accounts.Account;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -33,18 +31,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.nihon.aki2.mydb.dbchange2;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import org.jsoup.nodes.Element;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,7 +42,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.regex.Pattern;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Change extends AppCompatActivity {
@@ -152,7 +141,8 @@ double sum=0;
     }
 
           public void begin() {
-              timer.schedule(task, 1000, 1000) ;       }
+              timer.schedule(task, 1000, 1000) ;
+            }
 
           TimerTask task = new TimerTask() {
               @Override
@@ -259,7 +249,7 @@ double sum=0;
         edit.commit();
     }
     public void jprate2(){
-        String a=dbchange2.executeQuery();
+        String a= dbchange2.executeQuery();
 
        // Pattern pattern = Pattern.compile("^[-\\+]?[.\\d]*$");
 

@@ -22,9 +22,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Childweb"
+            android:label="@string/title_activity_childweb"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Comicmenu"
             android:label="@string/title_activity_comicmenu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Comic"
             android:label="@string/title_activity_comic"

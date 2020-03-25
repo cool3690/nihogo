@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.mydb;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,16 +15,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class dbcjlpt {
-    public static String executeQuery() {
+public class dbseluser {
+    public static String executeQuery(String email) {
         String result = ""; 
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/countjlpt.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/seluser.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-         //   params.add(new BasicNameValuePair("sign", sign));
-            //params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("email", email));
+
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());

@@ -17,6 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 
+import com.nihon.aki2.mydb.dbcourse;
+import com.nihon.aki2.mydb.dbdelcart;
+import com.nihon.aki2.mydb.dbinorder;
+import com.nihon.aki2.mydb.dbselcartshow;
+import com.nihon.aki2.mydb.dbselorder;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -78,8 +84,8 @@ public class Mcart extends AppCompatActivity {
         sum=(TextView)findViewById(R.id.sum);
         listview = (ListView) findViewById(R.id.listview);
         listview.setOnItemClickListener(lvonclick);
-        String result2 =dbselcartshow.executeQuery(account);
-        String result =dbcourse.executeQuery();
+        String result2 = dbselcartshow.executeQuery(account);
+        String result = dbcourse.executeQuery();
 
         Team team =new Team("課程","星期","時間","日期","價錢");
         teams.add(team);
@@ -153,7 +159,7 @@ public class Mcart extends AppCompatActivity {
         }
     };
     private String last(String str1){
-        String result =dbselorder.executeQuery();
+        String result = dbselorder.executeQuery();
         try{
             JSONArray jsonArray2 = new JSONArray(result);
 

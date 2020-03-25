@@ -4,11 +4,12 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.nihon.aki2.mydb.dbseluser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

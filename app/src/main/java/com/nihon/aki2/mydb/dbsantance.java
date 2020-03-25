@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.mydb;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,18 +15,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class dbaudit {
-    public static String executeQuery(String name,String phone,String choose,String remark) {
+public class dbsantance {
+    public static String executeQuery(String id,String mych) {
         String result = ""; 
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/inaudit.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selsantance.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("name", name));
-            params.add(new BasicNameValuePair("phone", phone));
-            params.add(new BasicNameValuePair("choose", choose));
-            params.add(new BasicNameValuePair("remark", remark));
+            params.add(new BasicNameValuePair("id", id));
+            params.add(new BasicNameValuePair("mych", mych));
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());

@@ -1,9 +1,4 @@
-package com.nihon.aki2;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+package com.nihon.aki2.mydb;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,21 +10,21 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 
-public class dbinorder {
-    public static String executeQuery(String order_num,String order_id,String account,String course_num,String unit) 
-       {
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class dbbasich {
+    public static String executeQuery(String id) {
         String result = ""; 
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/inorder.php");
+            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selbasich.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("order_num", order_num));
-            params.add(new BasicNameValuePair("order_id", order_id));
-            params.add(new BasicNameValuePair("account",account));
-            params.add(new BasicNameValuePair("course_num",course_num));
-            params.add(new BasicNameValuePair("unit",unit));
-          
+            params.add(new BasicNameValuePair("id", id));
+
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());
