@@ -69,4 +69,6 @@
     <string name="title_activity_comic">Comic</string>
     <string name="title_activity_comicmenu">目錄</string>
     <string name="title_activity_childweb">Childweb</string>
+    <string name="title_activity_basic50">Basic50</string>
+    <string name="title_activity_basich50">片假名</string>
 </resources>

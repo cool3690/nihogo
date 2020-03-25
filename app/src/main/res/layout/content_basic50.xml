@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Basic50"
+    tools:showIn="@layout/basic50">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
+
+        <com.nihon.aki2.control.PaintView
+            android:id="@+id/paintView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/clean"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/paintView"
+            android:text="clean"
+            app:srcCompat="@drawable/eraser" />
+
+        <ImageView
+            android:id="@+id/sound"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/clean"
+            android:layout_toRightOf="@id/paintView"
+            android:layout_marginLeft="60dp"
+            app:srcCompat="@drawable/sound" />
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/paintView"
+            app:srcCompat="@drawable/a_1" />
+
+        <TextView
+            android:id="@+id/show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/paintView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/img"
+            android:text="TextView"
+            android:inputType="textMultiLine"
+            android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/btnpre"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/aki_pre" />
+
+        <ImageView
+            android:id="@+id/btnnext"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+
+            app:srcCompat="@drawable/aki_next" />
+
+    </RelativeLayout>
+
+</ScrollView>

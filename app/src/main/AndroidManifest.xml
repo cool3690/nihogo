@@ -22,9 +22,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Basich50"
+            android:label="@string/title_activity_basich50"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Basic50"
+            android:label="@string/title_activity_basic50"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Childweb"
             android:label="@string/title_activity_childweb"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Comicmenu"
             android:label="@string/title_activity_comicmenu"

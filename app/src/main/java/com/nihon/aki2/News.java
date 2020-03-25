@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.nihon.aki2.control.Jnew;
+import com.nihon.aki2.control.JnewAdapter;
 import com.nihon.aki2.control.RssNews;
 import com.nihon.aki2.control.RssNewsXMLParsingHandler;
 import com.nihon.aki2.control.SimpleXMLParser;

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.nihon.aki2.control.Job;
 import com.nihon.aki2.control.Rate;
 import com.nihon.aki2.control.RatesAdapter;
 import com.nihon.aki2.mydb.dbjob;
