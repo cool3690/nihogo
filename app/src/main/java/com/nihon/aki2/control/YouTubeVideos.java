@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.control;
 
 public class YouTubeVideos {
     String videoUrl;

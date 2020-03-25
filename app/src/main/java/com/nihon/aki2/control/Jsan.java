@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.control;
 
 /**
  * Created by kstanoev on 1/14/2015.

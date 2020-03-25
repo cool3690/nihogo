@@ -1,6 +1,4 @@
-package com.nihon.aki2;
-
-import android.util.Log;
+package com.nihon.aki2.control;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

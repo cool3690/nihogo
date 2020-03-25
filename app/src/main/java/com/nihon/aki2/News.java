@@ -3,7 +3,6 @@ package com.nihon.aki2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,10 +17,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.nihon.aki2.control.RssNews;
+import com.nihon.aki2.control.RssNewsXMLParsingHandler;
+import com.nihon.aki2.control.SimpleXMLParser;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

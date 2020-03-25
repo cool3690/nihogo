@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.nihon.aki2.control.Jsan;
+import com.nihon.aki2.control.JsansAdapter;
 import com.nihon.aki2.mydb.dbsanid;
 
 import org.json.JSONArray;

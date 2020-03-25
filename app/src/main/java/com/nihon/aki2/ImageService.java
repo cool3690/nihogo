@@ -1,5 +1,7 @@
 package com.nihon.aki2;
 
+import com.nihon.aki2.control.StreamTool;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;

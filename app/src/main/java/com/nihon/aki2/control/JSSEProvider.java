@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.control;
 
 import java.security.AccessController;
 import java.security.Provider;

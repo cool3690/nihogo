@@ -1,10 +1,12 @@
-package com.nihon.aki2;
+package com.nihon.aki2.control;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+
+import com.nihon.aki2.R;
 
 import java.util.List;
 

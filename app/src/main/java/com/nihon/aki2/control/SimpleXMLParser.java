@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.control;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;

@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nihon.aki2.control.Team;
+import com.nihon.aki2.control.TeamsAdapter;
 import com.nihon.aki2.mydb.dbcourse;
 import com.nihon.aki2.mydb.dbselorderid;
 

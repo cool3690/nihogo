@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import com.nihon.aki2.control.Team;
+import com.nihon.aki2.control.TeamsAdapter;
 import com.nihon.aki2.mydb.dbcourse;
 import com.nihon.aki2.mydb.dbdelcart;
 import com.nihon.aki2.mydb.dbincart;
