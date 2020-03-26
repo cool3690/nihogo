@@ -23,7 +23,7 @@ import com.google.android.gms.ads.MobileAds;
 public class Basicmenu extends AppCompatActivity {
     String account="",passwd="",names="";
     private Menu menu;
-    private ImageView hira,kata;
+    private ImageView hira,kata,hiratest,katatest;
     private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,12 @@ public class Basicmenu extends AppCompatActivity {
         names=Account.getNames();
         hira=(ImageView)findViewById(R.id.hira);
         kata=(ImageView)findViewById(R.id.kata);
+        hiratest=(ImageView)findViewById(R.id.hiratest);
+        katatest=(ImageView)findViewById(R.id.katatest);
         hira.setOnTouchListener(hirabtn);
         kata.setOnTouchListener(katabtn);
+        hiratest.setOnTouchListener(hiratestbtn);
+        katatest.setOnTouchListener(katatestbtn);
 
     }
         private ImageView.OnTouchListener hirabtn=new ImageView.OnTouchListener(){
@@ -87,8 +91,48 @@ public class Basicmenu extends AppCompatActivity {
             return true;
         }
     };
+    private ImageView.OnTouchListener hiratestbtn=new ImageView.OnTouchListener(){
 
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {//單字平假名
 
+                case MotionEvent.ACTION_DOWN:
+                    hiratest.setImageResource(R.drawable.aki_hirah);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    hiratest.setImageResource(R.drawable.aki_hira);
+                    Intent intent = new Intent();
+                    intent.setClass(Basicmenu.this, Basic50.class);
+                    startActivity(intent);
+                    break;
+
+            }
+            return true;
+        }
+    };
+    private ImageView.OnTouchListener katatestbtn=new ImageView.OnTouchListener(){
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {//單字平假名
+
+                case MotionEvent.ACTION_DOWN:
+                    katatest.setImageResource(R.drawable.aki_katah);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    katatest.setImageResource(R.drawable.aki_kata);
+                    Intent intent = new Intent();
+                    intent.setClass(Basicmenu.this, Basich50.class);
+                    startActivity(intent);
+                    break;
+
+            }
+            return true;
+        }
+    };
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

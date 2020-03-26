@@ -18,7 +18,7 @@
         android:id="@+id/hira"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         app:srcCompat="@drawable/aki_hira"/>
 
         <ImageView
@@ -28,6 +28,23 @@
             android:layout_below="@+id/hira"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/aki_kata" />
+        <ImageView
+            android:id="@+id/hiratest"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/kata"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/aki_hira" />
+        <ImageView
+            android:id="@+id/katatest"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/hiratest"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/aki_kata" />
+
+
+
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"

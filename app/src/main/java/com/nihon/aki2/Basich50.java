@@ -7,6 +7,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.nihon.aki2.control.PaintView;
 import com.nihon.aki2.mydb.dbbasich;
+import com.nihon.aki2.mydb.dbbasich50;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -107,7 +108,7 @@ public class Basich50 extends AppCompatActivity {
     }
     public void pre(){
         int s=num+1;
-        String result = dbbasich.executeQuery(s+"");
+        String result = dbbasich50.executeQuery(s+"");
 
         try{
             JSONArray jsonArray = new JSONArray(result);
