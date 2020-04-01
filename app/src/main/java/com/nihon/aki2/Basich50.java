@@ -11,6 +11,8 @@ import com.nihon.aki2.mydb.dbbasich50;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 import android.os.StrictMode;
 import android.util.DisplayMetrics;
@@ -27,11 +29,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Basich50 extends AppCompatActivity {
     private PaintView paintView;
     ImageView clean,sound,img,btnpre,btnnext;
     TextView show;
+    GifImageView mygif;
     int num=0;
     public MediaPlayer mediaplayer;
     int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko,R.raw.sa, R.raw.shi, R.raw.su, R.raw.se, R.raw.so,
@@ -43,6 +48,9 @@ public class Basich50 extends AppCompatActivity {
     int[] pic2=new int[] {R.drawable.a_2, R.drawable.i_2, R.drawable.u_2, R.drawable.e_2, R.drawable.o_2,R.drawable.ka_2, R.drawable.ki_2, R.drawable.ku_2, R.drawable.ke_2, R.drawable.ko_2,R.drawable.sa_2, R.drawable.shi_2, R.drawable.su_2, R.drawable.se_2, R.drawable.so_2,
             R.drawable.ta_2, R.drawable.chi_2, R.drawable.tsu_2, R.drawable.te_2, R.drawable.to_2,R.drawable.na_2, R.drawable.ni_2, R.drawable.nu_2, R.drawable.ne_2, R.drawable.no_2,R.drawable.ha_2, R.drawable.hi_2, R.drawable.fu_2, R.drawable.he_2, R.drawable.ho_2,R.drawable.ma_2, R.drawable.mi_2, R.drawable.mu_2,
             R.drawable.me_2, R.drawable.mo_2,R.drawable.ya_2, R.drawable.yu_2, R.drawable.yo_2,R.drawable.ra_2, R.drawable.ri_2, R.drawable.ru_2, R.drawable.re_2, R.drawable.ro_2,R.drawable.wa_2,R.drawable.n_2};
+    int[] picg=new int[] {R.drawable.a_g1, R.drawable.a_i1, R.drawable.u_g1, R.drawable.e_g1, R.drawable.o_g1,R.drawable.ka_g1, R.drawable.ki_g1, R.drawable.ku_g1, R.drawable.ke_g1, R.drawable.ko_g1,R.drawable.sa_g1, R.drawable.shi_g1, R.drawable.su_g1, R.drawable.se_g1, R.drawable.so_g1,
+            R.drawable.ta_g1, R.drawable.chi_g1, R.drawable.tsu_g1, R.drawable.te_g1, R.drawable.to_g1,R.drawable.na_g1, R.drawable.ni_g1, R.drawable.nu_g1, R.drawable.ne_g1, R.drawable.no_g1,R.drawable.ha_g1, R.drawable.hi_g1, R.drawable.fu_g1, R.drawable.he_g1, R.drawable.ho_g1,R.drawable.ma_g1, R.drawable.mi_g1, R.drawable.mu_g1,
+            R.drawable.me_g1, R.drawable.mo_g1,R.drawable.ya_g1, R.drawable.yu_g1, R.drawable.yo_g1,R.drawable.ra_g1, R.drawable.ri_g1, R.drawable.ru_g1, R.drawable.re_g1, R.drawable.ro_g1,R.drawable.wa_g1,R.drawable.n_g1,R.drawable.wo_g1};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +69,7 @@ public class Basich50 extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
+        mygif=(GifImageView)findViewById(R.id.mygif);
         paintView = (PaintView) findViewById(R.id.paintView);
         clean=(ImageView)findViewById(R.id.clean);
         sound=(ImageView)findViewById(R.id.sound);
@@ -79,6 +88,29 @@ public class Basich50 extends AppCompatActivity {
         //show.setText("あい（愛）"+"\n[a-i]\n"+"愛：愛慕");
         btnpre.setOnTouchListener(btpre);
         btnnext.setOnTouchListener(btnext);
+    }
+    private void init() {
+        mygif.setVisibility(View.VISIBLE);
+        mygif.setImageResource(picg[num]);
+        final GifDrawable getDura=GifDrawable.createFromResource(getResources(),picg[num]);
+        int duration=getDura.getDuration();
+        duration+=100;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //getDura.stop();
+                        mygif.setVisibility(View.GONE);
+                        paintView.setVisibility(View.VISIBLE);
+
+                    }
+                });
+            }
+        }, duration);
+
     }
     private ImageView.OnClickListener cbtn=new ImageView.OnClickListener(){
         @Override
@@ -108,6 +140,7 @@ public class Basich50 extends AppCompatActivity {
     }
     public void pre(){
         int s=num+1;
+        paintView.setVisibility(View.INVISIBLE);
         String result = dbbasich50.executeQuery(s+"");
 
         try{
@@ -125,7 +158,7 @@ public class Basich50 extends AppCompatActivity {
         }
 
         catch(Exception e){}
-
+        init();
     }
     private ImageView.OnTouchListener btnext=new ImageView.OnTouchListener(){
         @Override
