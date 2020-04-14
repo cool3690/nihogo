@@ -69,17 +69,19 @@ public class Comic extends AppCompatActivity    implements View.OnTouchListener 
         names=Account.getNames();
 
 
+        viewflipper=(ViewFlipper)findViewById(R.id.viewflipper);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
 
-        viewflipper.addView(getImageView(R.drawable.st01_1),0);
-        viewflipper.addView(getImageView(R.drawable.st01_2),1);
-        viewflipper.addView(getImageView(R.drawable.st01_3),2);
-        viewflipper.addView(getImageView(R.drawable.st01_4),3);
-        viewflipper.addView(getImageView(R.drawable.st01_5),4);
+     // viewflipper.addView(getImageView(R.drawable.st01_1),0,params);
+        viewflipper.addView(getImageView(R.drawable.st01_2),1,params);
+        viewflipper.addView(getImageView(R.drawable.st01_3),2,params);
+        viewflipper.addView(getImageView(R.drawable.st01_4),3,params);
+        viewflipper.addView(getImageView(R.drawable.st01_5),4,params);
 
 
         viewflipper.startFlipping();
        // viewflipper.setFlipInterval(1000);
-        viewflipper.setOnTouchListener(this);
+        viewflipper.setOnTouchListener( this);
         mDetector = new GestureDetector(new simpleGestureListener());
         /*
           myweb = (WebView) findViewById(R.id.webview);
@@ -100,7 +102,7 @@ public class Comic extends AppCompatActivity    implements View.OnTouchListener 
         imageView.setLayoutParams(params);
         imageView.setImageResource(id);
         imageView.setAdjustViewBounds(true);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
         return imageView;
     }
