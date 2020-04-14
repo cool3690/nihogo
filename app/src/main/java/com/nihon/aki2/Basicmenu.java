@@ -56,13 +56,13 @@ public class Basicmenu extends AppCompatActivity {
                 switch (event.getAction()) {//單字平假名
 
                     case MotionEvent.ACTION_DOWN:
-                        hira.setImageResource(R.drawable.aki_hirah);
+                        hira.setImageResource(R.drawable.aki_hirarenh);
 
                         break;
                     case MotionEvent.ACTION_UP:
-                        hira.setImageResource(R.drawable.aki_hira);
+                        hira.setImageResource(R.drawable.aki_hiraren);
                         Intent intent = new Intent();
-                        intent.setClass(Basicmenu.this, Basic.class);
+                        intent.setClass(Basicmenu.this, Basic50.class);
                         startActivity(intent);
                         break;
 
@@ -77,13 +77,13 @@ public class Basicmenu extends AppCompatActivity {
             switch (event.getAction()){//單字
 
                 case MotionEvent.ACTION_DOWN:
-                    kata.setImageResource(R.drawable.aki_katah);
+                    kata.setImageResource(R.drawable.aki_katarenh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    kata.setImageResource(R.drawable.aki_kata);
+                    kata.setImageResource(R.drawable.aki_kataren);
                     Intent intent=new Intent();
-                    intent.setClass(Basicmenu.this,Basich.class);
+                    intent.setClass(Basicmenu.this,Basich50.class);
 
                     startActivity(intent);
                     break;
@@ -104,7 +104,7 @@ public class Basicmenu extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     hiratest.setImageResource(R.drawable.aki_hira);
                     Intent intent = new Intent();
-                    intent.setClass(Basicmenu.this, Basic50.class);
+                    intent.setClass(Basicmenu.this, Basic.class);
                     startActivity(intent);
                     break;
 
@@ -125,7 +125,7 @@ public class Basicmenu extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     katatest.setImageResource(R.drawable.aki_kata);
                     Intent intent = new Intent();
-                    intent.setClass(Basicmenu.this, Basich50.class);
+                    intent.setClass(Basicmenu.this, Basich.class);
                     startActivity(intent);
                     break;
 

@@ -24,7 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Shiken extends AppCompatActivity {
-    ImageView bt1,bt2,bt3;
+    ImageView bt1,bt2,bt3,bt4,bt5;
     String account="",passwd="",names="";
     private Menu menu;
     String mychbun="",mychqa="";
@@ -45,10 +45,13 @@ public class Shiken extends AppCompatActivity {
         bt1=(ImageView)findViewById(R.id.bt01);
         bt2=(ImageView)findViewById(R.id.bt02);
         bt3=(ImageView)findViewById(R.id.bt03);
+        bt4=(ImageView)findViewById(R.id.bt04);
+        bt5=(ImageView)findViewById(R.id.bt05);
         bt1.setOnTouchListener(bt_1);
         bt2.setOnTouchListener(bt_2);
         bt3.setOnTouchListener(bt_3);
-
+        bt4.setOnTouchListener(bt_4);
+        bt5.setOnTouchListener(bt_5);
     }
 
 
@@ -118,7 +121,52 @@ public class Shiken extends AppCompatActivity {
             return true;
         }
     };
+    private ImageView.OnTouchListener bt_4=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){
+            switch (event.getAction()){//句子重組2
 
+                case MotionEvent.ACTION_DOWN:
+                    bt4.setImageResource(R.drawable.aki_advance1h);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    bt4.setImageResource(R.drawable.aki_advance1);
+                    Intent intent=new Intent();
+
+                    Bundle bundle=new Bundle();
+                    bundle.putString("LEVEL","C");
+                    intent.putExtras(bundle);
+                    intent.setClass(Shiken.this,Grading.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
+    private ImageView.OnTouchListener bt_5=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){
+            switch (event.getAction()){//句子重組2
+
+                case MotionEvent.ACTION_DOWN:
+                    bt5.setImageResource(R.drawable.aki_advance2h);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    bt5.setImageResource(R.drawable.aki_advance2);
+                    Intent intent=new Intent();
+
+                    Bundle bundle=new Bundle();
+                    bundle.putString("LEVEL","D");
+                    intent.putExtras(bundle);
+                    intent.setClass(Shiken.this,Grading.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
