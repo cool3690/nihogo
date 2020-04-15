@@ -196,7 +196,7 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn6.setImageResource(R.drawable.aki_comic);
                     Intent intent=new Intent();
-                    intent.setClass(Menushow.this, Comic.class);
+                    intent.setClass(Menushow.this, Comicmenu.class);
                     //Work.class
                     //  intent.setClass(Menushow.this,Myweb.class);
                     startActivity(intent);

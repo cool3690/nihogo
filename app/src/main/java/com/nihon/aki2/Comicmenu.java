@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Comicmenu extends AppCompatActivity {
-ImageView com1;
+ImageView com1,com2,com3;
     private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +28,18 @@ ImageView com1;
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         com1=(ImageView) findViewById(R.id.com1);
+        com2=(ImageView) findViewById(R.id.com2);
+        com3=(ImageView) findViewById(R.id.com3);
         com1.setOnTouchListener(com1btn);
+        com2.setOnTouchListener(com1btn);
+        com3.setOnTouchListener(com1btn3);
         myad();
     }
 
     private ImageView.OnTouchListener com1btn=new ImageView.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction()) {//課程
+            switch (event.getAction()) {//一拳超人
 
                 case MotionEvent.ACTION_DOWN:
                     com1.setImageResource(R.drawable.aki_super);
@@ -53,7 +57,27 @@ ImageView com1;
             return true;
         }
     };
+    private ImageView.OnTouchListener com1btn3=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {//一拳超人
 
+                case MotionEvent.ACTION_DOWN:
+                    com1.setImageResource(R.drawable.aki_super);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    com1.setImageResource(R.drawable.aki_super);
+                    Intent intent = new Intent();
+                    intent.setClass(Comicmenu.this, Childstory.class);
+                    //Work.class
+                    //  intent.setClass(Menushow.this,Myweb.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
     public void myad() {
         String myid = getString(R.string.idban);
         MobileAds.initialize(this, myid);

@@ -17,14 +17,18 @@
         android:largeHeap="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
-
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Childstory"
+            android:label="@string/title_activity_childstory"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Basich50"
             android:label="@string/title_activity_basich50"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Basic50"
             android:label="@string/title_activity_basic50"
@@ -40,7 +44,7 @@
         <activity
             android:name=".Comic"
             android:label="@string/title_activity_comic"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Info"
