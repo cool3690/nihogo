@@ -31,7 +31,7 @@ ImageView com1,com2,com3;
         com2=(ImageView) findViewById(R.id.com2);
         com3=(ImageView) findViewById(R.id.com3);
         com1.setOnTouchListener(com1btn);
-        com2.setOnTouchListener(com1btn);
+        com2.setOnTouchListener(com1btn2);
         com3.setOnTouchListener(com1btn3);
         myad();
     }
@@ -49,8 +49,31 @@ ImageView com1,com2,com3;
                     com1.setImageResource(R.drawable.aki_super);
                     Intent intent = new Intent();
                     intent.setClass(Comicmenu.this, Comic.class);
-                    //Work.class
-                    //  intent.setClass(Menushow.this,Myweb.class);
+                    Bundle bundle=new Bundle();
+                    bundle.putString("WEB","A");
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
+    private ImageView.OnTouchListener com1btn2=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {//一拳超人
+
+                case MotionEvent.ACTION_DOWN:
+                    com2.setImageResource(R.drawable.aki_super);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    com2.setImageResource(R.drawable.aki_super);
+                    Intent intent = new Intent();
+                    intent.setClass(Comicmenu.this, Comic.class);
+                    Bundle bundle=new Bundle();
+                    bundle.putString("WEB","B");
+                    intent.putExtras(bundle);
                     startActivity(intent);
                     break;
             }
@@ -63,11 +86,11 @@ ImageView com1,com2,com3;
             switch (event.getAction()) {//一拳超人
 
                 case MotionEvent.ACTION_DOWN:
-                    com1.setImageResource(R.drawable.aki_super);
+                    com3.setImageResource(R.drawable.aki_super);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    com1.setImageResource(R.drawable.aki_super);
+                    com3.setImageResource(R.drawable.aki_super);
                     Intent intent = new Intent();
                     intent.setClass(Comicmenu.this, Childstory.class);
                     //Work.class

@@ -38,9 +38,8 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 
 public class Comic extends AppCompatActivity {
     WebView myweb;
-    ViewFlipper viewflipper;
-    private GestureDetector mDetector;
-    String account="",passwd="",names="",course_num="";
+
+    String account="",passwd="",names="",course_num="",url="";
     private AdView mAdView;
     private Menu menu;
     @Override
@@ -67,24 +66,26 @@ public class Comic extends AppCompatActivity {
         account=Account.getAccount();
         passwd=Account.getPasswd();
         names=Account.getNames();
-
-
-
+        Intent intent=this.getIntent();
+        Bundle bundle=intent.getExtras();
+        String tmp=bundle.getString("WEB");
+        if(tmp.contains("A")){
+            url="https://tonarinoyj.jp/episode/13933686331604558285";
+        }
+        else if(tmp.contains("B")){
+            url="https://comic.k-manga.jp/title/54681/pv";
+        }
         myweb = (WebView) findViewById(R.id.webview);
         myweb.getSettings().setBuiltInZoomControls(true);
         myweb.getSettings().setJavaScriptEnabled(true);
         myweb.setWebViewClient(new WebViewClient());
         // https://www.ganganonline.com/
         //https://tonarinoyj.jp/episode/13933686331604558285
-        myweb.loadUrl("https://tonarinoyj.jp/episode/13933686331604558285");
+        myweb.loadUrl(url);
         myad();
 
 
     }
-
-
-
-
     public void onBackPressed() {
         if (myweb.canGoBack()) {
             myweb.goBack();

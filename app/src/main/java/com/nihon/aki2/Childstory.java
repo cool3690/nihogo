@@ -87,8 +87,6 @@ public class Childstory extends AppCompatActivity    implements View.OnTouchList
         final int FLING_MIN_DISTANCE = 100, FLING_MIN_VELOCITY = 200;
         @Override
         public boolean onDown(MotionEvent e) {
-            // TODO Auto-generated method stub
-
             return true;
         }
         @Override

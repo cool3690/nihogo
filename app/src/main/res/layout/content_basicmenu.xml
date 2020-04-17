@@ -20,26 +20,26 @@
         android:layout_height="100dp"
         android:layout_marginTop="100dp"
         app:srcCompat="@drawable/aki_hiraren"/>
-
-        <ImageView
-            android:id="@+id/kata"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@+id/hira"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/aki_kataren" />
         <ImageView
             android:id="@+id/hiratest"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_below="@+id/kata"
+            android:layout_below="@+id/hira"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/aki_hira" />
+        <ImageView
+            android:id="@+id/kata"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/hiratest"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/aki_kataren" />
+
         <ImageView
             android:id="@+id/katatest"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_below="@+id/hiratest"
+            android:layout_below="@+id/kata"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/aki_kata" />
 
