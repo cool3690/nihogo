@@ -49,32 +49,14 @@ public class Menushow extends AppCompatActivity {
        btn4=(ImageView)findViewById(R.id.btn4);
         btn5=(ImageView)findViewById(R.id.btn5);
         btn6=(ImageView)findViewById(R.id.btn6);
+        btn6.setVisibility(View.GONE);
         btn1.setOnTouchListener(b1);
         btn2.setOnTouchListener(b2);
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
-        btn6.setOnTouchListener(b6);
-      /*
-        String myid=getString(R.string.appid);
-        MobileAds.initialize(this, myid);
+      //  btn6.setOnTouchListener(b6);
 
-        mAdView = findViewById(R.id.adView);
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-        });
-        */
     }
 
 

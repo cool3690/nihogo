@@ -76,14 +76,18 @@ public class Sanmenu extends AppCompatActivity {
             }
         }
         else if(level.equals("C")){
-            for(int i=26;i<=k;i++){
+            for(int i=26;i<=38;i++){
                 Jsan jsan = new Jsan("Lesson"+i);
 
                 jsans.add(jsan);
             }
         }
         else{
+            for(int i=39;i<=k;i++){
+                Jsan jsan = new Jsan("Lesson"+i);
 
+                jsans.add(jsan);
+            }
         }
        final JsansAdapter adapter = new JsansAdapter(this, R.layout.jsant, jsans);
         menulist.setAdapter(adapter);
@@ -130,6 +134,10 @@ public class Sanmenu extends AppCompatActivity {
                     else if(level.equals("C")){
                         result = dbsanid.executeQuery(position+26+"");
                         p=position+26;
+                    }
+                    else if(level.equals("D")){
+                        result = dbsanid.executeQuery(position+39+"");
+                        p=position+39;
                     }
                     String ans="";
                     try{
