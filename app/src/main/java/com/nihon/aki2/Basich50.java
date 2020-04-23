@@ -21,7 +21,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +40,19 @@ public class Basich50 extends AppCompatActivity {
     ImageView clean,sound,img,btnpre,btnnext;
     TextView show;
     GifImageView mygif;
+    Spinner page;
     int num=0;
     public MediaPlayer mediaplayer;
+    String[]mypage=new String[]{"ア","イ","ウ","エ","オ",
+            "カ","キ","ク","ケ","コ",
+            "サ","シ","ス","セ","ソ",
+            "タ","チ","ツ","テ","ト",
+            "ナ","ニ","ヌ","ネ","ノ",
+            "ハ","ヒ","フ","ヘ","ホ",
+            "マ","ミ","ム","メ","モ",
+            "ヤ","ユ","ヨ",
+            "ラ","リ","ル","レ","ロ",
+            "ワ","ン"};
     int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko,R.raw.sa, R.raw.shi, R.raw.su, R.raw.se, R.raw.so,
             R.raw.ta, R.raw.chi, R.raw.tsu, R.raw.te, R.raw.to,R.raw.na, R.raw.ni, R.raw.nu, R.raw.ne, R.raw.no,R.raw.ha, R.raw.hi, R.raw.hu, R.raw.he, R.raw.ho,R.raw.ma, R.raw.mi, R.raw.mu,
             R.raw.me, R.raw.mo ,R.raw.ya, R.raw.yu, R.raw.yo,R.raw.ra, R.raw.ri, R.raw.ru, R.raw.re, R.raw.ro,R.raw.wa,R.raw.n};
@@ -77,6 +91,7 @@ public class Basich50 extends AppCompatActivity {
         show=(TextView) findViewById(R.id.show);
         btnpre=(ImageView)findViewById(R.id.btnpre);
         btnnext=(ImageView)findViewById(R.id.btnnext);
+        page=(Spinner)findViewById(R.id.page);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.init(metrics);
@@ -88,7 +103,39 @@ public class Basich50 extends AppCompatActivity {
         //show.setText("あい（愛）"+"\n[a-i]\n"+"愛：愛慕");
         btnpre.setOnTouchListener(btpre);
         btnnext.setOnTouchListener(btnext);
+        ArrayAdapter<String> adapterPage=new ArrayAdapter<String>
+                (this,android.R.layout.simple_spinner_item,mypage);
+
+        // 設定Spinner顯示的格式
+        adapterPage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // 設定Spinner的資料來源
+        page.setAdapter(adapterPage);
+
+        // 設定 spnPrefer 元件 ItemSelected 事件的 listener 為  spnPreferListener
+        page.setOnItemSelectedListener(spnPreferListener);
     }
+    private Spinner.OnItemSelectedListener spnPreferListener=
+            new Spinner.OnItemSelectedListener(){
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View v,
+                                           int position, long id) {
+                    //String sel=parent.getSelectedItem().toString();
+                    num=position;
+
+                    paintView.setVisibility(View.INVISIBLE);
+                    count();
+                    paintView.setBackground(getResources().getDrawable(pic[num]));
+                    img.setImageResource(pic2[num]);
+
+
+                    init();
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            };
     private void init() {
         mygif.setVisibility(View.VISIBLE);
         mygif.setImageResource(picg[num]);
