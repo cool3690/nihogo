@@ -142,6 +142,7 @@ public class Basic50 extends AppCompatActivity {
 
                 }
             };
+
     private void init() {
         mygif.setVisibility(View.VISIBLE);
         mygif.setImageResource(picg[num]);

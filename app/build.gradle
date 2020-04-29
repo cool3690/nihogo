@@ -50,7 +50,7 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
-
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
 /*
 
     implementation 'com.android.support:cardview-v7:28.0.0'
