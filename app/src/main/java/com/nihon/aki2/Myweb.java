@@ -71,7 +71,8 @@ public class Myweb extends AppCompatActivity {
         myweb.setWebViewClient(new WebViewClient());
         //myweb.loadUrl("http://akkyschool.com/goods_select.php");
         myweb.loadUrl("https://www3.nhk.or.jp/news/easy/");
-
+//https://www3.nhk.or.jp/news/easy/
+// //https://www.mangaz.com/book/fin/194152
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.GONE);

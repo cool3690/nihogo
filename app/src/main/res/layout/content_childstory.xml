@@ -18,10 +18,11 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/myimg"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/st01_1"
+                app:srcCompat="@drawable/st02_01"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
 
         </RelativeLayout>
     </ViewFlipper>

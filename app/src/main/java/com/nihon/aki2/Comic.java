@@ -71,9 +71,10 @@ public class Comic extends AppCompatActivity {
         String tmp=bundle.getString("WEB");
         if(tmp.contains("A")){
             url="https://tonarinoyj.jp/episode/13933686331604558285";
+
         }
         else if(tmp.contains("B")){
-            url="https://comic.k-manga.jp/title/54681/pv";
+            url=" https://tonarinoyj.jp/episode/10834108156632992653";
         }
         myweb = (WebView) findViewById(R.id.webview);
         myweb.getSettings().setBuiltInZoomControls(true);
