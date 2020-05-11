@@ -49,13 +49,13 @@ public class Menushow extends AppCompatActivity {
        btn4=(ImageView)findViewById(R.id.btn4);
         btn5=(ImageView)findViewById(R.id.btn5);
         btn6=(ImageView)findViewById(R.id.btn6);
-        btn6.setVisibility(View.GONE);
+        //btn6.setVisibility(View.GONE);
         btn1.setOnTouchListener(b1);
         btn2.setOnTouchListener(b2);
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
-      //  btn6.setOnTouchListener(b6);
+      btn6.setOnTouchListener(b6);
 
     }
 
@@ -137,7 +137,7 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn4.setImageResource(R.drawable.aki_jlpt);
                     Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Comicmenu.class);
+                    intent.setClass(Menushow.this,Info.class);
                     //Work   Info
                     startActivity(intent);
 
@@ -180,7 +180,7 @@ public class Menushow extends AppCompatActivity {
                     Intent intent=new Intent();
                     intent.setClass(Menushow.this, Comicmenu.class);
                     //Work.class
-                    //  intent.setClass(Menushow.this,Myweb.class);
+                    intent.setClass(Menushow.this,Comicmenu.class);
                     startActivity(intent);
                     break;
             }

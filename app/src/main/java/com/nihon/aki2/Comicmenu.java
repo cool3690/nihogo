@@ -32,7 +32,8 @@ ImageView com1,com2,com3;
         com3=(ImageView) findViewById(R.id.com3);
         com1.setOnTouchListener(com1btn);
         com2.setOnTouchListener(com1btn2);
-        com3.setOnTouchListener(com1btn3);
+       // com3.setOnTouchListener(com1btn3);
+        com3.setVisibility(View.GONE);
         myad();
     }
 
@@ -61,14 +62,14 @@ ImageView com1,com2,com3;
     private ImageView.OnTouchListener com1btn2=new ImageView.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction()) {//一拳超人
+            switch (event.getAction()) {//足球
 
                 case MotionEvent.ACTION_DOWN:
-                    com2.setImageResource(R.drawable.aki_super);
+                    com2.setImageResource(R.drawable.aki_soccer);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    com2.setImageResource(R.drawable.aki_super);
+                    com2.setImageResource(R.drawable.aki_soccer);
                     Intent intent = new Intent();
                     intent.setClass(Comicmenu.this, Comic.class);
                     Bundle bundle=new Bundle();
@@ -83,14 +84,14 @@ ImageView com1,com2,com3;
     private ImageView.OnTouchListener com1btn3=new ImageView.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction()) {//一拳超人
+            switch (event.getAction()) {//讀本
 
                 case MotionEvent.ACTION_DOWN:
-                    com3.setImageResource(R.drawable.aki_super);
+                    com3.setImageResource(R.drawable.aki_soccer);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    com3.setImageResource(R.drawable.aki_super);
+                    com3.setImageResource(R.drawable.aki_soccer);
                     Intent intent = new Intent();
                     intent.setClass(Comicmenu.this, Childstory.class);
                     //Work.class

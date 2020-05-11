@@ -26,14 +26,14 @@
             android:layout_height="130dp"
             android:layout_marginTop="10dp"
             android:layout_below="@id/com1"
-            app:srcCompat="@drawable/aki_super" />
+            app:srcCompat="@drawable/aki_soccer" />
         <ImageView
             android:id="@+id/com3"
             android:layout_width="wrap_content"
             android:layout_height="130dp"
             android:layout_marginTop="10dp"
             android:layout_below="@id/com2"
-            app:srcCompat="@drawable/aki_super" />
+            app:srcCompat="@drawable/aki_soccer" />
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
