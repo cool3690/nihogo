@@ -21,10 +21,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Listenmenu"
+            android:label="@string/title_activity_listenmenu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Listening"
+            android:label="@string/title_activity_listening"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Childstory"
             android:label="@string/title_activity_childstory"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Basich50"
             android:label="@string/title_activity_basich50"

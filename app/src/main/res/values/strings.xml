@@ -72,4 +72,6 @@
     <string name="title_activity_basic50">平假名</string>
     <string name="title_activity_basich50">片假名</string>
     <string name="title_activity_childstory">兒童故事</string>
+    <string name="title_activity_listening">課文聽力練習</string>
+    <string name="title_activity_listenmenu">選單</string>
 </resources>
