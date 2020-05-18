@@ -244,12 +244,12 @@ public class Listening extends AppCompatActivity {
         public void onClick(View v) {
            if(tf==true){
                tf=false;
-               play.setImageResource(R.drawable.pause);
+               play.setImageResource(R.drawable.play);
 
            }
            else{
                tf=true;
-               play.setImageResource(R.drawable.play);
+               play.setImageResource(R.drawable.pause);
            }
             pauseplay();
 
@@ -318,7 +318,8 @@ public class Listening extends AppCompatActivity {
         protected String doInBackground(String... aurl) {
 
             playSong(0);
-
+            play.setImageResource(R.drawable.pause);
+            tf=true;
             new Listening.DownloadFileAsync().cancel(true);
             return null;
         }
@@ -374,4 +375,12 @@ public class Listening extends AppCompatActivity {
             mediaplayer.start();
         }
     }
+    /* */
+    @Override
+    public void onPause(){
+        super.onPause();
+        mediaplayer.pause();
+    }
+
+
 }
