@@ -1,16 +1,16 @@
 package com.nihon.aki2;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.nihon.aki2.control.Jsan;
-import com.nihon.aki2.mydb.dbbasic50;
+import com.nihon.aki2.control.Listenlist;
+import com.nihon.aki2.control.ListenlistAdapter;
+import com.nihon.aki2.control.Team;
+import com.nihon.aki2.control.TeamsAdapter;
 import com.nihon.aki2.mydb.dblisten;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +19,13 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,16 +33,12 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
+import java.util.ArrayList;
 
 public class Listening extends AppCompatActivity {
+    ArrayList<Listenlist> listenlists = new ArrayList<Listenlist>();
+    ListView listview;
     ImageView play,btnpre,btnnext,pic;
     SeekBar sbar;
     int count=0;
@@ -79,9 +78,12 @@ public class Listening extends AppCompatActivity {
         btnpre=(ImageView)findViewById(R.id.btnpre);
         btnnext=(ImageView)findViewById(R.id.btnnext);
         remainingTimeLabel=(TextView)findViewById(R.id.remainingTimeLabel);
+        listview = (ListView) findViewById(R.id.list);
+        listview.setOnItemClickListener(lvonclick);
+
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
-       ans= bundle.getString("ANS");
+        ans= bundle.getString("ANS");
         if(ans.equals("A")){
             int j=0;
             for(int i=1;i<=12;i++){
@@ -119,13 +121,13 @@ public class Listening extends AppCompatActivity {
             url="https://akkyschool.com/images/listening/advance1/";
             pic.setImageResource(R.drawable.aki_a1);
         }
-          else if(ans.equals("D")){
-                int j=0;
-                    for(int i=39;i<=50;i++){
+        else if(ans.equals("D")){
+            int j=0;
+            for(int i=39;i<=50;i++){
 
-                        lessons[j]="L"+i;
-                        j++;
-                    }
+                lessons[j]="L"+i;
+                j++;
+            }
             length=36;
             p1=new int[]{2,3,3,3,3,3,3,3,3,3,3,3};
             url="https://akkyschool.com/images/listening/advance2/";
@@ -134,11 +136,11 @@ public class Listening extends AppCompatActivity {
         play.setOnClickListener(playbyn);
         sbar.setOnSeekBarChangeListener(sbarbtn);
         for(int i=0;i<45;i++){
-           int j=i+1;
-           String tmp="T"+j+".mp3";
+            int j=i+1;
+            String tmp="T"+j+".mp3";
             filename[i]=tmp;
         }
-      startDownload();
+        startDownload();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -154,6 +156,24 @@ public class Listening extends AppCompatActivity {
         }).start();
         btnnext.setOnClickListener(nextbtn);
         btnpre.setOnClickListener(prebtn);
+        /*
+        for(int i=1;i<=p1[0];i++){
+            int j=i+1;
+            Listenlist team = new Listenlist("T"+i+".mp3");
+            listenlists.add(team);
+        }
+
+//seraechsql2();
+
+        Listenlist team = new Listenlist("s");
+        listenlists.add(team);
+        final ListenlistAdapter adapter = new ListenlistAdapter(this, R.layout.listenlist, listenlists);
+        listview.setAdapter(adapter);
+        listview.setTextFilterEnabled(true);
+        listview.setSelector(R.drawable.green);
+
+*/
+
     }
     private ImageView.OnClickListener nextbtn=new ImageView.OnClickListener(){
         @Override
@@ -183,7 +203,7 @@ public class Listening extends AppCompatActivity {
             }
 
 
-                  /*    */
+            /*    */
 
 
 
@@ -191,7 +211,33 @@ public class Listening extends AppCompatActivity {
 
         }
     };
+    private ListView.OnItemClickListener lvonclick= new ListView.OnItemClickListener(){
+        @Override
+        public void onItemClick(AdapterView<?> parent, View v,
+                                int position, long id) {
+          //  String str=parent.getItemAtPosition(position).toString();
+            String str = ((TextView) v.findViewById(R.id.name)).getText().toString();
+          TextView name= (TextView) v.findViewById(R.id.name);
+          //  name.setTextColor(Color.BLUE);
+            String tmp=url;
+            tmp=tmp+str;
+           count=position+1;
+            try {//+filename[0]
+                totalTime=0;
+                mediaplayer.reset();
+                mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                mediaplayer.setDataSource(tmp);
 
+                mediaplayer.prepare();
+
+                totalTime=mediaplayer.getDuration();
+                sbar.setMax(totalTime);
+                mediaplayer.start();
+            }
+            catch (Exception e){}
+
+        }
+    };
     private ImageView.OnClickListener prebtn=new ImageView.OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -199,7 +245,7 @@ public class Listening extends AppCompatActivity {
             String tmp=url;
             count--;
             if(count<0){mytoast("這是第一個");count=0;}
-          else{
+            else{
                 seraechsql(count);
                 tmp+="L"+les+"/T"+track+".mp3";
 
@@ -225,10 +271,10 @@ public class Listening extends AppCompatActivity {
     private  SeekBar.OnSeekBarChangeListener sbarbtn=new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(fromUser){
-                        mediaplayer.seekTo(progress);
-                        sbar.setProgress(progress);
-                    }
+            if(fromUser){
+                mediaplayer.seekTo(progress);
+                sbar.setProgress(progress);
+            }
         }
         @Override
         public void onStartTrackingTouch(SeekBar seekBar) {
@@ -242,22 +288,20 @@ public class Listening extends AppCompatActivity {
     private ImageView.OnClickListener playbyn = new ImageView.OnClickListener() {
         @Override
         public void onClick(View v) {
-           if(tf==true){
-               tf=false;
-               play.setImageResource(R.drawable.play);
+            if(tf==true){
+                tf=false;
+                play.setImageResource(R.drawable.play);
 
-           }
-           else{
-               tf=true;
-               play.setImageResource(R.drawable.pause);
-           }
+            }
+            else{
+                tf=true;
+                play.setImageResource(R.drawable.pause);
+            }
             pauseplay();
 
         }
     };
     public void seraechsql(int count){
-        //count
-
 
         String result = dblisten.executeQuery(ans+"");
 
@@ -279,6 +323,38 @@ public class Listening extends AppCompatActivity {
 
 
     }
+
+    public void seraechsql2(){
+        //count
+
+
+        String result = dblisten.executeQuery(ans+"");
+
+        try{
+
+            JSONArray jsonArray = new JSONArray(result);
+            length=jsonArray.length();
+            for(int i =0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
+            {
+                JSONObject jsonData = jsonArray.getJSONObject(i);
+                les=jsonData.getString("lesson");
+                track=jsonData.getString("track");
+                Listenlist team = new Listenlist("L"+les+"/T"+track+".mp3");
+
+                listenlists.add(team);
+            }
+
+        }
+
+        catch(Exception e){}
+        final ListenlistAdapter adapter = new ListenlistAdapter(this, R.layout.listenlist, listenlists);
+        listview.setAdapter(adapter);
+        listview.setTextFilterEnabled(true);
+        listview.setSelector(R.drawable.green);
+
+    }
+
+
     private void playSong(int song) {
 
 
@@ -312,6 +388,7 @@ public class Listening extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // showDialog(DIALOG_DOWNLOAD_PROGRESS);
+           // seraechsql2();
         }
 
         @Override
@@ -320,18 +397,18 @@ public class Listening extends AppCompatActivity {
             playSong(0);
             play.setImageResource(R.drawable.pause);
             tf=true;
+
             new Listening.DownloadFileAsync().cancel(true);
             return null;
         }
 
         protected void onProgressUpdate(String... progress) {
-            //   Log.d("ANDRO_ASYNC",progress[0]);
-            // mProgressDialog.setProgress(Integer.parseInt(progress[0]));
+
         }
 
         @Override
         protected void onPostExecute(String unused) {
-            // dismissDialog(DIALOG_DOWNLOAD_PROGRESS);
+            seraechsql2();
         }
     }
     private Handler handler = new Handler() {
@@ -343,9 +420,9 @@ public class Listening extends AppCompatActivity {
 
             // Update Labels.
             String elapsedTime = createTimeLabel(currentPosition);
-           // elapsedTimeLabel.setText(totalTime);
+            // elapsedTimeLabel.setText(totalTime);
 
-           String remainingTime = createTimeLabel(totalTime-currentPosition);
+            String remainingTime = createTimeLabel(totalTime-currentPosition);
             remainingTimeLabel.setText("" + remainingTime);
         }
     };

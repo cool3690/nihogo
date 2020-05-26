@@ -172,11 +172,11 @@ public class Menushow extends AppCompatActivity {
             switch (event.getAction()){//課程
 
                 case MotionEvent.ACTION_DOWN:
-                    btn6.setImageResource(R.drawable.aki_comic1);
+                    btn6.setImageResource(R.drawable.aki_listenh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn6.setImageResource(R.drawable.aki_comic);
+                    btn6.setImageResource(R.drawable.aki_listen);
                     Intent intent=new Intent();
                  //   intent.setClass(Menushow.this, Comicmenu.class);
                     //Work.class
