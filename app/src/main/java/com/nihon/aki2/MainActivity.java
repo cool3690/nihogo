@@ -96,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
                 java.util.Date endDate= sdf.parse(sdate);
                 long day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
                 if(day<0){
-                    countday.setText("2020年日檢第一回考試等候公告");
+                //    countday.setTextSize(16);
+                    countday.setText("   "+"0");
                 }
                 else{
                     countday.setText("   "+day);

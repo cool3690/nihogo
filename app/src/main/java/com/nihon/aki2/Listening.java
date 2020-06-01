@@ -215,10 +215,9 @@ public class Listening extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View v,
                                 int position, long id) {
-          //  String str=parent.getItemAtPosition(position).toString();
+
             String str = ((TextView) v.findViewById(R.id.name)).getText().toString();
-          TextView name= (TextView) v.findViewById(R.id.name);
-          //  name.setTextColor(Color.BLUE);
+
             String tmp=url;
             tmp=tmp+str;
            count=position+1;
@@ -417,11 +416,6 @@ public class Listening extends AppCompatActivity {
             int currentPosition = msg.what;
             // Update positionBar.
             sbar.setProgress(currentPosition);
-
-            // Update Labels.
-            String elapsedTime = createTimeLabel(currentPosition);
-            // elapsedTimeLabel.setText(totalTime);
-
             String remainingTime = createTimeLabel(totalTime-currentPosition);
             remainingTimeLabel.setText("" + remainingTime);
         }

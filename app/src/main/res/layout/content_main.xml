@@ -111,7 +111,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="2020/7/5  週日"
+                        android:text="停辦"
                         android:textSize="24sp" />
 
                     <TextView
