@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.nihon.aki2.control.Listenlist;
@@ -13,6 +14,7 @@ import com.nihon.aki2.control.Team;
 import com.nihon.aki2.control.TeamsAdapter;
 import com.nihon.aki2.mydb.dblisten;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -24,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
@@ -36,10 +39,13 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Listening extends AppCompatActivity {
+public class Listening extends AppCompatActivity  {
     ArrayList<Listenlist> listenlists = new ArrayList<Listenlist>();
     ListView listview;
     ImageView play,btnpre,btnnext,pic;
+    private Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12,bt13;
+    // ImageView []btarr=new ImageView[]{bt0,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9};
+    Button[] btarr=new Button[]{bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12} ;
     SeekBar sbar;
     int count=0;
     boolean tf=true;
@@ -78,6 +84,34 @@ public class Listening extends AppCompatActivity {
         btnpre=(ImageView)findViewById(R.id.btnpre);
         btnnext=(ImageView)findViewById(R.id.btnnext);
         remainingTimeLabel=(TextView)findViewById(R.id.remainingTimeLabel);
+       bt1=(Button)findViewById(R.id.bt1);
+
+        bt2=(Button)findViewById(R.id.bt2);
+        bt3=(Button)findViewById(R.id.bt3);
+        bt4=(Button)findViewById(R.id.bt4);
+        bt5=(Button)findViewById(R.id.bt5);
+        bt6=(Button)findViewById(R.id.bt6);
+        bt7=(Button)findViewById(R.id.bt7);
+        bt8=(Button)findViewById(R.id.bt8);
+        bt9=(Button)findViewById(R.id.bt9);
+        bt10=(Button)findViewById(R.id.bt10);
+        bt11=(Button)findViewById(R.id.bt11);
+        bt12=(Button)findViewById(R.id.bt12);
+        bt13=(Button)findViewById(R.id.bt13);
+        bt1.setOnClickListener(bt1btn);
+        bt2.setOnClickListener(bt1btn);
+        bt3.setOnClickListener(bt1btn);
+        bt4.setOnClickListener(bt1btn);
+        bt5.setOnClickListener(bt1btn);
+        bt6.setOnClickListener(bt1btn);
+        bt7.setOnClickListener(bt1btn);
+        bt8.setOnClickListener(bt1btn);
+        bt9.setOnClickListener(bt1btn);
+        bt10.setOnClickListener(bt1btn);
+        bt11.setOnClickListener(bt1btn);
+        bt12.setOnClickListener(bt1btn);
+        bt13.setOnClickListener(bt1btn);
+          /* */
         listview = (ListView) findViewById(R.id.list);
         listview.setOnItemClickListener(lvonclick);
 
@@ -100,11 +134,24 @@ public class Listening extends AppCompatActivity {
         else if(ans.equals("B")) {
             int j = 0;
             for (int i = 13; i <= 25; i++) {
-
+              //  btarr[j].setText("ook");
                 lessons[j] = "L" + i;
                 j++;
 
             } length=42;
+            bt1.setText("L13");
+            bt2.setText("L14");
+            bt3.setText("L15");
+            bt4.setText("L16");
+            bt5.setText("L17");
+            bt6.setText("L18");
+            bt7.setText("L19");
+            bt8.setText("L20");
+            bt9.setText("L21");
+            bt10.setText("L22");
+            bt11.setText("L23");
+            bt12.setText("L24");
+            bt13.setText("L25");
             url="https://akkyschool.com/images/listening/primary2/";
             p1=new int[]{2,4,3,4,3,3,3,3,3,4,3,3};
             pic.setImageResource(R.drawable.aki_p2);
@@ -112,11 +159,24 @@ public class Listening extends AppCompatActivity {
         else if(ans.equals("C")) {
             int j = 0;
             for (int i = 26; i <= 38; i++) {
-
+               // btarr[j].setText(i+"");
                 lessons[j] = "L" + i;
                 j++;
 
             } length=39;
+            bt1.setText("L26");
+            bt2.setText("L27");
+            bt3.setText("L28");
+            bt4.setText("L29");
+            bt5.setText("L30");
+            bt6.setText("L31");
+            bt7.setText("L32");
+            bt8.setText("L33");
+            bt9.setText("L34");
+            bt10.setText("L35");
+            bt11.setText("L36");
+            bt12.setText("L37");
+            bt13.setText("L38");
             p1=new int[]{2,3,3,3,3,3,3,3,3,3,3,3};
             url="https://akkyschool.com/images/listening/advance1/";
             pic.setImageResource(R.drawable.aki_a1);
@@ -124,11 +184,23 @@ public class Listening extends AppCompatActivity {
         else if(ans.equals("D")){
             int j=0;
             for(int i=39;i<=50;i++){
-
+               // btarr[j].setText(i+"");
                 lessons[j]="L"+i;
                 j++;
             }
             length=36;
+            bt1.setText("L39");
+            bt2.setText("L40");
+            bt3.setText("L41");
+            bt4.setText("L42");
+            bt5.setText("L43");
+            bt6.setText("L44");
+            bt7.setText("L45");
+            bt8.setText("L46");
+            bt9.setText("L47");
+            bt10.setText("L48");
+            bt11.setText("L49");
+            bt12.setText("L50");
             p1=new int[]{2,3,3,3,3,3,3,3,3,3,3,3};
             url="https://akkyschool.com/images/listening/advance2/";
             pic.setImageResource(R.drawable.aki_a2);
@@ -175,6 +247,57 @@ public class Listening extends AppCompatActivity {
 */
 
     }
+    private Button.OnClickListener bt1btn=new Button.OnClickListener(){
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.bt1:
+                    listview.smoothScrollToPositionFromTop(0,0);
+                    break;
+                case  R.id.bt2:
+                    listview.smoothScrollToPositionFromTop(p1[0]+1,0);
+                    break;
+                case  R.id.bt3:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+1,0);
+                    break;
+                case  R.id.bt4:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+1,0);
+                    break;
+                case  R.id.bt5:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+1,0);
+                    break;
+                case  R.id.bt6:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+p1[4]+1,0);
+                    break;
+                case  R.id.bt7:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+p1[4]+p1[5]+1,0);
+                    break;
+                case  R.id.bt8:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+p1[4]+p1[5]+p1[6]+1,0);
+                    break;
+                case  R.id.bt9:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+p1[4]+p1[5]+p1[6]+p1[7]+1,0);
+                    break;
+                case  R.id.bt10:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+p1[4]+p1[5]+p1[6]+p1[7]+p1[8]+1,0);
+                    break;
+                case  R.id.bt11:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+p1[4]+p1[5]+p1[6]+p1[7]+p1[8]+p1[9]+1,0);
+                    break;
+                case  R.id.bt12:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+p1[4]+p1[5]+p1[6]+p1[7]+p1[8]+p1[9]+p1[10]+1,0);
+                    break;
+                case  R.id.bt13:
+                    listview.smoothScrollToPositionFromTop(p1[0]+p1[1]+p1[2]+p1[3]+p1[4]+p1[5]+p1[6]+p1[7]+p1[8]+p1[9]+p1[10]+1,0);
+                    break;
+                default:
+                    break;
+            }
+
+
+        }
+    };
     private ImageView.OnClickListener nextbtn=new ImageView.OnClickListener(){
         @Override
         public void onClick(View v) {

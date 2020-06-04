@@ -13,7 +13,7 @@ android:layout_height="match_parent">
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="1"
             android:text="T01.mp3"
             android:layout_gravity="center"

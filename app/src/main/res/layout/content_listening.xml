@@ -14,12 +14,133 @@
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
         >
-
+        <HorizontalScrollView
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:id="@+id/L0">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+
+            >
+
+            <Button
+                android:id="@+id/bt1"
+                style="@style/btn_primary4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="L1" />
+
+            <Button
+                android:id="@+id/bt2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L2"
+                android:textColor="#151414" />
+            <Button
+                android:id="@+id/bt3"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L3"
+                android:textColor="#151414" />
+
+            <Button
+                android:id="@+id/bt4"
+                style="@style/btn_primary4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="L4"
+                android:textColor="#151414" />
+
+            <Button
+                android:id="@+id/bt5"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L5"
+                android:textColor="#151414" />
+            <Button
+                android:id="@+id/bt6"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L6"
+                android:textColor="#151414" />
+            <Button
+            android:id="@+id/bt7"
+            style="@style/btn_primary4"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="L7"
+            android:textColor="#151414" />
+
+            <Button
+                android:id="@+id/bt8"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L8"
+                android:textColor="#151414" />
+            <Button
+                android:id="@+id/bt9"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L9"
+                android:textColor="#151414" />
+            <Button
+                android:id="@+id/bt10"
+                style="@style/btn_primary4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="L10"
+                android:textColor="#151414" />
+
+            <Button
+                android:id="@+id/bt11"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L11"
+                android:textColor="#151414" />
+            <Button
+                android:id="@+id/bt12"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L12"
+                android:textColor="#151414" />
+            <Button
+                android:id="@+id/bt13"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                style="@style/btn_primary4"
+                android:text="L13"
+                android:textColor="#151414" />
+        </LinearLayout>
+        </HorizontalScrollView>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/L0"
             android:id="@+id/L1"
             >
             <ImageView android:id="@+id/play"
@@ -43,13 +164,15 @@
                 android:layout_gravity="center"
                 android:layout_weight=".7"
                 android:text="1:49" />
+
+
         </LinearLayout>
 
 
         <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
 
             android:layout_below="@id/L1"/>
 
@@ -62,16 +185,16 @@
             app:srcCompat="@drawable/aki_p1" />
         <ImageView
             android:id="@+id/btnpre"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"
             app:srcCompat="@drawable/aki_pre" />
 
         <ImageView
             android:id="@+id/btnnext"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"
             android:layout_alignParentRight="true"
