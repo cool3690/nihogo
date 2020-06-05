@@ -128,6 +128,7 @@ public class Listening extends AppCompatActivity  {
 
 
             } length=45;
+            bt13.setVisibility(View.GONE);
             pic.setImageResource(R.drawable.aki_p1);
             url="https://akkyschool.com/images/listening/primary1/";
         }
@@ -201,6 +202,7 @@ public class Listening extends AppCompatActivity  {
             bt10.setText("L48");
             bt11.setText("L49");
             bt12.setText("L50");
+            bt13.setVisibility(View.GONE);
             p1=new int[]{2,3,3,3,3,3,3,3,3,3,3,3};
             url="https://akkyschool.com/images/listening/advance2/";
             pic.setImageResource(R.drawable.aki_a2);
