@@ -71,7 +71,7 @@ public class Menushow extends AppCompatActivity {
         Window w = dia.getWindow();
         WindowManager.LayoutParams lp = w.getAttributes();
         lp.x = 0;
-        lp.y = 40;
+        lp.y = 50;
         dia.show();
         dia.onWindowAttributesChanged(lp);
         imageView.setOnClickListener(
