@@ -1,6 +1,8 @@
 package com.nihon.aki2;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,6 +32,7 @@ public class Menushow extends AppCompatActivity {
     String account="",passwd="",names="";
    // private AdView mAdView;
     private Menu menu;
+    Dialog dia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +61,26 @@ public class Menushow extends AppCompatActivity {
         btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
       btn6.setOnTouchListener(b6);
+
+        Context context = Menushow.this;
+        dia = new Dialog(context, R.style.edit_AlertDialog_style);
+        dia.setContentView(R.layout.imgshow);
+        ImageView imageView = (ImageView) dia.findViewById(R.id.start_img);
+
+        dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+        Window w = dia.getWindow();
+        WindowManager.LayoutParams lp = w.getAttributes();
+        lp.x = 0;
+        lp.y = 40;
+        dia.show();
+        dia.onWindowAttributesChanged(lp);
+        imageView.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dia.dismiss();
+                    }
+                });
 
     }
 
