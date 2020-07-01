@@ -3,6 +3,7 @@ package com.nihon.aki2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import androidx.appcompat.app.AppCompatActivity;
@@ -80,6 +81,7 @@ int num=3,yes=0,no=0;
         nextpage=(ImageView)findViewById(R.id.nextpage);
         prepage=(ImageView)findViewById(R.id.prepage);
         txtResult=(TextView)findViewById(R.id.txtResult);
+
         String result = dbQA.executeQuery(num+"",mych);
         String topic="";
         try{
@@ -112,17 +114,8 @@ int num=3,yes=0,no=0;
 
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-        });
+       // loadInterstitialAd();
+
     }
     private void loadInterstitialAd() {
         mInterstitialAd = new InterstitialAd(this);
@@ -165,6 +158,27 @@ int num=3,yes=0,no=0;
         if(ans.equals(p+"")){mytoast("正解!");anstmp=true; next();}
         else{mytoast("錯誤!");anstmp=false;txtResult.setText("正確答案是:  "+ans  );}
 
+    }
+    class DownloadFileAsync extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... aurl) {
+            return null;
+        }
+
+        protected void onProgressUpdate(String... progress) {
+
+        }
+
+        @Override
+        protected void onPostExecute(String unused) {
+            next();
+        }
     }
 public void next(){
   num++;

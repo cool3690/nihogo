@@ -1,5 +1,6 @@
 package com.nihon.aki2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
@@ -43,6 +44,7 @@ public class Listening extends AppCompatActivity  {
     ArrayList<Listenlist> listenlists = new ArrayList<Listenlist>();
     ListView listview;
     ImageView play,btnpre,btnnext,pic;
+    private ProgressDialog dialog;
     private Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12,bt13;
     // ImageView []btarr=new ImageView[]{bt0,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9};
     Button[] btarr=new Button[]{bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12} ;
@@ -507,12 +509,16 @@ public class Listening extends AppCompatActivity  {
     }
 
     class DownloadFileAsync extends AsyncTask<String, String, String> {
+      //  ProgressDialog dialog = new ProgressDialog(Listening.this);
 
         @Override
         protected void onPreExecute() {
+          /* */  dialog = new ProgressDialog(Listening.this);
+            dialog.setMessage("Loading...請稍後");
+            dialog.show();
+
+
             super.onPreExecute();
-            // showDialog(DIALOG_DOWNLOAD_PROGRESS);
-           // seraechsql2();
         }
 
         @Override
@@ -531,8 +537,14 @@ public class Listening extends AppCompatActivity  {
         }
 
         @Override
-        protected void onPostExecute(String unused) {
-            seraechsql2();
+        protected void onPostExecute(String unused)
+        { seraechsql2();
+            /**/
+            if(dialog != null && dialog.isShowing()){
+                dialog.dismiss();
+            }
+
+
         }
     }
     private Handler handler = new Handler() {
