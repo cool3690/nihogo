@@ -1,6 +1,9 @@
 package com.nihon.aki2;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
@@ -8,6 +11,7 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
 
 import com.nihon.aki2.control.Listenlist;
 import com.nihon.aki2.control.ListenlistAdapter;
@@ -18,6 +22,9 @@ import com.nihon.aki2.mydb.dblisten;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
+
 
 import android.os.Handler;
 import android.os.Message;
@@ -25,6 +32,8 @@ import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,8 +52,11 @@ import java.util.ArrayList;
 public class Listening extends AppCompatActivity  {
     ArrayList<Listenlist> listenlists = new ArrayList<Listenlist>();
     ListView listview;
+    Dialog dia;
     ImageView play,btnpre,btnnext,pic;
-    private ProgressDialog dialog;
+    private Dialog dialog;
+  //  TransparentProgressDialog mProgressDialog;
+  //  private  AlertDialog dia ;
     private Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12,bt13;
     // ImageView []btarr=new ImageView[]{bt0,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9};
     Button[] btarr=new Button[]{bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12} ;
@@ -114,6 +126,7 @@ public class Listening extends AppCompatActivity  {
         bt12.setOnClickListener(bt1btn);
         bt13.setOnClickListener(bt1btn);
           /* */
+
         listview = (ListView) findViewById(R.id.list);
         listview.setOnItemClickListener(lvonclick);
 
@@ -328,14 +341,6 @@ public class Listening extends AppCompatActivity  {
                 }
                 catch (Exception e){}
             }
-
-
-            /*    */
-
-
-
-
-
         }
     };
     private ListView.OnItemClickListener lvonclick= new ListView.OnItemClickListener(){
@@ -511,11 +516,28 @@ public class Listening extends AppCompatActivity  {
     class DownloadFileAsync extends AsyncTask<String, String, String> {
       //  ProgressDialog dialog = new ProgressDialog(Listening.this);
 
+
         @Override
         protected void onPreExecute() {
-          /* */  dialog = new ProgressDialog(Listening.this);
-            dialog.setMessage("Loading...請稍後");
-            dialog.show();
+            dia = new Dialog(Listening.this, R.style.edit_AlertDialog_style);
+            dia.setContentView(R.layout.imgshow);
+            GifImageView imageView = (GifImageView) dia.findViewById(R.id.start_img);
+            try {
+
+                GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.loading);
+                imageView.setImageDrawable(gifDrawable);
+                dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                Window w = dia.getWindow();
+                WindowManager.LayoutParams lp = w.getAttributes();
+                lp.x = 0;
+                lp.y = 20;
+                dia.show();
+                dia.onWindowAttributesChanged(lp);
+
+            } catch (Exception e) {}
+
+
+
 
 
             super.onPreExecute();
@@ -539,12 +561,14 @@ public class Listening extends AppCompatActivity  {
         @Override
         protected void onPostExecute(String unused)
         { seraechsql2();
-            /**/
+/*
             if(dialog != null && dialog.isShowing()){
                 dialog.dismiss();
             }
-
-
+*/
+            if(dia  != null && dia.isShowing()){
+                dia.dismiss();
+            }
         }
     }
     private Handler handler = new Handler() {
