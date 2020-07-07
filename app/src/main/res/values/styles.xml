@@ -68,4 +68,6 @@
         <!-- 是否使用背景半透明 -->
     </style>
 
+    <style name="TransparentProgressDialog">test</style>
+
 </resources>

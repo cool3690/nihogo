@@ -30,7 +30,8 @@ import org.json.JSONArray;
 public class Menushow extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4,btn5,btn6;
     String account="",passwd="",names="";
-   // private AdView mAdView;
+    Context context;
+    // private AdView mAdView;
     private Menu menu;
     Dialog dia;
     @Override
@@ -61,8 +62,8 @@ public class Menushow extends AppCompatActivity {
         btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
       btn6.setOnTouchListener(b6);
-
-        Context context = Menushow.this;
+/*
+        context = Menushow.this;
         dia = new Dialog(context, R.style.edit_AlertDialog_style);
         dia.setContentView(R.layout.imgshow);
         ImageView imageView = (ImageView) dia.findViewById(R.id.start_img);
@@ -71,9 +72,9 @@ public class Menushow extends AppCompatActivity {
         Window w = dia.getWindow();
         WindowManager.LayoutParams lp = w.getAttributes();
         lp.x = 0;
-        lp.y = 50;
-        dia.show();
-        dia.onWindowAttributesChanged(lp);
+        lp.y = 20;
+       dia.show();
+      dia.onWindowAttributesChanged(lp);
         imageView.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -82,6 +83,7 @@ public class Menushow extends AppCompatActivity {
                     }
                 });
 
+       */
     }
 
 
