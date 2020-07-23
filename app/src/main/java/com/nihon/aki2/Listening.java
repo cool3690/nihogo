@@ -3,11 +3,14 @@ package com.nihon.aki2;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,6 +33,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -65,7 +69,7 @@ public class Listening extends AppCompatActivity  {
     boolean tf=true;
     int totalTime=0;
     int L=0,T=0,length=0;
-    String les="";
+    String les="",account="";
     String track="";
     TextView remainingTimeLabel;
     public MediaPlayer mediaplayer;
@@ -347,25 +351,35 @@ public class Listening extends AppCompatActivity  {
         @Override
         public void onItemClick(AdapterView<?> parent, View v,
                                 int position, long id) {
-
-            String str = ((TextView) v.findViewById(R.id.name)).getText().toString();
-
-            String tmp=url;
-            tmp=tmp+str;
-           count=position+1;
-            try {//+filename[0]
-                totalTime=0;
-                mediaplayer.reset();
-                mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                mediaplayer.setDataSource(tmp);
-
-                mediaplayer.prepare();
-
-                totalTime=mediaplayer.getDuration();
-                sbar.setMax(totalTime);
-                mediaplayer.start();
+            ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo info=connManager.getActiveNetworkInfo();
+            if (info == null || !info.isConnected())
+            {
+                mytoast("網路未開啟或網路不穩，請到訊號良好的地方!");
             }
-            catch (Exception e){}
+            else{
+                String str = ((TextView) v.findViewById(R.id.name)).getText().toString();
+                play.setImageResource(R.drawable.pause);
+                tf=true;
+                String tmp=url;
+                tmp=tmp+str;
+                count=position+1;
+                try {//+filename[0]
+
+                    totalTime=0;
+                    mediaplayer.reset();
+                    mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mediaplayer.setDataSource(tmp);
+
+                    mediaplayer.prepare();
+
+                    totalTime=mediaplayer.getDuration();
+                    sbar.setMax(totalTime);
+                    mediaplayer.start();
+                }
+                catch (Exception e){}
+            }
+
 
         }
     };
@@ -420,10 +434,22 @@ public class Listening extends AppCompatActivity  {
         @Override
         public void onClick(View v) {
             if(tf==true){
-                tf=false;
-                play.setImageResource(R.drawable.play);
+                /*  */
+                ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info=connManager.getActiveNetworkInfo();
+                if (info == null || !info.isConnected())
+                {
+                    mytoast("網路未開啟或網路不穩，請到訊號良好的地方!");
+                }
+                else {
+                    tf=false;
+                    play.setImageResource(R.drawable.play);
+                }
+
+
 
             }
+
             else{
                 tf=true;
                 play.setImageResource(R.drawable.pause);
@@ -493,16 +519,18 @@ public class Listening extends AppCompatActivity  {
 
         tmp+=lessons[L]+"/"+filename[T];
 
-        try {//+filename[0]
+            try {//+filename[0]
 
-            mediaplayer.reset();
-            mediaplayer.setDataSource(tmp);
-            mediaplayer.prepare();
-            totalTime=mediaplayer.getDuration();
-            sbar.setMax(totalTime);
-            mediaplayer.start();
-        } catch (IllegalStateException e) { }
-        catch (IOException e) { }
+                mediaplayer.reset();
+                mediaplayer.setDataSource(tmp);
+                mediaplayer.prepare();
+                totalTime=mediaplayer.getDuration();
+                sbar.setMax(totalTime);
+                mediaplayer.start();
+            } catch (IllegalStateException e) { }
+            catch (IOException e) { }
+
+
 
 
 
@@ -521,12 +549,13 @@ public class Listening extends AppCompatActivity  {
         protected void onPreExecute() {
             dia = new Dialog(Listening.this, R.style.edit_AlertDialog_style);
             dia.setContentView(R.layout.imgshow);
+            /**/
             GifImageView imageView = (GifImageView) dia.findViewById(R.id.start_img);
             try {
 
                 GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.loading);
                 imageView.setImageDrawable(gifDrawable);
-                dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                dia.setCanceledOnTouchOutside(false); // Sets whether this dialog is
                 Window w = dia.getWindow();
                 WindowManager.LayoutParams lp = w.getAttributes();
                 lp.x = 0;
@@ -535,8 +564,6 @@ public class Listening extends AppCompatActivity  {
                 dia.onWindowAttributesChanged(lp);
 
             } catch (Exception e) {}
-
-
 
 
 
@@ -613,6 +640,76 @@ public class Listening extends AppCompatActivity  {
         super.onPause();
         mediaplayer.pause();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.login) {
+            Intent intent=new Intent();
+            intent.setClass(Listening.this, Login.class);
+            startActivity(intent);
+        }
+        if (id == R.id.cart) {
+            if(account==null){
+                Intent intent=new Intent();
+                intent.setClass(Listening.this,Login.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("CART", "cart");
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+            else{
+                Intent intent=new Intent();
+                intent.setClass(Listening.this, Mcart.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("ACCOUNT", account);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        }
+        if (id == R.id.mon) {
+            Intent intent=new Intent();
+            intent.setClass(Listening.this, Change.class);
+            startActivity(intent);
+        }
+        if (id == R.id.news) {
+            Intent intent=new Intent();
+            intent.setClass(Listening.this, Myweb.class);
+            startActivity(intent);
+        }
+        if (id == R.id.mymenu) {
+            Intent intent=new Intent();
+            intent.setClass(Listening.this, Menushow.class);
+            startActivity(intent);
+        }
+        if (id == R.id.apply) {
+            Intent intent=new Intent();
+            intent.setClass(Listening.this, Apply.class);
+            startActivity(intent);
+        }
 
+        if (id == R.id.lesson) {
+            Intent intent=new Intent();
+            intent.setClass(Listening.this, Shiken.class);
+            startActivity(intent);
+        }
+        if (id == R.id.menu) {
+            Intent intent=new Intent();
+            intent.setClass(Listening.this, MainActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.about) {
+            new AlertDialog.Builder(Listening.this)
+                    .setTitle("版權所有")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふじやま國際學院")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
+                        }
+                    })
+                    .show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

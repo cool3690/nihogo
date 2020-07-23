@@ -1,6 +1,9 @@
 package com.nihon.aki2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -42,6 +45,7 @@ public class Basic50 extends AppCompatActivity {
     TextView show;
     Spinner page;
     GifImageView mygif;
+    String account="";
     int num=0;
     String[] mypage= new String []{
             "あ","い","う","え","お",
@@ -286,12 +290,75 @@ public class Basic50 extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.normal:
-                paintView.normal();
-                return true;
+        int id = item.getItemId();
+        if (id == R.id.login) {
+            Intent intent=new Intent();
+            intent.setClass(Basic50.this, Login.class);
+            startActivity(intent);
+        }
+        if (id == R.id.cart) {
+            if(account==null){
+                Intent intent=new Intent();
+                intent.setClass(Basic50.this,Login.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("CART", "cart");
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+            else{
+                Intent intent=new Intent();
+                intent.setClass(Basic50.this, Mcart.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("ACCOUNT", account);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        }
+        if (id == R.id.mon) {
+            Intent intent=new Intent();
+            intent.setClass(Basic50.this, Change.class);
+            startActivity(intent);
+        }
+        if (id == R.id.news) {
+            Intent intent=new Intent();
+            intent.setClass(Basic50.this, Myweb.class);
+            startActivity(intent);
+        }
+        if (id == R.id.mymenu) {
+            Intent intent=new Intent();
+            intent.setClass(Basic50.this, Menushow.class);
+            startActivity(intent);
+        }
+        if (id == R.id.apply) {
+            Intent intent=new Intent();
+            intent.setClass(Basic50.this, Apply.class);
+            startActivity(intent);
+        }
+
+        if (id == R.id.lesson) {
+            Intent intent=new Intent();
+            intent.setClass(Basic50.this, Shiken.class);
+            startActivity(intent);
+        }
+        if (id == R.id.menu) {
+            Intent intent=new Intent();
+            intent.setClass(Basic50.this, MainActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.about) {
+            new AlertDialog.Builder(Basic50.this)
+                    .setTitle("版權所有")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふじやま國際學院")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
+                        }
+                    })
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }
