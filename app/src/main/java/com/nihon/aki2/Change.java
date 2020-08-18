@@ -1,6 +1,7 @@
 package com.nihon.aki2;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -130,7 +131,7 @@ double sum=0;
 
         input.addTextChangedListener(btinput);
         rg.setOnCheckedChangeListener(mychange);
-        schedulejob();
+        //schedulejob();
      //
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd   HH:mm:ss");
         Date date=new Date();
@@ -280,6 +281,7 @@ double sum=0;
         try{
             Connection.Response response = Jsoup.connect(url).execute();
               body = response.body();
+             // mytoast(body+"");
             String[] split_line =  body.split(", ");
             double x=0,y=0;
             for(int i=0;i<split_line.length;i++){
@@ -375,24 +377,23 @@ double sum=0;
             edit.putString("inputrate", tmp);
             edit.commit();
             bundle.putString("INPUT",tmp);
+            bundle.putString("SUM",sum+"");
         }
         else{
             bundle.putString("INPUT",tmp);
         }
 
- /*
-     JobInfo jobInfo= new JobInfo.Builder(123,componentName)
-             .setPersisted(true) // 重開機後是否執行
-             .setMinimumLatency(3000) // 延遲多久執行
-             .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY) //網路條件
-             .setExtras(bundle)
-             .build();
+        JobInfo jobInfo= new JobInfo.Builder(123,componentName)
+                .setPersisted(true) // 重開機後是否執行
+                .setMinimumLatency(3000) // 延遲多久執行
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY) //網路條件
+                .setExtras(bundle)
+                .build();
 
-     JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
-   int result=scheduler.schedule(jobInfo);
-   if(result==JobScheduler.RESULT_SUCCESS){}
-   else {}
-   */
+        JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
+        int result=scheduler.schedule(jobInfo);
+        if(result==JobScheduler.RESULT_SUCCESS){}
+
     }
     public void canceljob(){
         JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);

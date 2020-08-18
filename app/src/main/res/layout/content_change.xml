@@ -37,13 +37,15 @@
             android:gravity="center"
             android:text="日幣台幣換算"
             android:textSize="18dp" />
+
         <TextView
             android:id="@+id/tshow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textView4"
             android:layout_marginTop="20dp"
-            android:text=" " />
+            android:text=". "
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/rg"

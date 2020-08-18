@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.nihon.aki2.control.Jsan;
 import com.nihon.aki2.control.JsansAdapter;
 import com.nihon.aki2.mydb.dbqaid;
+import com.nihon.aki2.mydb.dbsanid;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,7 +74,21 @@ public class QAmenu extends AppCompatActivity {
             }
         }
        else if(level.equals("B")){
-            for(int i=13;i<=k;i++){
+            for(int i=13;i<=25;i++){
+                Jsan jsan = new Jsan("Lesson"+i);
+
+                jsans.add(jsan);
+            }
+        }
+        else if(level.equals("C")){
+            for(int i=26;i<=38;i++){
+                Jsan jsan = new Jsan("Lesson"+i);
+
+                jsans.add(jsan);
+            }
+        }
+        else{
+            for(int i=39;i<=k;i++){
                 Jsan jsan = new Jsan("Lesson"+i);
 
                 jsans.add(jsan);
@@ -101,6 +116,14 @@ public class QAmenu extends AppCompatActivity {
                     else if(level.equals("B")){
                         result = dbqaid.executeQuery(position+13+"");
                         p=position+13;
+                    }
+                    else if(level.equals("C")){
+                        result = dbqaid.executeQuery(position+26+"");
+                        p=position+26;
+                    }
+                    else if(level.equals("D")){
+                        result = dbqaid.executeQuery(position+39+"");
+                        p=position+39;
                     }
                     String ans="";
                     try{

@@ -37,7 +37,7 @@ import java.util.TimerTask;
 
 public class Basich50 extends AppCompatActivity {
     private PaintView paintView;
-    ImageView clean,sound,img,btnpre,btnnext;
+    ImageView clean,sound,img,btnpre,btnnext,pen;
     TextView show;
     GifImageView mygif;
     Spinner page;
@@ -86,6 +86,7 @@ public class Basich50 extends AppCompatActivity {
         mygif=(GifImageView)findViewById(R.id.mygif);
         paintView = (PaintView) findViewById(R.id.paintView);
         clean=(ImageView)findViewById(R.id.clean);
+        pen=(ImageView)findViewById(R.id.pen);
         sound=(ImageView)findViewById(R.id.sound);
         img=(ImageView)findViewById(R.id.img);
         show=(TextView) findViewById(R.id.show);
@@ -99,6 +100,7 @@ public class Basich50 extends AppCompatActivity {
         mediaplayer=new MediaPlayer();
         clean.setOnClickListener(cbtn);
         sound.setOnClickListener(sbtn);
+        pen.setOnClickListener(penbtn);
         pre();
         //show.setText("あい（愛）"+"\n[a-i]\n"+"愛：愛慕");
         btnpre.setOnTouchListener(btpre);
@@ -137,6 +139,7 @@ public class Basich50 extends AppCompatActivity {
                 }
             };
     private void init() {
+        paintView.setVisibility(View.INVISIBLE);
         mygif.setVisibility(View.VISIBLE);
         mygif.setImageResource(picg[num]);
         final GifDrawable getDura=GifDrawable.createFromResource(getResources(),picg[num]);
@@ -157,8 +160,14 @@ public class Basich50 extends AppCompatActivity {
                 });
             }
         }, duration);
-
+      //  paintView.setVisibility(View.VISIBLE);
     }
+    private ImageView.OnClickListener penbtn=new ImageView.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+         init();
+        }
+    };
     private ImageView.OnClickListener cbtn=new ImageView.OnClickListener(){
         @Override
         public void onClick(View v) {
