@@ -36,11 +36,8 @@ public class Frag1 extends Fragment {
         bt1= (Button)view.findViewById(R.id.bt1);
       //  bt1.setText(account);
         bt2=(Button)view.findViewById(R.id.bt2);
-        bt1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                btlink(v);}
-        });
+        bt1.setOnClickListener(bt1x);
+
         bt2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -50,6 +47,12 @@ public class Frag1 extends Fragment {
 
       //  return inflater.inflate(R.layout.frag1_layout, container, false);
     }
+    private Button.OnClickListener bt1x=new Button.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            btlink(view);
+        }
+    };
     public void btlink(View view)
     {
         Intent intent=new Intent(android.content.Intent.ACTION_VIEW);

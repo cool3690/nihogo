@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 String ssign=jsonData.getString("sign");
                 String sdate=jsonData.getString("date");
                 jointime.setText("網路報名時間:\n"+ssign);
-
+                String status=jsonData.getString("status");
+                testtime.setText(status);
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
                 Date dt=new Date();
                 // String dts=sdf.format(dt);

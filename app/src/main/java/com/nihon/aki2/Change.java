@@ -272,7 +272,6 @@ double sum=0;
             }
 
 
-
     }
 
     public void jprate(){
