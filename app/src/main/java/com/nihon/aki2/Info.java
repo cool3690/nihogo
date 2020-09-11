@@ -67,6 +67,7 @@ public class Info extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_info, menu);
         return true;
     }
@@ -74,7 +75,14 @@ public class Info extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.myform) {
+            //intent my form
+            /*
+            Intent intent=new Intent();
+            intent.setClass(Info.this, Menushow.class);
+            startActivity(intent);
+
+             */
             return true;
         }
         return super.onOptionsItemSelected(item);

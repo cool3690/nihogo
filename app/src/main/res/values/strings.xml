@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">亞紀塾日本語</string>
     <string name="action_settings">Settings</string>
+    <string name="myform">我要詢問</string>
     <string name="aki">亞紀塾日本語</string>
     <string name="hello_world">Hello world!</string>
     <string name="login">登入</string>
