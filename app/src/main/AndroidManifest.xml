@@ -21,9 +21,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Myform"
+            android:label="@string/title_activity_myform"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Listenmenu"
             android:label="@string/title_activity_listenmenu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Listening"
             android:label="@string/title_activity_listening"
@@ -168,9 +172,6 @@
             android:label="@string/title_activity_apply"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
-
         <activity
             android:name=".Menushow"
             android:label="@string/title_activity_menushow"
@@ -212,6 +213,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver
             android:name=".BootCompletedReceiver"
             android:enabled="true"
@@ -221,6 +223,7 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+
         <service
             android:name=".JobSchedulerService"
             android:exported="true"

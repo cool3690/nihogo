@@ -30,7 +30,7 @@
                     android:textSize="24sp" />
         -->
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/header"
@@ -43,7 +43,7 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/date"
+            android:layout_below="@id/title"
             android:layout_marginTop="12dp"
             android:text="期間： "
             android:textColor="@color/colorAccent"
@@ -53,7 +53,7 @@
             android:id="@+id/countdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/date"
+            android:layout_below="@id/title"
             android:layout_marginTop="47dp"
             android:text=" 每年10 月或 4月開學"
             android:textSize="18sp" />

@@ -75,4 +75,6 @@
     <string name="title_activity_childstory">兒童故事</string>
     <string name="title_activity_listening">課文聽力練習</string>
     <string name="title_activity_listenmenu">選單</string>
+    <string name="title_activity_myform">我要詢問</string>
+
 </resources>

@@ -8,9 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.nihon.aki2.control.VideoAdapter;
 import com.nihon.aki2.control.YouTubeVideos;
+import com.nihon.aki2.mydb.dbstudy;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,9 +28,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class Frag3 extends Fragment {
     Button bt1,bt2;
+    TextView title,countdown,textView15,mydate,condition;
     WebView videoWebView;
     RecyclerView recyclerView;
-    private int secondLeft = 7;
+    private int secondLeft = 3;
+
     Timer timer = new Timer();
     Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
     @Override
@@ -42,17 +49,48 @@ public class Frag3 extends Fragment {
         bt1.setOnClickListener(btlink);
         bt2=(Button)view.findViewById(R.id.bt2);
         bt2.setOnClickListener(btlink2);
-
+        title=(TextView)view.findViewById(R.id.title);
+        countdown=(TextView)view.findViewById(R.id.countdown);
+        textView15=(TextView)view.findViewById(R.id.textView15);
+        mydate=(TextView)view.findViewById(R.id.mydate);
+        condition=(TextView)view.findViewById(R.id.condition);
 
         videoWebView=(WebView)view.findViewById(R.id.videoWebView);
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.GONE);
         videoWebView.setVisibility(View.GONE);
          begin();
+        dbsel();
         return view;
        // return inflater.inflate(R.layout.frag2_layout, container, false);
     }
+    public void dbsel() {
+        String result = dbstudy.executeQuery("2");
 
+        try{
+            JSONArray jsonArray = new JSONArray(result);
+
+            int k=0;
+
+            for(int i = 0; i < jsonArray.length(); i++)
+            {	 JSONObject jsonData = jsonArray.getJSONObject(i);
+                String project=jsonData.getString("project");
+
+                String during=jsonData.getString("during");
+                String fee=jsonData.getString("fee");
+                String attend=jsonData.getString("attend");
+                String mycondition=jsonData.getString("mycondition");
+                title.setText(project);
+                countdown.setText(during);
+                textView15.setText(fee);
+                mydate.setText(attend);
+                condition.setText(mycondition);
+            }
+
+        }
+
+        catch(Exception e){}
+    }
     public void begin() {
         timer.schedule(task, 1000, 1000) ;       }
 
@@ -84,7 +122,7 @@ public class Frag3 extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager( new LinearLayoutManager(getActivity()));
 
-        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://akkyschool.com/images/study_abroad/study_abroad4.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://akkyschool.com/images/study_abroad/study_abroad42.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
 
         VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
 

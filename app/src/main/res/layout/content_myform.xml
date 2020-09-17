@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:padding="10dp"
+        android:background="@drawable/aki_bg1">
+
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="遊學問題詢問"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"  />
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/textView17"
+            android:layout_marginTop="30dp"
+
+            android:ems="10"
+            android:hint="姓名" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/name"
+            android:layout_marginTop="24dp"
+            android:hint="手機號碼"
+            android:ems="10"
+            />
+
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/tel"
+            android:layout_marginTop="24dp"
+            android:hint="信箱"
+            android:ems="10"
+            />
+
+        <EditText
+            android:id="@+id/Q1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:ems="10"
+            android:layout_below="@id/mail"
+            android:layout_marginTop="15dp"
+            android:gravity="start|top"
+            android:hint="我要詢問"
+            android:inputType="textMultiLine" />
+
+
+        <ImageView
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/Q1"
+            android:layout_marginTop="40dp"
+
+            app:srcCompat="@drawable/send" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

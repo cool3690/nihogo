@@ -77,12 +77,12 @@ public class Info extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.myform) {
             //intent my form
-            /*
+            /*  */
             Intent intent=new Intent();
-            intent.setClass(Info.this, Menushow.class);
+            intent.setClass(Info.this, Myform.class);
             startActivity(intent);
 
-             */
+
             return true;
         }
         return super.onOptionsItemSelected(item);
