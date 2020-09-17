@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,14 +27,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 public class Frag3 extends Fragment {
     Button bt1,bt2;
     TextView title,countdown,textView15,mydate,condition;
     WebView videoWebView;
     RecyclerView recyclerView;
-    private int secondLeft = 3;
-
+    private int secondLeft = 1;
+    GifImageView imageView;
     Timer timer = new Timer();
     Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
     @Override
@@ -54,9 +58,17 @@ public class Frag3 extends Fragment {
         textView15=(TextView)view.findViewById(R.id.textView15);
         mydate=(TextView)view.findViewById(R.id.mydate);
         condition=(TextView)view.findViewById(R.id.condition);
-
+        imageView = (GifImageView) view.findViewById(R.id.mygif);
         videoWebView=(WebView)view.findViewById(R.id.videoWebView);
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
+        imageView.setVisibility(View.VISIBLE);
+        try {
+
+            GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.loading);
+            imageView.setImageDrawable(gifDrawable);
+
+
+        } catch (Exception e) {}
         recyclerView.setVisibility(View.GONE);
         videoWebView.setVisibility(View.GONE);
          begin();
@@ -116,7 +128,7 @@ public class Frag3 extends Fragment {
 
         videoWebView.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.VISIBLE);
-
+        imageView.setVisibility(View.GONE);
         videoWebView.bringToFront();
         recyclerView.bringToFront();
         recyclerView.setHasFixedSize(true);

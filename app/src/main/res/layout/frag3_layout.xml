@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="800dp">
     <RelativeLayout
@@ -7,7 +8,6 @@
         android:layout_height="800dp"
         android:background="@drawable/aki_map"
         android:paddingLeft="10dp"
-        xmlns:tools="http://schemas.android.com/tools"
         android:paddingRight="10dp">
 
         <TextView
@@ -139,22 +139,41 @@
             android:layout_toRightOf="@id/bt1"
             android:background="#9FF34E"
             android:text="優惠資訊" />
+        <TextView
+        android:id="@+id/showtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bt2"
+            android:textSize="22sp"
+        android:text="福岡課程教學影片" />
+
         <WebView
             android:id="@+id/videoWebView"
             android:layout_width="wrap_content"
             android:layout_height="250dp"
-            android:layout_below="@id/bt2"
+            android:layout_below="@id/showtxt"
             android:layout_marginTop="10dp"
             android:elevation="2dp"
-            />
+            >
+
+
+        </WebView>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="wrap_content"
             android:layout_height="250dp"
-           android:layout_below="@id/bt2"
+           android:layout_below="@id/showtxt"
             android:layout_marginTop="10dp"
             android:background="#ffffff"
             android:elevation="2dp"
             tools:itemCount="1" />
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/mygif"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:layout_below="@id/showtxt"
+            android:elevation="3dp"
+            android:layout_marginTop="10dp"
+            />
     </RelativeLayout>
 </ScrollView>

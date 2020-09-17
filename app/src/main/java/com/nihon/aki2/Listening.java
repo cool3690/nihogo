@@ -574,7 +574,7 @@ public class Listening extends AppCompatActivity  {
         protected String doInBackground(String... aurl) {
 
             playSong(0);
-            play.setImageResource(R.drawable.pause);
+            //play.setImageResource(R.drawable.pause);
             tf=true;
 
             new Listening.DownloadFileAsync().cancel(true);
