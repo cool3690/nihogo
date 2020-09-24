@@ -35,7 +35,7 @@ public class Frag3 extends Fragment {
     TextView title,countdown,textView15,mydate,condition;
     WebView videoWebView;
     RecyclerView recyclerView;
-    private int secondLeft = 1;
+    private int secondLeft = 2;
     GifImageView imageView;
     Timer timer = new Timer();
     Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
