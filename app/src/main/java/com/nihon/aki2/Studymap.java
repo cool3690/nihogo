@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,6 +25,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,6 +40,7 @@ public class Studymap extends AppCompatActivity {
     private ScaleImage mScaleImage;
     TextView title,countdown,textView15,mydate,condition;
     Spinner page;
+    Button bt1,bt2;
     String account="",names="";
     int num=1;
 
@@ -76,10 +79,50 @@ public class Studymap extends AppCompatActivity {
         textView15=(TextView)findViewById(R.id.textView15);
         mydate=(TextView)findViewById(R.id.mydate);
         condition=(TextView)findViewById(R.id.condition);
+        bt1=(Button)findViewById(R.id.bt1) ;
+        bt2=(Button)findViewById(R.id.bt2);
         dbsel(num);
         dbsel2();
-
+        bt1.setOnClickListener(bt01);
+        bt2.setOnClickListener(bt02);
     }
+    private Button.OnClickListener bt01=new Button.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            if(num==1){
+                Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_2introduction.pdf"));
+                startActivity(intent);
+            }
+          else if(num==2){
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school1_introduction.pdf"));
+                startActivity(intent);
+            }
+            else if(num==3){
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+
+                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_1_introduction.pdf"));
+                startActivity(intent);
+            }
+        }
+    };
+    private Button.OnClickListener bt02=new Button.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            if(num==1) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_introduction.pdf"));
+                startActivity(intent);
+            }
+           else if(num==3) {
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+
+                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_2_introduction.pdf"));
+                startActivity(intent);
+            }
+        }
+    };
     private Spinner.OnItemSelectedListener spnPreferListener=
             new Spinner.OnItemSelectedListener(){
                 @Override
@@ -87,7 +130,8 @@ public class Studymap extends AppCompatActivity {
                                            int position, long id) {
                     //String sel=parent.getSelectedItem().toString();
                     int num=position;
-
+                    if(num==1){bt2.setVisibility(View.GONE);}
+                    else{bt2.setVisibility(View.VISIBLE);}
 
                     dbsel(num );
 
