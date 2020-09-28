@@ -48,8 +48,8 @@ public class Studymap extends AppCompatActivity {
     Button bt1,bt2;
     String account="",names="";
     int num=1;
-
-    String[] mypage= new String[1];
+    List<String>mypage=new ArrayList<>();
+    //String[] mypage= new String[1];
   //  int[] mypoint=new int[1];
     List<Integer> mypoint = new ArrayList<>();
     private Menu menu;
@@ -72,7 +72,7 @@ public class Studymap extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
-        mypage[0]="請選擇";
+       // mypage[0]="請選擇";
        // mypoint[0]= 0;
        // mScaleImage = (ScaleImage) findViewById(R.id.scale_image);
         img=(ImageView) findViewById(R.id.img);
@@ -159,12 +159,12 @@ public class Studymap extends AppCompatActivity {
 
             int k=0;
           //  int[]mypoint=new int[jsonArray.length()];
-            String[]mypage=new String[jsonArray.length()];
+          //  String[]mypage=new String[jsonArray.length()];
             for(int i = 0; i < jsonArray.length(); i++)
             {	 JSONObject jsonData = jsonArray.getJSONObject(i);
                 String project=jsonData.getString("project");
                 int id=jsonData.getInt("id");
-                mypage[i]=project;
+                mypage.add(project);
                 mypoint.add(id);
 
 
