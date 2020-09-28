@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.StrictMode;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -31,9 +32,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Studymap extends AppCompatActivity {
     private ImageView img;
@@ -45,6 +50,8 @@ public class Studymap extends AppCompatActivity {
     int num=1;
 
     String[] mypage= new String[1];
+  //  int[] mypoint=new int[1];
+    List<Integer> mypoint = new ArrayList<>();
     private Menu menu;
 
     @Override
@@ -66,6 +73,7 @@ public class Studymap extends AppCompatActivity {
                 .penaltyDeath()
                 .build());
         mypage[0]="請選擇";
+       // mypoint[0]= 0;
        // mScaleImage = (ScaleImage) findViewById(R.id.scale_image);
         img=(ImageView) findViewById(R.id.img);
         DisplayMetrics dm=new DisplayMetrics();
@@ -129,11 +137,12 @@ public class Studymap extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View v,
                                            int position, long id) {
                     //String sel=parent.getSelectedItem().toString();
-                    int num=position;
-                    if(num==1){bt2.setVisibility(View.GONE);}
-                    else{bt2.setVisibility(View.VISIBLE);}
 
-                    dbsel(num );
+                    int num=mypoint.get(position);
+                     if(num==1){bt2.setVisibility(View.GONE);}
+                    else{bt2.setVisibility(View.VISIBLE);}
+                   // mytoast(mypoint.get(position)+"");
+                    dbsel(num);
 
                 }
                 @Override
@@ -149,18 +158,20 @@ public class Studymap extends AppCompatActivity {
             JSONArray jsonArray = new JSONArray(result);
 
             int k=0;
-
+          //  int[]mypoint=new int[jsonArray.length()];
             String[]mypage=new String[jsonArray.length()];
             for(int i = 0; i < jsonArray.length(); i++)
             {	 JSONObject jsonData = jsonArray.getJSONObject(i);
                 String project=jsonData.getString("project");
+                int id=jsonData.getInt("id");
                 mypage[i]=project;
+                mypoint.add(id);
 
 
             }
             ArrayAdapter<String> adapterPage=new ArrayAdapter<String>
                     (this,android.R.layout.simple_spinner_item,mypage);
-
+          //  mytoast(mypoint[2]+"");
             // 設定Spinner顯示的格式
             adapterPage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -208,6 +219,12 @@ public class Studymap extends AppCompatActivity {
 
 
     };
+    private void mytoast(String str)
+    {
+        Toast toast=Toast.makeText(this, str, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
