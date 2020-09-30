@@ -32,7 +32,8 @@
     android:id="@+id/page"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F4E7E7"
+
+    android:background="@drawable/bg_spinner"
     android:layout_below="@id/img"/>
         <TextView
             android:id="@+id/title"
