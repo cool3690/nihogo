@@ -71,6 +71,7 @@ public class Frag3 extends Fragment {
         } catch (Exception e) {}
         recyclerView.setVisibility(View.GONE);
         videoWebView.setVisibility(View.GONE);
+
          begin();
         dbsel();
         return view;

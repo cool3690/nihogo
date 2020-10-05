@@ -145,6 +145,56 @@
                 android:layout_toRightOf="@id/bt1"
                 android:background="#9FF34E"
                 android:text="行程" />
+        <Button
+            android:id="@+id/bt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/condition"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/bt2"
+            android:background="#9FF34E"
+            android:text="教學影片" />
+            <Button
+                android:id="@+id/bt4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/condition"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/bt3"
+                android:background="#9FF34E"
+                android:text="我要詢問" />
+        <WebView
+            android:id="@+id/videoWebView"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:layout_below="@id/page"
+            android:layout_marginTop="10dp"
+            android:elevation="2dp"
+            >
+
+
+        </WebView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:layout_below="@id/page"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:elevation="2dp"
+            tools:itemCount="1" />
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/mygif"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:layout_below="@id/page"
+            android:elevation="3dp"
+            android:layout_marginTop="10dp"
+            />
+
+
 
     </RelativeLayout>
 </ScrollView>

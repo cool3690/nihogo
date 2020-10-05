@@ -10,11 +10,16 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.nihon.aki2.control.VideoAdapter;
+import com.nihon.aki2.control.YouTubeVideos;
 import com.nihon.aki2.mydb.dbstudy;
 import com.nihon.aki2.mydb.dbstudy2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import pl.droidsonroids.gif.GifImageView;
 
 import android.os.StrictMode;
 import android.util.DisplayMetrics;
@@ -24,6 +29,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,15 +45,21 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class Studymap extends AppCompatActivity {
     private ImageView img;
     private ScaleImage mScaleImage;
     TextView title,countdown,textView15,mydate,condition;
     Spinner page;
-    Button bt1,bt2;
+    Button bt1,bt2,bt3,bt4;
     String account="",names="";
+    boolean tf=true;
     int num=1;
+    WebView videoWebView;
+    RecyclerView recyclerView;
+    GifImageView imageView;
+    Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
     List<String>mypage=new ArrayList<>();
     //String[] mypage= new String[1];
   //  int[] mypoint=new int[1];
@@ -89,11 +101,49 @@ public class Studymap extends AppCompatActivity {
         condition=(TextView)findViewById(R.id.condition);
         bt1=(Button)findViewById(R.id.bt1) ;
         bt2=(Button)findViewById(R.id.bt2);
+        bt3=(Button)findViewById(R.id.bt3);
+        bt4=(Button)findViewById(R.id.bt4);
         dbsel(num);
         dbsel2();
         bt1.setOnClickListener(bt01);
         bt2.setOnClickListener(bt02);
+        bt3.setOnClickListener(bt03);
+        bt4.setOnClickListener(bt04);
+        imageView = (GifImageView)findViewById(R.id.mygif);
+        videoWebView=(WebView) findViewById(R.id.videoWebView);
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView.setVisibility(View.GONE);
+        videoWebView.setVisibility(View.GONE);
     }
+    private Button.OnClickListener bt04=new Button.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent=new Intent();
+            intent.setClass(Studymap.this, Myform.class);
+            startActivity(intent);
+
+        }
+    };
+    private Button.OnClickListener bt03=new Button.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(tf){
+                bt3.setText("關閉");
+                tf=false;
+                play();
+                videoWebView.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.VISIBLE);
+                imageView.setVisibility(View.GONE);
+            }
+            else{
+                bt3.setText("播放");
+                tf=true;
+                videoWebView.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.GONE);
+
+            }
+        }
+    };
     private Button.OnClickListener bt01=new Button.OnClickListener(){
         @Override
         public void onClick(View view) {
@@ -150,7 +200,24 @@ public class Studymap extends AppCompatActivity {
 
                 }
             };
+    public void play(){
 
+        videoWebView.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.GONE);
+        videoWebView.bringToFront();
+        recyclerView.bringToFront();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://akkyschool.com/images/study_abroad/study_abroad42.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
+
+        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
+
+        recyclerView.setAdapter(videoAdapter);
+
+        /* */
+    }
     public void dbsel2( ) {
         String result = dbstudy2.executeQuery( );
 
