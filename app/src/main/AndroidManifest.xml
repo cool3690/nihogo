@@ -23,18 +23,22 @@
         <activity
             android:name=".Studymap"
             android:label="@string/title_activity_studymap"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Myform"
             android:label="@string/title_activity_myform"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Listenmenu"
             android:label="@string/title_activity_listenmenu"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Listening"
             android:label="@string/title_activity_listening"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Childstory"
@@ -44,14 +48,17 @@
         <activity
             android:name=".Basich50"
             android:label="@string/title_activity_basich50"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Basic50"
             android:label="@string/title_activity_basic50"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Childweb"
             android:label="@string/title_activity_childweb"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Comicmenu"
@@ -85,6 +92,7 @@
         <activity
             android:name=".Grading"
             android:label="@string/title_activity_grading"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Dative"

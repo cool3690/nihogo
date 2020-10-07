@@ -1,200 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/repeat_bg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       android:padding="10dp">
-<ImageView
-    android:id="@+id/img"
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="350dp"
-    android:src="@drawable/aki_studymap2"
-    />
-
-<!--
-        <com.nihon.aki2.ScaleImage
-            android:id="@+id/scale_image"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        android:id="@+id/L1">
+        <ImageView
+            android:id="@+id/img"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/aki_studymap"
+            android:layout_height="280dp"
+            android:src="@drawable/aki_studymap23"
 
             />
--->
-<Spinner
-    android:id="@+id/page"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    </LinearLayout>
+    <WebView
+        android:id="@+id/videoWebView"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:elevation="2dp"
+        >
 
-    android:background="@drawable/bg_spinner"
-    android:layout_below="@id/img"/>
-        <TextView
-            android:id="@+id/title"
+
+    </WebView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+
+
+        android:background="#ffffff"
+        android:elevation="2dp"
+        tools:itemCount="1" />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/mygif"
+        android:layout_width="wrap_content"
+        android:layout_height="280dp"
+
+        android:elevation="3dp"
+
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_below="@+id/L1">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/L1"
+            android:padding="10dp">
 
-            android:layout_marginTop="13dp"
-            android:gravity="center"
-            android:layout_below="@+id/page"
-            android:text="富士山國際學院"
-            android:textSize="26sp" />
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title"
-            android:layout_marginTop="12dp"
-            android:text="期間： "
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp" />
+            <Spinner
+                android:id="@+id/page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/countdown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title"
-            android:layout_marginTop="47dp"
-            android:text=" 每年10 月或 4月開學"
-            android:textSize="18sp" />
+                android:background="@drawable/bg_spinner"
+                />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/countdown"
-            android:layout_marginTop="12dp"
-            android:text="参加費用："
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp" />
+                android:layout_marginTop="13dp"
+                android:gravity="center"
+                android:layout_below="@+id/page"
+                android:text="富士山國際學院"
+                android:textSize="26sp" />
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView14"
-            android:layout_marginTop="8dp"
-
-            android:text="1,441,000日圓
-（入學繳納金，2年學費)"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView15"
-            android:layout_marginTop="8dp"
-            android:text="＜報名期限＞ "
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/mydate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView13"
-            android:layout_marginTop="9dp"
-            android:text="每年1月～4月底
-8月～11月底"
-
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mydate"
-            android:layout_marginTop="6dp"
-            android:text="＜參加條件＞"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/condition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView16"
-            android:layout_marginTop="5dp"
-            android:text="需通過日本語能力測驗N5"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/bt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/condition"
-            android:layout_marginTop="10dp"
-            android:background="#9FF34E"
-            android:text="詳細內容" />
-
-            <Button
-                android:id="@+id/bt2"
+            <TextView
+                android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/condition"
+                android:layout_below="@id/title"
+                android:layout_marginTop="1dp"
+                android:text=""
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/countdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_marginTop="20dp"
+                android:text=" 每年10 月或 4月開學"
+                android:textSize="18sp" />
+            <!--
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/countdown"
+                            android:layout_marginTop="12dp"
+                            android:text="参加費用："
+                            android:textColor="@color/colorAccent"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textView14"
+                            android:layout_marginTop="8dp"
+
+                            android:text="1,441,000日圓
+            （入學繳納金，2年學費)"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textView15"
+                            android:layout_marginTop="8dp"
+                            android:text="＜報名期限＞ "
+                            android:textColor="@color/colorAccent"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/mydate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textView13"
+                            android:layout_marginTop="9dp"
+                            android:text="每年1月～4月底
+            8月～11月底"
+
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/mydate"
+                            android:layout_marginTop="6dp"
+                            android:text="＜參加條件＞"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/condition"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textView16"
+                            android:layout_marginTop="5dp"
+                            android:text="需通過日本語能力測驗N5"
+                            android:textSize="18sp" />
+            -->
+            <Button
+                android:id="@+id/bt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/countdown"
+                android:layout_marginTop="10dp"
+                android:background="#9FF34E"
+                android:text="詳細內容" />
+
+
+            <Button
+                android:id="@+id/bt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/countdown"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/bt1"
                 android:background="#9FF34E"
-                android:text="行程" />
-        <Button
-            android:id="@+id/bt3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/condition"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/bt2"
-            android:background="#9FF34E"
-            android:text="教學影片" />
+                android:text="教學影片" />
             <Button
                 android:id="@+id/bt4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/condition"
+                android:layout_below="@id/countdown"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/bt3"
                 android:background="#9FF34E"
                 android:text="我要詢問" />
-        <WebView
-            android:id="@+id/videoWebView"
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:layout_below="@id/page"
-            android:layout_marginTop="10dp"
-            android:elevation="2dp"
-            >
-
-
-        </WebView>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:layout_below="@id/page"
-            android:layout_marginTop="10dp"
-            android:background="#ffffff"
-            android:elevation="2dp"
-            tools:itemCount="1" />
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/mygif"
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:layout_below="@id/page"
-            android:elevation="3dp"
-            android:layout_marginTop="10dp"
-            />
 
 
 
-    </RelativeLayout>
-</ScrollView>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
+
+
+
+</LinearLayout>

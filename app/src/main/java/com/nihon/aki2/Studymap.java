@@ -1,11 +1,13 @@
 package com.nihon.aki2;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
 import android.os.StrictMode;
@@ -29,6 +32,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -52,8 +57,9 @@ public class Studymap extends AppCompatActivity {
     private ScaleImage mScaleImage;
     TextView title,countdown,textView15,mydate,condition;
     Spinner page;
-    Button bt1,bt2,bt3,bt4;
-    String account="",names="";
+    Button bt1 ,bt3,bt4;
+    String project="",during="",fee="",attend="",mycondition="",account="",shokai="";
+
     boolean tf=true;
     int num=1;
     WebView videoWebView;
@@ -91,22 +97,25 @@ public class Studymap extends AppCompatActivity {
         DisplayMetrics dm=new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-         img.setOnClickListener(imgbtn2);
+
         page=(Spinner)findViewById(R.id.page);
 
         title=(TextView)findViewById(R.id.title);
         countdown=(TextView)findViewById(R.id.countdown);
+        /*
         textView15=(TextView)findViewById(R.id.textView15);
         mydate=(TextView)findViewById(R.id.mydate);
         condition=(TextView)findViewById(R.id.condition);
+
+         */
         bt1=(Button)findViewById(R.id.bt1) ;
-        bt2=(Button)findViewById(R.id.bt2);
+
         bt3=(Button)findViewById(R.id.bt3);
         bt4=(Button)findViewById(R.id.bt4);
-        dbsel(num);
-        dbsel2();
+       // dbsel(num);
+        //dbsel2();
         bt1.setOnClickListener(bt01);
-        bt2.setOnClickListener(bt02);
+
         bt3.setOnClickListener(bt03);
         bt4.setOnClickListener(bt04);
         imageView = (GifImageView)findViewById(R.id.mygif);
@@ -114,6 +123,42 @@ public class Studymap extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.GONE);
         videoWebView.setVisibility(View.GONE);
+        startDownload();
+    }
+    private void startDownload() {
+
+        new Studymap.DownloadFileAsync().execute();
+    }
+
+    class DownloadFileAsync extends AsyncTask<String, String, String> {
+        //  ProgressDialog dialog = new ProgressDialog(Listening.this);
+
+
+        @Override
+        protected void onPreExecute() {
+
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... aurl) {
+
+
+
+            new Studymap.DownloadFileAsync().cancel(true);
+            return null;
+        }
+
+        protected void onProgressUpdate(String... progress) {
+
+        }
+
+        @Override
+        protected void onPostExecute(String unused)
+        {  dbsel(num);
+            dbsel2();
+
+        }
     }
     private Button.OnClickListener bt04=new Button.OnClickListener() {
         @Override
@@ -127,79 +172,156 @@ public class Studymap extends AppCompatActivity {
     private Button.OnClickListener bt03=new Button.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if(tf){
-                bt3.setText("關閉");
-                tf=false;
-                play();
-                videoWebView.setVisibility(View.VISIBLE);
-                recyclerView.setVisibility(View.VISIBLE);
-                imageView.setVisibility(View.GONE);
-            }
-            else{
-                bt3.setText("播放");
-                tf=true;
-                videoWebView.setVisibility(View.GONE);
-                recyclerView.setVisibility(View.GONE);
 
+            if(num==1) {
+                if (tf) {
+                    bt3.setText("關閉");
+                    tf = false;
+                   play();
+                    videoWebView.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    imageView.setVisibility(View.GONE);
+                } else {
+                    bt3.setText("播放");
+                    tf = true;
+                    play0();
+                    videoWebView.setVisibility(View.GONE);
+
+                    recyclerView.setVisibility(View.GONE);
+
+                }
+            }
+           else if(num==2) {
+                if (tf) {
+                    bt3.setText("關閉");
+                    tf = false;
+                    play2();
+                    videoWebView.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    imageView.setVisibility(View.GONE);
+                } else {
+                    bt3.setText("播放");
+                    tf = true;
+                    play0();
+                    videoWebView.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.GONE);
+
+                }
+            }
+             else if(num==3) {
+                if (tf) {
+                    bt3.setText("關閉");
+                    tf = false;
+                    play3();
+                    videoWebView.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    imageView.setVisibility(View.GONE);
+                } else {
+                    bt3.setText("播放");
+                    tf = true;
+                    play0();
+                    videoWebView.setVisibility(View.GONE);
+
+                    recyclerView.setVisibility(View.GONE);
+
+                }
             }
         }
     };
     private Button.OnClickListener bt01=new Button.OnClickListener(){
         @Override
         public void onClick(View view) {
-            if(num==1){
-                Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_2introduction.pdf"));
-                startActivity(intent);
-            }
-          else if(num==2){
-                Intent intent=new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school1_introduction.pdf"));
-                startActivity(intent);
-            }
-            else if(num==3){
-                Intent intent=new Intent(Intent.ACTION_VIEW);
+            new AlertDialog.Builder(Studymap.this)
+                    .setTitle("詳細內容")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage(project+"\n參加費用:"+fee+"\n報名期限:"+attend+"\n參加條件:"+mycondition)
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
 
-                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_1_introduction.pdf"));
-                startActivity(intent);
-            }
+                        }
+                    })
+                    .setNeutralButton("下載", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    if(num==1){
+                                        Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
+                                        intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_2introduction.pdf"));
+                                        startActivity(intent);
+                                    }
+                                    else if(num==2){
+                                        Intent intent=new Intent(Intent.ACTION_VIEW);
+                                        intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school1_introduction.pdf"));
+                                        startActivity(intent);
+                                    }
+                                    else if(num==3){
+                                        Intent intent=new Intent(Intent.ACTION_VIEW);
+
+                                        intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_1_introduction.pdf"));
+                                        startActivity(intent);
+                                    }
+                                }
+                            }
+
+                    )
+                    .show();
+
         }
     };
-    private Button.OnClickListener bt02=new Button.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            if(num==1) {
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_introduction.pdf"));
-                startActivity(intent);
-            }
-           else if(num==3) {
-                Intent intent=new Intent(Intent.ACTION_VIEW);
 
-                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_2_introduction.pdf"));
-                startActivity(intent);
-            }
-        }
-    };
     private Spinner.OnItemSelectedListener spnPreferListener=
             new Spinner.OnItemSelectedListener(){
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View v,
                                            int position, long id) {
                     //String sel=parent.getSelectedItem().toString();
+                    play0();
+                     num=mypoint.get(position);
 
-                    int num=mypoint.get(position);
-                     if(num==1){bt2.setVisibility(View.GONE);}
-                    else{bt2.setVisibility(View.VISIBLE);}
                    // mytoast(mypoint.get(position)+"");
                     dbsel(num);
-
+                    bt3.setText("播放");
+                    tf = true;
+                    videoWebView.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.GONE);
                 }
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
 
                 }
             };
+    public void play0(){
+
+        videoWebView.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.GONE);
+        videoWebView.bringToFront();
+        recyclerView.bringToFront();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+        youtubeVideos.clear();
+
+
+        /* */
+    }
+    public void play3(){
+
+        videoWebView.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.GONE);
+        videoWebView.bringToFront();
+        recyclerView.bringToFront();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+        youtubeVideos.clear();
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://akkyschool.com/images/study_abroad/study_abroad42.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
+
+        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
+
+        recyclerView.setAdapter(videoAdapter);
+
+        /* */
+    }
     public void play(){
 
         videoWebView.setVisibility(View.VISIBLE);
@@ -209,8 +331,26 @@ public class Studymap extends AppCompatActivity {
         recyclerView.bringToFront();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager( new LinearLayoutManager(this));
+        youtubeVideos.clear();
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://akkyschool.com/images/study_abroad/study_abroad1.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
 
-        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://akkyschool.com/images/study_abroad/study_abroad42.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
+        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
+
+        recyclerView.setAdapter(videoAdapter);
+
+        /* */
+    }
+    public void play2(){
+
+        videoWebView.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.GONE);
+        videoWebView.bringToFront();
+        recyclerView.bringToFront();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+        youtubeVideos.clear();
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/xmkqU_M21lk\" frameborder=\"0\" allowfullscreen></iframe>") );
 
         VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
 
@@ -261,31 +401,28 @@ public class Studymap extends AppCompatActivity {
 
             for(int i = 0; i < jsonArray.length(); i++)
             {	 JSONObject jsonData = jsonArray.getJSONObject(i);
-                String project=jsonData.getString("project");
+                 project=jsonData.getString("project");
 
-                String during=jsonData.getString("during");
-                String fee=jsonData.getString("fee");
-                String attend=jsonData.getString("attend");
-                String mycondition=jsonData.getString("mycondition");
+                during=jsonData.getString("during");
+                fee=jsonData.getString("fee");
+                attend=jsonData.getString("attend");
+                mycondition=jsonData.getString("mycondition");
+                shokai=jsonData.getString("shokai");
+
                 title.setText(project);
-                countdown.setText(during);
+                countdown.setText(shokai);
+               /*  countdown.setText(during);
                 textView15.setText(fee);
                 mydate.setText(attend);
                 condition.setText(mycondition);
+               */
             }
 
         }
 
         catch(Exception e){}
     }
-    private ImageView.OnClickListener imgbtn2=new ImageView.OnClickListener(){
-        @Override
-        public void onClick(View view) {
 
-        }
-
-
-    };
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_SHORT);
