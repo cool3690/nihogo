@@ -31,7 +31,7 @@ public class Menushow extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4,btn5,btn6;
     String account="",passwd="",names="";
     Context context;
-    // private AdView mAdView;
+
     private Menu menu;
     Dialog dia;
     @Override

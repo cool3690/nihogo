@@ -2,10 +2,13 @@ package com.nihon.aki2;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,6 +51,10 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -55,11 +62,14 @@ import java.util.Vector;
 public class Studymap extends AppCompatActivity {
     private ImageView img;
     private ScaleImage mScaleImage;
-    TextView title,countdown,textView15,mydate,condition;
+    TextView title,countdown,textView15,mydate,condition,myaddress,myweb;
     Spinner page;
     Button bt1 ,bt3,bt4;
-    String project="",during="",fee="",attend="",mycondition="",account="",shokai="";
-
+    String project="",during="",fee="",attend="",mycondition="",account="",shokai="",address="",web="";
+    Context context;
+    // private AdView mAdView;
+    private Menu menu;
+    Dialog dia;
     boolean tf=true;
     int num=1;
     WebView videoWebView;
@@ -70,7 +80,6 @@ public class Studymap extends AppCompatActivity {
     //String[] mypage= new String[1];
   //  int[] mypoint=new int[1];
     List<Integer> mypoint = new ArrayList<>();
-    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +111,8 @@ public class Studymap extends AppCompatActivity {
 
         title=(TextView)findViewById(R.id.title);
         countdown=(TextView)findViewById(R.id.countdown);
+        myaddress=(TextView)findViewById(R.id.myaddress);
+        myweb=(TextView)findViewById(R.id.myweb);
         /*
         textView15=(TextView)findViewById(R.id.textView15);
         mydate=(TextView)findViewById(R.id.mydate);
@@ -228,43 +239,129 @@ public class Studymap extends AppCompatActivity {
             }
         }
     };
+    private static Bitmap getBitmapFromURL(String imageUrl)
+    {
+        try
+        {
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(input);
+            return bitmap;
+        }
+        catch (IOException e){  return null;}
+    }
     private Button.OnClickListener bt01=new Button.OnClickListener(){
         @Override
         public void onClick(View view) {
-            new AlertDialog.Builder(Studymap.this)
-                    .setTitle("詳細內容")
-                    .setIcon(R.drawable.ic_launcher)
-                    .setMessage(project+"\n參加費用:"+fee+"\n報名期限:"+attend+"\n參加條件:"+mycondition)
-                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialoginterface, int i)
-                        {
+            context = Studymap.this;
+            dia = new Dialog(context, R.style.edit_AlertDialog_style);
+            dia.setContentView(R.layout.dailogshow);
+            final ImageView imageView = (ImageView) dia.findViewById(R.id.start_img);
+            TextView show=(TextView)dia.findViewById(R.id.show);
+            Button btok=(Button)dia.findViewById(R.id.btok);
+            Button download=(Button)dia.findViewById(R.id.btdownload);
+//////////////////////////////////////////
+            String myurl="https://akkyschool.com/images/study_abroad/";
+            if(num==1){
+                myurl+= "dm.png";
+            }
+            else if(num==2){
+                myurl+= "dm2.png";
+            }
+            else if(num==3){
+                myurl+= "dm3.png";
+            }
 
+
+            new AsyncTask<String, Void, Bitmap>()
+            {
+                @Override
+                protected Bitmap doInBackground(String... params) //實作doInBackground
+                {
+                    String url = params[0];
+                    return getBitmapFromURL(url);
+                }
+
+                @Override
+                protected void onPostExecute(Bitmap result) //當doinbackground完成後
+                {
+                    imageView.setImageBitmap (result);
+                    super.onPostExecute(result);
+                }
+            }.execute(myurl);
+/*
+            try {
+                InputStream is = (InputStream) new URL("https://akkyschool.com/images/study_abroad/dm2.png").getContent();
+                Drawable d = Drawable.createFromStream(is, "dm2.png");
+                imageView.getWidth();
+                imageView.setMinimumWidth(imageView.getWidth());
+                imageView.setImageDrawable(d);
+
+            } catch (Exception e) {
+
+            }
+*/
+        ////////////////////////
+/*
+            if(num==1){
+                imageView.setImageResource(R.drawable.testpic);
+            }
+            else if(num==2){
+                imageView.setImageResource(R.drawable.testpic2);
+            }
+            else if(num==3){
+                imageView.setImageResource(R.drawable.testpic3);
+            }
+*/
+            show.setText(project+"\n參加費用:"+fee+"\n報名期限:"+attend+"\n參加條件:"+mycondition);
+            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+            Window w = dia.getWindow();
+            WindowManager.LayoutParams lp = w.getAttributes();
+            lp.x = 0;
+            lp.y = 20;
+            dia.show();
+            dia.onWindowAttributesChanged(lp);
+            imageView.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dia.dismiss();
                         }
-                    })
-                    .setNeutralButton("下載", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    if(num==1){
-                                        Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                                        intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_2introduction.pdf"));
-                                        startActivity(intent);
-                                    }
-                                    else if(num==2){
-                                        Intent intent=new Intent(Intent.ACTION_VIEW);
-                                        intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school1_introduction.pdf"));
-                                        startActivity(intent);
-                                    }
-                                    else if(num==3){
-                                        Intent intent=new Intent(Intent.ACTION_VIEW);
-
-                                        intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_1_introduction.pdf"));
-                                        startActivity(intent);
-                                    }
-                                }
+                    });
+            btok.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dia.dismiss();
+                        }
+                    }
+            );
+            download.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(num==1){
+                                Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_2introduction.pdf"));
+                                startActivity(intent);
                             }
+                            else if(num==2){
+                                Intent intent=new Intent(Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school1_introduction.pdf"));
+                                startActivity(intent);
+                            }
+                            else if(num==3){
+                                Intent intent=new Intent(Intent.ACTION_VIEW);
 
-                    )
-                    .show();
+                                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_1_introduction.pdf"));
+                                startActivity(intent);
+                            }
+                        }
+                    }
+            );
 
         }
     };
@@ -408,9 +505,12 @@ public class Studymap extends AppCompatActivity {
                 attend=jsonData.getString("attend");
                 mycondition=jsonData.getString("mycondition");
                 shokai=jsonData.getString("shokai");
-
+                address=jsonData.getString("address");
+                web=jsonData.getString("web");
                 title.setText(project);
                 countdown.setText(shokai);
+                myaddress.setText(address);
+                myweb.setText(web);
                /*  countdown.setText(during);
                 textView15.setText(fee);
                 mydate.setText(attend);

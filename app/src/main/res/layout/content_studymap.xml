@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:layout_below="@+id/page"
                 android:text="富士山國際學院"
@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text=" 每年10 月或 4月開學"
                 android:textSize="18sp" />
             <!--
@@ -191,10 +191,30 @@
                 android:background="#9FF34E"
                 android:text="我要詢問" />
 
-
+            <LinearLayout
+                android:id="@+id/L2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/bt4"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+            <TextView
+                android:id="@+id/myaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="address"/>
+                <TextView
+                    android:id="@+id/myweb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="web"/>
+            </LinearLayout>
 
 
         </RelativeLayout>
+
     </ScrollView>
 </RelativeLayout>
 
