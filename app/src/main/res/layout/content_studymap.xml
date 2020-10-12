@@ -180,6 +180,7 @@
                 android:layout_toRightOf="@id/bt1"
                 android:background="#9FF34E"
                 android:text="教學影片" />
+
             <Button
                 android:id="@+id/bt4"
                 android:layout_width="wrap_content"
@@ -188,13 +189,16 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/bt3"
-                android:background="#9FF34E"
-                android:text="我要詢問" />
+                android:background="#E41F18"
+                android:text="我要詢問"
+
+                android:textColor="#fff"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/L2"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/bt4"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">

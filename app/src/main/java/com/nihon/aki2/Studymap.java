@@ -65,7 +65,7 @@ public class Studymap extends AppCompatActivity {
     TextView title,countdown,textView15,mydate,condition,myaddress,myweb;
     Spinner page;
     Button bt1 ,bt3,bt4;
-    String project="",during="",fee="",attend="",mycondition="",account="",shokai="",address="",web="";
+    String project="",during="",fee="",attend="",mycondition="",account="",shokai="",address="",web="",names="" ;
     Context context;
     // private AdView mAdView;
     private Menu menu;
@@ -532,25 +532,85 @@ public class Studymap extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_info, menu);
-
-
-
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(names==null ||names=="" ){
+            menu.findItem(R.id.login).setTitle("登入");
+        }
+        else{
+            menu.findItem(R.id.login).setTitle("歡迎"+names);
+        }
+        this.menu = menu;
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.myform) {
-            //intent my form
-            /*  */
+        if (id == R.id.login) {
             Intent intent=new Intent();
-            intent.setClass(Studymap.this, Myform.class);
+            intent.setClass(Studymap.this, Login.class);
             startActivity(intent);
+        }
+        if (id == R.id.cart) {
+            if(account==null ||account==""){
+                Intent intent=new Intent();
+                intent.setClass(Studymap.this,Login.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("CART", "cart");
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+            else{
+                Intent intent=new Intent();
+                intent.setClass(Studymap.this, Mcart.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("ACCOUNT", account);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        }
+        if (id == R.id.mon) {
+            Intent intent=new Intent();
+            intent.setClass(Studymap.this, Change.class);
+            startActivity(intent);
+        }
+        if (id == R.id.news) {
+            Intent intent=new Intent();
+            intent.setClass(Studymap.this, Myweb.class);
+            startActivity(intent);
+        }
+        if (id == R.id.mymenu) {
+            Intent intent=new Intent();
+            intent.setClass(Studymap.this, Menushow.class);
+            startActivity(intent);
+        }
+        if (id == R.id.apply) {
+            Intent intent=new Intent();
+            intent.setClass(Studymap.this, Apply.class);
+            startActivity(intent);
+        }
 
-
-            return true;
+        if (id == R.id.lesson) {
+            Intent intent=new Intent();
+            intent.setClass(Studymap.this, Shiken.class);
+            startActivity(intent);
+        }
+        if (id == R.id.menu) {
+            Intent intent=new Intent();
+            intent.setClass(Studymap.this, MainActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.about) {
+            new AlertDialog.Builder(Studymap.this)
+                    .setTitle("版權所有")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふじやま國際學院")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialoginterface, int i)
+                        {
+                        }
+                    })
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }
