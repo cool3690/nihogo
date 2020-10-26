@@ -21,10 +21,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".JRmap"
+            android:label="@string/title_activity_j_rmap"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Studymap"
             android:label="@string/title_activity_studymap"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Myform"
             android:label="@string/title_activity_myform"

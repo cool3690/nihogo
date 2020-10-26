@@ -47,7 +47,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/aki_lineh"
                 android:gravity="center"
-                android:text="日本與能力測驗"
+                android:text="日本語能力測驗"
                 android:textColor="@android:color/background_dark"
 
                 android:textSize="24sp" />
