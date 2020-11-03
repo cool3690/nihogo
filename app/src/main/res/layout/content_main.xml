@@ -70,7 +70,7 @@
                 android:id="@+id/list"
 
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
 
             <ImageView
                 android:id="@+id/toright"
@@ -86,6 +86,16 @@
                 android:layout_marginTop="80dp"
                 android:layout_alignParentLeft="true"
                 app:srcCompat="@drawable/aki_point4" />
+            <TextView
+                android:id="@+id/more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/list"
+                android:text="更多資訊"
+                android:gravity="center"
+                android:textColor="#2351D8"
+                android:textSize="20sp"
+                />
         </RelativeLayout>
         <!--end-->
 

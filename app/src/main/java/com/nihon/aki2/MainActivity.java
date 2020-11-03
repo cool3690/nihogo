@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView classinfo;
     RelativeLayout R1;
     TextView testinfo,jointime,testtime,countday,title;
-    ImageView more;
+    TextView more;
     int cc=0,check=0;
     Button btjlpt,bteju;
     String account="",passwd="",names="",course_num="",mykai="";
@@ -120,7 +120,8 @@ public class MainActivity extends AppCompatActivity {
         testtime=(TextView)findViewById(R.id.testtime);
         countday=(TextView)findViewById(R.id.countday);
         title=(TextView)findViewById(R.id.textView7);
-        more=(ImageView)findViewById(R.id.more);*/
+        */
+        more=(TextView) findViewById(R.id.more);
         classinfo=(ImageView)findViewById(R.id.classinfo);
 
         btjlpt=(Button)findViewById(R.id.btjlpt) ;
@@ -136,9 +137,9 @@ public class MainActivity extends AppCompatActivity {
         classinfo.setOnClickListener(classinfobtn);
         toright.setOnClickListener(torightbtn);
         toleft.setOnClickListener(toleftbtn);
-    /*  more.setOnClickListener(morebtn);
+      more.setOnClickListener(morebtn);
 
-         */
+      /*   */
 
 
         String result = dbcjlpt.executeQuery();
@@ -334,8 +335,10 @@ public class MainActivity extends AppCompatActivity {
             jointime.setText("網路報名時間:\n"+ssign.get(0)+"\n"+memo.get(0));
             title.setText("日本語能力測驗");
             testinfo.setText(sdate.get(0).toString().substring(0,4)+"年"+mykai);
-
+  myurl= "https://akkyschool.com/images/study_abroad/cs_eju.png";
+            url="https://www.lttc.ntu.edu.tw/EJU_registration.htm";
             myurl= "https://akkyschool.com/images/study_abroad/cs_jlpt.png";
+             url="https://www.jlpt.tw/";
             testtime.setText(status.get(0)+"");
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
             more.setImageResource(R.drawable.aki_jlpt3);
@@ -439,7 +442,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    private ImageView.OnClickListener morebtn=new ImageView.OnClickListener(){
+    private TextView.OnClickListener morebtn=new TextView.OnClickListener(){
         @Override
         public void onClick(View v) {
 
@@ -453,7 +456,16 @@ public class MainActivity extends AppCompatActivity {
             show.setVisibility(View.GONE);
 
 //////////////////////////////////////////
+            if(x<2){
+                myurl= "https://akkyschool.com/images/study_abroad/cs_jlpt.png";
+                url="https://www.jlpt.tw/";
+            }
+            else{
+                myurl= "https://akkyschool.com/images/study_abroad/cs_eju.png";
+                url="https://www.lttc.ntu.edu.tw/EJU_registration.htm";
+            }
 
+            btok.setText("前往網站");
             new AsyncTask<String, Void, Bitmap>()
             {
                 @Override
