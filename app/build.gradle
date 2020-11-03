@@ -63,4 +63,6 @@ dependencies {
 */
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha01'
     implementation 'com.zhy:base-rvadapter:3.0.3'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.android.support:recyclerview-v7:29.0.0'
 }
