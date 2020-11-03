@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ExamsAdapter extends RecyclerView.Adapter<ExamsAdapter.MyViewHolder> {
     private List<Exam> teams;
+
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView testinfo, jointime, testtime,countday,title;
         ImageView more;
@@ -58,9 +59,16 @@ public class ExamsAdapter extends RecyclerView.Adapter<ExamsAdapter.MyViewHolder
         holder.title.setText(String.valueOf(o.getTitle()));
 
         holder. more.setImageResource(o.getMore());
+       // holder.getItemId();
+
     }
     @Override
     public int getItemCount() {
-        return teams.size();
+
+         return teams.size();
+
     }
+
+
+
 }

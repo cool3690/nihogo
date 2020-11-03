@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
-        android:background="@drawable/aki_eju2"
+        android:background="@drawable/aki_jlpt2"
       >
 
 
@@ -56,6 +56,7 @@
             android:layout_below="@id/btjlpt"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
+
             android:id="@+id/L1">
             <!--
         <ListView
@@ -77,7 +78,7 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="80dp"
                 android:layout_alignParentRight="true"
-                app:srcCompat="@drawable/aki_point" />
+                app:srcCompat="@drawable/aki_point2" />
             <ImageView
                 android:id="@+id/toleft"
                 android:layout_width="80dp"

@@ -63,6 +63,7 @@ import com.nihon.aki2.mydb.dbselcart;
 
 
 public class MainActivity extends AppCompatActivity {
+    ExamsAdapter mAdapter;
     Dialog dia;
     Context context;
     ImageView toright,toleft;
@@ -159,15 +160,20 @@ public class MainActivity extends AppCompatActivity {
                // testtime.setText(status.get(0)+"");
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
                 Date dt=new Date();
+                long day=0;
                 // String dts=sdf.format(dt);
-                java.util.Date endDate= sdf.parse(sdate.get(i)+"");
-                long day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
-                if(day<0){
-                //    countday.setTextSize(16);
-                  //  countday.setText("   "+"0");
-                    day=0;
+                if((status.get(i)+"").contains("/")){
+                    java.util.Date endDate= sdf.parse(sdate.get(i)+"");
+                      day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
+                    if(day<0){
+                        //    countday.setTextSize(16);
+                        //  countday.setText("   "+"0");
+                        day=0;
+                    }
                 }
+
                 else{
+
                  //   countday.setText("   "+day );
                 }
                 if(exam_type.get(i).toString().contains("留學")){
@@ -197,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
 
          */
         //list.setOnItemClickListener(lstPreferListener);
-        ExamsAdapter mAdapter;
+
 
         mAdapter = new ExamsAdapter(teams1);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -205,8 +211,9 @@ public class MainActivity extends AppCompatActivity {
         list.setLayoutManager(mLayoutManager);
         list.setItemAnimator(new DefaultItemAnimator());
         list.setAdapter(mAdapter);
-      /////
 
+      /////
+        //
         list.setOnClickListener(lstPreferListener);
 
         //mAdapter.notifyDataSetChanged();
@@ -216,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView.OnClickListener torightbtn =new ImageView.OnClickListener(){
         @Override
         public void onClick(View view) {
-
+            // mytoast(mAdapter.getItemCount2()+"");;
             if(x>=max)x=-1;
             if(++x<max){
                 list.scrollToPosition(x);
@@ -304,74 +311,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.OnClickListener lstPreferListener=new RecyclerView.OnClickListener(){
         @Override
         public void onClick(View view) {
+//mytoast("ee");
 
-            context = MainActivity.this;
-            dia = new Dialog(context, R.style.edit_AlertDialog_style);
-            dia.setContentView(R.layout.dailogshow);
-            final ImageView imageView = (ImageView) dia.findViewById(R.id.start_img);
-            TextView show=(TextView)dia.findViewById(R.id.show);
-            Button btok=(Button)dia.findViewById(R.id.btok);
-            Button download=(Button)dia.findViewById(R.id.btdownload);
-            show.setVisibility(View.GONE);
-
-//////////////////////////////////////////
-
-            //int w=list.get(holder.absoluteAdapterPosition);
-            new AsyncTask<String, Void, Bitmap>()
-            {
-                @Override
-                protected Bitmap doInBackground(String... params) //實作doInBackground
-                {
-                    String url = params[0];
-                    return getBitmapFromURL(url);
-                }
-
-                @Override
-                protected void onPostExecute(Bitmap result) //當doinbackground完成後
-                {
-                    imageView.setImageBitmap (result);
-                    //  saveImage(getApplicationContext(), result, "my_image.png");
-                    super.onPostExecute(result);
-
-                }
-            }.execute(myurl);
-
-
-            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
-            Window w = dia.getWindow();
-            WindowManager.LayoutParams lp = w.getAttributes();
-            lp.x = 0;
-            lp.y = 20;
-            dia.show();
-            dia.onWindowAttributesChanged(lp);
-            imageView.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dia.dismiss();
-                        }
-                    });
-            btok.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                            intent.setData(Uri.parse(url));
-                            startActivity(intent);
-                        }
-                    }
-            );
-            download.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                            intent.setData(Uri.parse(myurl));
-                            startActivity(intent);
-
-                        }
-                    }
-            );
         }
     };
     private Button.OnClickListener btjlptclick=new Button.OnClickListener(){
@@ -380,6 +321,7 @@ public class MainActivity extends AppCompatActivity {
             btjlpt.setBackgroundColor(Color.YELLOW);
             bteju.setBackgroundColor(Color.WHITE);
             list.scrollToPosition(0);
+
             R1.setBackgroundResource(R.drawable.aki_jlpt2);
             x=0;
             if(x==0){
