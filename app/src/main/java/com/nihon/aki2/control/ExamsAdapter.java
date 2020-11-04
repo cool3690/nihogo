@@ -1,24 +1,33 @@
 package com.nihon.aki2.control;
 
-import android.content.Context;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nihon.aki2.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ExamsAdapter extends RecyclerView.Adapter<ExamsAdapter.MyViewHolder> {
     private List<Exam> teams;
 
+
+    private GestureDetector mGestureDetector;
+    private OnItemClickListener mOnItemClickListener;
+
+    public interface OnItemClickListener {
+        public void onItemClick(View view, int position);
+    }
+
+    /**/
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView testinfo, jointime, testtime,countday,title;
         ImageView more;
@@ -30,15 +39,13 @@ public class ExamsAdapter extends RecyclerView.Adapter<ExamsAdapter.MyViewHolder
              countday=(TextView) v.findViewById(R.id.countday);
               title=(TextView) v.findViewById(R.id.title);
               more=(ImageView) v.findViewById(R.id.more);
-              /*
-              more.setOnClickListener(new View.OnClickListener(){
-                  p
-              });
 
-               */
         }
     }
+
+
     public ExamsAdapter(List<Exam> teams) {
+
         this.teams = teams;
     }
     @NonNull
@@ -46,6 +53,14 @@ public class ExamsAdapter extends RecyclerView.Adapter<ExamsAdapter.MyViewHolder
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.exam, parent, false);
+        MyViewHolder viewHolder = new MyViewHolder(itemView);
+
+     //   itemView.setOnClickListener( this);
+
+       // viewHolder.more.setOnClickListener(ExamsAdapter.this);
+
+        itemView.setTag(viewHolder);
+
         return new MyViewHolder(itemView);
     }
     @Override
@@ -59,7 +74,11 @@ public class ExamsAdapter extends RecyclerView.Adapter<ExamsAdapter.MyViewHolder
         holder.title.setText(String.valueOf(o.getTitle()));
 
         holder. more.setImageResource(o.getMore());
+        holder.getAdapterPosition();
+       // Toast.makeText(ExamsAdapter.this, "RecyclerView Item onClick at " + position, Toast.LENGTH_SHORT).show();
        // holder.getItemId();
+
+
 
     }
     @Override
@@ -68,7 +87,18 @@ public class ExamsAdapter extends RecyclerView.Adapter<ExamsAdapter.MyViewHolder
          return teams.size();
 
     }
+    /*
+    public void onClick(View view) {
+        MyViewHolder holder = (MyViewHolder) view.getTag();
+        int position = holder.getPosition();
 
+        if (view.getId() == holder.imageIV.getId()){
+            Toast.makeText(context, "imageIV onClick at" + position, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "RecyclerView Item onClick at " + position, Toast.LENGTH_SHORT).show();
+        }
+    }
+     */
 
 
 }

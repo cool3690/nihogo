@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         bteju=(Button)findViewById(R.id.bteju) ;
         R1=(RelativeLayout) findViewById(R.id.R1);
         btjlpt.setBackgroundColor(Color.YELLOW);
-       list= findViewById(R.id.list);
+       list=(RecyclerView) findViewById(R.id.list);
         toleft=(ImageView)findViewById(R.id.toleft);
         toright=(ImageView)findViewById(R.id.toright);
         btjlpt.setOnClickListener(btjlptclick);
@@ -220,6 +220,52 @@ public class MainActivity extends AppCompatActivity {
         //mAdapter.notifyDataSetChanged();
         toright.setVisibility(View.VISIBLE);
         toleft.setVisibility(View.INVISIBLE);
+        list.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int myCellWidth=list.getChildAt(0).getMeasuredWidth();
+                final int offset = list.computeHorizontalScrollOffset();
+                if (offset % myCellWidth <200) {
+                    final int position = offset / myCellWidth ;
+                    x=position;
+                    if(x>1){//eju
+                        R1.setBackgroundResource(R.drawable.aki_eju2);
+                        btjlpt.setBackgroundColor(Color.WHITE);
+                        bteju.setBackgroundColor(Color.YELLOW);
+                        if(x==2){
+                            toleft.setVisibility(View.INVISIBLE);
+
+                            toright.setVisibility(View.VISIBLE);
+                            toright.setImageResource(R.drawable.aki_point);
+                        }
+                        if(x==3){
+                            toleft.setVisibility(View.VISIBLE);
+                            toleft.setImageResource(R.drawable.aki_point3);
+                            toright.setVisibility(View.INVISIBLE);
+                        }
+
+                    }
+                    else{//jlpt
+                        R1.setBackgroundResource(R.drawable.aki_jlpt2);
+                        btjlpt.setBackgroundColor(Color.YELLOW);
+                        bteju.setBackgroundColor(Color.WHITE);
+                        if(x==1){
+                            toleft.setVisibility(View.VISIBLE);
+                            toleft.setImageResource(R.drawable.aki_point4);
+                            toright.setVisibility(View.INVISIBLE);
+                        }
+                        if(x==0){
+                            toleft.setVisibility(View.INVISIBLE);
+
+                            toright.setVisibility(View.VISIBLE);
+                            toright.setImageResource(R.drawable.aki_point2);
+                        }
+                    }
+                }
+            }
+        });
+
     }
     private ImageView.OnClickListener torightbtn =new ImageView.OnClickListener(){
         @Override
