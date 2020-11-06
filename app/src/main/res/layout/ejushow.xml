@@ -112,8 +112,15 @@ android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginBottom="10dp"
+
             style="@style/btn_primary"
             android:text="前往網站"/>
+
     </LinearLayout>
+    <TextView
+        android:id="@+id/blank"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+
+        android:text=""/>
 </LinearLayout>
