@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     int cc=0,check=0;
     Button btjlpt,bteju;
     String account="",passwd="",names="",course_num="",mykai="";
+    boolean detect=true;
     private Menu menu;
     String myurl="https://akkyschool.com/images/study_abroad/cs_jlpt.png";
     ArrayList ssign = new ArrayList();
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList status=new ArrayList();
     ArrayList memo=new ArrayList();
     ArrayList exam_type=new ArrayList();
+    ArrayList myday=new ArrayList();
     String[] Balls= new String[1] ;
   //  ListView list;
    // ArrayList<Exam> teams = new ArrayList<Exam>();
@@ -174,20 +176,27 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 else{
-
+                     sdate.set(i,sdate.get(i).toString().substring(0,4)+" 等候官網公告");
                  //   countday.setText("   "+day );
                 }
-                if(exam_type.get(i).toString().contains("留學")){
+                myday.add(day);
+                if(exam_type.get(i).toString().contains("留學")){//eju
+                    /*
                     Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai,
                             "網路報名時間:\n"+ssign.get(i),status.get(i)+"","   "+day,R.drawable.aki_eju3);
                     teams1.add(team);
                     max++;
+
+                     */
+
                 }
-                else if(exam_type.get(i).toString().contains("能力")){
+                else if(exam_type.get(i).toString().contains("能力")){//jlpt
+
                     Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai,
                             "網路報名時間:\n"+ssign.get(i),status.get(i)+"","   "+day,R.drawable.aki_jlpt3);
                     teams1.add(team);
-                    max++;
+
+                     max++;
                 }
 
             }
@@ -226,27 +235,29 @@ public class MainActivity extends AppCompatActivity {
                 super.onScrolled(recyclerView, dx, dy);
                 int myCellWidth=list.getChildAt(0).getMeasuredWidth();
                 final int offset = list.computeHorizontalScrollOffset();
+///////////////////////////////////////////////////////////////////
                 if (offset % myCellWidth <200) {
                     final int position = offset / myCellWidth ;
                     x=position;
-                    if(x>1){//eju
+              /////////////////
+                    if(!detect){
                         R1.setBackgroundResource(R.drawable.aki_eju2);
                         btjlpt.setBackgroundColor(Color.WHITE);
                         bteju.setBackgroundColor(Color.YELLOW);
-                        if(x==2){
+                        if(x==0){
                             toleft.setVisibility(View.INVISIBLE);
 
                             toright.setVisibility(View.VISIBLE);
                             toright.setImageResource(R.drawable.aki_point);
                         }
-                        if(x==3){
+                        if(x==1){
                             toleft.setVisibility(View.VISIBLE);
                             toleft.setImageResource(R.drawable.aki_point3);
                             toright.setVisibility(View.INVISIBLE);
                         }
 
                     }
-                    else{//jlpt
+                    else{
                         R1.setBackgroundResource(R.drawable.aki_jlpt2);
                         btjlpt.setBackgroundColor(Color.YELLOW);
                         bteju.setBackgroundColor(Color.WHITE);
@@ -262,7 +273,9 @@ public class MainActivity extends AppCompatActivity {
                             toright.setImageResource(R.drawable.aki_point2);
                         }
                     }
+                    /////////////////
                 }
+/////////////////////////////////////////////////
             }
         });
 
@@ -272,26 +285,29 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             // mytoast(mAdapter.getItemCount2()+"");;
             if(x>=max)x=-1;
+
             if(++x<max){
                 list.scrollToPosition(x);
-                if(x>1){
+                if(!detect){//eju
+                    detect=false;
                     R1.setBackgroundResource(R.drawable.aki_eju2);
                     //toright.setImageResource(R.drawable.aki_point);
                     btjlpt.setBackgroundColor(Color.WHITE);
                     bteju.setBackgroundColor(Color.YELLOW);
-                    if(x==2){
+                    if(x==0){
                         toleft.setVisibility(View.INVISIBLE);
 
                         toright.setVisibility(View.VISIBLE);
                         toright.setImageResource(R.drawable.aki_point);
                     }
-                    if(x==3){
+                    if(x==1){
                         toleft.setVisibility(View.VISIBLE);
                         toleft.setImageResource(R.drawable.aki_point3);
                         toright.setVisibility(View.INVISIBLE);
                     }
                 }
-                else{
+                else{//jlpt
+                    detect=true;
                     R1.setBackgroundResource(R.drawable.aki_jlpt2);
                     //toright.setImageResource(R.drawable.aki_point2);
                     btjlpt.setBackgroundColor(Color.YELLOW);
@@ -318,17 +334,18 @@ public class MainActivity extends AppCompatActivity {
             if(x<0) x=0;
             if(--x>-1){
                 list.scrollToPosition(x);
-                if(x>1){//eju
+                if(!detect){//eju
+                    detect=false;
                     R1.setBackgroundResource(R.drawable.aki_eju2);
                     btjlpt.setBackgroundColor(Color.WHITE);
                     bteju.setBackgroundColor(Color.YELLOW);
-                    if(x==2){
+                    if(x==0){
                         toleft.setVisibility(View.INVISIBLE);
 
                         toright.setVisibility(View.VISIBLE);
                         toright.setImageResource(R.drawable.aki_point);
                     }
-                    if(x==3){
+                    if(x==1){
                         toleft.setVisibility(View.VISIBLE);
                         toleft.setImageResource(R.drawable.aki_point3);
                         toright.setVisibility(View.INVISIBLE);
@@ -336,6 +353,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 else{//jlpt
+                    detect=true;
                     R1.setBackgroundResource(R.drawable.aki_jlpt2);
                     btjlpt.setBackgroundColor(Color.YELLOW);
                     bteju.setBackgroundColor(Color.WHITE);
@@ -364,7 +382,8 @@ public class MainActivity extends AppCompatActivity {
     };
     private Button.OnClickListener btjlptclick=new Button.OnClickListener(){
         @Override
-        public void onClick(View view) {
+        public void onClick(View view) {//jlpt
+           detect=true;
             btjlpt.setBackgroundColor(Color.YELLOW);
             bteju.setBackgroundColor(Color.WHITE);
             list.scrollToPosition(0);
@@ -377,82 +396,50 @@ public class MainActivity extends AppCompatActivity {
                 toright.setVisibility(View.VISIBLE);
                 toright.setImageResource(R.drawable.aki_point2);
             }
-            /*
-            jointime.setText("網路報名時間:\n"+ssign.get(0)+"\n"+memo.get(0));
-            title.setText("日本語能力測驗");
-            testinfo.setText(sdate.get(0).toString().substring(0,4)+"年"+mykai);
-  myurl= "https://akkyschool.com/images/study_abroad/cs_eju.png";
-            url="https://www.lttc.ntu.edu.tw/EJU_registration.htm";
-            myurl= "https://akkyschool.com/images/study_abroad/cs_jlpt.png";
-             url="https://www.jlpt.tw/";
-            testtime.setText(status.get(0)+"");
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
-            more.setImageResource(R.drawable.aki_jlpt3);
-            url="https://www.jlpt.tw/";
-            Date dt=new Date();
-            // String dts=sdf.format(dt);
-            Date endDate= null;
-            try {
-                endDate = sdf.parse(sdate.get(0)+"");
-            } catch (ParseException e) {
-
+            teams1.clear();
+            for(int i=0;i<2;i++){
+                Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai,
+                        "網路報名時間:\n"+ssign.get(i),status.get(i)+"","   "+myday.get(i),R.drawable.aki_jlpt3);
+                teams1.add(team);
             }
-            long day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
-            if(day<0){
-                //    countday.setTextSize(16);
-                countday.setText("   "+"0");
-            }
-            else{
-                countday.setText("   "+day );
-            }
-
-             */
-
-
+            mAdapter = new ExamsAdapter(teams1);
+            LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+            mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            list.setLayoutManager(mLayoutManager);
+            list.setItemAnimator(new DefaultItemAnimator());
+            list.setAdapter(mAdapter);
         }
     };
-    private Button.OnClickListener btejuclick=new Button.OnClickListener(){
+    private Button.OnClickListener btejuclick=new Button.OnClickListener(){//eju
         @Override
         public void onClick(View view) {
+            detect=false;
             btjlpt.setBackgroundColor(Color.WHITE);
             bteju.setBackgroundColor(Color.YELLOW);
-            list.scrollToPosition(2);
+            list.scrollToPosition(0);
             R1.setBackgroundResource(R.drawable.aki_eju2);
-            x=2;
-            if(x==2){
+           x=0;
+            if(x==0){
                 toleft.setVisibility(View.INVISIBLE);
 
                 toright.setVisibility(View.VISIBLE);
                 toright.setImageResource(R.drawable.aki_point);
             }
-            /*
 
-            jointime.setText("網路報名時間:\n"+ssign.get(1)+"\n"+memo.get(1));
-            title.setText("日本留學試驗");
-            myurl= "https://akkyschool.com/images/study_abroad/cs_eju.png";
-            url="https://www.lttc.ntu.edu.tw/EJU_registration.htm";
-            testtime.setText(status.get(1)+"");
-            testinfo.setText(sdate.get(0).toString().substring(0,4)+"年"+mykai);
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
-            Date dt=new Date();
-            // String dts=sdf.format(dt);
-            more.setImageResource(R.drawable.aki_eju3);
-            Date endDate= null;
-            try {
-                endDate = sdf.parse(sdate.get(1)+"");
-            } catch (ParseException e) {
+            teams1.clear();
+            for(int i=2;i<4;i++){
+                Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai,
+                        "網路報名時間:\n"+ssign.get(i),status.get(i)+"","   "+myday.get(i),R.drawable.aki_eju3);
+                teams1.add(team);
+            }
+            mAdapter = new ExamsAdapter(teams1);
+            LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+            mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            list.setLayoutManager(mLayoutManager);
+            list.setItemAnimator(new DefaultItemAnimator());
+            list.setAdapter(mAdapter);
+              /**/
 
-            }
-            long day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
-            if(day<0){
-                //    countday.setTextSize(16);
-                countday.setText("   "+"0");
-            }
-            else{
-                countday.setText("   "+day );
-            }
-
-             */
         }
     };
     private ImageView.OnClickListener classinfobtn=new ImageView.OnClickListener(){
@@ -493,80 +480,107 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             context = MainActivity.this;
-            dia = new Dialog(context, R.style.edit_AlertDialog_style);
-            dia.setContentView(R.layout.dailogshow);
-            final ImageView imageView = (ImageView) dia.findViewById(R.id.start_img);
-            TextView show=(TextView)dia.findViewById(R.id.show);
-            Button btok=(Button)dia.findViewById(R.id.btok);
-            Button download=(Button)dia.findViewById(R.id.btdownload);
-            show.setVisibility(View.GONE);
+            /**/
+
+
 
 //////////////////////////////////////////
-            if(x<2){
+            if(detect){
                 myurl= "https://akkyschool.com/images/study_abroad/cs_jlpt.png";
                 url="https://www.jlpt.tw/";
+                dia = new Dialog(context, R.style.edit_AlertDialog_style2);
+                dia.setContentView(R.layout.examshow);
+
+                Button btok=(Button)dia.findViewById(R.id.btok);
+                Button download=(Button)dia.findViewById(R.id.btdownload);
+                TextView date=(TextView)dia.findViewById(R.id.date);
+                if(x==0){
+                    date.setText(sdate.get(0)+"(週日)");
+                }
+                else if(x==1){
+                    date.setText(sdate.get(1)+"(週日)");
+                }
+                dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                Window w = dia.getWindow();
+                WindowManager.LayoutParams lp = w.getAttributes();
+                lp.x = 0;
+                lp.y = 20;
+                lp.width =list.getChildAt(0).getMeasuredWidth();
+                // lp.height = 500;
+                dia.show();
+                dia.onWindowAttributesChanged(lp);
+                btok.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dia.dismiss();
+                            }
+                        }
+                );
+
+                download.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse(url));
+                                startActivity(intent);
+
+                            }
+                        }
+                );
+
             }
             else{
                 myurl= "https://akkyschool.com/images/study_abroad/cs_eju.png";
                 url="https://www.lttc.ntu.edu.tw/EJU_registration.htm";
+                dia = new Dialog(context, R.style.edit_AlertDialog_style2);
+                dia.setContentView(R.layout.ejushow);
+
+                Button btok=(Button)dia.findViewById(R.id.btok);
+                Button download=(Button)dia.findViewById(R.id.btdownload);
+                TextView date=(TextView)dia.findViewById(R.id.date);
+
+                if(x==0){
+                    date.setText(sdate.get(2)+"(週日)");
+                }
+                else if(x==1){
+
+                    date.setText(sdate.get(3)+"(週日)");
+                }
+                dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                Window w = dia.getWindow();
+                WindowManager.LayoutParams lp = w.getAttributes();
+                lp.x = 0;
+                lp.y = 20;
+                lp.width =list.getChildAt(0).getMeasuredWidth();
+                // lp.height = 500;
+                dia.show();
+                dia.onWindowAttributesChanged(lp);
+                btok.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dia.dismiss();
+                            }
+                        }
+                );
+
+                download.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse(url));
+                                startActivity(intent);
+
+                            }
+                        }
+                );
             }
 
-            btok.setText("前往網站");
-            new AsyncTask<String, Void, Bitmap>()
-            {
-                @Override
-                protected Bitmap doInBackground(String... params) //實作doInBackground
-                {
-                    String url = params[0];
-                    return getBitmapFromURL(url);
-                }
-
-                @Override
-                protected void onPostExecute(Bitmap result) //當doinbackground完成後
-                {
-                    imageView.setImageBitmap (result);
-                  //  saveImage(getApplicationContext(), result, "my_image.png");
-                    super.onPostExecute(result);
-
-                }
-            }.execute(myurl);
 
 
-            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
-            Window w = dia.getWindow();
-            WindowManager.LayoutParams lp = w.getAttributes();
-            lp.x = 0;
-            lp.y = 20;
-            dia.show();
-            dia.onWindowAttributesChanged(lp);
-            imageView.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dia.dismiss();
-                        }
-                    });
-            btok.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                            intent.setData(Uri.parse(url));
-                            startActivity(intent);
-                        }
-                    }
-            );
-            download.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                            intent.setData(Uri.parse(myurl));
-                            startActivity(intent);
-
-                        }
-                    }
-            );
         }
     };
 
