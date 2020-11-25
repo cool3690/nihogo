@@ -70,9 +70,7 @@ public class MainActivity extends AppCompatActivity {
     String url="https://www.jlpt.tw/";;
     ImageView classinfo;
     RelativeLayout R1;
-    TextView testinfo,jointime,testtime,countday,title;
     TextView more;
-    int cc=0,check=0;
     Button btjlpt,bteju;
     String account="",passwd="",names="",course_num="",mykai="";
     boolean detect=true;
@@ -84,13 +82,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList memo=new ArrayList();
     ArrayList exam_type=new ArrayList();
     ArrayList myday=new ArrayList();
-    String[] Balls= new String[1] ;
-  //  ListView list;
-   // ArrayList<Exam> teams = new ArrayList<Exam>();
     private List<Exam> teams1 = new ArrayList<>();
     int x=0,max=0;
     RecyclerView list;
-    int num=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,19 +104,12 @@ public class MainActivity extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
-        Balls[0]="請選擇";
+
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
         names=Account.getNames();
-      //  list=(ListView)findViewById(R.id.list);
-        /*
-        testinfo=(TextView)findViewById(R.id.testinfo);
-        jointime=(TextView)findViewById(R.id.jointime);
-        testtime=(TextView)findViewById(R.id.testtime);
-        countday=(TextView)findViewById(R.id.countday);
-        title=(TextView)findViewById(R.id.textView7);
-        */
+
         more=(TextView) findViewById(R.id.more);
         classinfo=(ImageView)findViewById(R.id.classinfo);
 
@@ -141,8 +128,6 @@ public class MainActivity extends AppCompatActivity {
         toleft.setOnClickListener(toleftbtn);
       more.setOnClickListener(morebtn);
 
-      /*   */
-
 
         String result = dbcjlpt.executeQuery();
 
@@ -156,11 +141,11 @@ public class MainActivity extends AppCompatActivity {
                 ssign.add(jsonData.getString("sign"));
                  sdate.add(jsonData.getString("date"));
                  memo.add(jsonData.getString("memo"));
-               // jointime.setText("網路報名時間:\n"+ssign.get(0));
+
                  status.add(jsonData.getString("status"));
                  mykai=jsonData.getString("kai");
                 exam_type.add(jsonData.getString("exam_type"));
-               // testtime.setText(status.get(0)+"");
+
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
                 Date dt=new Date();
                 long day=0;
@@ -169,15 +154,14 @@ public class MainActivity extends AppCompatActivity {
                     java.util.Date endDate= sdf.parse(sdate.get(i)+"");
                       day=(endDate.getTime()-dt.getTime())/(24*60*60*1000);
                     if(day<0){
-                        //    countday.setTextSize(16);
-                        //  countday.setText("   "+"0");
+
                         day=0;
                     }
                 }
 
                 else{
                      sdate.set(i,sdate.get(i).toString().substring(0,4)+" 等候官網公告");
-                 //   countday.setText("   "+day );
+
                 }
                 myday.add(day);
                 if(exam_type.get(i).toString().contains("留學")){//eju
@@ -205,15 +189,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         catch(Exception e){}
-        /*
-        final ExamsAdapter adapter = new ExamsAdapter(this, R.layout.exam, teams);
-        list.setAdapter(adapter);
-        list.setTextFilterEnabled(true);
-
-
-         */
-        //list.setOnItemClickListener(lstPreferListener);
-
 
         mAdapter = new ExamsAdapter(teams1);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -222,8 +197,6 @@ public class MainActivity extends AppCompatActivity {
         list.setItemAnimator(new DefaultItemAnimator());
         list.setAdapter(mAdapter);
 
-      /////
-        //
         list.setOnClickListener(lstPreferListener);
 
         //mAdapter.notifyDataSetChanged();
@@ -480,11 +453,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             context = MainActivity.this;
-            /**/
 
-
-
-//////////////////////////////////////////
             if(detect){
                 myurl= "https://akkyschool.com/images/study_abroad/cs_jlpt.png";
                 url="https://www.jlpt.tw/";

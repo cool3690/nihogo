@@ -68,7 +68,14 @@ int num=3,yes=0,no=0;
         Bundle bundle=intent.getExtras();
 
         mych=bundle.getString("MYCH");
-        num=Integer.valueOf(bundle.getString("NUM"));
+        if(bundle.getString("NUM").equals("")){
+
+        }
+        else{
+            num=Integer.valueOf(bundle.getString("NUM"));
+        }
+
+
 /*
         mych="3";
         num=22;*/
@@ -86,6 +93,7 @@ int num=3,yes=0,no=0;
         String topic="";
         try{
             JSONArray jsonArray = new JSONArray(result);
+
 
             int k=0;
             // bt.setText("更多資訊");
