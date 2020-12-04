@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,21 +18,31 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
+import com.nihon.aki2.mydb.dbbasic50;
+import com.nihon.aki2.mydb.dbtango;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.Random;
 
 public class Menushow extends AppCompatActivity {
     ImageView btn1,btn2,btn3,btn4,btn5,btn6;
     String account="",passwd="",names="";
     Context context;
-
+    String mypinyin;
+    String myjp;
+    String mych;
+    String myen;
     private Menu menu;
     Dialog dia;
     @Override
@@ -50,9 +61,9 @@ public class Menushow extends AppCompatActivity {
         //mytoast(account+"\n"+passwd+"\n"+names);
         btn1=(ImageView)findViewById(R.id.btn1);
 
-       btn2=(ImageView)findViewById(R.id.btn2);
+        btn2=(ImageView)findViewById(R.id.btn2);
         btn3=(ImageView)findViewById(R.id.btn3);
-       btn4=(ImageView)findViewById(R.id.btn4);
+        btn4=(ImageView)findViewById(R.id.btn4);
         btn5=(ImageView)findViewById(R.id.btn5);
         btn6=(ImageView)findViewById(R.id.btn6);
         //btn6.setVisibility(View.GONE);
@@ -61,31 +72,97 @@ public class Menushow extends AppCompatActivity {
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
-      btn6.setOnTouchListener(b6);
-/*
-        context = Menushow.this;
-        dia = new Dialog(context, R.style.edit_AlertDialog_style);
-        dia.setContentView(R.layout.imgshow);
-        ImageView imageView = (ImageView) dia.findViewById(R.id.start_img);
+        btn6.setOnTouchListener(b6);
+        new DownloadFileAsync().execute();
 
-        dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
-        Window w = dia.getWindow();
-        WindowManager.LayoutParams lp = w.getAttributes();
-        lp.x = 0;
-        lp.y = 20;
-       dia.show();
-      dia.onWindowAttributesChanged(lp);
-        imageView.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dia.dismiss();
-                    }
-                });
 
-       */
     }
+    class DownloadFileAsync extends AsyncTask<String, String, String> {
 
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... aurl) {
+            String result = dbtango.executeQuery();
+            Random random=new Random();
+            try{
+                JSONArray jsonArray = new JSONArray(result);
+                int num= random.nextInt(jsonArray.length());
+
+                JSONObject jsonData = jsonArray.getJSONObject(0);
+
+
+                mypinyin =jsonData.getString("pinyin");
+                myjp=jsonData.getString("jp");
+                mych=jsonData.getString("ch");
+                myen=jsonData.getString("eng");
+
+            }
+
+            catch(Exception e){}
+            return null;
+        }
+
+        protected void onProgressUpdate(String... progress) {
+
+        }
+
+        @Override
+        protected void onPostExecute(String unused) {
+            context = Menushow.this;
+            dia = new Dialog(context, R.style.edit_AlertDialog_style2);
+            dia.setContentView(R.layout.tango);
+            TextView pinyin=(TextView)dia.findViewById(R.id.pinyin);
+            TextView jp=(TextView)dia.findViewById(R.id.jp);
+            TextView ch=(TextView)dia.findViewById(R.id.ch);
+            TextView en=(TextView)dia.findViewById(R.id.en);
+            Button btok=(Button)dia.findViewById(R.id.btok);
+
+
+            pinyin.setText(mypinyin);
+            jp.setText(myjp);
+            ch.setText(mych);
+            en.setText(myen);
+        /*
+        String result = dbtango.executeQuery();
+        Random random=new Random();
+        try{
+            JSONArray jsonArray = new JSONArray(result);
+            int num= random.nextInt(jsonArray.length());
+
+            JSONObject jsonData = jsonArray.getJSONObject(0);
+
+
+
+
+        }
+
+        catch(Exception e){}
+         */
+            btok.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dia.dismiss();
+                        }
+                    });
+            /**/
+
+
+            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+            Window w = dia.getWindow();
+            WindowManager.LayoutParams lp = w.getAttributes();
+            lp.width = 800;
+            //lp.height = 800;
+
+            dia.show();
+            dia.onWindowAttributesChanged(lp);
+
+        }
+    }
 
     private ImageView.OnTouchListener b1=new ImageView.OnTouchListener(){
         @Override
@@ -121,9 +198,9 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn2.setImageResource(R.drawable.aki_rateh);
                     Intent intent=new Intent();
-                  intent.setClass(Menushow.this,Change.class);
-                   startActivity(intent);
-                  //  mytoast("維護中");
+                    intent.setClass(Menushow.this,Change.class);
+                    startActivity(intent);
+                    //  mytoast("維護中");
                     break;
             }
             return true;
@@ -142,7 +219,7 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn3.setImageResource(R.drawable.aki_newh);
                     Intent intent=new Intent();
-                   // mytoast("請稍後");
+                    // mytoast("請稍後");
                     intent.setClass(Menushow.this,Myweb.class);
                     startActivity(intent);
                     break;
@@ -157,7 +234,7 @@ public class Menushow extends AppCompatActivity {
             switch (event.getAction()){
 
                 case MotionEvent.ACTION_DOWN:
-                   // btn4.setImageResource(R.drawable.aki_shop);
+                    // btn4.setImageResource(R.drawable.aki_shop);
                     btn4.setImageResource(R.drawable.aki_jlpth);
 
                     break;
@@ -207,7 +284,7 @@ public class Menushow extends AppCompatActivity {
                     Intent intent=new Intent();
                     //intent.setClass(Menushow.this, JRmap.class);
                     //Work.class
-                   intent.setClass(Menushow.this,Listenmenu.class);
+                    intent.setClass(Menushow.this,Listenmenu.class);
                     startActivity(intent);
                     break;
             }
