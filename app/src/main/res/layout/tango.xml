@@ -12,7 +12,7 @@ android:layout_height="match_parent">
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:textSize="28sp"
+        android:textSize="20sp"
 
         android:text="pinyin" />
     <TextView
@@ -36,15 +36,15 @@ android:layout_height="match_parent">
         android:textSize="28sp"
         android:text="ch" />
     <TextView
-        android:id="@+id/en"
+        android:id="@+id/level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:gravity="center"
 
-        android:textSize="28sp"
-        android:text="en" />
+        android:textSize="22sp"
+        android:text="N5" />
 
     <Button
         android:id="@+id/btok"

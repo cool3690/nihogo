@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#66B0B6B5"
+
+    tools:context=".Tangoday">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+      >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:contentInsetStart="1dp"
+
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            >
+
+        <ImageView
+            android:id="@+id/toback"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+             />
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#E64E0A0A"
+                android:textSize="20sp"
+                android:text="每日單字" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+     android:layout_marginTop="100dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/pinyin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="20sp"
+
+            android:text="pinyin" />
+        <TextView
+            android:id="@+id/jp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:textSize="34sp"
+
+            android:text="jp" />
+        <TextView
+        android:id="@+id/ch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+
+        android:textSize="28sp"
+        android:text="ch" />
+        <TextView
+            android:id="@+id/level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:textSize="22sp"
+            android:text="N5" />
+    </LinearLayout>
+
+<!--
+    <WebView
+        android:id="@+id/myweb"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+-->
+
+</LinearLayout>

@@ -94,9 +94,20 @@
         <item name="android:windowNoTitle">true</item>
         <!-- 是否启用标题栏 -->
 
-        <item name="android:windowBackground">#131313</item>
-        <item name="android:background">@android:color/transparent</item>
+
+        <item name="android:background">#0E0E0E</item>
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 是否使用背景半透明 -->
+    </style>
+    <style name="MyCustomActivityAnimation"
+        parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">
+            @anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">
+            @anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">
+            @anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">
+            @anim/slide_out_right</item>
     </style>
 </resources>
