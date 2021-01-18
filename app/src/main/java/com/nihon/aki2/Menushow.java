@@ -22,6 +22,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -47,11 +52,11 @@ import java.util.TimerTask;
 
 public class Menushow extends AppCompatActivity {
     int i=0;
-    private RelativeLayout parentView,R2;
+    private RelativeLayout parentView,R2,R3;
     private MarqueeView marqueeView2;
     ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,pic2;
     String account="",passwd="",names="";
-    TextView  jp,ch,ch2,jp2,level2;
+    TextView  jp,ch,ch2,jp2,level2,jp3,ch3,level3;
     Context context;
     String mypinyin;
     String myjp;
@@ -89,18 +94,25 @@ public class Menushow extends AppCompatActivity {
         parentView=findViewById(R.id.marqueeLayout);
         marqueeView2=findViewById(R.id.marquee_view2);
         R2=findViewById(R.id.R2);
+        R3=findViewById(R.id.R3);
         // pinyin=(TextView)findViewById(R.id.pinyin);
         jp=(TextView)findViewById(R.id.jp);
         ch=(TextView)findViewById(R.id.ch);
         ch2=(TextView)findViewById(R.id.ch2);
         jp2=(TextView)findViewById(R.id.jp2);
         level2=(TextView)findViewById(R.id.level2);
+        ch3=(TextView)findViewById(R.id.ch3);
+        jp3=(TextView)findViewById(R.id.jp3);
+        level3=(TextView)findViewById(R.id.level3);
         fab = findViewById(R.id.fab);
         R2.setVisibility(View.INVISIBLE);
+        R3.setVisibility(View.INVISIBLE);
         ch.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         jp.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         ch2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         jp2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
+        ch3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
+        jp3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         //btn6.setVisibility(View.GONE);
         btn1.setOnTouchListener(b1);
         btn2.setOnTouchListener(b2);
@@ -111,6 +123,7 @@ public class Menushow extends AppCompatActivity {
         new DownloadFileAsync().execute();
         parentView.setOnClickListener(marbtn);
         R2.setOnClickListener(R2btn);
+        R3.setOnClickListener(R3btn);
        // fab.setVisibility(View.INVISIBLE);
         fab.setOnClickListener(fabclick);
 
@@ -119,15 +132,33 @@ public class Menushow extends AppCompatActivity {
     private DragFloatActionButton.OnClickListener fabclick=new DragFloatActionButton.OnClickListener(){
         @Override
         public void onClick(View view) {
-         //  i++;
+
+           // mytoast(fab.getX()+"    ,    "+fab.getY());
            // mytoast(i+"ww");
             if(tf){
-                R2.setVisibility(View.VISIBLE);
+             //   R2.setVisibility(View.VISIBLE);
+                R3.setVisibility(View.VISIBLE);
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
+                animation = new TranslateAnimation(fab.getX()-50, fab.getX(), fab.getY()-50, fab.getY()-100);
+               // animation =new ScaleAnimation();
+             //  animation = new ScaleAnimation(fab.getX(), 0, fab.getX(), 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
+                    animation = new ScaleAnimation(
+                            0f, 1.0f, 0f, 1.0f,
+                           0, fab.getX(), 0, fab.getY()
+                    );
+                    animation.setDuration(2000);
+                    R3.startAnimation(animation);
+
 
                 tf=false;
             }
             else{
-                R2.setVisibility(View.INVISIBLE);
+            //    R2.setVisibility(View.INVISIBLE);
+                R3.setVisibility(View.INVISIBLE);
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+                R3.startAnimation(animation);
+
                 tf=true;
             }
             /*
@@ -142,6 +173,21 @@ public class Menushow extends AppCompatActivity {
                     R.anim.slide_out_left);
 
              */
+        }
+    };
+    private RelativeLayout.OnClickListener R3btn=new RelativeLayout.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Menushow.this, Tangoday.class);
+            Bundle bundle=new Bundle();
+            bundle.putString("JP", myjp);
+            bundle.putString("CH", mych);
+            bundle.putString("PINYIN", mypinyin);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right,
+                    R.anim.slide_out_left);
+
         }
     };
     private RelativeLayout.OnClickListener R2btn=new RelativeLayout.OnClickListener(){
@@ -267,12 +313,14 @@ public class Menushow extends AppCompatActivity {
             //  jp.setText(myjp);
             ch.setText(myjp);
             ch2.setText(myjp);
+            ch3.setText(myjp);
+            /*
             marqueeView2.setParentView(parentView);
             marqueeView2.setScrollSpeed(25);
             marqueeView2.setScrollDirection(MarqueeView.DOWN_TO_UP);
-            //marqueeView2.setViewMargin(15);//间距
-            marqueeView2.startScroll();
 
+           marqueeView2.startScroll();
+             */
 
             begin();
         }
@@ -292,7 +340,7 @@ public class Menushow extends AppCompatActivity {
                     parentView.setVisibility(View.GONE);
                     marqueeView2.setVisibility(View.GONE);
                     fab.setVisibility(View.VISIBLE);
-                   R2.setVisibility(View.VISIBLE);
+                 //  R2.setVisibility(View.VISIBLE);
                    tf=true;
 
                 }

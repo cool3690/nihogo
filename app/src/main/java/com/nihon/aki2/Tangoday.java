@@ -18,6 +18,12 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 public class Tangoday extends AppCompatActivity {
     Toolbar toolbar;
     ImageView toback;
@@ -26,6 +32,7 @@ public class Tangoday extends AppCompatActivity {
     String mypinyin;
     String myjp;
     String mych;
+    private  String url ="https://jisho.org/search/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +64,7 @@ public class Tangoday extends AppCompatActivity {
         jp=(TextView)findViewById(R.id.jp);
         ch=(TextView)findViewById(R.id.ch);
         pinyin=(TextView)findViewById(R.id.pinyin);
+        url+=jp;
       //  myweb = (WebView) findViewById(R.id.myweb);
         ch.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         jp.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
@@ -73,9 +81,60 @@ public class Tangoday extends AppCompatActivity {
         myweb.loadUrl("https://jisho.org/word/"+myjp);
 
          */
-
+       // jprate();
     }
+    public void jprate(){
+     String body="";
+        try{
+            Connection.Response response = Jsoup.connect(url).execute();
+          body = response.body();
 
+            Document doc = Jsoup.connect(url).get();
+            /*
+            Element link = doc.select("source").first();
+            String relHref = link.attr("src"); // == "/"
+            String absHref = link.attr("abs:href"); // "http://jsoup.org/"
+
+
+             */
+            Document data =  Jsoup.parse(body);//visible-phone print_hide
+
+          //
+            Elements country=data.select("audio");
+
+           //ch.setText(country+"");
+             mytoast(country+"");
+
+
+            for(Element e1: country)
+            {
+             //   mytoast(e1.text());
+            }
+
+  /*
+            //  Document data =  Jsoup.parse(body);//visible-phone print_hide
+            // mytoast(body);
+
+            Elements country=data.select("div[class=visible-phone print_hide]");
+            Elements tds = data.select("td[class=rate-content-cash text-right print_hide]");
+            int i=0;
+
+            for(Element e2: tds)
+            {
+                if(i%2==0 )
+                {buy.add(e2.text());
+                }
+                i++;
+            }
+
+            for(Element e1: country)
+            {
+                coin.add(e1.text());
+            }
+            */
+        }
+        catch(Exception ex){}
+    }
     private ImageView.OnClickListener backbtn=new ImageView.OnClickListener(){
         @Override
         public void onClick(View view) {

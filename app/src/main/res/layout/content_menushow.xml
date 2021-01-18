@@ -202,10 +202,71 @@
             android:marqueeRepeatLimit="1"
             android:padding="5dp">
         </com.nihon.aki2.control.MarqueeView>
+<!--
+        <RelativeLayout
+            android:id="@+id/R3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <!-- app:srcCompat="@drawable/aki_comic"-->
+            android:layout_marginTop="8dp">
+            <ImageView
+                android:id="@+id/btn8"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
 
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/aki_daysbg01"
+                />
+            <ImageView
+                android:id="@+id/pic3"
+                android:background="@drawable/aki_snow"
+                android:layout_width="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_height="80dp" />
+            <TextView
+                android:id="@+id/jp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:layout_toRightOf="@id/pic3"
+                android:layout_marginLeft="30dp"
+                android:textSize="28sp"
+                android:text="每日單詞" />
+
+            <TextView
+                android:id="@+id/ch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_below="@id/jp3"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/pic3"
+                android:layout_marginLeft="40dp"
+                android:textSize="24sp"
+                android:textColor="#354BD6"
+                android:text="ch" />
+            <TextView
+                android:id="@+id/level3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_below="@id/jp3"
+                android:layout_toRightOf="@id/ch3"
+                android:layout_marginLeft="20dp"
+                android:textSize="14sp"
+                android:textColor="#354BD6"
+                android:text="(N5)" />
+        </RelativeLayout>
+        -->
     </RelativeLayout>
-
 
 </ScrollView>
