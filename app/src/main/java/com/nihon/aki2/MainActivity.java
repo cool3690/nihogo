@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList memo=new ArrayList();
     ArrayList exam_type=new ArrayList();
     ArrayList myday=new ArrayList();
+    ArrayList mykai2=new ArrayList();
     private List<Exam> teams1 = new ArrayList<>();
     int x=0,max=0;
     RecyclerView list;
@@ -143,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
                  memo.add(jsonData.getString("memo"));
 
                  status.add(jsonData.getString("status"));
-                 mykai=jsonData.getString("kai");
+                mykai=jsonData.getString("kai");
+                mykai2.add(mykai+"");
                 exam_type.add(jsonData.getString("exam_type"));
 
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(exam_type.get(i).toString().contains("能力")){//jlpt
 
-                    Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai,
+                    Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai2.get(i).toString(),
                             "網路報名時間:\n"+ssign.get(i),status.get(i)+"","   "+day,R.drawable.aki_jlpt3);
                     teams1.add(team);
 
@@ -371,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
             }
             teams1.clear();
             for(int i=0;i<2;i++){
-                Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai,
+                Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai2.get(i).toString(),
                         "網路報名時間:\n"+ssign.get(i),status.get(i)+"","   "+myday.get(i),R.drawable.aki_jlpt3);
                 teams1.add(team);
             }
@@ -401,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
 
             teams1.clear();
             for(int i=2;i<4;i++){
-                Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai,
+                Exam team =new Exam(exam_type.get(i).toString(),sdate.get(i).toString().substring(0,4)+"年"+mykai2.get(i).toString(),
                         "網路報名時間:\n"+ssign.get(i),status.get(i)+"","   "+myday.get(i),R.drawable.aki_eju3);
                 teams1.add(team);
             }

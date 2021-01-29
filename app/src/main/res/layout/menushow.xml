@@ -20,7 +20,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_menushow" />
-<!--
+<!--btn_star_big_off
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -33,11 +33,12 @@
     -->
     <RelativeLayout
         android:id="@+id/R3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="60dp"
         android:gravity="center_vertical"
-        android:layout_below="@id/fab"
-        android:layout_marginTop="8dp">
+         >
         <ImageView
             android:id="@+id/btn8"
             android:layout_width="match_parent"
@@ -49,11 +50,11 @@
         <ImageView
             android:id="@+id/pic3"
             android:background="@drawable/aki_snow"
-            android:layout_width="wrap_content"
-
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="16dp"
-            android:layout_height="80dp" />
+            android:layout_marginLeft="40dp"
+             />
         <TextView
             android:id="@+id/jp3"
             android:layout_width="wrap_content"
@@ -63,8 +64,8 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:layout_toRightOf="@id/pic3"
-            android:layout_marginLeft="30dp"
-            android:textSize="28sp"
+            android:layout_marginLeft="20dp"
+            android:textSize="22sp"
             android:text="每日單詞" />
 
         <TextView
@@ -72,15 +73,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_gravity="center"
-            android:gravity="center"
             android:layout_below="@id/jp3"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/pic3"
-            android:layout_marginLeft="40dp"
-            android:textSize="24sp"
-            android:textColor="#354BD6"
-            android:text="ch" />
+            android:gravity="center"
+            android:text="ch"
+            android:textColor="#227FE3"
+            android:textSize="28sp" />
         <TextView
             android:id="@+id/level3"
             android:layout_width="wrap_content"
@@ -90,7 +91,7 @@
             android:gravity="center"
             android:layout_below="@id/jp3"
             android:layout_toRightOf="@id/ch3"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:textSize="14sp"
             android:textColor="#354BD6"
             android:text="(N5)" />
@@ -101,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
+
         app:backgroundTint="#26DDC8"
         android:src="@android:drawable/btn_star_big_on" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

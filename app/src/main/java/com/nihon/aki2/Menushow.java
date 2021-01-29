@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.text.TextUtils;
 import android.transition.Explode;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,8 +52,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Menushow extends AppCompatActivity {
+    private long mLastClickTime = 0;
+    public static final long TIME_INTERVAL = 800L;
     int i=0;
-    private RelativeLayout parentView,R2,R3;
+    DisplayMetrics dm = new DisplayMetrics();
+    private RelativeLayout parentView,R2,R3,R0;
     private MarqueeView marqueeView2;
     ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,pic2;
     String account="",passwd="",names="";
@@ -61,12 +65,14 @@ public class Menushow extends AppCompatActivity {
     String mypinyin;
     String myjp;
     String mych;
-    String myen;
+    String myen,mylevel;
+    double fabx=0,faby=0,fabx2=0,faby2=0;
     boolean tf=true;
     DragFloatActionButton fab;
     private Menu menu;
     Timer timer = new Timer();
     Dialog dia;
+    int x=0;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +101,7 @@ public class Menushow extends AppCompatActivity {
         marqueeView2=findViewById(R.id.marquee_view2);
         R2=findViewById(R.id.R2);
         R3=findViewById(R.id.R3);
+        R0=findViewById(R.id.R0);
         // pinyin=(TextView)findViewById(R.id.pinyin);
         jp=(TextView)findViewById(R.id.jp);
         ch=(TextView)findViewById(R.id.ch);
@@ -105,8 +112,8 @@ public class Menushow extends AppCompatActivity {
         jp3=(TextView)findViewById(R.id.jp3);
         level3=(TextView)findViewById(R.id.level3);
         fab = findViewById(R.id.fab);
-        R2.setVisibility(View.INVISIBLE);
-        R3.setVisibility(View.INVISIBLE);
+        R2.setVisibility(View.GONE);
+        R3.setVisibility(View.GONE);
         ch.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         jp.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         ch2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
@@ -127,52 +134,65 @@ public class Menushow extends AppCompatActivity {
        // fab.setVisibility(View.INVISIBLE);
         fab.setOnClickListener(fabclick);
 
+
+      //  faby = R3.getHeight();
+
+        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
     }
 
     private DragFloatActionButton.OnClickListener fabclick=new DragFloatActionButton.OnClickListener(){
         @Override
         public void onClick(View view) {
 
-           // mytoast(fab.getX()+"    ,    "+fab.getY());
-           // mytoast(i+"ww");
-            if(tf){
-             //   R2.setVisibility(View.VISIBLE);
-                R3.setVisibility(View.VISIBLE);
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
-                animation = new TranslateAnimation(fab.getX()-50, fab.getX(), fab.getY()-50, fab.getY()-100);
-               // animation =new ScaleAnimation();
-             //  animation = new ScaleAnimation(fab.getX(), 0, fab.getX(), 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            long nowTime = System.currentTimeMillis();
+            if (nowTime - mLastClickTime > TIME_INTERVAL) {
 
-                    animation = new ScaleAnimation(
-                            0f, 1.0f, 0f, 1.0f,
-                           0, fab.getX(), 0, fab.getY()
-                    );
-                    animation.setDuration(2000);
-                    R3.startAnimation(animation);
-
-
-                tf=false;
+                mLastClickTime = nowTime;
+                faby= dm.heightPixels;// height
+                // mytoast(faby+"");
+                faby=(faby-120)/3;
+            if(fab.getY()<faby){
+                R3.setGravity(Gravity.TOP);
+            }
+            else if(fab.getY()<faby*2){
+                R3.setGravity(Gravity.CENTER);
             }
             else{
-            //    R2.setVisibility(View.INVISIBLE);
-                R3.setVisibility(View.INVISIBLE);
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
-                R3.startAnimation(animation);
-
-                tf=true;
+                R3.setGravity(Gravity.BOTTOM);
             }
-            /*
-            Intent intent = new Intent(Menushow.this, Tangoday.class);
-            Bundle bundle=new Bundle();
-            bundle.putString("JP", myjp);
-            bundle.putString("CH", mych);
-            bundle.putString("PINYIN", mypinyin);
-            intent.putExtras(bundle);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right,
-                    R.anim.slide_out_left);
 
-             */
+               if(tf){
+                   R2.setVisibility(View.INVISIBLE);
+                   R3.setVisibility(View.INVISIBLE);
+                   Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+                   R3.startAnimation(animation);
+
+                    fab.setImageResource(android.R.drawable.btn_star_big_off);
+                   tf=false;
+               }
+               else{
+
+                   R3.setVisibility(View.VISIBLE);
+
+                   Animation  animation = new ScaleAnimation(
+                           0f, 1.0f, 0f, 1.0f,
+                           0, fab.getX(), 0, fab.getY()
+                   );
+                   animation.setDuration(500);
+                   R3.startAnimation(animation);
+                   fab.setImageResource(android.R.drawable.btn_star_big_on);
+                   tf=true;
+               }
+
+
+            faby=fab.getY();
+            }
+            else{
+                mLastClickTime = nowTime;
+                i++;
+            }
+
         }
     };
     private RelativeLayout.OnClickListener R3btn=new RelativeLayout.OnClickListener(){
@@ -183,6 +203,7 @@ public class Menushow extends AppCompatActivity {
             bundle.putString("JP", myjp);
             bundle.putString("CH", mych);
             bundle.putString("PINYIN", mypinyin);
+            bundle.putString("LEVEL", mylevel);
             intent.putExtras(bundle);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right,
@@ -198,10 +219,17 @@ public class Menushow extends AppCompatActivity {
             bundle.putString("JP", myjp);
             bundle.putString("CH", mych);
             bundle.putString("PINYIN", mypinyin);
+            bundle.putString("LEVEL", mylevel);
             intent.putExtras(bundle);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right,
                     R.anim.slide_out_left);
+
+        }
+    };
+    private RelativeLayout.OnClickListener marbtn=new RelativeLayout.OnClickListener(){
+        @Override
+        public void onClick(View view) {
             /*
             context = Menushow.this;
             dia = new Dialog(context, R.style.edit_AlertDialog_style2);
@@ -216,6 +244,7 @@ public class Menushow extends AppCompatActivity {
             pinyin.setText(mypinyin);
             jp.setText(myjp);
             ch.setText(mych);
+
             // en.setText(myen);
 
             btok.setOnClickListener(
@@ -234,44 +263,7 @@ public class Menushow extends AppCompatActivity {
 
             dia.show();
             dia.onWindowAttributesChanged(lp);
-
-             */
-        }
-    };
-    private RelativeLayout.OnClickListener marbtn=new RelativeLayout.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            context = Menushow.this;
-            dia = new Dialog(context, R.style.edit_AlertDialog_style2);
-            dia.setContentView(R.layout.tango);
-            TextView pinyin=(TextView)dia.findViewById(R.id.pinyin);
-            TextView jp=(TextView)dia.findViewById(R.id.jp);
-            TextView ch=(TextView)dia.findViewById(R.id.ch);
-            TextView en=(TextView)dia.findViewById(R.id.level);
-            Button btok=(Button)dia.findViewById(R.id.btok);
-
-
-            pinyin.setText(mypinyin);
-            jp.setText(myjp);
-            ch.setText(mych);
-            // en.setText(myen);
-
-            btok.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dia.dismiss();
-                        }
-                    });
-
-            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
-            Window w = dia.getWindow();
-            WindowManager.LayoutParams lp = w.getAttributes();
-            lp.width = 800;
-            //lp.height = 800;
-
-            dia.show();
-            dia.onWindowAttributesChanged(lp);
+            */
         }
     };
     class DownloadFileAsync extends AsyncTask<String, String, String> {
@@ -292,11 +284,16 @@ public class Menushow extends AppCompatActivity {
                 JSONObject jsonData = jsonArray.getJSONObject(num);
 
 
-                mypinyin =jsonData.getString("pinyin");
-                myjp=jsonData.getString("jp");
-                mych=jsonData.getString("ch");
-                myen=jsonData.getString("eng");
+                mypinyin =jsonData.getString("jp_kana");
+                myjp=jsonData.getString("jp_kanji");
+                mych=jsonData.getString("zh_word");
+                myen=jsonData.getString("en_word");
+                mylevel=jsonData.getString("level");
 
+
+                if(myjp.equals("null")){
+                    myjp=jsonData.getString("jp_kana");
+                }
             }
 
             catch(Exception e){}
@@ -314,19 +311,35 @@ public class Menushow extends AppCompatActivity {
             ch.setText(myjp);
             ch2.setText(myjp);
             ch3.setText(myjp);
+            level3.setText("("+mylevel+")");
             /*
             marqueeView2.setParentView(parentView);
             marqueeView2.setScrollSpeed(25);
             marqueeView2.setScrollDirection(MarqueeView.DOWN_TO_UP);
+            //marqueeView2.setViewMargin(15);//间距
+            marqueeView2.startScroll();
 
-           marqueeView2.startScroll();
+
              */
+            R3.setVisibility(View.VISIBLE);
+            R3.setGravity(Gravity.BOTTOM);
+            Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
+
+
+            animation = new ScaleAnimation(
+                    0f, 1.0f, 0f, 1.0f,
+                    0, fab.getX(), 0, fab.getY()
+            );
+            animation.setDuration(500);
+            R3.startAnimation(animation);
+            tf=true;
 
             begin();
         }
     }
     public void begin() {
-        timer.schedule(task, 5000, 8000) ;       }
+        timer.schedule(task, 3000, 6000) ;
+    }
 
     TimerTask task = new TimerTask() {
         @Override
@@ -338,7 +351,7 @@ public class Menushow extends AppCompatActivity {
                 public void run() {
                     // TODO Auto-generated method stub
                     parentView.setVisibility(View.GONE);
-                    marqueeView2.setVisibility(View.GONE);
+                     marqueeView2.setVisibility(View.GONE);
                     fab.setVisibility(View.VISIBLE);
                  //  R2.setVisibility(View.VISIBLE);
                    tf=true;

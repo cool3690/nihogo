@@ -4,9 +4,11 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -16,7 +18,7 @@ public class DragFloatActionButton extends FloatingActionButton {
 
     private int parentHeight;
     private int parentWidth;
-
+    int dx=0,dy=0;
     public DragFloatActionButton(Context context) {
         super(context);
 
@@ -35,13 +37,13 @@ public class DragFloatActionButton extends FloatingActionButton {
 
     private int lastX;
     private int lastY;
-
+    int rawX; int rawY;
     private boolean isDrag;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int rawX = (int) event.getRawX();
-        int rawY = (int) event.getRawY();
+       rawX = (int) event.getRawX();
+         rawY = (int) event.getRawY();
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
                 setPressed(true);
@@ -54,6 +56,7 @@ public class DragFloatActionButton extends FloatingActionButton {
                     parent= (ViewGroup) getParent();
                     parentHeight=parent.getHeight();
                     parentWidth=parent.getWidth();
+
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -63,8 +66,9 @@ public class DragFloatActionButton extends FloatingActionButton {
                 }else {
                     isDrag=true;
                 }
-                int dx=rawX-lastX;
-                int dy=rawY-lastY;
+                 dx=rawX-lastX;
+                 dy=rawY-lastY;
+
                 //这里修复一些华为手机无法触发点击事件
                 int distance= (int) Math.sqrt(dx*dx+dy*dy);
                 if(distance==0){
@@ -73,20 +77,23 @@ public class DragFloatActionButton extends FloatingActionButton {
                 }
                 float x=getX()+dx;
                 float y=getY()+dy;
+
                 //检测是否到达边缘 左上右下
                 x=x<0?0:x>parentWidth-getWidth()?parentWidth-getWidth():x;
                 y=getY()<0?0:getY()+getHeight()>parentHeight?parentHeight-getHeight():y;
+
                 setX(x);
                 setY(y);
                 lastX=rawX;
                 lastY=rawY;
+               // mytoast(rawX+",  "+rawY);
                // Log.i("aa","isDrag="+isDrag+"getX="+getX()+";getY="+getY()+";parentWidth="+parentWidth);
                 break;
             case MotionEvent.ACTION_UP:
                 if(!isNotDrag()){
                     //恢复按压效果
                     setPressed(false);
-
+                   // mytoast(lastX+","+lastY+"\n"+rawX+","+rawY+"\n"+dx+", "+dy);
 
                     if(rawX>=parentWidth/2){
                         //靠右吸附
@@ -126,8 +133,15 @@ public class DragFloatActionButton extends FloatingActionButton {
     }
 
     private boolean isNotDrag(){
+      //  mytoast(Math.abs(getHeight()-getY())+"");
         return !isDrag&&(getX()==0
-                ||(getX()==parentWidth-getWidth()) ||getX()<10);
+                ||(getX()==parentWidth-getWidth()) || (parentWidth-getWidth()<=getX()+5 &&parentWidth-getWidth()>=getX()-5)||
+                (Math.abs(getHeight()-getY())<=5 ));
     }
-
+    private void mytoast(String str)
+    {
+        Toast toast=Toast.makeText(getContext(), str, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
 }

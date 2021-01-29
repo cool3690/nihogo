@@ -10,6 +10,7 @@
     tools:showIn="@layout/menushow">
 
     <RelativeLayout
+        android:id="@+id/R0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="10dp"
@@ -129,69 +130,72 @@
         <!--
         scroll
         -->
+
+        <!-- -->
         <RelativeLayout
             android:id="@+id/marqueeLayout"
-            android:layout_below="@id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="250dp"
-            >
+            android:layout_below="@id/btn2"
+            android:layout_marginTop="0dp">
 
             <ImageView
-                android:background="@drawable/aki_daysbg01"
                 android:layout_width="wrap_content"
+                android:layout_height="120dp"
                 android:layout_marginTop="400dp"
-                android:layout_height="120dp" />
+                android:background="@drawable/aki_daysbg01" />
+
             <ImageView
                 android:id="@+id/pic"
-                android:background="@drawable/aki_snow"
                 android:layout_width="wrap_content"
+                android:layout_height="80dp"
 
-                android:layout_marginTop="420dp"
                 android:layout_marginLeft="10dp"
-                android:layout_height="80dp" />
+                android:layout_marginTop="420dp"
+                android:background="@drawable/aki_snow" />
 
             <TextView
                 android:id="@+id/jp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="410dp"
-                android:gravity="center"
-                android:layout_toRightOf="@id/pic"
                 android:layout_marginLeft="40dp"
-                android:textSize="28sp"
+                android:layout_marginTop="410dp"
+                android:layout_toRightOf="@id/pic"
+                android:gravity="center"
+                android:text="每日單詞"
 
-                android:text="每日單詞" />
+                android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/ch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_below="@id/jp"
-                android:layout_toRightOf="@id/pic"
+                android:layout_gravity="center"
                 android:layout_marginLeft="60dp"
-                android:textSize="24sp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/pic"
+                android:gravity="center"
+                android:text="ch"
                 android:textColor="#354BD6"
-                android:text="ch" />
+                android:textSize="24sp" />
+
             <TextView
                 android:id="@+id/level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_below="@id/jp"
-                android:layout_toRightOf="@id/ch"
+                android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:textSize="14sp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/ch"
+                android:gravity="center"
+                android:text="(N5)"
                 android:textColor="#354BD6"
-                android:text="(N5)" />
+                android:textSize="14sp" />
         </RelativeLayout>
 
-        <!-- -->
         <com.nihon.aki2.control.MarqueeView
             android:id="@+id/marquee_view2"
             android:layout_width="wrap_content"

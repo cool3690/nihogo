@@ -19,14 +19,14 @@ import com.nihon.aki2.R;
  * <p>描述   水平滚动的跑马灯效果</p>
  */
 public class MarqueeView extends HorizontalScrollView implements Runnable {
-
+int x=0;
     private Context context;
     private RelativeLayout mainLayout;//跑马灯滚动部分
 
     private View parentView;//自定义父类滚动容器
     private boolean hasParent=false;//默认没有父容器
 
-    private int scrollSpeed = 35;//滚动速度
+    private int scrollSpeed = 25;//滚动速度
     private int scrollDirection = DOWN_TO_UP;//滚动方向
     private int currentY;//当前x坐标
     private int viewMargin = 20;//View间距
@@ -87,7 +87,7 @@ public class MarqueeView extends HorizontalScrollView implements Runnable {
             mainLayout.addView(view);
         }
         view.measure(0, 0);//测量view
-        viewHeight = viewHeight + view.getMeasuredHeight() + viewMargin+1200;
+        viewHeight = viewHeight + view.getMeasuredHeight() + viewMargin;
     }
 
     //开始滚动
@@ -129,7 +129,7 @@ public class MarqueeView extends HorizontalScrollView implements Runnable {
                     mainLayout.scrollTo(0, currentY);
                 }
                 currentY ++;
-                if (currentY>= 2020) {
+                if (currentY>= 1500) {
                     if(hasParent){
                         parentView.scrollTo(0, viewHeight);
                     }else{
@@ -160,9 +160,12 @@ public class MarqueeView extends HorizontalScrollView implements Runnable {
 
                  */
             default:
-                break;
+                if(x==1)break;
+
         }
-        postDelayed(this, 50 / scrollSpeed);
+        postDelayed(this, 40 / scrollSpeed);
+        x++;
+
     }
 
     @Override
