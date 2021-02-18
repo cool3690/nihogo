@@ -10,6 +10,8 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -21,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -58,7 +61,7 @@ public class Menushow extends AppCompatActivity {
     DisplayMetrics dm = new DisplayMetrics();
     private RelativeLayout parentView,R2,R3,R0;
     private MarqueeView marqueeView2;
-    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,pic2;
+    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,pic2,pic3;
     String account="",passwd="",names="";
     TextView  jp,ch,ch2,jp2,level2,jp3,ch3,level3;
     Context context;
@@ -97,7 +100,8 @@ public class Menushow extends AppCompatActivity {
         btn6=(ImageView)findViewById(R.id.btn6);
         btn7=(ImageView)findViewById(R.id.btn7);
         pic2=(ImageView)findViewById(R.id.pic2);
-        parentView=findViewById(R.id.marqueeLayout);
+        pic3=(ImageView)findViewById(R.id.pic3);
+         parentView=findViewById(R.id.marqueeLayout);
         marqueeView2=findViewById(R.id.marquee_view2);
         R2=findViewById(R.id.R2);
         R3=findViewById(R.id.R3);
@@ -133,8 +137,8 @@ public class Menushow extends AppCompatActivity {
         R3.setOnClickListener(R3btn);
        // fab.setVisibility(View.INVISIBLE);
         fab.setOnClickListener(fabclick);
-
-
+        parentView.setVisibility(View.GONE);
+        marqueeView2.setVisibility(View.GONE);
       //  faby = R3.getHeight();
 
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -142,8 +146,13 @@ public class Menushow extends AppCompatActivity {
     }
 
     private DragFloatActionButton.OnClickListener fabclick=new DragFloatActionButton.OnClickListener(){
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
         @Override
         public void onClick(View view) {
+          //  RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) R3.getLayoutParams();
+
+          //  layoutParams.removeRule(RelativeLayout.BELOW);
+            ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
 
             long nowTime = System.currentTimeMillis();
             if (nowTime - mLastClickTime > TIME_INTERVAL) {
@@ -152,15 +161,45 @@ public class Menushow extends AppCompatActivity {
                 faby= dm.heightPixels;// height
                 // mytoast(faby+"");
                 faby=(faby-120)/3;
+
             if(fab.getY()<faby){
-                R3.setGravity(Gravity.TOP);
+               // R3.setGravity(Gravity.TOP);
+               // mytoast("a");
+
+             //   layoutParams.removeRule(RelativeLayout.BELOW);
+             //   layoutParams.addRule(RelativeLayout.BELOW, btn1.getId());
+
+              //  R3.setLayoutParams(layoutParams);
+                marginParams.setMargins(0, (int)fab.getY(), 0, 0);
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
+
+                R3.setLayoutParams(layoutParams);
+
             }
             else if(fab.getY()<faby*2){
-                R3.setGravity(Gravity.CENTER);
+              //  R3.setGravity(Gravity.CENTER);
+
+             //   layoutParams.addRule(RelativeLayout.BELOW, fab.getId());
+                marginParams.setMargins(0, (int)fab.getY(), 0, 0);
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
+
+                R3.setLayoutParams(layoutParams);
+
             }
             else{
-                R3.setGravity(Gravity.BOTTOM);
+               // R3.setGravity(Gravity.BOTTOM);
+
+              //  layoutParams.removeRule(RelativeLayout.BELOW);
+               // layoutParams.addRule(RelativeLayout.ABOVE, btn4.getId());
+                marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
+
+                R3.setLayoutParams(layoutParams);
+
             }
+
+             /*    */
+
 
                if(tf){
                    R2.setVisibility(View.INVISIBLE);
@@ -177,16 +216,16 @@ public class Menushow extends AppCompatActivity {
 
                    Animation  animation = new ScaleAnimation(
                            0f, 1.0f, 0f, 1.0f,
-                           0, fab.getX(), 0, fab.getY()
+                           0, fab.getX(), 0, fab.getY()-100
                    );
-                   animation.setDuration(500);
+                  animation.setDuration(500);
                    R3.startAnimation(animation);
                    fab.setImageResource(android.R.drawable.btn_star_big_on);
                    tf=true;
                }
 
 
-            faby=fab.getY();
+           // faby=fab.getY();
             }
             else{
                 mLastClickTime = nowTime;
@@ -312,6 +351,14 @@ public class Menushow extends AppCompatActivity {
             ch2.setText(myjp);
             ch3.setText(myjp);
             level3.setText("("+mylevel+")");
+            Random random=new Random();
+            int r=random.nextInt(30);
+            int[] songfile=new int[] {R.drawable.a01, R.drawable.a02, R.drawable.a03, R.drawable.a04, R.drawable.a05,R.drawable.a06, R.drawable.a07,
+                    R.drawable.a08, R.drawable.a09, R.drawable.a10,R.drawable.a11, R.drawable.a12,
+                    R.drawable.a13, R.drawable.a14, R.drawable.a15, R.drawable.a16, R.drawable.a17, R.drawable.a18, R.drawable.a19,
+                    R.drawable.a20,R.drawable.a21, R.drawable.a22, R.drawable.a23, R.drawable.a24, R.drawable.a25,R.drawable.a26,
+                    R.drawable.a27, R.drawable.a28, R.drawable.a29, R.drawable.a30,R.drawable.a31};
+            pic3.setImageResource(songfile[r]);
             /*
             marqueeView2.setParentView(parentView);
             marqueeView2.setScrollSpeed(25);
@@ -323,6 +370,14 @@ public class Menushow extends AppCompatActivity {
              */
             R3.setVisibility(View.VISIBLE);
             R3.setGravity(Gravity.BOTTOM);
+           // RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) R3.getLayoutParams();
+            //layoutParams.addRule(RelativeLayout.ABOVE, btn4.getId());
+            ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
+
+            marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
+
+            R3.setLayoutParams(layoutParams);
             Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
 
 
@@ -333,7 +388,7 @@ public class Menushow extends AppCompatActivity {
             animation.setDuration(500);
             R3.startAnimation(animation);
             tf=true;
-
+           // layoutParams.removeRule(RelativeLayout.ABOVE);
             begin();
         }
     }
@@ -350,8 +405,8 @@ public class Menushow extends AppCompatActivity {
                 @Override
                 public void run() {
                     // TODO Auto-generated method stub
-                    parentView.setVisibility(View.GONE);
-                     marqueeView2.setVisibility(View.GONE);
+                  //  parentView.setVisibility(View.GONE);
+                   //  marqueeView2.setVisibility(View.GONE);
                     fab.setVisibility(View.VISIBLE);
                  //  R2.setVisibility(View.VISIBLE);
                    tf=true;
