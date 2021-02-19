@@ -163,7 +163,7 @@ public class Listenchild extends AppCompatActivity {
         ans= bundle.getString("ANS");
         if(ans.equals("A")){
 
-           length=61;
+           length=child_a.length;
 
             pic.setImageResource(R.drawable.aki_p1);
             url="https://akkyschool.com/images/listening/child_1/";
@@ -172,7 +172,7 @@ public class Listenchild extends AppCompatActivity {
         }
        else if(ans.equals("B")){
 
-            length=69;
+            length=child_b.length;
 
             pic.setImageResource(R.drawable.aki_p1);
             url="https://akkyschool.com/images/listening/child_2/";
@@ -180,7 +180,7 @@ public class Listenchild extends AppCompatActivity {
         }
         else if(ans.equals("C")){
 
-            length=72;
+            length=child_c.length;
 
             pic.setImageResource(R.drawable.aki_p1);
             url="https://akkyschool.com/images/listening/child_3/";
