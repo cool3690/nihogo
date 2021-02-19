@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Listenmenu extends AppCompatActivity {
-    ImageView btn1,btn2,btn3,btn4;
+    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +25,85 @@ public class Listenmenu extends AppCompatActivity {
         btn2=(ImageView)findViewById(R.id.btn2);
         btn3=(ImageView)findViewById(R.id.btn3);
         btn4=(ImageView)findViewById(R.id.btn4);
+        btn5=(ImageView)findViewById(R.id.btn5);
+        btn6=(ImageView)findViewById(R.id.btn6);
+        btn7=(ImageView)findViewById(R.id.btn7);
         btn1.setOnTouchListener(b1);
         btn2.setOnTouchListener(b2);
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
+        btn5.setOnTouchListener(b5);
+        btn6.setOnTouchListener(b6);
+        btn7.setOnTouchListener(b7);
 
 
     }
+    private ImageView.OnTouchListener b5=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){
+            switch (event.getAction()){//課程
+
+                case MotionEvent.ACTION_DOWN:
+                    btn5.setImageResource(R.drawable.aki_advance2h);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    btn5.setImageResource(R.drawable.aki_advance2);
+                    Intent intent=new Intent();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("ANS","A");
+                    intent.putExtras(bundle);
+                       intent.setClass(Listenmenu.this,Listenchild.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
+    private ImageView.OnTouchListener b6=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){
+            switch (event.getAction()){//課程
+
+                case MotionEvent.ACTION_DOWN:
+                    btn6.setImageResource(R.drawable.aki_advance2h);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    btn6.setImageResource(R.drawable.aki_advance2);
+                    Intent intent=new Intent();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("ANS","B");
+                    intent.putExtras(bundle);
+                    intent.setClass(Listenmenu.this,Listenchild.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
+    private ImageView.OnTouchListener b7=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){
+            switch (event.getAction()){//課程
+
+                case MotionEvent.ACTION_DOWN:
+                    btn7.setImageResource(R.drawable.aki_advance2h);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    btn7.setImageResource(R.drawable.aki_advance2);
+                    Intent intent=new Intent();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("ANS","C");
+                    intent.putExtras(bundle);
+                    intent.setClass(Listenmenu.this,Listenchild.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
     private ImageView.OnTouchListener b1=new ImageView.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event){

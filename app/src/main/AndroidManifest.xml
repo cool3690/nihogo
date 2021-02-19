@@ -21,8 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Tangoday"
-                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Listenchild"
+            android:label="@string/title_activity_listenchild"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Tangoday"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".JRmap"
             android:label="@string/title_activity_j_rmap"

@@ -115,8 +115,11 @@ public class Mymenu extends AppCompatActivity {
                         mytoast("請開啟網路!");
                     }
                     else{
+
                         Intent intent=new Intent();
-                        //   intent.setClass(Mymenu.this, Basich50.class);
+                       
+                          //Work.class
+                        //  intent.setClass(Mymenu.this,Listenchild.class);
                          intent.setClass(Mymenu.this, Menushow.class);
                         startActivity(intent);
                     }

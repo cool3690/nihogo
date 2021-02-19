@@ -428,9 +428,12 @@ public class Menushow extends AppCompatActivity {
                     btn1.setImageResource(R.drawable.aki_courseh);
 
                     Intent intent=new Intent();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("ANS","A");
+                    intent.putExtras(bundle);
                     intent.setClass(Menushow.this, MainActivity.class);
                     //Work.class
-                    //  intent.setClass(Menushow.this,Myweb.class);
+                    //intent.setClass(Menushow.this,Listenchild.class);
                     startActivity(intent);
                     break;
             }
