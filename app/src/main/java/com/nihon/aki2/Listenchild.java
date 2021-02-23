@@ -370,10 +370,10 @@ public class Listenchild extends AppCompatActivity {
         try{
             if(ans.equals("A")){
                 for(int i =0; i < child_a.length; i++) //代理或主管有工號者顯示
-                {
-                    Listenlist team = new Listenlist(child_a[i]);
-                    listenlists.add(team);
-                }
+                    {
+                        Listenlist team = new Listenlist(child_a[i]);
+                        listenlists.add(team);
+                    }
             }
             else if(ans.equals("B")){
                 for(int i =0; i < child_b.length; i++) //代理或主管有工號者顯示
