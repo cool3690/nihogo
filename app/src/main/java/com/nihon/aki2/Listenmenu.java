@@ -44,11 +44,11 @@ public class Listenmenu extends AppCompatActivity {
             switch (event.getAction()){//課程
 
                 case MotionEvent.ACTION_DOWN:
-                    btn5.setImageResource(R.drawable.aki_advance2h);
+                    btn5.setImageResource(R.drawable.aki_child1h);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn5.setImageResource(R.drawable.aki_advance2);
+                    btn5.setImageResource(R.drawable.aki_child1);
                     Intent intent=new Intent();
                     Bundle bundle=new Bundle();
                     bundle.putString("ANS","A");
@@ -66,11 +66,11 @@ public class Listenmenu extends AppCompatActivity {
             switch (event.getAction()){//課程
 
                 case MotionEvent.ACTION_DOWN:
-                    btn6.setImageResource(R.drawable.aki_advance2h);
+                    btn6.setImageResource(R.drawable.aki_child2h);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn6.setImageResource(R.drawable.aki_advance2);
+                    btn6.setImageResource(R.drawable.aki_child2);
                     Intent intent=new Intent();
                     Bundle bundle=new Bundle();
                     bundle.putString("ANS","B");
@@ -88,11 +88,11 @@ public class Listenmenu extends AppCompatActivity {
             switch (event.getAction()){//課程
 
                 case MotionEvent.ACTION_DOWN:
-                    btn7.setImageResource(R.drawable.aki_advance2h);
+                    btn7.setImageResource(R.drawable.aki_child3h);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn7.setImageResource(R.drawable.aki_advance2);
+                    btn7.setImageResource(R.drawable.aki_child3);
                     Intent intent=new Intent();
                     Bundle bundle=new Bundle();
                     bundle.putString("ANS","C");

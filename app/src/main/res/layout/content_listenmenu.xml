@@ -49,7 +49,7 @@
             android:layout_height="100dp"
             android:layout_below="@id/btn4"
             android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_advance2" />
+            app:srcCompat="@drawable/aki_child1" />
 
         <ImageView
             android:id="@+id/btn6"
@@ -57,14 +57,14 @@
             android:layout_height="100dp"
             android:layout_below="@id/btn5"
             android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_advance2" />
+            app:srcCompat="@drawable/aki_child2" />
         <ImageView
             android:id="@+id/btn7"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_below="@id/btn6"
             android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_advance2" />
+            app:srcCompat="@drawable/aki_child3" />
         <!-- app:srcCompat="@drawable/aki_comic"-->
     </RelativeLayout>
 </ScrollView>
