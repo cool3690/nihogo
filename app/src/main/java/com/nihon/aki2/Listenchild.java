@@ -165,7 +165,7 @@ public class Listenchild extends AppCompatActivity {
 
            length=child_a.length;
 
-            pic.setImageResource(R.drawable.aki_p1);
+            pic.setImageResource(R.drawable.aki_pic001);
             url="https://akkyschool.com/images/listening/child_1/";
             bt8.setVisibility(View.GONE);
 
@@ -174,7 +174,7 @@ public class Listenchild extends AppCompatActivity {
 
             length=child_b.length;
 
-            pic.setImageResource(R.drawable.aki_p1);
+            pic.setImageResource(R.drawable.aki_pic002);
             url="https://akkyschool.com/images/listening/child_2/";
             bt8.setVisibility(View.GONE);
         }
@@ -182,7 +182,7 @@ public class Listenchild extends AppCompatActivity {
 
             length=child_c.length;
 
-            pic.setImageResource(R.drawable.aki_p1);
+            pic.setImageResource(R.drawable.aki_pic003);
             url="https://akkyschool.com/images/listening/child_3/";
             bt8.setVisibility(View.VISIBLE);
         }
