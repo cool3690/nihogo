@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" /> <!-- <uses-permission android:name="android.permission.SEND_SMS" /> -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name=".GlobalVariable"
         android:allowBackup="true"
@@ -21,10 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Qrcode"
+                  android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Listenchild"
             android:label="@string/title_activity_listenchild"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Tangoday"
             android:theme="@style/AppTheme.NoActionBar" />

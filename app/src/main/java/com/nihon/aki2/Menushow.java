@@ -1,11 +1,13 @@
 package com.nihon.aki2;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -14,6 +16,7 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import android.text.TextUtils;
 import android.transition.Explode;
@@ -61,7 +64,7 @@ public class Menushow extends AppCompatActivity {
     DisplayMetrics dm = new DisplayMetrics();
     private RelativeLayout parentView,R2,R3,R0;
     private MarqueeView marqueeView2;
-    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,pic2,pic3;
+    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn9,pic2,pic3;
     String account="",passwd="",names="";
     TextView  jp,ch,ch2,jp2,level2,jp3,ch3,level3;
     Context context;
@@ -99,6 +102,7 @@ public class Menushow extends AppCompatActivity {
         btn5=(ImageView)findViewById(R.id.btn5);
         btn6=(ImageView)findViewById(R.id.btn6);
         btn7=(ImageView)findViewById(R.id.btn7);
+        btn9=(ImageView)findViewById(R.id.btn9);
         pic2=(ImageView)findViewById(R.id.pic2);
         pic3=(ImageView)findViewById(R.id.pic3);
          parentView=findViewById(R.id.marqueeLayout);
@@ -131,17 +135,19 @@ public class Menushow extends AppCompatActivity {
         btn4.setOnTouchListener(b4);
         btn5.setOnTouchListener(b5);
         btn6.setOnTouchListener(b6);
+        btn9.setOnTouchListener(b9);
         new DownloadFileAsync().execute();
         parentView.setOnClickListener(marbtn);
-        R2.setOnClickListener(R2btn);
+      //  R2.setOnClickListener(R2btn);
         R3.setOnClickListener(R3btn);
        // fab.setVisibility(View.INVISIBLE);
         fab.setOnClickListener(fabclick);
         parentView.setVisibility(View.GONE);
         marqueeView2.setVisibility(View.GONE);
       //  faby = R3.getHeight();
-
+        btn9.bringToFront();
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        getPermission();
 
     }
 
@@ -453,7 +459,8 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn2.setImageResource(R.drawable.aki_rateh);
                     Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Change.class);
+                    //  intent.setClass(Menushow.this,Qrcode.class);
+                  intent.setClass(Menushow.this,Change.class);
                     startActivity(intent);
                     //  mytoast("維護中");
                     break;
@@ -546,6 +553,34 @@ public class Menushow extends AppCompatActivity {
             return true;
         }
     };
+    private ImageView.OnTouchListener b9=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){
+            switch (event.getAction()){//課程
+
+                case MotionEvent.ACTION_DOWN:
+                    btn9.setImageResource(R.drawable.aki_listenh);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    btn9.setImageResource(R.drawable.aki_listen);
+                    Intent intent=new Intent();
+                    //intent.setClass(Menushow.this, JRmap.class);
+                    //Work.class
+                    intent.setClass(Menushow.this,Qrcode.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
+    public void getPermission(){
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
+
+        }
+    }
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_SHORT);

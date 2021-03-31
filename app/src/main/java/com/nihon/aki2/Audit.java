@@ -83,8 +83,9 @@ public class Audit extends AppCompatActivity {
         send=(ImageView)findViewById(R.id.send);
         name=(EditText)findViewById(R.id.name);
         phone=(EditText)findViewById(R.id.phone);
-        choose=(Spinner)findViewById(R.id.choose);
+
         remark=(EditText)findViewById(R.id.remark);
+        choose=(Spinner)findViewById(R.id.choose);
         ArrayAdapter<String> choosespn=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,course);
 
         choose.setAdapter(choosespn);
