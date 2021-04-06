@@ -8,11 +8,14 @@
     tools:context=".Mymenu"
     tools:showIn="@layout/mymenu"
    >
+
     <pl.droidsonroids.gif.GifImageView
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/aki_app" />
+        android:background="@drawable/aki_app"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <ImageView
         android:id="@+id/btn1"

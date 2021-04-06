@@ -15,6 +15,7 @@ import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.SurfaceHolder;
@@ -66,6 +67,7 @@ public class Qrcode extends AppCompatActivity {
         toback.setOnClickListener(backbtn);
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         show=(TextView)findViewById(R.id.show);
+        show.setOnClickListener(showclick);
         getPermission();
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.QR_CODE).build();
@@ -128,22 +130,65 @@ public class Qrcode extends AppCompatActivity {
                     show.post(new Runnable() {
                         @Override
                         public void run() {
-                            show.setText(qrCodes.valueAt(0).displayValue);
-                            if(show.getText().toString().contains("http://") ||show.getText().toString().contains("https://")
-                               ||show.getText().toString().contains("www.")  ){
-                                Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                                intent.setData(Uri.parse(show.getText().toString()));
-                                startActivity(intent);
+                            if(!TextUtils.isEmpty(show.getText().toString())){
+                                if(show.getText().toString().equals(qrCodes.valueAt(0).displayValue)){
+                                    //mytoast( qrCodes.size()+"");
+
+                                    //show.setText("");
+                                }
+                                else{
+                                    show.setText(qrCodes.valueAt(0).displayValue);
+                                    if(show.getText().toString().contains("http://") ||show.getText().toString().contains("https://")
+                                            ||show.getText().toString().contains("www.")  ){
+                                        Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
+                                        intent.setData(Uri.parse(show.getText().toString()));
+
+                                        startActivity(intent);
+
+                                    }
+                                }
                             }
+                            else{
+                                show.setText(qrCodes.valueAt(0).displayValue);
+                                if(show.getText().toString().contains("http://") ||show.getText().toString().contains("https://")
+                                        ||show.getText().toString().contains("www.")  ){
+                                    Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
+                                    intent.setData(Uri.parse(show.getText().toString()));
+
+                                    startActivity(intent);
+
+                                }
+                            }
+                           // show.setText("");
 
                         }
+
+
                     });
+                   // show.postDelayed(Runnable, 1000);
+
                 }
             }
         });
 
     }
+    private TextView.OnClickListener showclick=new TextView.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            if(!TextUtils.isEmpty(show.getText().toString())){
 
+                    if(show.getText().toString().contains("http://") ||show.getText().toString().contains("https://")
+                            ||show.getText().toString().contains("www.")  ){
+                        Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse(show.getText().toString()));
+
+                        startActivity(intent);
+
+                    }
+
+            }
+        }
+    };
     private ImageView.OnClickListener backbtn=new ImageView.OnClickListener(){
         @Override
         public void onClick(View view) {
