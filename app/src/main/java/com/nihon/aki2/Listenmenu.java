@@ -37,6 +37,8 @@ public class Listenmenu extends AppCompatActivity {
         btn7.setOnTouchListener(b7);
 
 
+
+
     }
     private ImageView.OnTouchListener b5=new ImageView.OnTouchListener(){
         @Override
@@ -49,9 +51,12 @@ public class Listenmenu extends AppCompatActivity {
                     break;
                 case MotionEvent.ACTION_UP:
                     btn5.setImageResource(R.drawable.aki_child1);
+                    String word[]="com.nihon.aki2.Listening_A_1_3".split("_");
                     Intent intent=new Intent();
                     Bundle bundle=new Bundle();
                     bundle.putString("ANS","A");
+                  //bundle.putString("L", word[2]+"");
+                 //   bundle.putString("T", word[3]+"");
                     intent.putExtras(bundle);
                        intent.setClass(Listenmenu.this,Listenchild.class);
                     startActivity(intent);

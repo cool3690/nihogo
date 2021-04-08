@@ -135,8 +135,23 @@ public class Listening extends AppCompatActivity  {
         listview.setOnItemClickListener(lvonclick);
 
         Intent intent=this.getIntent();
-        Bundle bundle=intent.getExtras();
-        ans= bundle.getString("ANS");
+
+        if(intent != null && intent.getExtras() != null ){
+            Bundle bundle=intent.getExtras();
+            ans= bundle.getString("ANS");
+            /*
+            if(bundle.getString("T")!=null &&bundle.getString("L")!=null){
+                T=Integer.parseInt(bundle.getString("T")) ;
+                L=Integer.parseInt( bundle.getString("L"));
+                mytoast(T+"   "+L);
+            }
+
+
+             */
+        }
+        else{
+            ans="A";
+        }
         if(ans.equals("A")){
             int j=0;
             for(int i=1;i<=12;i++){

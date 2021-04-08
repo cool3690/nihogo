@@ -136,6 +136,7 @@ public class Menushow extends AppCompatActivity {
         btn5.setOnTouchListener(b5);
         btn6.setOnTouchListener(b6);
         btn9.setOnTouchListener(b9);
+        btn9.setVisibility(View.GONE);
         new DownloadFileAsync().execute();
         parentView.setOnClickListener(marbtn);
       //  R2.setOnClickListener(R2btn);
@@ -147,8 +148,8 @@ public class Menushow extends AppCompatActivity {
       //  faby = R3.getHeight();
         btn9.bringToFront();
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        getPermission();
-
+         getPermission();
+       
     }
 
     private DragFloatActionButton.OnClickListener fabclick=new DragFloatActionButton.OnClickListener(){

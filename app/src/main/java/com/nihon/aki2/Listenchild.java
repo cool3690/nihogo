@@ -159,8 +159,15 @@ public class Listenchild extends AppCompatActivity {
         listview.setOnItemClickListener(lvonclick);
 
         Intent intent=this.getIntent();
-        Bundle bundle=intent.getExtras();
-        ans= bundle.getString("ANS");
+
+        if(intent != null && intent.getExtras() != null ){
+            Bundle bundle=intent.getExtras();
+            ans= bundle.getString("ANS");
+
+        }
+        else{
+            ans="A";
+        }
         if(ans.equals("A")){
 
            length=child_a.length;

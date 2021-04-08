@@ -94,7 +94,7 @@ int i=0;
         NotificationChannel channel;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             channel = new NotificationChannel(TEST_NOTIFY_ID
-                    , "亞紀塾日本語"
+                    , "katsu日本語"
                     , NotificationManager.IMPORTANCE_HIGH);
             builder.setChannelId(TEST_NOTIFY_ID);
 

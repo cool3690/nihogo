@@ -75,6 +75,7 @@ public class Qrcode extends AppCompatActivity {
                 .setRequestedPreviewSize(1000,1000).build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector).setAutoFocusEnabled(true).build();
         //cameraSource.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback(){
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
@@ -130,6 +131,7 @@ public class Qrcode extends AppCompatActivity {
                     show.post(new Runnable() {
                         @Override
                         public void run() {
+                            /*
                             if(!TextUtils.isEmpty(show.getText().toString())){
                                 if(show.getText().toString().equals(qrCodes.valueAt(0).displayValue)){
                                     //mytoast( qrCodes.size()+"");
@@ -160,7 +162,43 @@ public class Qrcode extends AppCompatActivity {
                                 }
                             }
                            // show.setText("");
+                            */
+                            ////////////////////////////
+                            try {
+                                if(!TextUtils.isEmpty(show.getText().toString())){
+                                    if(show.getText().toString().equals(qrCodes.valueAt(0).displayValue)){
+                                        //mytoast( qrCodes.size()+"");
 
+                                        //show.setText("");
+                                    }
+                                    else{
+                                        show.setText(qrCodes.valueAt(0).displayValue);
+                                        String word[]=qrCodes.valueAt(0).displayValue.split("_");
+                                        Intent intent=new Intent();
+                                        intent.setClass(Qrcode.this,Class.forName(word[0]));
+                                        Bundle bundle=new Bundle();
+                                        bundle.putString("ANS", word[1]);
+                                       // bundle.putString("L", word[2]+"");
+                                      //  bundle.putString("T", word[3]+"");
+                                        intent.putExtras(bundle);
+                                        startActivity(intent);
+                                    }
+                                }
+                                else{
+                                    show.setText(qrCodes.valueAt(0).displayValue);
+                                    String word[]=qrCodes.valueAt(0).displayValue.split("_");
+                                    Intent intent=new Intent();
+                                    intent.setClass(Qrcode.this,Class.forName(word[0]));
+                                    Bundle bundle=new Bundle();
+                                    bundle.putString("ANS", word[1]);
+                                   // bundle.putString("L", word[2]+"");
+                                    //bundle.putString("T", word[3]+"");
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                }
+                                /////////////
+
+                            } catch (ClassNotFoundException e) { }
                         }
 
 
@@ -179,10 +217,14 @@ public class Qrcode extends AppCompatActivity {
 
                     if(show.getText().toString().contains("http://") ||show.getText().toString().contains("https://")
                             ||show.getText().toString().contains("www.")  ){
-                        Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse(show.getText().toString()));
 
-                        startActivity(intent);
+                        try {  Intent intent=new Intent();
+                            intent.setClass(Qrcode.this,Class.forName("com.nihon.aki2.Menushow"));
+                            startActivity(intent);
+                        } catch (ClassNotFoundException e) { }
+
+
+
 
                     }
 
