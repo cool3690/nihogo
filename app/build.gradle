@@ -10,11 +10,11 @@ android {
             storePassword '123456'
         }
     }//C:\Users\ASUS\.android\n2.jks
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.nihon.aki2"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
         multiDexEnabled true
         versionCode 61
         versionName "1.8"
@@ -66,7 +66,7 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha01'
     implementation 'com.zhy:base-rvadapter:3.0.3'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.android.support:recyclerview-v7:29.0.0'
+    implementation 'com.android.support:recyclerview-v7:30.0.0'
     implementation 'com.google.android.gms:play-services-vision:18.0.0'
     implementation 'com.android.support:multidex:1.0.3'
 }
