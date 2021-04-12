@@ -22,7 +22,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.nihon.aki2.mydb.dbsantance;
 
 import org.json.JSONArray;
@@ -41,6 +43,7 @@ String [] contain=new String[4];
     String account="",passwd="",names="";
     private Menu menu;
     private InterstitialAd mInterstitialAd;
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +92,12 @@ String [] contain=new String[4];
         btnpre.setOnTouchListener(btpre);
         btnnext.setOnTouchListener(btnext);
         test(num);
+        String myid=getString(R.string.appid);
+        MobileAds.initialize(this, myid);
+        mAdView = findViewById(R.id.adView);
 
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
     private void loadInterstitialAd() {

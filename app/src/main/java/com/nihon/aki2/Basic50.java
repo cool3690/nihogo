@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.nihon.aki2.control.PaintView;
 
 import com.nihon.aki2.mydb.dbbasic50;
@@ -46,6 +49,7 @@ public class Basic50 extends AppCompatActivity {
     Spinner page;
     GifImageView mygif;
     String account="";
+    private AdView mAdView;
     int num=0;
     String[] mypage= new String []{
             "あ","い","う","え","お",
@@ -125,6 +129,12 @@ public class Basic50 extends AppCompatActivity {
 
         // 設定 spnPrefer 元件 ItemSelected 事件的 listener 為  spnPreferListener
         page.setOnItemSelectedListener(spnPreferListener);
+        String myid=getString(R.string.appid);
+        MobileAds.initialize(this, myid);
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
     private Spinner.OnItemSelectedListener spnPreferListener=
             new Spinner.OnItemSelectedListener(){

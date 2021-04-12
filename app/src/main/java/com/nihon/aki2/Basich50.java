@@ -3,6 +3,9 @@ package com.nihon.aki2;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.nihon.aki2.control.PaintView;
@@ -42,6 +45,7 @@ public class Basich50 extends AppCompatActivity {
     GifImageView mygif;
     Spinner page;
     int num=0;
+    private AdView mAdView;
     public MediaPlayer mediaplayer;
     String[]mypage=new String[]{"ア","イ","ウ","エ","オ",
             "カ","キ","ク","ケ","コ",
@@ -116,6 +120,12 @@ public class Basich50 extends AppCompatActivity {
 
         // 設定 spnPrefer 元件 ItemSelected 事件的 listener 為  spnPreferListener
         page.setOnItemSelectedListener(spnPreferListener);
+        String myid=getString(R.string.appid);
+        MobileAds.initialize(this, myid);
+        mAdView = findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
     private Spinner.OnItemSelectedListener spnPreferListener=
             new Spinner.OnItemSelectedListener(){

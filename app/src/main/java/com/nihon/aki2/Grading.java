@@ -5,6 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.nihon.aki2.mydb.dbmych;
 import com.nihon.aki2.mydb.dbmychqa;
 
@@ -27,6 +30,7 @@ public class Grading extends AppCompatActivity {
     String level="";
     private Menu menu;
     String mychbun="",mychqa="";
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,12 @@ public class Grading extends AppCompatActivity {
 
         bt1.setOnTouchListener(bt_1);
         bt2.setOnTouchListener(bt_2);
+        String myid=getString(R.string.appid);
+        MobileAds.initialize(this, myid);
+        mAdView = findViewById(R.id.adView);
 
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
        // mydb();
 
     }

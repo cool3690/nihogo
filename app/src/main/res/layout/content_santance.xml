@@ -95,20 +95,31 @@
             android:id="@+id/btnpre"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
+           android:layout_above="@id/adView"
+
             app:srcCompat="@drawable/aki_pre" />
 
         <ImageView
             android:id="@+id/btnnext"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
+            android:layout_above="@id/adView"
+
             android:layout_alignParentRight="true"
             app:srcCompat="@drawable/aki_next" />
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/idban">
+        </com.google.android.gms.ads.AdView>
 
 
     </RelativeLayout>
