@@ -139,15 +139,17 @@ public class Listening extends AppCompatActivity  {
         if(intent != null && intent.getExtras() != null ){
             Bundle bundle=intent.getExtras();
             ans= bundle.getString("ANS");
-            /*
+            /**/
             if(bundle.getString("T")!=null &&bundle.getString("L")!=null){
                 T=Integer.parseInt(bundle.getString("T")) ;
                 L=Integer.parseInt( bundle.getString("L"));
                 mytoast(T+"   "+L);
             }
+            else{
+                T=0;L=0;
+            }
 
 
-             */
         }
         else{
             ans="A";

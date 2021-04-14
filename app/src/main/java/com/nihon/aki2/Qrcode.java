@@ -174,12 +174,12 @@ public class Qrcode extends AppCompatActivity {
                                     else{
                                         show.setText(qrCodes.valueAt(0).displayValue);
                                         String word[]=qrCodes.valueAt(0).displayValue.split("_");
-                                        Intent intent=new Intent();
+                                        Intent intent=new Intent();//com.nihon.aki2.Listening
                                         intent.setClass(Qrcode.this,Class.forName(word[0]));
                                         Bundle bundle=new Bundle();
                                         bundle.putString("ANS", word[1]);
-                                       // bundle.putString("L", word[2]+"");
-                                      //  bundle.putString("T", word[3]+"");
+                                         bundle.putString("L", word[2]+"");
+                                         bundle.putString("T", word[3]+"");
                                         intent.putExtras(bundle);
                                         startActivity(intent);
                                     }
@@ -191,8 +191,8 @@ public class Qrcode extends AppCompatActivity {
                                     intent.setClass(Qrcode.this,Class.forName(word[0]));
                                     Bundle bundle=new Bundle();
                                     bundle.putString("ANS", word[1]);
-                                   // bundle.putString("L", word[2]+"");
-                                    //bundle.putString("T", word[3]+"");
+                                   bundle.putString("L", word[2]+"");
+                                     bundle.putString("T", word[3]+"");
                                     intent.putExtras(bundle);
                                     startActivity(intent);
                                 }
