@@ -264,7 +264,7 @@ public class Studymap extends AppCompatActivity {
             Button btok=(Button)dia.findViewById(R.id.btok);
             Button download=(Button)dia.findViewById(R.id.btdownload);
 //////////////////////////////////////////
-            String myurl="https://akkyschool.com/images/study_abroad/";
+            String myurl="https://kei-sei.com/images/study_abroad/";
             if(num==1){
                 myurl+= "dm.png";
             }
@@ -294,7 +294,7 @@ public class Studymap extends AppCompatActivity {
             }.execute(myurl);
 /*
             try {
-                InputStream is = (InputStream) new URL("https://akkyschool.com/images/study_abroad/dm2.png").getContent();
+                InputStream is = (InputStream) new URL("https://kei-sei.com/images/study_abroad/dm2.png").getContent();
                 Drawable d = Drawable.createFromStream(is, "dm2.png");
                 imageView.getWidth();
                 imageView.setMinimumWidth(imageView.getWidth());
@@ -411,7 +411,7 @@ public class Studymap extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager( new LinearLayoutManager(this));
         youtubeVideos.clear();
-        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://akkyschool.com/images/study_abroad/study_abroad42.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://kei-sei.com/images/study_abroad/study_abroad42.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
 
         VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
 
@@ -429,7 +429,7 @@ public class Studymap extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager( new LinearLayoutManager(this));
         youtubeVideos.clear();
-        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://akkyschool.com/images/study_abroad/study_abroad1.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://kei-sei.com/images/study_abroad/study_abroad1.mp4\" frameborder=\"0\" allowfullscreen></iframe>") );
 
         VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
 

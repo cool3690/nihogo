@@ -109,7 +109,7 @@ public class Listenchild extends AppCompatActivity {
     //String []lessons=new String[13];
    // int []p1=new int[]{3,4,3,5,4,3,4,4,3,4,4,3};
 
-    String url="https://akkyschool.com/images/listening/",ans="";
+    String url="https://kei-sei.com/images/listening/",ans="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,6 +163,7 @@ public class Listenchild extends AppCompatActivity {
         if(intent != null && intent.getExtras() != null ){
             Bundle bundle=intent.getExtras();
             ans= bundle.getString("ANS");
+           // mytoast(ans);
 
         }
         else{
@@ -173,7 +174,7 @@ public class Listenchild extends AppCompatActivity {
            length=child_a.length;
 
             pic.setImageResource(R.drawable.aki_pic001);
-            url="https://akkyschool.com/images/listening/child_1/";
+            url="https://kei-sei.com/images/listening/child_1/";
             bt8.setVisibility(View.GONE);
 
         }
@@ -182,7 +183,7 @@ public class Listenchild extends AppCompatActivity {
             length=child_b.length;
 
             pic.setImageResource(R.drawable.aki_pic002);
-            url="https://akkyschool.com/images/listening/child_2/";
+            url="https://kei-sei.com/images/listening/child_2/";
             bt8.setVisibility(View.GONE);
         }
         else if(ans.equals("C")){
@@ -190,7 +191,7 @@ public class Listenchild extends AppCompatActivity {
             length=child_c.length;
 
             pic.setImageResource(R.drawable.aki_pic003);
-            url="https://akkyschool.com/images/listening/child_3/";
+            url="https://kei-sei.com/images/listening/child_3/";
             bt8.setVisibility(View.VISIBLE);
         }
         play.setOnClickListener(playbyn);
@@ -457,17 +458,17 @@ public class Listenchild extends AppCompatActivity {
 
         String tmp="";
         if(ans.equals("A")){
-            url="https://akkyschool.com/images/listening/child_1/";
+            url="https://kei-sei.com/images/listening/child_1/";
               tmp=url;
             tmp+=child_a[count];
         }
         else if(ans.equals("B")){
-            url="https://akkyschool.com/images/listening/child_2/";
+            url="https://kei-sei.com/images/listening/child_2/";
             tmp=url;
             tmp+=child_b[count];
         }
         else if(ans.equals("C")){
-            url="https://akkyschool.com/images/listening/child_3/";
+            url="https://kei-sei.com/images/listening/child_3/";
             tmp=url;
             tmp+=child_c[count];
         }

@@ -77,7 +77,7 @@ public class Listening extends AppCompatActivity  {
     String []lessons=new String[13];
     int []p1=new int[]{3,4,3,5,4,3,4,4,3,4,4,3};
 
-    String url="https://akkyschool.com/images/listening/",ans="";
+    String url="https://kei-sei.com/images/listening/",ans="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,7 +166,7 @@ public class Listening extends AppCompatActivity  {
             } length=45;
             bt13.setVisibility(View.GONE);
             pic.setImageResource(R.drawable.aki_p1);
-            url="https://akkyschool.com/images/listening/primary1/";
+            url="https://kei-sei.com/images/listening/primary1/";
         }
         else if(ans.equals("B")) {
             int j = 0;
@@ -189,7 +189,7 @@ public class Listening extends AppCompatActivity  {
             bt11.setText("L23");
             bt12.setText("L24");
             bt13.setText("L25");
-            url="https://akkyschool.com/images/listening/primary2/";
+            url="https://kei-sei.com/images/listening/primary2/";
             p1=new int[]{2,4,3,4,3,3,3,3,3,4,3,3};
             pic.setImageResource(R.drawable.aki_p2);
         }
@@ -215,7 +215,7 @@ public class Listening extends AppCompatActivity  {
             bt12.setText("L37");
             bt13.setText("L38");
             p1=new int[]{2,3,3,3,3,3,3,3,3,3,3,3};
-            url="https://akkyschool.com/images/listening/advance1/";
+            url="https://kei-sei.com/images/listening/advance1/";
             pic.setImageResource(R.drawable.aki_a1);
         }
         else if(ans.equals("D")){
@@ -240,7 +240,7 @@ public class Listening extends AppCompatActivity  {
             bt12.setText("L50");
             bt13.setVisibility(View.GONE);
             p1=new int[]{2,3,3,3,3,3,3,3,3,3,3,3};
-            url="https://akkyschool.com/images/listening/advance2/";
+            url="https://kei-sei.com/images/listening/advance2/";
             pic.setImageResource(R.drawable.aki_a2);
         }
         play.setOnClickListener(playbyn);

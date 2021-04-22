@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     boolean detect=true;
     private AdView mAdView;
     private Menu menu;
-    String myurl="https://akkyschool.com/images/study_abroad/cs_jlpt.png";
+    String myurl="https://kei-sei.com/images/study_abroad/cs_jlpt.png";
     ArrayList ssign = new ArrayList();
     ArrayList sdate=new ArrayList();
     ArrayList status=new ArrayList();
@@ -480,7 +480,7 @@ public class MainActivity extends AppCompatActivity {
             context = MainActivity.this;
 
             if(detect){
-                myurl= "https://akkyschool.com/images/study_abroad/cs_jlpt.png";
+                myurl= "https://kei-sei.com/images/study_abroad/cs_jlpt.png";
                 url="https://www.jlpt.tw/";
                 dia = new Dialog(context, R.style.edit_AlertDialog_style2);
                 dia.setContentView(R.layout.examshow);
@@ -526,7 +526,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
             else{
-                myurl= "https://akkyschool.com/images/study_abroad/cs_eju.png";
+                myurl= "https://kei-sei.com/images/study_abroad/cs_eju.png";
                 url="https://www.lttc.ntu.edu.tw/EJU_registration.htm";
                 dia = new Dialog(context, R.style.edit_AlertDialog_style2);
                 dia.setContentView(R.layout.ejushow);
