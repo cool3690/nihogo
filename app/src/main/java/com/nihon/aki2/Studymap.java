@@ -237,6 +237,24 @@ public class Studymap extends AppCompatActivity {
 
                 }
             }
+            else if(num==4) {
+                if (tf) {
+                    bt3.setText("關閉");
+                    tf = false;
+                    play4();
+                    videoWebView.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    imageView.setVisibility(View.GONE);
+                } else {
+                    bt3.setText("播放");
+                    tf = true;
+                    play0();
+                    videoWebView.setVisibility(View.GONE);
+
+                    recyclerView.setVisibility(View.GONE);
+
+                }
+            }
         }
     };
     private static Bitmap getBitmapFromURL(String imageUrl)
@@ -448,6 +466,24 @@ public class Studymap extends AppCompatActivity {
         recyclerView.setLayoutManager( new LinearLayoutManager(this));
         youtubeVideos.clear();
         youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/xmkqU_M21lk\" frameborder=\"0\" allowfullscreen></iframe>") );
+
+        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
+
+        recyclerView.setAdapter(videoAdapter);
+
+        /* */
+    }
+    public void play4(){
+
+        videoWebView.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.GONE);
+        videoWebView.bringToFront();
+        recyclerView.bringToFront();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+        youtubeVideos.clear();
+        youtubeVideos.add( new YouTubeVideos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/b3xu9_cobZI\" frameborder=\"0\" allowfullscreen></iframe>") );
 
         VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);//https://www.youtube.com/watch?v=xmkqU_M21lk&feature=youtu.be
 
