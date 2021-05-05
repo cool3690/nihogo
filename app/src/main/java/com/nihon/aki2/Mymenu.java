@@ -123,7 +123,7 @@ public class Mymenu extends AppCompatActivity {
                        
                           //Work.class
                         //  intent.setClass(Mymenu.this,Listenchild.class);
-                         intent.setClass(Mymenu.this, Menushow.class);
+                         intent.setClass(Mymenu.this, Jlptword.class);
                         startActivity(intent);
                     }
                     break;
