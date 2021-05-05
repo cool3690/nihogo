@@ -72,12 +72,13 @@ public class Jlptword extends AppCompatActivity {
         public void onClick(View view) {
             String str=input.getText().toString();
             String result = dbsearchn5.executeQuery( str+"");
-           // mytoast(result);
+            if(result.contains("null")){mytoast("N5沒有這單字" );}
             try{
                 //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
                 JSONArray array = new JSONArray(result);
-                if(array.length()==0){mytoast("N5沒有這單字" );}
-                else{
+              //  if(result.contains("null")){mytoast("N5沒有這單字" );}
+
+
                     //  for (int i = 0; i < array.length(); i++) {
 
                     JSONObject jsonObject = array.getJSONObject(0);
@@ -92,7 +93,7 @@ public class Jlptword extends AppCompatActivity {
                     // mytoast("title:" + word + ", tag:" + hiragana + ", info:" + romaji );
                     //}
 
-                }
+
 
             }
             catch(JSONException e) {
