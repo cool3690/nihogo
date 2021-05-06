@@ -21,7 +21,7 @@ public class dbcjlpt {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/countjlpt.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/countjlpt.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
          //   params.add(new BasicNameValuePair("sign", sign));
             //params.add(new BasicNameValuePair("date", date));

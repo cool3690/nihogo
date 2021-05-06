@@ -21,7 +21,7 @@ public class dbbasic {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selbasic.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/selbasic.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("id", id));
 

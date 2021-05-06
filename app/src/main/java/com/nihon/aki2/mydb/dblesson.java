@@ -21,7 +21,7 @@ public class dblesson {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/sellesson.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/sellesson.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("lessons", lessons));
 

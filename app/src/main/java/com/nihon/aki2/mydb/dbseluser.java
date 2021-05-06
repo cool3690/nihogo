@@ -21,7 +21,7 @@ public class dbseluser {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/seluser.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/seluser.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("email", email));
 

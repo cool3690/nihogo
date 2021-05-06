@@ -69,7 +69,7 @@ public class Myweb extends AppCompatActivity {
         myweb.getSettings().setBuiltInZoomControls(true);
         myweb.getSettings().setJavaScriptEnabled(true);
         myweb.setWebViewClient(new WebViewClient());
-        //myweb.loadUrl("http://akkyschool.com/goods_select.php");
+        //myweb.loadUrl("http://kei-sei.com/goods_select.php");
         myweb.loadUrl("https://www3.nhk.or.jp/news/easy/");
 //https://www3.nhk.or.jp/news/easy/
 // //https://www.mangaz.com/book/fin/194152

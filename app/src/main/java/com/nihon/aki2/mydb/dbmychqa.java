@@ -20,7 +20,7 @@ public class dbmychqa {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/mychqa.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/mychqa.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
 
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));

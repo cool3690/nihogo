@@ -21,7 +21,7 @@ public class dbselcartshow {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selcertshow.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/selcertshow.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
            // params.add(new BasicNameValuePair("emp_id", emp_id));
             params.add(new BasicNameValuePair("account",account));

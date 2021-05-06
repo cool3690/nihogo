@@ -81,7 +81,7 @@ public class Childstory extends AppCompatActivity    implements View.OnTouchList
       new Childstory.MyTask().execute();
        // begin();
         /*
-        url = "http://demo.akkyschool.com/mp3/"+filename[tmp];
+        url = "https://kei-sei.com/mp3/"+filename[tmp];
 
         try {
             mediaplayer.reset();
@@ -127,7 +127,7 @@ public class Childstory extends AppCompatActivity    implements View.OnTouchList
                         @Override
                         public void run() {
 
-                            url = "http://demo.akkyschool.com/mp3/"+filename[tmp];
+                            url = "https://kei-sei.com/mp3/"+filename[tmp];
 
                             try {
                                 mediaplayer.reset();
@@ -154,7 +154,7 @@ public class Childstory extends AppCompatActivity    implements View.OnTouchList
 
         @Override
         protected Void doInBackground(Void... params) {
-            url = "http://demo.akkyschool.com/mp3/"+filename[tmp];
+            url = "https://kei-sei.com/mp3/"+filename[tmp];
 
             try {
                 mediaplayer.stop();
@@ -215,7 +215,7 @@ public class Childstory extends AppCompatActivity    implements View.OnTouchList
                 if(tmp<4){
                     tmp++;
                     myimg.setImageResource(draw[tmp]);
-                    url = "http://demo.akkyschool.com/mp3/"+filename[tmp];
+                    url = "https://kei-sei.com/mp3/"+filename[tmp];
 
                     try {
                         mediaplayer.reset();
@@ -233,7 +233,7 @@ public class Childstory extends AppCompatActivity    implements View.OnTouchList
                 if(tmp>0){
                     tmp--;
                     myimg.setImageResource(draw[tmp]);
-                    url = "http://demo.akkyschool.com/mp3/"+filename[tmp];
+                    url = "https://kei-sei.com/mp3/"+filename[tmp];
 
                     try {
                         mediaplayer.reset();

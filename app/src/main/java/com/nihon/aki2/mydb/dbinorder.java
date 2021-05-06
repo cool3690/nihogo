@@ -22,7 +22,7 @@ public class dbinorder {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/inorder.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/inorder.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("order_num", order_num));
             params.add(new BasicNameValuePair("order_id", order_id));

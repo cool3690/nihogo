@@ -21,7 +21,7 @@ public class dbeform {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/myform.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/myform.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("name", name));
             params.add(new BasicNameValuePair("tel", tel));

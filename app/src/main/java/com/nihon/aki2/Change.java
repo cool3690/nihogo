@@ -70,7 +70,7 @@ double sum=0;
     TextView show,showtw,tshow;
     CheckBox check;
   //  private static final String url ="https://rate.bot.com.tw/xrt?Lang=zh-TW";
-  private static final String url ="http://akkyschool.com/cram/a.php";//https://tw.rter.info/capi.php
+  private static final String url ="https://kei-sei.com/cram/a.php";//https://tw.rter.info/capi.php
     private int secondLeft = 6;
     String[] Balls= new String[] {"0.24","0.25","0.26","0.27","0.28","0.29","0.3"};
     @Override
@@ -136,7 +136,7 @@ double sum=0;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd   HH:mm:ss");
         Date date=new Date();
         String dts=sdf.format(date);
-         jprate2();
+        jprate2();
         begin();
         tshow.setText("現價:"+ String.format("%.3f",sum) +"元");
     }

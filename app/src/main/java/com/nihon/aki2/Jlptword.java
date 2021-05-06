@@ -72,12 +72,10 @@ public class Jlptword extends AppCompatActivity {
         public void onClick(View view) {
             String str=input.getText().toString();
             String result = dbsearchn5.executeQuery( str+"");
-            if(result.contains("null")){mytoast("N5沒有這單字" );}
+            if(result.equals("null")){mytoast("N5沒有這單字" );}
             try{
                 //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
                 JSONArray array = new JSONArray(result);
-              //  if(result.contains("null")){mytoast("N5沒有這單字" );}
-
 
                     //  for (int i = 0; i < array.length(); i++) {
 
@@ -90,14 +88,14 @@ public class Jlptword extends AppCompatActivity {
                     ch.setText(hiragana);
                     pinyin.setText(romaji);
                     meaning.setText(mymeaning);
-                    // mytoast("title:" + word + ", tag:" + hiragana + ", info:" + romaji );
+
                     //}
 
 
 
             }
             catch(JSONException e) {
-               // e.printStackTrace();
+
             }
         }
     };
@@ -118,7 +116,7 @@ public class Jlptword extends AppCompatActivity {
             ch.setText(hiragana);
             pinyin.setText(romaji);
             meaning.setText(mymeaning);
-          //  mytoast("title:" + word + ", tag:" + hiragana + ", info:" + romaji );
+
             //}
         }
         catch(JSONException e) {

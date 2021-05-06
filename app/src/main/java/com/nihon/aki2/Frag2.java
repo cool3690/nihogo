@@ -73,8 +73,8 @@ public class Frag2 extends Fragment {
         public void onClick(View v) {
             Intent intent=new Intent(Intent.ACTION_VIEW);
 
-            intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school1_introduction.pdf"));
-            //http://akkyschool.com/images/study_abroad/file/school1_introduction
+            intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school1_introduction.pdf"));
+            //http://kei-sei.com/images/study_abroad/file/school1_introduction
             //school1_introduction
             startActivity(intent);
         }

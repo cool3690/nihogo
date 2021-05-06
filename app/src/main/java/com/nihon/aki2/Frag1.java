@@ -99,13 +99,13 @@ public class Frag1 extends Fragment {
     public void btlink(View view)
     {
         Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_2introduction.pdf"));
+        intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school2_2introduction.pdf"));
         startActivity(intent);
     }
     public void btlink2(View view)
     {
         Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_introduction.pdf"));
+        intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school2_introduction.pdf"));
         startActivity(intent);
     }
 }

@@ -21,7 +21,7 @@ public class dbQA {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selQA.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/selQA.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("num", num));
             params.add(new BasicNameValuePair("mych", mych));

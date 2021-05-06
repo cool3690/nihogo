@@ -363,18 +363,18 @@ public class Studymap extends AppCompatActivity {
                         public void onClick(View view) {
                             if(num==1){
                                 Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school2_2introduction.pdf"));
+                                intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school2_2introduction.pdf"));
                                 startActivity(intent);
                             }
                             else if(num==2){
                                 Intent intent=new Intent(Intent.ACTION_VIEW);
-                                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school1_introduction.pdf"));
+                                intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school1_introduction.pdf"));
                                 startActivity(intent);
                             }
                             else if(num==3){
                                 Intent intent=new Intent(Intent.ACTION_VIEW);
 
-                                intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_1_introduction.pdf"));
+                                intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school4_1_introduction.pdf"));
                                 startActivity(intent);
                             }
                         }

@@ -148,10 +148,10 @@ public class Countjlpt extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
             if(x==0){
-                intent.setData(Uri.parse("http://akkyschool.com/228.pdf"));
+                intent.setData(Uri.parse("http://kei-sei.com/228.pdf"));
             }
             else{
-                intent.setData(Uri.parse("http://akkyschool.com/301.pdf"));
+                intent.setData(Uri.parse("http://kei-sei.com/301.pdf"));
             }
             startActivity(intent);
         }
@@ -161,7 +161,7 @@ public class Countjlpt extends AppCompatActivity {
         public void onClick(View v) {
             if(x==0){
                 Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://akkyschool.com/2282.pdf"));
+                intent.setData(Uri.parse("http://kei-sei.com/2282.pdf"));
                 startActivity(intent);
             }
            else{}

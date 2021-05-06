@@ -20,7 +20,7 @@ public class dbtango {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/tango.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/tango.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
          //   params.add(new BasicNameValuePair("sign", sign));
             //params.add(new BasicNameValuePair("date", date));

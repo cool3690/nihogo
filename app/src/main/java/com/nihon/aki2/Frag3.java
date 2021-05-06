@@ -148,7 +148,7 @@ public class Frag3 extends Fragment {
         public void onClick(View v) {
             Intent intent=new Intent(Intent.ACTION_VIEW);
 
-            intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_1_introduction.pdf"));
+            intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school4_1_introduction.pdf"));
             startActivity(intent);
         }
     };
@@ -157,7 +157,7 @@ public class Frag3 extends Fragment {
         public void onClick(View v) {
             Intent intent=new Intent(Intent.ACTION_VIEW);
 
-            intent.setData(Uri.parse("http://akkyschool.com/images/study_abroad/file/school4_2_introduction.pdf"));
+            intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school4_2_introduction.pdf"));
             startActivity(intent);
         }
     };

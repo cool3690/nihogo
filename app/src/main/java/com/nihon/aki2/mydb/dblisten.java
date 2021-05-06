@@ -21,7 +21,7 @@ public class dblisten {
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/dblisten.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/dblisten.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("level", level));
 

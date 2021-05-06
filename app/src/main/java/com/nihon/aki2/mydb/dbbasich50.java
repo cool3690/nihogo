@@ -21,7 +21,7 @@ public class dbbasich50 {
 
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://demo.akkyschool.com/cram/selbasich50.php");
+            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/selbasich50.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("id", id));
 
