@@ -64,7 +64,7 @@ public class Menushow extends AppCompatActivity {
     DisplayMetrics dm = new DisplayMetrics();
     private RelativeLayout parentView,R2,R3,R0;
     private MarqueeView marqueeView2;
-    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn9,pic2,pic3;
+    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn9,pic2,pic3,btn10;
     String account="",passwd="",names="";
     TextView  jp,ch,ch2,jp2,level2,jp3,ch3,level3;
     Context context;
@@ -105,6 +105,7 @@ public class Menushow extends AppCompatActivity {
         btn9=(ImageView)findViewById(R.id.btn9);
         pic2=(ImageView)findViewById(R.id.pic2);
         pic3=(ImageView)findViewById(R.id.pic3);
+        btn10=(ImageView)findViewById(R.id.btn10);
          parentView=findViewById(R.id.marqueeLayout);
         marqueeView2=findViewById(R.id.marquee_view2);
         R2=findViewById(R.id.R2);
@@ -137,6 +138,7 @@ public class Menushow extends AppCompatActivity {
         btn6.setOnTouchListener(b6);
         btn9.setOnTouchListener(b9);
         btn9.setVisibility(View.GONE);
+        btn10.setOnTouchListener(b10);
         new DownloadFileAsync().execute();
         parentView.setOnClickListener(marbtn);
       //  R2.setOnClickListener(R2btn);
@@ -151,7 +153,25 @@ public class Menushow extends AppCompatActivity {
          getPermission();
        
     }
+    private ImageView.OnTouchListener b10=new ImageView.OnTouchListener(){
+        @Override
+        public boolean onTouch(View v, MotionEvent event){//test
+            switch (event.getAction()){
 
+                case MotionEvent.ACTION_DOWN:
+                    btn10.setImageResource(R.drawable.aki_listenh);
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    btn10.setImageResource(R.drawable.aki_listen);
+                    Intent intent=new Intent();
+                    intent.setClass(Menushow.this,Jlptword.class);
+                    startActivity(intent);
+                    break;
+            }
+            return true;
+        }
+    };
     private DragFloatActionButton.OnClickListener fabclick=new DragFloatActionButton.OnClickListener(){
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
         @Override

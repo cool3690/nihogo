@@ -121,7 +121,7 @@ public class Mymenu extends AppCompatActivity {
 
                         Intent intent=new Intent();
                        
-                          //Work.class  Jlptword
+                          //Menushow.class  Jlptword
                         //  intent.setClass(Mymenu.this,Listenchild.class);
                          intent.setClass(Mymenu.this, Menushow.class);
                         startActivity(intent);
