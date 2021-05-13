@@ -1,6 +1,8 @@
 package com.nihon.aki2;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +21,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import org.json.JSONArray;
@@ -31,6 +36,8 @@ public class Grading extends AppCompatActivity {
     private Menu menu;
     String mychbun="",mychqa="";
     private AdView mAdView;
+    Context context;
+    Dialog dia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,6 +236,7 @@ public class Grading extends AppCompatActivity {
             startActivity(intent);
         }
         if (id == R.id.about) {
+              /*
             new AlertDialog.Builder(Grading.this)
                     .setTitle("版權所有")
                     .setIcon(R.drawable.righticon)
@@ -239,6 +247,26 @@ public class Grading extends AppCompatActivity {
                         }
                     })
                     .show();
+            */
+            context = Grading.this;
+            dia = new Dialog(context, R.style.rightcopystyle);
+            dia.setContentView(R.layout.copyright);
+            Button btok=(Button)dia.findViewById(R.id.btok);
+            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+            Window w = dia.getWindow();
+            WindowManager.LayoutParams lp = w.getAttributes();
+            lp.x = 0; // 新位置X坐標
+            lp.width =950; // 寬度
+            dia.show();
+            dia.onWindowAttributesChanged(lp);
+            btok.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dia.dismiss();
+                        }
+                    }
+            );
         }
         return super.onOptionsItemSelected(item);
     }

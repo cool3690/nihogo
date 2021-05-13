@@ -56,6 +56,8 @@ import java.util.ArrayList;
 public class Listening extends AppCompatActivity  {
     ArrayList<Listenlist> listenlists = new ArrayList<Listenlist>();
     ListView listview;
+
+    Context context;
     Dialog dia;
     ImageView play,btnpre,btnnext,pic;
     private Dialog dialog;
@@ -715,6 +717,7 @@ public class Listening extends AppCompatActivity  {
             startActivity(intent);
         }
         if (id == R.id.about) {
+            /*
             new AlertDialog.Builder(Listening.this)
                     .setTitle("版權所有")
                     .setIcon(R.drawable.righticon)
@@ -725,6 +728,27 @@ public class Listening extends AppCompatActivity  {
                         }
                     })
                     .show();
+            */
+            context = Listening.this;
+            dia = new Dialog(context, R.style.rightcopystyle);
+            dia.setContentView(R.layout.copyright);
+            Button btok=(Button)dia.findViewById(R.id.btok);
+            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+            Window w = dia.getWindow();
+            WindowManager.LayoutParams lp = w.getAttributes();
+            lp.x = 0; // 新位置X坐標
+            lp.width =950; // 寬度
+            dia.show();
+            dia.onWindowAttributesChanged(lp);
+            btok.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dia.dismiss();
+                        }
+                    }
+            );
+
         }
         return super.onOptionsItemSelected(item);
     }

@@ -1,5 +1,7 @@
 package com.nihon.aki2;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -24,6 +26,8 @@ public class Myform extends AppCompatActivity {
 EditText name,tel,mail,Q1;
 String mname="",mtel="",mmail="",mQ1="";
 ImageView btn;
+    Context context;
+    Dialog dia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

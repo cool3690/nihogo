@@ -1,6 +1,8 @@
 package com.nihon.aki2;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -20,6 +22,8 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -40,6 +44,8 @@ public class Countjlpt extends AppCompatActivity {
     Button bt1,bt2;
     Button return0;
     long x=0;
+    Context context;
+    Dialog dia;
     Spinner spinner;
     TextView sign,date,countdown,textview15,mydate,condition;
 
@@ -245,6 +251,7 @@ public class Countjlpt extends AppCompatActivity {
             startActivity(intent);
         }
         if (id == R.id.about) {
+              /*
             new AlertDialog.Builder(Countjlpt.this)
                     .setTitle("版權所有")
                     .setIcon(R.drawable.righticon)
@@ -255,6 +262,26 @@ public class Countjlpt extends AppCompatActivity {
                         }
                     })
                     .show();
+            */
+            context = Countjlpt.this;
+            dia = new Dialog(context, R.style.rightcopystyle);
+            dia.setContentView(R.layout.copyright);
+            Button btok=(Button)dia.findViewById(R.id.btok);
+            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+            Window w = dia.getWindow();
+            WindowManager.LayoutParams lp = w.getAttributes();
+            lp.x = 0; // 新位置X坐標
+            lp.width =950; // 寬度
+            dia.show();
+            dia.onWindowAttributesChanged(lp);
+            btok.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dia.dismiss();
+                        }
+                    }
+            );
         }
         return super.onOptionsItemSelected(item);
     }

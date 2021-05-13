@@ -49,6 +49,8 @@ public class Listenchild extends AppCompatActivity {
     ArrayList<Listenlist> listenlists = new ArrayList<Listenlist>();
     ListView listview;
     Dialog dia;
+    Context context;
+
     ImageView play,btnpre,btnnext,pic;
     private Dialog dialog;
     //  TransparentProgressDialog mProgressDialog;
@@ -664,7 +666,8 @@ public class Listenchild extends AppCompatActivity {
             startActivity(intent);
         }
         if (id == R.id.about) {
-            new AlertDialog.Builder(Listenchild.this)
+           /*
+            new AlertDialog.Builder(Basic.this)
                     .setTitle("版權所有")
                     .setIcon(R.drawable.righticon)
                     .setMessage("新澄管理顧問公司"+"\n臺南市私立慶誠文理短期補習班"+"\n連絡：sonyzone2004@gmail.com")
@@ -674,6 +677,26 @@ public class Listenchild extends AppCompatActivity {
                         }
                     })
                     .show();
+            */
+            context = Listenchild.this;
+            dia = new Dialog(context, R.style.rightcopystyle);
+            dia.setContentView(R.layout.copyright);
+            Button btok=(Button)dia.findViewById(R.id.btok);
+            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+            Window w = dia.getWindow();
+            WindowManager.LayoutParams lp = w.getAttributes();
+            lp.x = 0; // 新位置X坐標
+            lp.width =950; // 寬度
+            dia.show();
+            dia.onWindowAttributesChanged(lp);
+            btok.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dia.dismiss();
+                        }
+                    }
+            );
         }
         return super.onOptionsItemSelected(item);
     }
