@@ -34,7 +34,7 @@ import org.json.JSONObject;
 import java.util.Random;
 
 public class Jlptword extends AppCompatActivity {
-    private static final String url ="https://kei-sei.com/cram/n5.json";
+   String url ="https://kei-sei.com/cram/n5.json";
     TextView ch,jp,pinyin,meaning;
     EditText input;
     String mypinyin;
@@ -100,7 +100,7 @@ public class Jlptword extends AppCompatActivity {
         }
     };
     public void seraechsql2(){
-        String result = dbn5.executeQuery( );
+        String result = dbn5.executeQuery(url);
         try{
             //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
             JSONArray array = new JSONArray(result);

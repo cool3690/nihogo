@@ -292,7 +292,9 @@ public class Studymap extends AppCompatActivity {
             else if(num==3){
                 myurl+= "dm3.png";
             }
-
+            else if(num==4){
+                myurl+= "dm4.png";
+            }
 
             new AsyncTask<String, Void, Bitmap>()
             {
@@ -375,6 +377,12 @@ public class Studymap extends AppCompatActivity {
                                 Intent intent=new Intent(Intent.ACTION_VIEW);
 
                                 intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school4_1_introduction.pdf"));
+                                startActivity(intent);
+                            }
+                            else if(num==4){
+                                Intent intent=new Intent(Intent.ACTION_VIEW);
+
+                                intent.setData(Uri.parse("http://kei-sei.com/images/study_abroad/file/school5_1_introduction.pdf"));
                                 startActivity(intent);
                             }
                         }
@@ -639,8 +647,8 @@ public class Studymap extends AppCompatActivity {
         if (id == R.id.about) {
             new AlertDialog.Builder(Studymap.this)
                     .setTitle("版權所有")
-                    .setIcon(R.drawable.ic_launcher)
-                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふじやま國際學院")
+                    .setIcon(R.drawable.righticon)
+                    .setMessage("新澄管理顧問公司"+"\n臺南市私立慶誠文理短期補習班"+"\n連絡：sonyzone2004@gmail.com")
                     .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i)
                         {

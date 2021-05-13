@@ -43,8 +43,8 @@ public class Countjlpt extends AppCompatActivity {
     Spinner spinner;
     TextView sign,date,countdown,textview15,mydate,condition;
 
-    private String[] titles = new String[]{"京都民際日本語学校","富士山國際學院"};
-    String[] Balls= new String[] {"京都民際日本語学校","富士山國際學院"};
+    private String[] titles = new String[]{"京都民際日本語学校","富士山國際學院"+"\n連絡：sonyzone2004@gmail.com"};
+    String[] Balls= new String[] {"京都民際日本語学校","富士山國際學院"+"\n連絡：sonyzone2004@gmail.com"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,7 +129,7 @@ public class Countjlpt extends AppCompatActivity {
                               "- 從初學者到中級。");
                   }
                   else{
-                      sign.setText("富士山國際學院");
+                      sign.setText("富士山國際學院"+"\n連絡：sonyzone2004@gmail.com");
                       date.setText("");
                       countdown.setText("每年10 月或 4月開學");
                       textview15.setText("1,441,000日圓\n（入學繳納金，2年學費)");
@@ -247,8 +247,8 @@ public class Countjlpt extends AppCompatActivity {
         if (id == R.id.about) {
             new AlertDialog.Builder(Countjlpt.this)
                     .setTitle("版權所有")
-                    .setIcon(R.drawable.ic_launcher)
-                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふじやま國際學院")
+                    .setIcon(R.drawable.righticon)
+                    .setMessage("新澄管理顧問公司"+"\n臺南市私立慶誠文理短期補習班"+"\n連絡：sonyzone2004@gmail.com")
                     .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i)
                         {

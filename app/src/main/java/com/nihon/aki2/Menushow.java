@@ -137,8 +137,9 @@ public class Menushow extends AppCompatActivity {
         btn5.setOnTouchListener(b5);
         btn6.setOnTouchListener(b6);
         btn9.setOnTouchListener(b9);
-        btn9.setVisibility(View.GONE);
+        //   btn9.setVisibility(View.GONE);
         btn10.setOnTouchListener(b10);
+      // btn10.setVisibility(View.GONE);
         new DownloadFileAsync().execute();
         parentView.setOnClickListener(marbtn);
       //  R2.setOnClickListener(R2btn);
@@ -164,8 +165,8 @@ public class Menushow extends AppCompatActivity {
                     break;
                 case MotionEvent.ACTION_UP:
                     btn10.setImageResource(R.drawable.aki_listen);
-                    Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Jlptword.class);
+                    Intent intent=new Intent();//Jlptword
+                    intent.setClass(Menushow.this,Reviewn5.class);
                     startActivity(intent);
                     break;
             }
@@ -682,8 +683,8 @@ public class Menushow extends AppCompatActivity {
         if (id == R.id.about) {
             new AlertDialog.Builder(Menushow.this)
                     .setTitle("版權所有")
-                    .setIcon(R.drawable.ic_launcher)
-                    .setMessage("新澄管理顧問公司"+"\n台南私立亞紀塾日語短期補習班"+"\nふじやま國際學院")
+                    .setIcon(R.drawable.righticon)
+                    .setMessage("新澄管理顧問公司"+"\n臺南市私立慶誠文理短期補習班"+"\n連絡：sonyzone2004@gmail.com")
                     .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i)
                         {

@@ -16,12 +16,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class dbn5 {
-    public static String executeQuery() {
+    public static String executeQuery(String url) {
         String result = ""; 
        
         try {   
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/n5.json");
+            HttpPost httpPost = new HttpPost(url);
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
 
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));

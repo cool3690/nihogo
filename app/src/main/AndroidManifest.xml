@@ -22,9 +22,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Reviewn5"
+            android:label="@string/title_activity_reviewn5"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Jlptword"
             android:label="@string/title_activity_jlptword"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Qrcode"
             android:theme="@style/AppTheme.NoActionBar" />

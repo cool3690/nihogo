@@ -77,7 +77,7 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:layout_below="@+id/page"
-                android:text="富士山國際學院"
+                android:text="東京民際日本語學校"
                 android:textSize="26sp" />
 
             <TextView
@@ -207,13 +207,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="address"/>
+                android:text=" "/>
                 <TextView
                     android:id="@+id/myweb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:text="web"/>
+                    android:text=" "/>
             </LinearLayout>
 
 
