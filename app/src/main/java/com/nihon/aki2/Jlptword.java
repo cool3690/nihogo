@@ -71,7 +71,7 @@ public class Jlptword extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             String str=input.getText().toString();
-            String result = dbsearchn5.executeQuery( str+"");
+            String result = dbsearchn5.executeQuery( str+"","n5.json");
             if(result.equals("null")){mytoast("N5沒有這單字" );}
             try{
                 //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值

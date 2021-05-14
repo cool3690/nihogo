@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class dbsearchn5 {
-    public static String executeQuery(String word) {
+    public static String executeQuery(String word,String level) {
         String result = ""; 
        
         try {   
@@ -24,6 +24,7 @@ public class dbsearchn5 {
             HttpPost httpPost = new HttpPost("https://kei-sei.com/cram/search.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("word", word));
+            params.add(new BasicNameValuePair("level", level));
             httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             //view_account.setText(httpResponse.getStatusLine().toString());

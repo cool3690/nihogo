@@ -34,6 +34,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -57,6 +58,7 @@ public class Basic50 extends AppCompatActivity {
     private AdView mAdView;
     Context context;
     Dialog dia;
+    EditText input;
     int num=0;
     String[] mypage= new String []{
             "あ","い","う","え","お",
