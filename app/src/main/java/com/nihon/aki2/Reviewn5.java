@@ -108,6 +108,11 @@ public class Reviewn5 extends AppCompatActivity {
         public void onClick(View view) {
             String str=input.getText().toString();
             String tmp="";
+            if(timer != null) {
+                timer.cancel();
+                //  timer.purge();
+                //  timer = null;
+            }
             if(LEV==0){
                 tmp="n5.json";
             }
