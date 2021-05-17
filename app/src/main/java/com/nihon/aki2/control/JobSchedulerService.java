@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.control;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -19,6 +19,8 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.Constants;
+import com.nihon.aki2.Change;
+import com.nihon.aki2.R;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -77,7 +79,7 @@ int i=0;
 
     public void showNotification(String s) {
 
-        Intent intent =new Intent(getApplicationContext(),Change.class);
+        Intent intent =new Intent(getApplicationContext(), Change.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
                 NOTYFI_REQUEST_ID,
                 intent,

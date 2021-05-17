@@ -1,4 +1,4 @@
-package com.nihon.aki2;
+package com.nihon.aki2.control;
 import android.app.Application;
 
 public class GlobalVariable extends Application {

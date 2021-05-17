@@ -1,10 +1,8 @@
 package com.nihon.aki2;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nihon.aki2.control.GlobalVariable;
 import com.nihon.aki2.mydb.dblogin;
 
 import org.json.JSONArray;

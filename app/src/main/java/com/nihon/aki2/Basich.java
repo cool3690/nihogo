@@ -1,9 +1,7 @@
 package com.nihon.aki2;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -29,6 +27,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.nihon.aki2.control.GlobalVariable;
 import com.nihon.aki2.mydb.dbbasich;
 
 import org.json.JSONArray;

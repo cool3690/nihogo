@@ -1,6 +1,5 @@
 package com.nihon.aki2;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,33 +7,15 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.nihon.aki2.control.GlobalVariable;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Constraints;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.StrictMode;
-import android.view.GestureDetector;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-import android.widget.ViewFlipper;
-
-import static android.widget.ListPopupWindow.MATCH_PARENT;
 
 public class Comic extends AppCompatActivity {
     WebView myweb;

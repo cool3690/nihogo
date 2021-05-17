@@ -1,12 +1,10 @@
 package com.nihon.aki2;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -37,6 +35,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 
+import com.nihon.aki2.control.GlobalVariable;
+import com.nihon.aki2.control.JobSchedulerService;
 import com.nihon.aki2.mydb.dbchange2;
 
 import org.jsoup.Connection;
@@ -368,7 +368,7 @@ double sum=0;
 
     public void schedulejob(){
 
-        ComponentName componentName=new ComponentName(this,JobSchedulerService.class);
+        ComponentName componentName=new ComponentName(this, JobSchedulerService.class);
         PersistableBundle bundle = new PersistableBundle();
         String tmp="0";
         if(sel!=""){

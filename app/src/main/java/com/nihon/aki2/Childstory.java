@@ -6,12 +6,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.google.android.gms.ads.AdView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.nihon.aki2.control.GlobalVariable;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import pl.droidsonroids.gif.GifDrawable;
 
 import android.os.StrictMode;
 import android.view.GestureDetector;
@@ -26,7 +24,6 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
 

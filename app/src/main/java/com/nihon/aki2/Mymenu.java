@@ -26,6 +26,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.nihon.aki2.control.GlobalVariable;
+import com.nihon.aki2.control.JobSchedulerService;
+
 import java.io.File;
 
 
@@ -76,7 +79,7 @@ public class Mymenu extends AppCompatActivity {
     }
     public void schedulejob(String tmp){
 
-        ComponentName componentName=new ComponentName(this,JobSchedulerService.class);
+        ComponentName componentName=new ComponentName(this, JobSchedulerService.class);
         PersistableBundle bundle = new PersistableBundle();
 
             bundle.putString("INPUT",tmp);

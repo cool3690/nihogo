@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nihon.aki2.control.GlobalVariable;
+
 public class Keka extends AppCompatActivity {
 String account="",passwd="",yes="",no="",names="";
 private Menu menu;

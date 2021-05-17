@@ -1,9 +1,7 @@
 package com.nihon.aki2;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -20,6 +18,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.nihon.aki2.control.GlobalVariable;
 import com.nihon.aki2.control.Jsan;
 import com.nihon.aki2.control.JsansAdapter;
 import com.nihon.aki2.mydb.dbsanid;

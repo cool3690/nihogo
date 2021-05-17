@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nihon.aki2.control.GlobalVariable;
 import com.nihon.aki2.mydb.dbseluser;
 
 import org.json.JSONArray;
