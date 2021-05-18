@@ -34,6 +34,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Basic extends AppCompatActivity {
     TextView Q1,txtResult;
@@ -50,11 +52,26 @@ public class Basic extends AppCompatActivity {
     R.raw.me, R.raw.mo ,R.raw.ya, R.raw.yu, R.raw.yo,R.raw.ra, R.raw.ri, R.raw.ru, R.raw.re, R.raw.ro,R.raw.wa,R.raw.n,R.raw.wo};
     Context context;
     Dialog dia;
+    int wrong=0;
    // int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko};
     boolean lock=true;
     String account="",passwd="",names="";
     private Menu menu;
     int num=1,ans=0;
+    String[] mytest= new String []{
+            "あ","い","う","え","お",
+            "か","き","く","け","こ",
+            "さ","し","す","せ","そ",
+            "た","ち","つ","て","と",
+            "な","に","ぬ","ね","の",
+            "は","ひ","ふ","へ","ほ",
+            "ま","み","む","め","も",
+            "や","ゆ","よ",
+            "ら","り","る","れ","ろ",
+            "わ","を","ん"};
+    String[] mychoose= new String [] {"a", "i", "u", "e", "o","ka", "ki", "ku", "ke", "ko","sa", "shi", "su", "se", "so",
+            "ta", "chi", "tsu", "te", "to","na", "ni", "nu", "ne", "no","ha", "hi", "hu", "he", "ho","ma", "mi", "mu",
+            "me", "mo ","ya", "yu", "yo","ra", "ri", "ru", "re", "ro","wa","n","wo"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,33 +107,9 @@ public class Basic extends AppCompatActivity {
         prepage=(ImageView)findViewById(R.id.prepage);
         txtResult=(TextView)findViewById(R.id.txtResult);
         mediaplayer=new MediaPlayer();
-        String result = dbbasic.executeQuery(num+"");
-        String topic="";
-        try{
-
-            JSONArray jsonArray = new JSONArray(result);
-
-            int k=0;
-            // bt.setText("更多資訊");
-            for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
-            {
-                JSONObject jsonData = jsonArray.getJSONObject(i);
-                topic=jsonData.getString("Q1");
-                Q1.setText(topic);
-             //   a1.setTypeface(Typeface.createFromAsset(getAssets(), "nihon.ttf"));
-                a1.setText(jsonData.getString("A1"));
-                a2.setText(jsonData.getString("A2"));
-                a3.setText(jsonData.getString("A3"));
-
-                a4.setText(jsonData.getString("A4"));
-                ans=jsonData.getInt("ans");
-
-            }
-
-            playSong(songfile[num-1]);
-        }
-
-        catch(Exception e){}
+        next();
+        nextpage.setVisibility(View.GONE);
+        prepage.setVisibility(View.GONE);
         radioGroup.setOnCheckedChangeListener(answer);
         nextpage.setOnTouchListener(page);
         prepage.setOnTouchListener(pagepre);
@@ -172,20 +165,18 @@ public class Basic extends AppCompatActivity {
                     int  p = group.indexOfChild((RadioButton) findViewById(checkedId));	// 選項的索引值
                     int count = group.getChildCount(); // 清單總共有多少項
                     p++;
-                    if(lock==true){ show (p);}
-                    else{}
-                    txtResult.setText("正確答案是:  "+ans  );
+                    if(ans==p){ show (p);}
+                    else{if(lock){
+                        txtResult.setText("正確答案是:  "+ans  );
+                        wrong++;
+                        lock=false;
+                    }
+
+                    }
+
 
                 }
             };
-
-    void show (int p){
-        if(ans==p){mytoast("正解!");next();}
-        else{mytoast("錯誤!");}
-
-    }
-
-
     private Button.OnClickListener btnsong=new Button.OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -193,11 +184,17 @@ public class Basic extends AppCompatActivity {
             {
 
                 case R.id.btsong:  //播放
-                        playSong(songfile[num-1]);
+                    playSong(songfile[num ]);
                     break;
             }
         }
     };
+    void show (int p){
+        if(ans==p){mytoast("正解!"); txtResult.setText(" ");}
+        else{mytoast("錯誤!");wrong++;}
+        next();
+    }
+
     private  ImageView.OnTouchListener page=new ImageView.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -283,13 +280,24 @@ public class Basic extends AppCompatActivity {
         lock=true;
     }
     public void next(){
-        num++;
+        txtResult.setText(" "  );
         lock=false;
-        count++;
-        if(count==10){loadInterstitialAd();}
         radioGroup.clearCheck();
+        Random random=new Random();
+        num=random.nextInt(45);
+        if(count==10){
 
-        String result = dbbasic.executeQuery(num+"");
+            Intent intent=new Intent();
+            intent.setClass(Basic.this,Keka.class);
+            Bundle bundle=new Bundle();
+            bundle.putString("NO", wrong+"");
+            bundle.putString("YES", (10-wrong)+"");
+            intent.putExtras(bundle);
+            startActivity(intent);
+            mytoast("本題為最後一題");}
+        //if(count==10){loadInterstitialAd();}
+        /*
+        String result = dbbasich.executeQuery(num+"");
         if(result.contains("null")){ num--;
             mytoast("本題為最後一題");
         }
@@ -316,7 +324,34 @@ public class Basic extends AppCompatActivity {
         }
 
         catch(Exception e){}
-        lock=true;
+         */
+        else{
+            int a=0,b=0,c=0;
+            for(;;){
+                a=random.nextInt(45);
+                b=random.nextInt(45);
+                c=random.nextInt(45);
+                if(a!=b && b!=c && a!=c &&num!=a &&num!=b &&num!=c){break;}
+            }
+            int []arr ={a,b,c,num};
+            Arrays.sort(arr);
+            Q1.setText(mychoose[num]);
+            a1.setText(mytest[arr[0]]);
+            a2.setText(mytest[arr[1]]);
+            a3.setText(mytest[arr[2]]);
+            a4.setText(mytest[arr[3]]);
+            for(int i=0;i<4;i++)
+            {
+                if(arr[i]==num){
+                    ans=i+1;
+                }
+            }
+            playSong(songfile[num]);
+            lock=true;
+            count++;
+        }
+
+        // num++;
     }
     private void mytoast(String str)
     {

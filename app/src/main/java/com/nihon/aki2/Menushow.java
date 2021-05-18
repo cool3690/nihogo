@@ -127,7 +127,7 @@ public class Menushow extends AppCompatActivity {
         btn9.setOnTouchListener(b9);
            btn9.setVisibility(View.GONE);
         btn10.setOnTouchListener(b10);
-     //  btn10.setVisibility(View.GONE);
+        btn10.setVisibility(View.GONE);
         new DownloadFileAsync().execute();
         parentView.setOnClickListener(marbtn);
       //  R2.setOnClickListener(R2btn);

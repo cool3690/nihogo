@@ -34,6 +34,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
 
 public class Basich extends AppCompatActivity {
     TextView Q1,txtResult;
@@ -49,11 +52,24 @@ public class Basich extends AppCompatActivity {
     private AdView mAdView;
     public MediaPlayer mediaplayer;
     Context context;
+    int wrong=0;
     Dialog dia;
     int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko,R.raw.sa, R.raw.shi, R.raw.su, R.raw.se, R.raw.so,
             R.raw.ta, R.raw.chi, R.raw.tsu, R.raw.te, R.raw.to,R.raw.na, R.raw.ni, R.raw.nu, R.raw.ne, R.raw.no,R.raw.ha, R.raw.hi, R.raw.hu, R.raw.he, R.raw.ho,R.raw.ma, R.raw.mi, R.raw.mu,
             R.raw.me, R.raw.mo ,R.raw.ya, R.raw.yu, R.raw.yo,R.raw.ra, R.raw.ri, R.raw.ru, R.raw.re, R.raw.ro,R.raw.wa,R.raw.n,R.raw.wo};
-
+    String[]mytest=new String[]{"ア","イ","ウ","エ","オ",
+            "カ","キ","ク","ケ","コ",
+            "サ","シ","ス","セ","ソ",
+            "タ","チ","ツ","テ","ト",
+            "ナ","ニ","ヌ","ネ","ノ",
+            "ハ","ヒ","フ","ヘ","ホ",
+            "マ","ミ","ム","メ","モ",
+            "ヤ","ユ","ヨ",
+            "ラ","リ","ル","レ","ロ",
+            "ワ","ン"};
+    String[] mychoose= new String [] {"a", "i", "u", "e", "o","ka", "ki", "ku", "ke", "ko","sa", "shi", "su", "se", "so",
+            "ta", "chi", "tsu", "te", "to","na", "ni", "nu", "ne", "no","ha", "hi", "hu", "he", "ho","ma", "mi", "mu",
+            "me", "mo ","ya", "yu", "yo","ra", "ri", "ru", "re", "ro","wa","n","wo"};
    // int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko};
     int num=1;
     @Override
@@ -91,34 +107,14 @@ public class Basich extends AppCompatActivity {
         prepage=(ImageView)findViewById(R.id.prepage);
         txtResult=(TextView)findViewById(R.id.txtResult);
         mediaplayer=new MediaPlayer();
-        String result = dbbasich.executeQuery(num+"");
-        String topic="";
-        try{
-            JSONArray jsonArray = new JSONArray(result);
-
-            int k=0;
-            // bt.setText("更多資訊");
-            for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
-            {
-                JSONObject jsonData = jsonArray.getJSONObject(i);
-                topic=jsonData.getString("Q1");
-                Q1.setText(topic);
-                a1.setText(jsonData.getString("A1"));
-                a2.setText(jsonData.getString("A2"));
-                a3.setText(jsonData.getString("A3"));
-                a4.setText(jsonData.getString("A4"));
-                ans=jsonData.getInt("ans");
-            }
-            playSong(songfile[num-1]);
-        }
-
-        catch(Exception e){}
+        next();
         radioGroup.setOnCheckedChangeListener(answer);
         nextpage.setOnTouchListener(page);
         prepage.setOnTouchListener(pagepre);
         btsong.setOnClickListener(btnsong);
         // prepage.setOnClickListener(pagepre2);
-
+        nextpage.setVisibility(View.GONE);
+        prepage.setVisibility(View.GONE);
         String myid=getString(R.string.idban);
         MobileAds.initialize(this, myid);
         mAdView = findViewById(R.id.adView);
@@ -168,9 +164,15 @@ public class Basich extends AppCompatActivity {
                     int  p = group.indexOfChild((RadioButton) findViewById(checkedId));	// 選項的索引值
                     int count = group.getChildCount(); // 清單總共有多少項
                     p++;
-                    if(lock==true){ show (p);}
-                    else{}
-                    txtResult.setText("正確答案是:  "+ans  );
+                    if(ans==p){ show (p);}
+                    else{if(lock){
+                        txtResult.setText("正確答案是:  "+ans  );
+                        wrong++;
+                        lock=false;
+                    }
+
+                    }
+
 
                 }
             };
@@ -181,22 +183,34 @@ public class Basich extends AppCompatActivity {
             {
 
                 case R.id.btsong:  //播放
-                    playSong(songfile[num-1]);
+                    playSong(songfile[num ]);
                     break;
             }
         }
     };
     void show (int p){
-        if(ans==p){mytoast("正解!");next();}
-        else{mytoast("錯誤!");}
-
+        if(ans==p){mytoast("正解!"); txtResult.setText(" ");}
+        else{mytoast("錯誤!");wrong++;}
+        next();
     }
     public void next(){
-        num++;
+        txtResult.setText(" "  );
         lock=false;
         radioGroup.clearCheck();
-        count++;
-        if(count==10){loadInterstitialAd();}
+        Random random=new Random();
+        num=random.nextInt(45);
+        if(count==10){
+
+            Intent intent=new Intent();
+            intent.setClass(Basich.this,Keka.class);
+            Bundle bundle=new Bundle();
+            bundle.putString("NO", wrong+"");
+            bundle.putString("YES", (10-wrong)+"");
+            intent.putExtras(bundle);
+            startActivity(intent);
+            mytoast("本題為最後一題");}
+        //if(count==10){loadInterstitialAd();}
+        /*
         String result = dbbasich.executeQuery(num+"");
         if(result.contains("null")){ num--;
             mytoast("本題為最後一題");
@@ -224,7 +238,34 @@ public class Basich extends AppCompatActivity {
         }
 
         catch(Exception e){}
-        lock=true;
+         */
+        else{
+            int a=0,b=0,c=0;
+            for(;;){
+                a=random.nextInt(45);
+                b=random.nextInt(45);
+                c=random.nextInt(45);
+                if(a!=b && b!=c && a!=c &&num!=a &&num!=b &&num!=c){break;}
+            }
+            int []arr ={a,b,c,num};
+            Arrays.sort(arr);
+            Q1.setText(mychoose[num]);
+            a1.setText(mytest[arr[0]]);
+            a2.setText(mytest[arr[1]]);
+            a3.setText(mytest[arr[2]]);
+            a4.setText(mytest[arr[3]]);
+            for(int i=0;i<4;i++)
+            {
+                if(arr[i]==num){
+                    ans=i+1;
+                }
+            }
+            playSong(songfile[num]);
+            lock=true;
+            count++;
+        }
+
+       // num++;
     }
     private  ImageView.OnTouchListener page=new ImageView.OnTouchListener() {
         @Override
@@ -303,7 +344,7 @@ public class Basich extends AppCompatActivity {
                 a4.setText(jsonData.getString("A4"));
                 ans=jsonData.getInt("ans");
             }
-            playSong(songfile[num-1]);
+            playSong(songfile[num]);
         }
 
         catch(Exception e){}
