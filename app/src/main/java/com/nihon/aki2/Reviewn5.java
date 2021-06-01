@@ -1,6 +1,10 @@
 package com.nihon.aki2;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -39,8 +43,8 @@ public class Reviewn5 extends AppCompatActivity {
     String myjp;
     String mych;
     boolean tf=false;
-    Button auto,hand,N3btn,N2btn,N1btn,send;
-    Spinner sellevel,sec;
+    Button auto,hand,N3btn,N2btn,N1btn,send,bt1,bt2,bt3,bt4,bt5;
+    Spinner sec;
     String[] mylev= new String []{"N5","N4","N3","N2","N1" };
     String[] mysec= new String []{"5秒","6秒","7秒","8秒","9秒","10秒"};
     int LEV=0,SEC=0,Ltmp=0,stmp=5;
@@ -70,13 +74,24 @@ public class Reviewn5 extends AppCompatActivity {
         auto=(Button) findViewById(R.id.auto);
         hand=(Button) findViewById(R.id.hand);
         send=(Button) findViewById(R.id.send);
+        bt1=(Button) findViewById(R.id.bt1);
+        bt2=(Button) findViewById(R.id.bt2);
+        bt3=(Button) findViewById(R.id.bt3);
+        bt4=(Button) findViewById(R.id.bt4);
+        bt5=(Button) findViewById(R.id.bt5);
         level=(TextView)findViewById(R.id.level);
-        sellevel=(Spinner) findViewById(R.id.sellevel);
+        //sellevel=(Spinner) findViewById(R.id.sellevel);
         input=(EditText) findViewById(R.id.input);
         sec=(Spinner) findViewById(R.id.sec);
         auto.setOnClickListener(autobtn);
         hand.setOnClickListener(handbtn);
         send.setOnClickListener(sendbtn);
+        bt1.setOnClickListener(btbtn);
+        bt2.setOnClickListener(btbtn);
+        bt3.setOnClickListener(btbtn);
+        bt4.setOnClickListener(btbtn);
+        bt5.setOnClickListener(btbtn);
+        bt5.setBackgroundColor(Color.YELLOW);
         ArrayAdapter<String> adapterPage=new ArrayAdapter<String>
                 (this,android.R.layout.simple_spinner_item,mylev);
 
@@ -84,10 +99,10 @@ public class Reviewn5 extends AppCompatActivity {
         adapterPage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // 設定Spinner的資料來源
-        sellevel.setAdapter(adapterPage);
+       // sellevel.setAdapter(adapterPage);
 
         // 設定 spnPrefer 元件 ItemSelected 事件的 listener 為  spnPreferListener
-        sellevel.setOnItemSelectedListener(spnlev);
+       // sellevel.setOnItemSelectedListener(spnlev);
         ///////////////////
         ArrayAdapter<String> adaptersec=new ArrayAdapter<String>
                 (this,android.R.layout.simple_spinner_item,mysec);
@@ -103,6 +118,54 @@ public class Reviewn5 extends AppCompatActivity {
         new Reviewn5.DownloadFileAsync().execute();
       //  begin();
     }
+    private Button.OnClickListener btbtn=new Button.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            bt1.setBackgroundColor(Color.WHITE);
+            bt2.setBackgroundColor(Color.WHITE);
+            bt3.setBackgroundColor(Color.WHITE);
+            bt4.setBackgroundColor(Color.WHITE);
+            bt5.setBackgroundColor(Color.WHITE);
+
+            switch (view.getId()){
+
+                case R.id.bt1:
+                    bt1.setBackgroundColor(Color.YELLOW);
+                    LEV=4;
+                    url ="https://kei-sei.com/cram/n1.json";
+                    level.setText("N1");
+                    break;
+                case R.id.bt2:
+                    bt2.setBackgroundColor(Color.YELLOW);
+                    url ="https://kei-sei.com/cram/n2.json";
+                    level.setText("N2");
+                    LEV=3;
+                    break;
+                case R.id.bt3:
+                    bt3.setBackgroundColor(Color.YELLOW);
+                    LEV=2;
+                    url ="https://kei-sei.com/cram/n3.json";
+                    level.setText("N3");
+                    break;
+                case R.id.bt4:
+                    bt4.setBackgroundColor(Color.YELLOW);
+                    LEV=1;
+                    url ="https://kei-sei.com/cram/n4.json";
+                    level.setText("N4");
+                    break;
+                case R.id.bt5:
+                    bt5.setBackgroundColor(Color.YELLOW);
+                    LEV=0;
+                    url ="https://kei-sei.com/cram/n5.json";
+                    level.setText("N5");
+                    break;
+                default:
+                    break;
+
+            }
+            search();
+        }
+    };
     private Button.OnClickListener sendbtn=new Button.OnClickListener(){
         @Override
         public void onClick(View view) {
@@ -187,6 +250,20 @@ public class Reviewn5 extends AppCompatActivity {
     private Button.OnClickListener handbtn=new Button.OnClickListener(){
         @Override
         public void onClick(View view) {
+            int[] colors = {Color.parseColor("#58DFD4"),Color.parseColor("#F0EAA6")};
+
+            //create a new gradient color
+            GradientDrawable gd = new GradientDrawable(
+                    GradientDrawable.Orientation.TOP_BOTTOM, colors);
+
+            gd.setCornerRadius(30f);
+            hand.setText("手動輪播");
+            Drawable d = getResources().getDrawable(R.drawable.btn_primary);
+            d.setColorFilter(Color.parseColor("#FD13AAD1"), PorterDuff.Mode.SRC_ATOP);
+
+            auto.setBackground(d);
+            hand.setBackground(gd);
+            hand.setText("下一個");
             if(tf){
                 //timer.cancel();
                 //timer = null;
@@ -218,30 +295,33 @@ public class Reviewn5 extends AppCompatActivity {
                 url ="https://kei-sei.com/cram/n1.json";
                 level.setText("N1");
             }
-            String result = dbn5.executeQuery(url);
-            try{
-                //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
-                JSONArray array = new JSONArray(result);
-                //  for (int i = 0; i < array.length(); i++) {
-                Random random=new Random();
-                int tmp=random.nextInt(array.length()-1);
-                JSONObject jsonObject = array.getJSONObject(tmp);
-                String word = jsonObject.getString("word");
-                String hiragana = jsonObject.getString("hiragana");
-                String romaji = jsonObject.getString("romaji");
-                String mymeaning = jsonObject.getString("meaning");
-                jp.setText(word);
-                ch.setText(hiragana);
-                pinyin.setText(romaji);
-                meaning.setText(mymeaning);
-               // level.setText("N5");
-                //}
-            }
-            catch(JSONException e) {
-                // e.printStackTrace();
-            }
+            search();
         }
     };
+    public void search(){
+        String result = dbn5.executeQuery(url);
+        try{
+            //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
+            JSONArray array = new JSONArray(result);
+            //  for (int i = 0; i < array.length(); i++) {
+            Random random=new Random();
+            int tmp=random.nextInt(array.length()-1);
+            JSONObject jsonObject = array.getJSONObject(tmp);
+            String word = jsonObject.getString("word");
+            String hiragana = jsonObject.getString("hiragana");
+            String romaji = jsonObject.getString("romaji");
+            String mymeaning = jsonObject.getString("meaning");
+            jp.setText(word);
+            ch.setText(hiragana);
+            pinyin.setText(romaji);
+            meaning.setText(mymeaning);
+            // level.setText("N5");
+            //}
+        }
+        catch(JSONException e) {
+            // e.printStackTrace();
+        }
+    }
     public void begin() {
         if(Ltmp!=LEV || stmp!=SEC || tf){
             Ltmp=LEV;
@@ -364,6 +444,22 @@ public class Reviewn5 extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             /**/
+            int[] colors = {Color.parseColor("#58DFD4"),Color.parseColor("#F0EAA6")};
+
+            //create a new gradient color
+            GradientDrawable gd = new GradientDrawable(
+                    GradientDrawable.Orientation.TOP_BOTTOM, colors);
+
+            gd.setCornerRadius(30f);
+            hand.setText("手動輪播");
+            Drawable d = getResources().getDrawable(R.drawable.btn_primary);
+            d.setColorFilter(Color.parseColor("#FD13AAD1"), PorterDuff.Mode.SRC_ATOP);
+
+            auto.setBackground(gd);
+            hand.setBackground(d);
+
+
+
             if(!tf){
 
 

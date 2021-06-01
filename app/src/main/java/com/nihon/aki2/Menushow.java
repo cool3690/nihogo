@@ -127,7 +127,7 @@ public class Menushow extends AppCompatActivity {
         btn9.setOnTouchListener(b9);
            btn9.setVisibility(View.GONE);
         btn10.setOnTouchListener(b10);
-        btn10.setVisibility(View.GONE);
+      //  btn10.setVisibility(View.GONE);
         new DownloadFileAsync().execute();
         parentView.setOnClickListener(marbtn);
       //  R2.setOnClickListener(R2btn);
@@ -148,11 +148,11 @@ public class Menushow extends AppCompatActivity {
             switch (event.getAction()){
 
                 case MotionEvent.ACTION_DOWN:
-                    btn10.setImageResource(R.drawable.aki_listenh);
+                    btn10.setImageResource(R.drawable.aki_reviewh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn10.setImageResource(R.drawable.aki_listen);
+                    btn10.setImageResource(R.drawable.aki_review);
                     Intent intent=new Intent();//Jlptword
                     intent.setClass(Menushow.this,Reviewn5.class);
                     startActivity(intent);

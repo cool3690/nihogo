@@ -77,7 +77,7 @@
             android:layout_height="100dp"
             android:layout_below="@id/btn9"
             android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_listen"
+            app:srcCompat="@drawable/aki_review"
             />
         <RelativeLayout
             android:id="@+id/R2"
