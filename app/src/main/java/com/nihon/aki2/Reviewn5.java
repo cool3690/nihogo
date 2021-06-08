@@ -70,7 +70,7 @@ public class Reviewn5 extends AppCompatActivity {
         ch=(TextView)findViewById(R.id.ch);
         pinyin=(TextView)findViewById(R.id.pinyin);
         meaning=(TextView)findViewById(R.id.meaning);
-        input=(EditText) findViewById(R.id.input);
+
         auto=(Button) findViewById(R.id.auto);
         hand=(Button) findViewById(R.id.hand);
         send=(Button) findViewById(R.id.send);
@@ -83,6 +83,8 @@ public class Reviewn5 extends AppCompatActivity {
         //sellevel=(Spinner) findViewById(R.id.sellevel);
         input=(EditText) findViewById(R.id.input);
         sec=(Spinner) findViewById(R.id.sec);
+        input.setVisibility(View.GONE);
+        send.setVisibility(View.GONE);
         auto.setOnClickListener(autobtn);
         hand.setOnClickListener(handbtn);
         send.setOnClickListener(sendbtn);
