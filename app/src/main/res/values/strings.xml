@@ -83,5 +83,7 @@
     <string name="title_activity_jlptword">單字</string>
 
     <string name="title_activity_reviewn5">單字隨機複習</string>
+    <string name="title_activity_jishoweb">Jisho授權使用</string>
+
 
 </resources>

@@ -154,7 +154,7 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn10.setImageResource(R.drawable.aki_review);
                     Intent intent=new Intent();//Jlptword/Reviewn5/test
-                    intent.setClass(Menushow.this,Testweb.class);
+                    intent.setClass(Menushow.this,Reviewn5.class);
                     startActivity(intent);
                     break;
             }
@@ -569,15 +569,15 @@ public class Menushow extends AppCompatActivity {
             switch (event.getAction()){//課程
 
                 case MotionEvent.ACTION_DOWN:
-                    btn9.setImageResource(R.drawable.aki_listenh);
+                    btn9.setImageResource(R.drawable.aki_jishoh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn9.setImageResource(R.drawable.aki_listen);
+                    btn9.setImageResource(R.drawable.aki_jisho);
                     Intent intent=new Intent();
                     //intent.setClass(Menushow.this, JRmap.class);
                     //Work.class/Qrcode
-                    intent.setClass(Menushow.this,Testweb.class);
+                    intent.setClass(Menushow.this,Jishoweb.class);
                     startActivity(intent);
                     break;
             }
