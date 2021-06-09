@@ -22,9 +22,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Menushow2"
+            android:label="@string/title_activity_menushow2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Jishoweb"
             android:label="@string/title_activity_jishoweb"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Testweb" />
         <activity android:name=".test" />
         <activity

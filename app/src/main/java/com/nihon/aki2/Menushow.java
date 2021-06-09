@@ -446,8 +446,8 @@ public class Menushow extends AppCompatActivity {
                     Intent intent=new Intent();
                     Bundle bundle=new Bundle();
                     bundle.putString("ANS","A");
-                    intent.putExtras(bundle);
-                    intent.setClass(Menushow.this, MainActivity.class);
+                    intent.putExtras(bundle);//MainActivity
+                    intent.setClass(Menushow.this, Menushow2.class);
                     //Work.class
                     //intent.setClass(Menushow.this,Listenchild.class);
                     startActivity(intent);

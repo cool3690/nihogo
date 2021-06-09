@@ -1,28 +1,40 @@
 package com.nihon.aki2;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.nihon.aki2.mydb.dbn5;
 import com.nihon.aki2.mydb.dbsearchn5;
+import com.nihon.aki2.mydb.dbtango;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.StrictMode;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,19 +48,37 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Reviewn5 extends AppCompatActivity {
-      String url ="https://kei-sei.com/cram/n5.json";
-    TextView ch,jp,pinyin,meaning,level;
-    EditText input;
+    private long mLastClickTime = 0;
+    public static final long TIME_INTERVAL = 800L;
+    int i=0;
+    DisplayMetrics dm = new DisplayMetrics();
+    private RelativeLayout R3;
+
+    ImageView pic3;
+
+    TextView jp3,ch3,level3;
+
     String mypinyin;
     String myjp;
     String mych;
-    boolean tf=false;
-    Button auto,hand,N3btn,N2btn,N1btn,send,bt1,bt2,bt3,bt4,bt5;
+    String myen,mylevel;
+    double faby=0;
+    boolean tf=true;
+    DragFloatActionButton fab;
+
+    Timer timer = new Timer();
+
+    String url ="https://kei-sei.com/cram/n5.json";
+    TextView ch,jp,pinyin,meaning,level;
+    EditText input;
+
+    Button auto,hand,send,bt1,bt2,bt3,bt4,bt5;
+
     Spinner sec;
     String[] mylev= new String []{"N5","N4","N3","N2","N1" };
     String[] mysec= new String []{"5秒","6秒","7秒","8秒","9秒","10秒"};
     int LEV=0,SEC=0,Ltmp=0,stmp=5;
-    Timer timer = new Timer();
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +96,27 @@ public class Reviewn5 extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
+        /////////
+        pic3=(ImageView)findViewById(R.id.pic3);
+        R3=findViewById(R.id.R3);
+        ch3=(TextView)findViewById(R.id.ch3);
+        jp3=(TextView)findViewById(R.id.jp3);
+        level3=(TextView)findViewById(R.id.level3);
+        fab = findViewById(R.id.fab);
+        R3.setVisibility(View.GONE);
+        ch3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
+        jp3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
+       // new Reviewn5.DownloadFileAsync().execute();
+        R3.setOnClickListener(R3btn);
+        fab.setOnClickListener(fabclick);
+        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        ///
         jp=(TextView)findViewById(R.id.jp);
         ch=(TextView)findViewById(R.id.ch);
         pinyin=(TextView)findViewById(R.id.pinyin);
         meaning=(TextView)findViewById(R.id.meaning);
-
+        fab = findViewById(R.id.fab);
         auto=(Button) findViewById(R.id.auto);
         hand=(Button) findViewById(R.id.hand);
         send=(Button) findViewById(R.id.send);
@@ -80,6 +126,12 @@ public class Reviewn5 extends AppCompatActivity {
         bt4=(Button) findViewById(R.id.bt4);
         bt5=(Button) findViewById(R.id.bt5);
         level=(TextView)findViewById(R.id.level);
+        R3=findViewById(R.id.R3);
+        pic3=(ImageView)findViewById(R.id.pic3);
+        ch3=(TextView)findViewById(R.id.ch3);
+        level3=(TextView)findViewById(R.id.level3);
+        R3.setVisibility(View.GONE);
+
         //sellevel=(Spinner) findViewById(R.id.sellevel);
         input=(EditText) findViewById(R.id.input);
         sec=(Spinner) findViewById(R.id.sec);
@@ -93,7 +145,9 @@ public class Reviewn5 extends AppCompatActivity {
         bt3.setOnClickListener(btbtn);
         bt4.setOnClickListener(btbtn);
         bt5.setOnClickListener(btbtn);
+        fab.setOnClickListener(fabclick);
         bt5.setBackgroundColor(Color.YELLOW);
+        R3.setOnClickListener(R3btn);
         ArrayAdapter<String> adapterPage=new ArrayAdapter<String>
                 (this,android.R.layout.simple_spinner_item,mylev);
 
@@ -120,6 +174,108 @@ public class Reviewn5 extends AppCompatActivity {
         new Reviewn5.DownloadFileAsync().execute();
       //  begin();
     }
+    private DragFloatActionButton.OnClickListener fabclick=new DragFloatActionButton.OnClickListener(){
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+        @Override
+        public void onClick(View view) {
+            ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
+
+            long nowTime = System.currentTimeMillis();
+            if (nowTime - mLastClickTime > TIME_INTERVAL) {
+
+                mLastClickTime = nowTime;
+                faby= dm.heightPixels;// height
+                // mytoast(faby+"");
+                faby=(faby-120)/3;
+
+                if(fab.getY()<faby){
+                    // R3.setGravity(Gravity.TOP);
+                    // mytoast("a");
+
+                    //   layoutParams.removeRule(RelativeLayout.BELOW);
+                    //   layoutParams.addRule(RelativeLayout.BELOW, btn1.getId());
+
+                    //  R3.setLayoutParams(layoutParams);
+                    marginParams.setMargins(0, (int)fab.getY(), 0, 0);
+                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
+
+                    R3.setLayoutParams(layoutParams);
+
+                }
+                else if(fab.getY()<faby*2){
+                    //  R3.setGravity(Gravity.CENTER);
+
+                    //   layoutParams.addRule(RelativeLayout.BELOW, fab.getId());
+                    marginParams.setMargins(0, (int)fab.getY(), 0, 0);
+                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
+
+                    R3.setLayoutParams(layoutParams);
+
+                }
+                else{
+                    // R3.setGravity(Gravity.BOTTOM);
+
+                    //  layoutParams.removeRule(RelativeLayout.BELOW);
+                    // layoutParams.addRule(RelativeLayout.ABOVE, btn4.getId());
+                    marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
+                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
+
+                    R3.setLayoutParams(layoutParams);
+
+                }
+
+                /*    */
+
+
+                if(tf){
+
+                    R3.setVisibility(View.INVISIBLE);
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+                    R3.startAnimation(animation);
+
+                    fab.setImageResource(android.R.drawable.btn_star_big_off);
+                    tf=false;
+                }
+                else{
+
+                    R3.setVisibility(View.VISIBLE);
+
+                    Animation  animation = new ScaleAnimation(
+                            0f, 1.0f, 0f, 1.0f,
+                            0, fab.getX(), 0, fab.getY()-100
+                    );
+                    animation.setDuration(500);
+                    R3.startAnimation(animation);
+                    fab.setImageResource(android.R.drawable.btn_star_big_on);
+                    tf=true;
+                }
+
+
+                // faby=fab.getY();
+            }
+            else{
+                mLastClickTime = nowTime;
+                i++;
+            }
+        }
+    };
+    private RelativeLayout.OnClickListener R3btn=new RelativeLayout.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Reviewn5.this, Tangoday.class);
+            Bundle bundle=new Bundle();
+            bundle.putString("JP", myjp);
+            bundle.putString("CH", mych);
+            bundle.putString("PINYIN", mypinyin);
+            bundle.putString("LEVEL", "mylevel");////
+            intent.putExtras(bundle);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right,
+                    R.anim.slide_out_left);
+
+        }
+    };
+
     private Button.OnClickListener btbtn=new Button.OnClickListener(){
         @Override
         public void onClick(View view) {
@@ -325,6 +481,7 @@ public class Reviewn5 extends AppCompatActivity {
         }
     }
     public void begin() {
+        timer.schedule(task2, 3000, 6000) ;
         if(Ltmp!=LEV || stmp!=SEC || tf){
             Ltmp=LEV;
             stmp=SEC;
@@ -513,6 +670,25 @@ public class Reviewn5 extends AppCompatActivity {
         }
     }
 
+    TimerTask task2 = new TimerTask() {
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            runOnUiThread(new Runnable() {
+                @SuppressLint("RestrictedApi")
+                @Override
+                public void run() {
+                    // TODO Auto-generated method stub
+                    //  parentView.setVisibility(View.GONE);
+                    //  marqueeView2.setVisibility(View.GONE);
+                    fab.setVisibility(View.VISIBLE);
+                    //  R2.setVisibility(View.VISIBLE);
+                    tf=true;
+
+                }
+            });
+        }
+    };
     class DownloadFileAsync extends AsyncTask<String, String, String> {
 
         @Override
@@ -523,8 +699,28 @@ public class Reviewn5 extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... aurl) {
+            String result = dbtango.executeQuery();
+            Random random=new Random();
+            try{
+                JSONArray jsonArray = new JSONArray(result);
+                int num= random.nextInt(jsonArray.length());
+
+                JSONObject jsonData = jsonArray.getJSONObject(num);
 
 
+                mypinyin =jsonData.getString("jp_kana");
+                myjp=jsonData.getString("jp_kanji");
+                mych=jsonData.getString("zh_word");
+                myen=jsonData.getString("en_word");
+                mylevel=jsonData.getString("level");
+
+
+                if(myjp.equals("null")){
+                    myjp=jsonData.getString("jp_kana");
+                }
+            }
+
+            catch(Exception e){}
             return null;
         }
 
@@ -535,7 +731,47 @@ public class Reviewn5 extends AppCompatActivity {
         @Override
         protected void onPostExecute(String unused)
         {seraechsql2();
+            ch3.setText(myjp);
+            level3.setText("("+mylevel+")");
+            Random random=new Random();
+            int r=random.nextInt(30);
+            int[] songfile=new int[] {R.drawable.a01, R.drawable.a02, R.drawable.a03, R.drawable.a04, R.drawable.a05,R.drawable.a06, R.drawable.a07,
+                    R.drawable.a08, R.drawable.a09, R.drawable.a10,R.drawable.a11, R.drawable.a12,
+                    R.drawable.a13, R.drawable.a14, R.drawable.a15, R.drawable.a16, R.drawable.a17, R.drawable.a18, R.drawable.a19,
+                    R.drawable.a20,R.drawable.a21, R.drawable.a22, R.drawable.a23, R.drawable.a24, R.drawable.a25,R.drawable.a26,
+                    R.drawable.a27, R.drawable.a28, R.drawable.a29, R.drawable.a30,R.drawable.a31};
+            pic3.setImageResource(songfile[r]);
+            /*
+            marqueeView2.setParentView(parentView);
+            marqueeView2.setScrollSpeed(25);
+            marqueeView2.setScrollDirection(MarqueeView.DOWN_TO_UP);
+            //marqueeView2.setViewMargin(15);//间距
+            marqueeView2.startScroll();
 
+
+             */
+            R3.setVisibility(View.VISIBLE);
+            R3.setGravity(Gravity.BOTTOM);
+            // RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) R3.getLayoutParams();
+            //layoutParams.addRule(RelativeLayout.ABOVE, btn4.getId());
+            ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
+
+            marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
+
+            R3.setLayoutParams(layoutParams);
+            Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
+
+
+            animation = new ScaleAnimation(
+                    0f, 1.0f, 0f, 1.0f,
+                    0, fab.getX(), 0, fab.getY()
+            );
+            animation.setDuration(500);
+            R3.startAnimation(animation);
+            tf=true;
+            // layoutParams.removeRule(RelativeLayout.ABOVE);
+            begin();
         }
     }
 
