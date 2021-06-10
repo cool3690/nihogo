@@ -27,11 +27,11 @@ import org.jsoup.select.Elements;
 public class Tangoday extends AppCompatActivity {
     Toolbar toolbar;
     ImageView toback;
-    TextView ch,jp,pinyin;
+    TextView ch,jp,pinyin,hira,level;
     WebView myweb;
     String mypinyin;
     String myjp;
-    String mych;
+    String mych,myhiragana,mylevel;
     private  String url ="https://jisho.org/search/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +59,14 @@ public class Tangoday extends AppCompatActivity {
             myjp=bundle.getString("JP");
             mych=bundle.getString("CH");
             mypinyin=bundle.getString("PINYIN");
-
+            myhiragana=bundle.getString("HIRA");
+            mylevel=bundle.getString("LEVEL");
         }
         jp=(TextView)findViewById(R.id.jp);
         ch=(TextView)findViewById(R.id.ch);
         pinyin=(TextView)findViewById(R.id.pinyin);
+        hira=(TextView)findViewById(R.id.hira);
+        level=(TextView)findViewById(R.id.level);
         url+=jp;
       //  myweb = (WebView) findViewById(R.id.myweb);
         ch.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
@@ -73,6 +76,8 @@ public class Tangoday extends AppCompatActivity {
         jp.setText(myjp+"");
         ch.setText(mych+"");
         pinyin.setText(mypinyin+"");
+        hira.setText(myhiragana+"");
+        level.setText(mylevel+"");
         /*
         myweb.getSettings().setBuiltInZoomControls(true);
         myweb.getSettings().setJavaScriptEnabled(true);

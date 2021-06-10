@@ -136,6 +136,7 @@ public class Menushow extends AppCompatActivity {
         fab.setOnClickListener(fabclick);
         parentView.setVisibility(View.GONE);
         marqueeView2.setVisibility(View.GONE);
+        fab.setVisibility(View.GONE);
       //  faby = R3.getHeight();
         btn9.bringToFront();
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -361,8 +362,7 @@ public class Menushow extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String unused) {
-            // pinyin.setText(mypinyin);
-            //  jp.setText(myjp);
+
             ch.setText(myjp);
             ch2.setText(myjp);
             ch3.setText(myjp);
@@ -375,19 +375,10 @@ public class Menushow extends AppCompatActivity {
                     R.drawable.a20,R.drawable.a21, R.drawable.a22, R.drawable.a23, R.drawable.a24, R.drawable.a25,R.drawable.a26,
                     R.drawable.a27, R.drawable.a28, R.drawable.a29, R.drawable.a30,R.drawable.a31};
             pic3.setImageResource(songfile[r]);
-            /*
-            marqueeView2.setParentView(parentView);
-            marqueeView2.setScrollSpeed(25);
-            marqueeView2.setScrollDirection(MarqueeView.DOWN_TO_UP);
-            //marqueeView2.setViewMargin(15);//间距
-            marqueeView2.startScroll();
 
-
-             */
-            R3.setVisibility(View.VISIBLE);
+           // R3.setVisibility(View.VISIBLE);
             R3.setGravity(Gravity.BOTTOM);
-           // RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) R3.getLayoutParams();
-            //layoutParams.addRule(RelativeLayout.ABOVE, btn4.getId());
+
             ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
 
             marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
@@ -404,8 +395,8 @@ public class Menushow extends AppCompatActivity {
             animation.setDuration(500);
             R3.startAnimation(animation);
             tf=true;
-           // layoutParams.removeRule(RelativeLayout.ABOVE);
-            begin();
+
+           // begin();
         }
     }
     public void begin() {
@@ -447,7 +438,7 @@ public class Menushow extends AppCompatActivity {
                     Bundle bundle=new Bundle();
                     bundle.putString("ANS","A");
                     intent.putExtras(bundle);//MainActivity
-                    intent.setClass(Menushow.this, Menushow2.class);
+                    intent.setClass(Menushow.this, MainActivity.class);
                     //Work.class
                     //intent.setClass(Menushow.this,Listenchild.class);
                     startActivity(intent);

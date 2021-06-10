@@ -67,6 +67,16 @@
 
             android:text="jp" />
         <TextView
+            android:id="@+id/hira"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:textSize="34sp"
+
+            android:text="hira" />
+        <TextView
         android:id="@+id/ch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,18 +84,19 @@
         android:layout_gravity="center"
         android:gravity="center"
 
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:text="ch" />
+
         <TextView
             android:id="@+id/level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center"
+            android:layout_marginTop="30dp"
             android:gravity="center"
 
-            android:textSize="22sp"
-            android:text="N5" />
+            android:text="N5"
+            android:textSize="22sp" />
     </LinearLayout>
 
 <!--

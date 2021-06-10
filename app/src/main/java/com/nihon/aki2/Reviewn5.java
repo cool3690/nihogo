@@ -60,7 +60,7 @@ public class Reviewn5 extends AppCompatActivity {
 
     String mypinyin;
     String myjp;
-    String mych;
+    String mych,myhiragana;
     String myen,mylevel;
     double faby=0;
     boolean tf=true;
@@ -132,7 +132,6 @@ public class Reviewn5 extends AppCompatActivity {
         level3=(TextView)findViewById(R.id.level3);
         R3.setVisibility(View.GONE);
 
-        //sellevel=(Spinner) findViewById(R.id.sellevel);
         input=(EditText) findViewById(R.id.input);
         sec=(Spinner) findViewById(R.id.sec);
         input.setVisibility(View.GONE);
@@ -154,12 +153,6 @@ public class Reviewn5 extends AppCompatActivity {
         // 設定Spinner顯示的格式
         adapterPage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // 設定Spinner的資料來源
-       // sellevel.setAdapter(adapterPage);
-
-        // 設定 spnPrefer 元件 ItemSelected 事件的 listener 為  spnPreferListener
-       // sellevel.setOnItemSelectedListener(spnlev);
-        ///////////////////
         ArrayAdapter<String> adaptersec=new ArrayAdapter<String>
                 (this,android.R.layout.simple_spinner_item,mysec);
 
@@ -185,17 +178,11 @@ public class Reviewn5 extends AppCompatActivity {
 
                 mLastClickTime = nowTime;
                 faby= dm.heightPixels;// height
-                // mytoast(faby+"");
+
                 faby=(faby-120)/3;
 
                 if(fab.getY()<faby){
-                    // R3.setGravity(Gravity.TOP);
-                    // mytoast("a");
 
-                    //   layoutParams.removeRule(RelativeLayout.BELOW);
-                    //   layoutParams.addRule(RelativeLayout.BELOW, btn1.getId());
-
-                    //  R3.setLayoutParams(layoutParams);
                     marginParams.setMargins(0, (int)fab.getY(), 0, 0);
                     RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
 
@@ -203,9 +190,7 @@ public class Reviewn5 extends AppCompatActivity {
 
                 }
                 else if(fab.getY()<faby*2){
-                    //  R3.setGravity(Gravity.CENTER);
 
-                    //   layoutParams.addRule(RelativeLayout.BELOW, fab.getId());
                     marginParams.setMargins(0, (int)fab.getY(), 0, 0);
                     RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
 
@@ -213,10 +198,7 @@ public class Reviewn5 extends AppCompatActivity {
 
                 }
                 else{
-                    // R3.setGravity(Gravity.BOTTOM);
 
-                    //  layoutParams.removeRule(RelativeLayout.BELOW);
-                    // layoutParams.addRule(RelativeLayout.ABOVE, btn4.getId());
                     marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
                     RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
 
@@ -250,8 +232,6 @@ public class Reviewn5 extends AppCompatActivity {
                     tf=true;
                 }
 
-
-                // faby=fab.getY();
             }
             else{
                 mLastClickTime = nowTime;
@@ -266,8 +246,9 @@ public class Reviewn5 extends AppCompatActivity {
             Bundle bundle=new Bundle();
             bundle.putString("JP", myjp);
             bundle.putString("CH", mych);
+            bundle.putString("HIRA", myhiragana);
             bundle.putString("PINYIN", mypinyin);
-            bundle.putString("LEVEL", "mylevel");////
+            bundle.putString("LEVEL", level.getText().toString());////
             intent.putExtras(bundle);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right,
@@ -321,6 +302,7 @@ public class Reviewn5 extends AppCompatActivity {
                     break;
 
             }
+
             search();
         }
     };
@@ -354,9 +336,6 @@ public class Reviewn5 extends AppCompatActivity {
             try{
                 //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
                 JSONArray array = new JSONArray(result);
-
-                //  for (int i = 0; i < array.length(); i++) {
-
                 JSONObject jsonObject = array.getJSONObject(0);
                 String word = jsonObject.getString("word");
                 String hiragana = jsonObject.getString("hiragana");
@@ -423,14 +402,12 @@ public class Reviewn5 extends AppCompatActivity {
             hand.setBackground(gd);
             hand.setText("下一個");
             if(tf){
-                //timer.cancel();
-                //timer = null;
+
                 tf=false;
             }
             if(timer != null) {
                 timer.cancel();
-              //  timer.purge();
-              //  timer = null;
+
             }
 
             if(LEV==0){
@@ -453,15 +430,15 @@ public class Reviewn5 extends AppCompatActivity {
                 url ="https://kei-sei.com/cram/n1.json";
                 level.setText("N1");
             }
-            search();
+            searchhand();
         }
     };
-    public void search(){
+    public void searchhand(){
         String result = dbn5.executeQuery(url);
         try{
             //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
             JSONArray array = new JSONArray(result);
-            //  for (int i = 0; i < array.length(); i++) {
+
             Random random=new Random();
             int tmp=random.nextInt(array.length()-1);
             JSONObject jsonObject = array.getJSONObject(tmp);
@@ -473,12 +450,45 @@ public class Reviewn5 extends AppCompatActivity {
             ch.setText(hiragana);
             pinyin.setText(romaji);
             meaning.setText(mymeaning);
-            // level.setText("N5");
-            //}
+
         }
         catch(JSONException e) {
-            // e.printStackTrace();
+
         }
+    }
+    public void search(){
+        String result = dbn5.executeQuery(url);
+        try{
+            //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
+            JSONArray array = new JSONArray(result);
+
+            Random random=new Random();
+            int tmp=random.nextInt(array.length()-1);
+            JSONObject jsonObject = array.getJSONObject(tmp);
+            String word = jsonObject.getString("word");
+            String hiragana = jsonObject.getString("hiragana");
+            String romaji = jsonObject.getString("romaji");
+            String mymeaning = jsonObject.getString("meaning");
+            myjp = jsonObject.getString("word");
+            myhiragana = jsonObject.getString("hiragana");
+            mypinyin = jsonObject.getString("romaji");
+            mych = jsonObject.getString("meaning");
+            jp.setText(word);
+            ch.setText(hiragana);
+            pinyin.setText(romaji);
+            meaning.setText(mymeaning);
+            ///
+            ch3.setText(myjp);
+            level3.setText(level.getText().toString());
+
+        }
+        catch(JSONException e) {
+
+        }
+
+
+
+        ///
     }
     public void begin() {
         timer.schedule(task2, 3000, 6000) ;
@@ -492,7 +502,6 @@ public class Reviewn5 extends AppCompatActivity {
         }
 
             timer.schedule(new MyTimerTask(), SEC*1000, SEC*1000) ;
-    //  else{  }
 
     }
     public class MyTimerTask extends TimerTask
@@ -536,11 +545,10 @@ public class Reviewn5 extends AppCompatActivity {
                 ch.setText(hiragana);
                 pinyin.setText(romaji);
                 meaning.setText(mymeaning);
-                //    level.setText("N5");
-                //}
+
             }
             catch(JSONException e) {
-                // e.printStackTrace();
+
             }
         }
     };
@@ -576,7 +584,7 @@ public class Reviewn5 extends AppCompatActivity {
                     try{
                         //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
                         JSONArray array = new JSONArray(result);
-                        //  for (int i = 0; i < array.length(); i++) {
+
                         Random random=new Random();
                         int tmp=random.nextInt(array.length()-1);
                         JSONObject jsonObject = array.getJSONObject(tmp);
@@ -588,11 +596,10 @@ public class Reviewn5 extends AppCompatActivity {
                         ch.setText(hiragana);
                         pinyin.setText(romaji);
                         meaning.setText(mymeaning);
-                    //    level.setText("N5");
-                        //}
+
                     }
                     catch(JSONException e) {
-                        // e.printStackTrace();
+
                     }
 
                 }
@@ -626,20 +633,16 @@ public class Reviewn5 extends AppCompatActivity {
                     Ltmp=LEV;
                     stmp=SEC;
                     timer.cancel();
-                    // timer=null;
-                    // timer.schedule(task, SEC*1000, SEC*1000) ;
+
                 }
                 timer = new Timer();
                 timer.schedule(new MyTimerTask(), SEC*1000, SEC*1000) ;
-                //auto.setText("暫停");
+
                 tf=true;
             }
             else{
-                //auto.setText("自動");
+
             }
-
-
-            //timer.schedule(task, SEC*1000, SEC*1000) ;
 
 
         }
@@ -663,10 +666,10 @@ public class Reviewn5 extends AppCompatActivity {
             pinyin.setText(romaji);
             meaning.setText(mymeaning);
             level.setText("N5");
-            //}
+
         }
         catch(JSONException e) {
-            // e.printStackTrace();
+
         }
     }
 
@@ -678,11 +681,9 @@ public class Reviewn5 extends AppCompatActivity {
                 @SuppressLint("RestrictedApi")
                 @Override
                 public void run() {
-                    // TODO Auto-generated method stub
-                    //  parentView.setVisibility(View.GONE);
-                    //  marqueeView2.setVisibility(View.GONE);
+
                     fab.setVisibility(View.VISIBLE);
-                    //  R2.setVisibility(View.VISIBLE);
+
                     tf=true;
 
                 }
@@ -731,8 +732,31 @@ public class Reviewn5 extends AppCompatActivity {
         @Override
         protected void onPostExecute(String unused)
         {seraechsql2();
+            url ="https://kei-sei.com/cram/n5.json";
+            String result = dbn5.executeQuery(url);
+            try{
+                //建立一個JSONObject並帶入JSON格式文字，getString(String key)取出欄位的數值
+                JSONArray array = new JSONArray(result);
+                //  for (int i = 0; i < array.length(); i++) {
+                Random random=new Random();
+                int tmp=random.nextInt(array.length()-1);
+                JSONObject jsonObject = array.getJSONObject(tmp);
+                myjp = jsonObject.getString("word");
+               myhiragana = jsonObject.getString("hiragana");
+                mypinyin = jsonObject.getString("romaji");
+                mych = jsonObject.getString("meaning");
+                jp.setText(myjp);
+                ch.setText(myhiragana);
+                pinyin.setText(mypinyin);
+                meaning.setText(mych);
+                level.setText("N5");
+
+            }
+            catch(JSONException e) {
+
+            }
             ch3.setText(myjp);
-            level3.setText("("+mylevel+")");
+            level3.setText("N5");
             Random random=new Random();
             int r=random.nextInt(30);
             int[] songfile=new int[] {R.drawable.a01, R.drawable.a02, R.drawable.a03, R.drawable.a04, R.drawable.a05,R.drawable.a06, R.drawable.a07,
@@ -741,19 +765,10 @@ public class Reviewn5 extends AppCompatActivity {
                     R.drawable.a20,R.drawable.a21, R.drawable.a22, R.drawable.a23, R.drawable.a24, R.drawable.a25,R.drawable.a26,
                     R.drawable.a27, R.drawable.a28, R.drawable.a29, R.drawable.a30,R.drawable.a31};
             pic3.setImageResource(songfile[r]);
-            /*
-            marqueeView2.setParentView(parentView);
-            marqueeView2.setScrollSpeed(25);
-            marqueeView2.setScrollDirection(MarqueeView.DOWN_TO_UP);
-            //marqueeView2.setViewMargin(15);//间距
-            marqueeView2.startScroll();
 
-
-             */
             R3.setVisibility(View.VISIBLE);
             R3.setGravity(Gravity.BOTTOM);
-            // RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) R3.getLayoutParams();
-            //layoutParams.addRule(RelativeLayout.ABOVE, btn4.getId());
+
             ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
 
             marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
@@ -770,7 +785,7 @@ public class Reviewn5 extends AppCompatActivity {
             animation.setDuration(500);
             R3.startAnimation(animation);
             tf=true;
-            // layoutParams.removeRule(RelativeLayout.ABOVE);
+
             begin();
         }
     }
