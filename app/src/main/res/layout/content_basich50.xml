@@ -46,6 +46,15 @@
             android:layout_toRightOf="@id/paintView"
             app:srcCompat="@drawable/sound" />
         <ImageView
+            android:id="@+id/sound2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/clean"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/sound"
+            app:srcCompat="@drawable/glogo" />
+        <ImageView
             android:id="@+id/pen"
             android:layout_width="50dp"
             android:layout_height="50dp"

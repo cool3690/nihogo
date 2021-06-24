@@ -50,7 +50,7 @@ import java.util.TimerTask;
 
 public class Basic50 extends AppCompatActivity {
     private PaintView paintView;
-    ImageView clean,sound,img,btnpre,btnnext,pen;
+    ImageView clean,sound,img,btnpre,btnnext,pen,sound2;
     TextView show;
     Spinner page;
     GifImageView mygif;
@@ -72,10 +72,12 @@ public class Basic50 extends AppCompatActivity {
             "ら","り","る","れ","ろ",
             "わ","を","ん"};
     public MediaPlayer mediaplayer;
-    int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko,R.raw.sa, R.raw.shi, R.raw.su, R.raw.se, R.raw.so,
+       int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko,R.raw.sa, R.raw.shi, R.raw.su, R.raw.se, R.raw.so,
             R.raw.ta, R.raw.chi, R.raw.tsu, R.raw.te, R.raw.to,R.raw.na, R.raw.ni, R.raw.nu, R.raw.ne, R.raw.no,R.raw.ha, R.raw.hi, R.raw.hu, R.raw.he, R.raw.ho,R.raw.ma, R.raw.mi, R.raw.mu,
             R.raw.me, R.raw.mo ,R.raw.ya, R.raw.yu, R.raw.yo,R.raw.ra, R.raw.ri, R.raw.ru, R.raw.re, R.raw.ro,R.raw.wa,R.raw.wo,R.raw.n};
-
+    int[] songfile2=new int[] {R.raw.g_a, R.raw.g_i, R.raw.g_u, R.raw.g_e, R.raw.g_o,R.raw.g_ka, R.raw.g_ki, R.raw.g_ku, R.raw.g_ke, R.raw.g_ko,R.raw.g_sa, R.raw.g_shi, R.raw.g_su, R.raw.g_se, R.raw.g_so,
+            R.raw.g_ta, R.raw.g_chi, R.raw.g_tsu, R.raw.g_te, R.raw.g_to,R.raw.g_na, R.raw.g_ni, R.raw.g_nu, R.raw.g_ne, R.raw.g_no,R.raw.g_ha, R.raw.g_hi, R.raw.g_fu, R.raw.g_he, R.raw.g_ho,R.raw.g_ma, R.raw.g_mi, R.raw.g_mu,
+            R.raw.g_me, R.raw.g_mo ,R.raw.g_ya, R.raw.g_yu, R.raw.g_yo,R.raw.g_ra, R.raw.g_ri, R.raw.g_ru, R.raw.g_re, R.raw.g_ro,R.raw.g_wa,R.raw.g_wo,R.raw.g_n};
     int[] pic=new int[] {R.drawable.a, R.drawable.i, R.drawable.u, R.drawable.e, R.drawable.o,R.drawable.ka, R.drawable.ki, R.drawable.ku, R.drawable.ke, R.drawable.ko,R.drawable.sa, R.drawable.shi, R.drawable.su, R.drawable.se, R.drawable.so,
             R.drawable.ta, R.drawable.chi, R.drawable.tsu, R.drawable.te, R.drawable.to,R.drawable.na, R.drawable.ni, R.drawable.nu, R.drawable.ne, R.drawable.no,R.drawable.ha, R.drawable.hi, R.drawable.hu, R.drawable.he, R.drawable.ho,R.drawable.ma, R.drawable.mi, R.drawable.mu,
             R.drawable.me, R.drawable.mo ,R.drawable.ya, R.drawable.yu, R.drawable.yo,R.drawable.ra, R.drawable.ri, R.drawable.ru, R.drawable.re, R.drawable.ro,R.drawable.wa,R.drawable.wo,R.drawable.n};
@@ -110,6 +112,7 @@ public class Basic50 extends AppCompatActivity {
         clean=(ImageView)findViewById(R.id.clean);
         pen=(ImageView)findViewById(R.id.pen);
         sound=(ImageView)findViewById(R.id.sound);
+        sound2=(ImageView)findViewById(R.id.sound2);
         img=(ImageView)findViewById(R.id.img);
         show=(TextView) findViewById(R.id.show);
         btnpre=(ImageView)findViewById(R.id.btnpre);
@@ -122,6 +125,7 @@ public class Basic50 extends AppCompatActivity {
         mediaplayer=new MediaPlayer();
         clean.setOnClickListener(cbtn);
         sound.setOnClickListener(sbtn);
+        sound2.setOnClickListener(sbtn2);
         pen.setOnClickListener(penbtn);
         pre();
         //show.setText("あい（愛）"+"\n[a-i]\n"+"愛：愛慕");
@@ -206,6 +210,13 @@ public class Basic50 extends AppCompatActivity {
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
             paintView.init(metrics);
             paintView.clear();
+        }
+    };
+    private ImageView.OnClickListener sbtn2=new ImageView.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            playSong(songfile2[num]);
+
         }
     };
     private ImageView.OnClickListener sbtn=new ImageView.OnClickListener(){
