@@ -43,7 +43,7 @@
             android:layout_below="@id/clean"
             android:layout_toRightOf="@id/paintView"
             android:layout_marginLeft="60dp"
-            app:srcCompat="@drawable/sound" />
+            app:srcCompat="@drawable/sound_a" />
 
         <ImageView
             android:id="@+id/sound2"

@@ -44,7 +44,7 @@
             android:layout_marginLeft="60dp"
             android:layout_marginTop="30dp"
             android:layout_toRightOf="@id/paintView"
-            app:srcCompat="@drawable/sound" />
+            app:srcCompat="@drawable/sound_a" />
         <ImageView
             android:id="@+id/sound2"
             android:layout_width="50dp"
