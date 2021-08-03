@@ -2,8 +2,9 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#F7E3DC</item>
+        <!-- Customize your theme here.-->
+
+        <item name="android:background">#00FFFFFF</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -22,8 +23,9 @@
         <item name="android:textColorPrimary">#660000</item>
         <item name="android:textColorSecondary">#660000</item>
         <item name="actionMenuTextColor">#660000</item>
-        <item name="android:background">#F7E3DC</item>
-
+        <item name="android:background">#FFFFFF</item>
+        <item name="elevation">0dp</item>
+        <!--<item name="android:background">#95E5E5E5</item>-->
     </style>
 
     <style name="spinner_style">
@@ -68,6 +70,11 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/btn_primary3</item>
         <item name="android:padding">10dip</item>
+    </style>
+
+    <style name="ClickableView">
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="android:background">?selectableItemBackground</item>
     </style>
 
     <style name="btn_primary5" parent="@android:style/Widget.Button">

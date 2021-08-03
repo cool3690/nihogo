@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/grad_blue">
+
+        <LinearLayout
+            android:id="@+id/L1"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:paddingRight="34dp"
+            android:paddingLeft="34dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/spnlev"
+                android:layout_width="150dp"
+                android:popupBackground="#E9F0FF"
+                android:background="@drawable/bg_spinnerk"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spntype"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+
+                android:popupBackground="#E9F0FF"
+                android:background="@drawable/bg_spinnerk"
+                android:layout_marginLeft="40dp"
+                />
+        </LinearLayout>
+        <!--part 1-->
+<RelativeLayout
+    android:id="@+id/R1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/L1"
+    android:minHeight="400dp"
+    android:layout_marginTop="26dp"
+    android:layout_marginLeft="34dp"
+    android:layout_marginRight="34dp"
+    android:layout_above="@id/nav_view"
+    android:layout_marginBottom="60dp">
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:minHeight="400dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_bg"/>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="380dp"
+        android:layout_marginBottom="20dp">
+
+
+
+    </ListView>
+
+</RelativeLayout>
+
+        <!--part2 -->
+        <RelativeLayout
+            android:id="@+id/R2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/L1"
+            android:minHeight="400dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginRight="34dp"
+            android:layout_above="@id/nav_view"
+            android:layout_marginBottom="60dp">
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:minHeight="400dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bg"/>
+
+
+            <TextView
+                android:id="@+id/Q1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/Q1">
+
+                <RadioButton
+                    android:id="@+id/a1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="#60FAE1E6"
+                    android:text="A"
+                    android:textSize="22sp" />
+
+                <RadioButton
+                    android:id="@+id/a2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="#60FAE1E6"
+                    android:text="B"
+                    android:textSize="22sp" />
+
+                <RadioButton
+                    android:id="@+id/a3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:background="#60FAE1E6"
+                    android:text="C"
+                    android:textSize="22sp" />
+
+                <RadioButton
+                    android:id="@+id/a4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:background="#60FAE1E6"
+                    android:text="D"
+                    android:textSize="22sp" />
+
+
+            </RadioGroup>
+            <Button
+                android:id="@+id/btsong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/radiogroup"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="播放" />
+            <TextView
+                android:id="@+id/txtResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btsong"
+                android:layout_marginTop="15dp"
+                android:text=" "
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <!--part3-->
+        <RelativeLayout
+            android:id="@+id/R3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/L1"
+            android:minHeight="400dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginRight="34dp"
+            android:layout_above="@id/nav_view"
+            android:layout_marginBottom="60dp">
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:minHeight="400dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bg"/>
+        <TextView
+            android:id="@+id/chinese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="ch"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/jp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chinese"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="jp"
+            android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/L3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingRight="10dp"
+                android:layout_below="@id/jp"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="10dp">
+                <Button
+                    android:id="@+id/bt1"
+                    style="@style/btn_primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:text="bt1" />
+
+                <Button
+                    android:id="@+id/bt2"
+                    style="@style/btn_primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp"
+                    android:text="bt2" />
+
+                <Button
+                    android:id="@+id/bt3"
+                    style="@style/btn_primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+
+                    android:text="bt3" />
+
+                <Button
+                    android:id="@+id/bt0"
+                    style="@style/btn_primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp"
+                    android:text="bt0" />
+
+                <Button
+                    android:id="@+id/ok"
+                    style="@style/btn_primary3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="20dp"
+                    android:text="確認" />
+            </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/L3"
+            android:layout_marginTop="7dp"
+            android:text="  如需修改選項，再次點擊選項即可" />
+    </RelativeLayout>
+
+
+        <!--end-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_above="@id/nav_view"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+            <View
+                android:id="@+id/btnpre"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight=".1"
+                android:scaleType="fitXY"
+
+                android:background="@drawable/polygon"
+                />
+            <TextView
+                android:id="@+id/pretxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_weight=".15"
+                android:text="上一題"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/blank"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight=".5"
+                />
+            <TextView
+                android:id="@+id/nexttxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="right"
+                android:layout_weight=".15"
+                android:text="下一題"
+                android:textSize="15sp" />
+            <View
+            android:id="@+id/btnnext"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="fill_horizontal|right"
+            android:scaleType="fitXY"
+            android:layout_weight=".1"
+            android:background="@drawable/polygon2"
+            />
+        </LinearLayout>
+
+
+
+<!--R4-->
+        <RelativeLayout
+            android:id="@+id/R4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/L1"
+            android:minHeight="400dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginRight="34dp"
+            android:layout_above="@id/nav_view"
+            android:layout_marginBottom="60dp">
+            <View
+                android:id="@+id/line4"
+                android:layout_width="match_parent"
+                android:minHeight="400dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bg"/>
+            <com.nihon.aki2.control.PaintView
+                android:id="@+id/paintView"
+                android:layout_marginTop="5dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                />
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/mygif"
+                android:layout_marginTop="5dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+
+                />
+            <ImageView
+                android:id="@+id/clean"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/paintView"
+                android:text="clean"
+                app:srcCompat="@drawable/eraser" />
+            <ImageView
+                android:id="@+id/pen"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+
+                android:layout_toRightOf="@id/clean"
+                app:srcCompat="@drawable/aki_pen" />
+            <ImageView
+                android:id="@+id/sound"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_below="@id/clean"
+                android:layout_toRightOf="@id/paintView"
+                android:layout_marginLeft="20dp"
+                app:srcCompat="@drawable/sound_a" />
+
+            <ImageView
+                android:id="@+id/sound2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/clean"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/sound"
+                app:srcCompat="@drawable/glogo" />
+
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="140dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/paintView"
+                app:srcCompat="@drawable/a_1" />
+
+            <TextView
+                android:id="@+id/show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/paintView"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/img"
+                android:text="TextView"
+                android:inputType="textMultiLine"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="假名選擇" />
+
+            <Spinner
+                android:id="@+id/page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F4E7E7"
+                android:dropDownSelector="#000"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/textView11"/>
+
+
+        </RelativeLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@drawable/bottom_navigation_selector"
+            app:itemTextColor="@drawable/bottom_navigation_selector"
+            android:background="?android:attr/windowBackground"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/bottom_nav_menu" />
+         
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

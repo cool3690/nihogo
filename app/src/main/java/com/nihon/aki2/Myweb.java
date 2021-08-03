@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +27,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nihon.aki2.control.GlobalVariable;
 import com.nihon.aki2.control.VideoAdapter;
 import com.nihon.aki2.control.YouTubeVideos;
@@ -54,6 +57,7 @@ public class Myweb extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.icon);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -115,6 +119,32 @@ public class Myweb extends AppCompatActivity {
             }
         });
         */
+        BottomNavigationView nav_view=(BottomNavigationView)findViewById(R.id.nav_view);
+        nav_view.setSelectedItemId(R.id.btn6);
+        nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.btn5:
+                        startActivity(new Intent(getApplicationContext(),Menushow.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn6:
+                        startActivity(new Intent(getApplicationContext(),Myweb.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn7:
+                        startActivity(new Intent(getApplicationContext(),Change.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn8:
+                        startActivity(new Intent(getApplicationContext(),Studymap.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
     public void begin() {
         timer.schedule(task, 1000, 1000) ;       }

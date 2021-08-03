@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -34,6 +35,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nihon.aki2.control.GlobalVariable;
 import com.nihon.aki2.control.MarqueeView;
 import com.nihon.aki2.mydb.dbtango;
@@ -50,11 +52,11 @@ public class Menushow extends AppCompatActivity {
     public static final long TIME_INTERVAL = 800L;
     int i=0;
     DisplayMetrics dm = new DisplayMetrics();
-    private RelativeLayout parentView,R2,R3,R0;
-    private MarqueeView marqueeView2;
-    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn9,pic2,pic3,btn10;
+    private RelativeLayout   R3,R0;
+   // private MarqueeView marqueeView2;
+    ImageView btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8 ;
     String account="",passwd="",names="";
-    TextView  jp,ch,ch2,jp2,level2,jp3,ch3,level3;
+    TextView  jp,ch,  jp3,ch3,level3;
     Context context;
     String mypinyin;
     String myjp;
@@ -72,6 +74,7 @@ public class Menushow extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menushow);
+        /**/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.icon);
@@ -81,247 +84,57 @@ public class Menushow extends AppCompatActivity {
         account=Account.getAccount();
         passwd=Account.getPasswd();
         names=Account.getNames();
-        //mytoast(account+"\n"+passwd+"\n"+names);
+
         btn1=(ImageView)findViewById(R.id.btn1);
 
         btn2=(ImageView)findViewById(R.id.btn2);
         btn3=(ImageView)findViewById(R.id.btn3);
         btn4=(ImageView)findViewById(R.id.btn4);
-        btn5=(ImageView)findViewById(R.id.btn5);
-        btn6=(ImageView)findViewById(R.id.btn6);
-        btn7=(ImageView)findViewById(R.id.btn7);
-        btn9=(ImageView)findViewById(R.id.btn9);
-        pic2=(ImageView)findViewById(R.id.pic2);
-        pic3=(ImageView)findViewById(R.id.pic3);
-        btn10=(ImageView)findViewById(R.id.btn10);
-         parentView=findViewById(R.id.marqueeLayout);
-        marqueeView2=findViewById(R.id.marquee_view2);
-        R2=findViewById(R.id.R2);
-        R3=findViewById(R.id.R3);
-        R0=findViewById(R.id.R0);
-        // pinyin=(TextView)findViewById(R.id.pinyin);
-        jp=(TextView)findViewById(R.id.jp);
-        ch=(TextView)findViewById(R.id.ch);
-        ch2=(TextView)findViewById(R.id.ch2);
-        jp2=(TextView)findViewById(R.id.jp2);
-        level2=(TextView)findViewById(R.id.level2);
-        ch3=(TextView)findViewById(R.id.ch3);
-        jp3=(TextView)findViewById(R.id.jp3);
-        level3=(TextView)findViewById(R.id.level3);
-        fab = findViewById(R.id.fab);
-        R2.setVisibility(View.GONE);
-        R3.setVisibility(View.GONE);
-        ch.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
-        jp.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
-        ch2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
-        jp2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
-        ch3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
-        jp3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
-        //btn6.setVisibility(View.GONE);
+
+
+
+
         btn1.setOnTouchListener(b1);
         btn2.setOnTouchListener(b2);
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
-        btn5.setOnTouchListener(b5);
-        btn6.setOnTouchListener(b6);
-        btn9.setOnTouchListener(b9);
-         //  btn9.setVisibility(View.GONE);
-        btn10.setOnTouchListener(b10);
-      //  btn10.setVisibility(View.GONE);
+
+
+ /*
         new DownloadFileAsync().execute();
-        parentView.setOnClickListener(marbtn);
-      //  R2.setOnClickListener(R2btn);
-        R3.setOnClickListener(R3btn);
-       // fab.setVisibility(View.INVISIBLE);
-        fab.setOnClickListener(fabclick);
-        parentView.setVisibility(View.GONE);
-        marqueeView2.setVisibility(View.GONE);
-        fab.setVisibility(View.GONE);
-      //  faby = R3.getHeight();
-        btn9.bringToFront();
+
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
          getPermission();
-       
+       */
+        BottomNavigationView nav_view=(BottomNavigationView)findViewById(R.id.nav_view);
+        nav_view.setSelectedItemId(R.id.btn5);
+        nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.btn5:
+                        startActivity(new Intent(getApplicationContext(),Menushow.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn6:
+                        startActivity(new Intent(getApplicationContext(),Myweb.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn7:
+                        startActivity(new Intent(getApplicationContext(),Change.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn8:
+                        startActivity(new Intent(getApplicationContext(),Studymap.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
-    private ImageView.OnTouchListener b10=new ImageView.OnTouchListener(){
-        @Override
-        public boolean onTouch(View v, MotionEvent event){//test
-            switch (event.getAction()){
-
-                case MotionEvent.ACTION_DOWN:
-                    btn10.setImageResource(R.drawable.aki_reviewh);
-
-                    break;
-                case MotionEvent.ACTION_UP:
-                    btn10.setImageResource(R.drawable.aki_review);
-                    Intent intent=new Intent();//Jlptword/Reviewn5/test
-                    intent.setClass(Menushow.this,Reviewn5.class);
-                    startActivity(intent);
-                    break;
-            }
-            return true;
-        }
-    };
-    private DragFloatActionButton.OnClickListener fabclick=new DragFloatActionButton.OnClickListener(){
-        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-        @Override
-        public void onClick(View view) {
-          //  RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) R3.getLayoutParams();
-
-          //  layoutParams.removeRule(RelativeLayout.BELOW);
-            ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
-
-            long nowTime = System.currentTimeMillis();
-            if (nowTime - mLastClickTime > TIME_INTERVAL) {
-
-                mLastClickTime = nowTime;
-                faby= dm.heightPixels;// height
-                // mytoast(faby+"");
-                faby=(faby-120)/3;
-
-            if(fab.getY()<faby){
-               // R3.setGravity(Gravity.TOP);
-               // mytoast("a");
-
-             //   layoutParams.removeRule(RelativeLayout.BELOW);
-             //   layoutParams.addRule(RelativeLayout.BELOW, btn1.getId());
-
-              //  R3.setLayoutParams(layoutParams);
-                marginParams.setMargins(0, (int)fab.getY(), 0, 0);
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
-
-                R3.setLayoutParams(layoutParams);
-
-            }
-            else if(fab.getY()<faby*2){
-              //  R3.setGravity(Gravity.CENTER);
-
-             //   layoutParams.addRule(RelativeLayout.BELOW, fab.getId());
-                marginParams.setMargins(0, (int)fab.getY(), 0, 0);
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
-
-                R3.setLayoutParams(layoutParams);
-
-            }
-            else{
-               // R3.setGravity(Gravity.BOTTOM);
-
-              //  layoutParams.removeRule(RelativeLayout.BELOW);
-               // layoutParams.addRule(RelativeLayout.ABOVE, btn4.getId());
-                marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
-
-                R3.setLayoutParams(layoutParams);
-
-            }
-
-             /*    */
 
 
-               if(tf){
-                   R2.setVisibility(View.INVISIBLE);
-                   R3.setVisibility(View.INVISIBLE);
-                   Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
-                   R3.startAnimation(animation);
-
-                    fab.setImageResource(android.R.drawable.btn_star_big_off);
-                   tf=false;
-               }
-               else{
-
-                   R3.setVisibility(View.VISIBLE);
-
-                   Animation  animation = new ScaleAnimation(
-                           0f, 1.0f, 0f, 1.0f,
-                           0, fab.getX(), 0, fab.getY()-100
-                   );
-                  animation.setDuration(500);
-                   R3.startAnimation(animation);
-                   fab.setImageResource(android.R.drawable.btn_star_big_on);
-                   tf=true;
-               }
-
-
-           // faby=fab.getY();
-            }
-            else{
-                mLastClickTime = nowTime;
-                i++;
-            }
-
-        }
-    };
-    private RelativeLayout.OnClickListener R3btn=new RelativeLayout.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(Menushow.this, Tangoday.class);
-            Bundle bundle=new Bundle();
-            bundle.putString("JP", myjp);
-            bundle.putString("CH", mych);
-            bundle.putString("PINYIN", mypinyin);
-            bundle.putString("LEVEL", mylevel);
-            intent.putExtras(bundle);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right,
-                    R.anim.slide_out_left);
-
-        }
-    };
-    private RelativeLayout.OnClickListener R2btn=new RelativeLayout.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(Menushow.this, Tangoday.class);
-            Bundle bundle=new Bundle();
-            bundle.putString("JP", myjp);
-            bundle.putString("CH", mych);
-            bundle.putString("PINYIN", mypinyin);
-            bundle.putString("LEVEL", mylevel);
-            intent.putExtras(bundle);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right,
-                    R.anim.slide_out_left);
-
-        }
-    };
-    private RelativeLayout.OnClickListener marbtn=new RelativeLayout.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            /*
-            context = Menushow.this;
-            dia = new Dialog(context, R.style.edit_AlertDialog_style2);
-            dia.setContentView(R.layout.tango);
-            TextView pinyin=(TextView)dia.findViewById(R.id.pinyin);
-            TextView jp=(TextView)dia.findViewById(R.id.jp);
-            TextView ch=(TextView)dia.findViewById(R.id.ch);
-            TextView en=(TextView)dia.findViewById(R.id.level);
-            Button btok=(Button)dia.findViewById(R.id.btok);
-
-
-            pinyin.setText(mypinyin);
-            jp.setText(myjp);
-            ch.setText(mych);
-
-            // en.setText(myen);
-
-            btok.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dia.dismiss();
-                        }
-                    });
-
-            dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
-            Window w = dia.getWindow();
-            WindowManager.LayoutParams lp = w.getAttributes();
-            lp.width = 800;
-            //lp.height = 800;
-
-            dia.show();
-            dia.onWindowAttributesChanged(lp);
-            */
-        }
-    };
     class DownloadFileAsync extends AsyncTask<String, String, String> {
 
         @Override
@@ -331,28 +144,7 @@ public class Menushow extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... aurl) {
-            String result = dbtango.executeQuery();
-            Random random=new Random();
-            try{
-                JSONArray jsonArray = new JSONArray(result);
-                int num= random.nextInt(jsonArray.length());
 
-                JSONObject jsonData = jsonArray.getJSONObject(num);
-
-
-                mypinyin =jsonData.getString("jp_kana");
-                myjp=jsonData.getString("jp_kanji");
-                mych=jsonData.getString("zh_word");
-                myen=jsonData.getString("en_word");
-                mylevel=jsonData.getString("level");
-
-
-                if(myjp.equals("null")){
-                    myjp=jsonData.getString("jp_kana");
-                }
-            }
-
-            catch(Exception e){}
             return null;
         }
 
@@ -363,40 +155,7 @@ public class Menushow extends AppCompatActivity {
         @Override
         protected void onPostExecute(String unused) {
 
-            ch.setText(myjp);
-            ch2.setText(myjp);
-            ch3.setText(myjp);
-            level3.setText("("+mylevel+")");
-            Random random=new Random();
-            int r=random.nextInt(30);
-            int[] songfile=new int[] {R.drawable.a01, R.drawable.a02, R.drawable.a03, R.drawable.a04, R.drawable.a05,R.drawable.a06, R.drawable.a07,
-                    R.drawable.a08, R.drawable.a09, R.drawable.a10,R.drawable.a11, R.drawable.a12,
-                    R.drawable.a13, R.drawable.a14, R.drawable.a15, R.drawable.a16, R.drawable.a17, R.drawable.a18, R.drawable.a19,
-                    R.drawable.a20,R.drawable.a21, R.drawable.a22, R.drawable.a23, R.drawable.a24, R.drawable.a25,R.drawable.a26,
-                    R.drawable.a27, R.drawable.a28, R.drawable.a29, R.drawable.a30,R.drawable.a31};
-            pic3.setImageResource(songfile[r]);
 
-           // R3.setVisibility(View.VISIBLE);
-            R3.setGravity(Gravity.BOTTOM);
-
-            ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
-
-            marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(marginParams);
-
-            R3.setLayoutParams(layoutParams);
-            Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
-
-
-            animation = new ScaleAnimation(
-                    0f, 1.0f, 0f, 1.0f,
-                    0, fab.getX(), 0, fab.getY()
-            );
-            animation.setDuration(500);
-            R3.startAnimation(animation);
-            tf=true;
-
-           // begin();
         }
     }
     public void begin() {
@@ -411,12 +170,7 @@ public class Menushow extends AppCompatActivity {
                 @SuppressLint("RestrictedApi")
                 @Override
                 public void run() {
-                    // TODO Auto-generated method stub
-                  //  parentView.setVisibility(View.GONE);
-                   //  marqueeView2.setVisibility(View.GONE);
-                    fab.setVisibility(View.VISIBLE);
-                 //  R2.setVisibility(View.VISIBLE);
-                   tf=true;
+
 
                 }
             });
@@ -425,20 +179,20 @@ public class Menushow extends AppCompatActivity {
     private ImageView.OnTouchListener b1=new ImageView.OnTouchListener(){
         @Override
         public boolean onTouch(View v, MotionEvent event){
-            switch (event.getAction()){//課程
+            switch (event.getAction()){//測驗
 
                 case MotionEvent.ACTION_DOWN:
-                    btn1.setImageResource(R.drawable.aki_course);
+                    btn1.setImageResource(R.drawable.k_examh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn1.setImageResource(R.drawable.aki_courseh);
+                    btn1.setImageResource(R.drawable.k_exam);
 
                     Intent intent=new Intent();
                     Bundle bundle=new Bundle();
                     bundle.putString("ANS","A");
                     intent.putExtras(bundle);//MainActivity
-                    intent.setClass(Menushow.this, MainActivity.class);
+                    intent.setClass(Menushow.this, Examk.class);
                     //Work.class
                     //intent.setClass(Menushow.this,Listenchild.class);
                     startActivity(intent);
@@ -450,18 +204,18 @@ public class Menushow extends AppCompatActivity {
 
     private ImageView.OnTouchListener b2=new ImageView.OnTouchListener(){
         @Override
-        public boolean onTouch(View v, MotionEvent event){//匯率
+        public boolean onTouch(View v, MotionEvent event){//單字
             switch (event.getAction()){
 
                 case MotionEvent.ACTION_DOWN:
-                    btn2.setImageResource(R.drawable.aki_rate);
+                    btn2.setImageResource(R.drawable.k_tango);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn2.setImageResource(R.drawable.aki_rateh);
+                    btn2.setImageResource(R.drawable.k_tango);
                     Intent intent=new Intent();
                     //  intent.setClass(Menushow.this,Qrcode.class);
-                  intent.setClass(Menushow.this,Change.class);
+                  intent.setClass(Menushow.this,Shiken.class);
                     startActivity(intent);
                     //  mytoast("維護中");
                     break;
@@ -476,14 +230,14 @@ public class Menushow extends AppCompatActivity {
             switch (event.getAction()){
 
                 case MotionEvent.ACTION_DOWN:
-                    btn3.setImageResource(R.drawable.aki_news);
+                    btn3.setImageResource(R.drawable.k_listenh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn3.setImageResource(R.drawable.aki_newh);
+                    btn3.setImageResource(R.drawable.k_listen);
                     Intent intent=new Intent();
                     // mytoast("請稍後");
-                    intent.setClass(Menushow.this,Myweb.class);
+                    intent.setClass(Menushow.this,Listening.class);
                     startActivity(intent);
                     break;
             }
@@ -498,13 +252,13 @@ public class Menushow extends AppCompatActivity {
 
                 case MotionEvent.ACTION_DOWN:
                     // btn4.setImageResource(R.drawable.aki_shop);
-                    btn4.setImageResource(R.drawable.aki_jlpth);
+                    btn4.setImageResource(R.drawable.k_jishoh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn4.setImageResource(R.drawable.aki_jlpt);
+                    btn4.setImageResource(R.drawable.k_jisho);
                     Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Studymap.class);
+                    intent.setClass(Menushow.this,Jishoweb.class);
                     //Work   Info
                     startActivity(intent);
 
@@ -514,67 +268,8 @@ public class Menushow extends AppCompatActivity {
         }
     };
 
-    private ImageView.OnTouchListener b5=new ImageView.OnTouchListener(){
-        @Override
-        public boolean onTouch(View v, MotionEvent event){//test
-            switch (event.getAction()){
 
-                case MotionEvent.ACTION_DOWN:
-                    btn5.setImageResource(R.drawable.aki_test);
 
-                    break;
-                case MotionEvent.ACTION_UP:
-                    btn5.setImageResource(R.drawable.aki_testh);
-                    Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Shiken.class);
-                    startActivity(intent);
-                    break;
-            }
-            return true;
-        }
-    };
-    private ImageView.OnTouchListener b6=new ImageView.OnTouchListener(){
-        @Override
-        public boolean onTouch(View v, MotionEvent event){
-            switch (event.getAction()){//課程
-
-                case MotionEvent.ACTION_DOWN:
-                    btn6.setImageResource(R.drawable.aki_listenh);
-
-                    break;
-                case MotionEvent.ACTION_UP:
-                    btn6.setImageResource(R.drawable.aki_listen);
-                    Intent intent=new Intent();
-                    //intent.setClass(Menushow.this, JRmap.class);
-                    //Work.class
-                    intent.setClass(Menushow.this,Listenmenu.class);
-                    startActivity(intent);
-                    break;
-            }
-            return true;
-        }
-    };
-    private ImageView.OnTouchListener b9=new ImageView.OnTouchListener(){
-        @Override
-        public boolean onTouch(View v, MotionEvent event){
-            switch (event.getAction()){//課程
-
-                case MotionEvent.ACTION_DOWN:
-                    btn9.setImageResource(R.drawable.aki_jishoh);
-
-                    break;
-                case MotionEvent.ACTION_UP:
-                    btn9.setImageResource(R.drawable.aki_jisho);
-                    Intent intent=new Intent();
-                    //intent.setClass(Menushow.this, JRmap.class);
-                    //Work.class/Qrcode
-                    intent.setClass(Menushow.this,Jishoweb.class);
-                    startActivity(intent);
-                    break;
-            }
-            return true;
-        }
-    };
     public void getPermission(){
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){

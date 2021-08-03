@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:textSize="12sp"
+        android:id="@+id/btn5"
+        android:icon="@drawable/k_practice"
+        app:itemIconPadding="@dimen/design_bottom_navigation_height"
+        android:title="練習" />
+    <item
+        android:textSize="12sp"
+        android:id="@+id/btn6"
+        android:icon="@drawable/k_news"
+        android:title="新聞" />
+    <item
+        android:textSize="12sp"
+        android:id="@+id/btn7"
+        android:icon="@drawable/k_info"
+
+        android:title="資訊" />
+    <item
+        android:textSize="12sp"
+        android:id="@+id/btn8"
+        android:icon="@drawable/k_board"
+        android:title="遊學 " />
+
+
+
+</menu>

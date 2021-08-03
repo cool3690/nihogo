@@ -89,6 +89,7 @@ public class Classinfo extends AppCompatActivity {
                 Team  team = new Team(name,"星期"+ week, time,tdate[0],"$"+price);
                teams.add(team);
 
+
             }
 
 
