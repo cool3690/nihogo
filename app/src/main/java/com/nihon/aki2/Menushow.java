@@ -117,17 +117,14 @@ public class Menushow extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.btn6:
-                        startActivity(new Intent(getApplicationContext(),Myweb.class));
+                        startActivity(new Intent(getApplicationContext(),Tool_k.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.btn7:
-                        startActivity(new Intent(getApplicationContext(),Change.class));
+                        startActivity(new Intent(getApplicationContext(),Info_k.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.btn8:
-                        startActivity(new Intent(getApplicationContext(),Studymap.class));
-                        overridePendingTransition(0,0);
-                        return true;
+
                 }
                 return false;
             }
@@ -208,14 +205,14 @@ public class Menushow extends AppCompatActivity {
             switch (event.getAction()){
 
                 case MotionEvent.ACTION_DOWN:
-                    btn2.setImageResource(R.drawable.k_tango);
+                    btn2.setImageResource(R.drawable.k_tangoh);
 
                     break;
                 case MotionEvent.ACTION_UP:
                     btn2.setImageResource(R.drawable.k_tango);
                     Intent intent=new Intent();
                     //  intent.setClass(Menushow.this,Qrcode.class);
-                  intent.setClass(Menushow.this,Shiken.class);
+                  intent.setClass(Menushow.this,Tango_k.class);
                     startActivity(intent);
                     //  mytoast("維護中");
                     break;
@@ -236,8 +233,8 @@ public class Menushow extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     btn3.setImageResource(R.drawable.k_listen);
                     Intent intent=new Intent();
-                    // mytoast("請稍後");
-                    intent.setClass(Menushow.this,Listening.class);
+                    // mytoast("請稍後");Listen_k//Listening
+                    intent.setClass(Menushow.this,Listen_k.class);
                     startActivity(intent);
                     break;
             }

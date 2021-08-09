@@ -190,6 +190,7 @@ public class Examk extends AppCompatActivity {
         btsong=(Button)findViewById(R.id.btsong);
         txtResult=(TextView)findViewById(R.id.txtResult);
         radioGroup.setOnCheckedChangeListener(answer);
+        R2.setVisibility(View.GONE);
 
         //R3
         R3=(RelativeLayout)findViewById(R.id.R3);
@@ -273,17 +274,14 @@ public class Examk extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.btn6:
-                        startActivity(new Intent(getApplicationContext(),Myweb.class));
+                        startActivity(new Intent(getApplicationContext(),Tool_k.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.btn7:
                         startActivity(new Intent(getApplicationContext(),Change.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.btn8:
-                        startActivity(new Intent(getApplicationContext(),Studymap.class));
-                        overridePendingTransition(0,0);
-                        return true;
+
                 }
                 return false;
             }

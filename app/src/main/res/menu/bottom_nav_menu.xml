@@ -6,23 +6,19 @@
         android:id="@+id/btn5"
         android:icon="@drawable/k_practice"
         app:itemIconPadding="@dimen/design_bottom_navigation_height"
-        android:title="練習" />
+        android:title="學習" />
     <item
         android:textSize="12sp"
         android:id="@+id/btn6"
-        android:icon="@drawable/k_news"
-        android:title="新聞" />
+        android:icon="@drawable/k_tool"
+        android:title="工具" />
     <item
         android:textSize="12sp"
         android:id="@+id/btn7"
         android:icon="@drawable/k_info"
 
         android:title="資訊" />
-    <item
-        android:textSize="12sp"
-        android:id="@+id/btn8"
-        android:icon="@drawable/k_board"
-        android:title="遊學 " />
+
 
 
 

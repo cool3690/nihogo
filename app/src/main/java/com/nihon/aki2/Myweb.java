@@ -130,17 +130,14 @@ public class Myweb extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.btn6:
-                        startActivity(new Intent(getApplicationContext(),Myweb.class));
+                        startActivity(new Intent(getApplicationContext(),Tool_k.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.btn7:
                         startActivity(new Intent(getApplicationContext(),Change.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.btn8:
-                        startActivity(new Intent(getApplicationContext(),Studymap.class));
-                        overridePendingTransition(0,0);
-                        return true;
+
                 }
                 return false;
             }

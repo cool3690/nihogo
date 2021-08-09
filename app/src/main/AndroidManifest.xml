@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nihon.aki2">
-
     <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -22,8 +21,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-
+        <activity
+            android:name=".Tool_k"
+            android:label="@string/title_activity_tool_k"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Info_k"
+            android:label="@string/title_activity_info_k"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Listen_k"
+            android:label="@string/title_activity_listen_k"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Tango_k"
+            android:label="@string/title_activity_tango_k"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Examk"
             android:label="@string/title_activity_examk"

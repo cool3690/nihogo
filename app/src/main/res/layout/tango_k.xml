@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Studymap">
-
+    tools:context=".Tango_k">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +20,13 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_studymap" />
-
+    <include layout="@layout/content_tango_k" />
+    <com.nihon.aki2.DragFloatActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="130dp"
+        app:backgroundTint="#26DDC8"
+        android:src="@android:drawable/btn_star_big_on" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

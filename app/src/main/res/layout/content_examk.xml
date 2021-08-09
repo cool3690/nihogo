@@ -347,12 +347,14 @@
             <com.nihon.aki2.control.PaintView
                 android:id="@+id/paintView"
                 android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 />
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/mygif"
                 android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
 
@@ -400,6 +402,7 @@
                 android:id="@+id/img"
                 android:layout_width="140dp"
                 android:layout_height="120dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/paintView"
                 app:srcCompat="@drawable/a_1" />
