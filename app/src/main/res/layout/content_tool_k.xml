@@ -40,12 +40,12 @@
 
            <Button
                android:id="@+id/trabsbtn"
-               android:layout_width="50dp"
+               android:layout_width="46dp"
                android:layout_height="30dp"
                android:layout_weight="1"
                android:layout_marginRight="25dp"
                android:layout_marginLeft="25dp"
-               android:background="#0057FF"
+               android:background="#761DE6"
                android:textColor="#fff"
                android:text="轉換" />
 
@@ -80,6 +80,7 @@
                android:layout_height="wrap_content"
                android:layout_marginLeft="10dp"
                android:layout_weight="1"
+               android:textColor="#761DE6"
                android:text="台幣\nTWD" />
 
            <TextView
@@ -89,6 +90,7 @@
                android:layout_weight="1"
                android:layout_marginLeft="20dp"
                android:layout_marginRight="20dp"
+               android:textColor="#761DE6"
                android:text=" 交換貨幣 " />
            <TextView
                android:id="@+id/textView25"
@@ -96,6 +98,7 @@
                android:layout_height="wrap_content"
                android:layout_marginRight="10dp"
                android:layout_weight="1"
+               android:textColor="#761DE6"
                android:text="日圓\nJPY" />
            <ImageView
                android:id="@+id/imageView3"

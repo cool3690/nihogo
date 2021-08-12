@@ -42,6 +42,7 @@ public class Tool_k extends AppCompatActivity {
         setContentView(R.layout.tool_k);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         TWD=(EditText)findViewById(R.id.TWD);
         JPY=(EditText)findViewById(R.id.JPY);
         trantxt=(TextView)findViewById(R.id.trantxt);
@@ -115,8 +116,7 @@ public class Tool_k extends AppCompatActivity {
             else{
                 SharedPreferences remdname=getPreferences(Activity.MODE_PRIVATE);
                 float name_str=remdname.getFloat("sum", 0.0f);
-                //  GlobalVariable Account = (GlobalVariable)getApplicationContext();
-                //sum=Account.getDollar();
+
                 sum=name_str;
             }
         }

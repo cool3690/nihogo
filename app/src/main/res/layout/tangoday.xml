@@ -5,37 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#66B0B6B5"
+    android:background="@drawable/grad_orange"
 
     tools:context=".Tangoday">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-      >
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/Toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
 
-            app:popupTheme="@style/AppTheme.PopupOverlay"
             >
 
-        <ImageView
-            android:id="@+id/toback"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            app:srcCompat="?attr/actionModeCloseDrawable"
-             />
+            <ImageView
+                android:id="@+id/toback"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/goback" />
+
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#E64E0A0A"
-                android:textSize="20sp"
-                android:text="每日單字" />
+                android:text="每日單字"
+                android:textColor="#FF6B00"
+                android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
@@ -48,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
+            android:textColor="#FF6B00"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:textSize="20sp"
@@ -62,7 +60,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:textSize="34sp"
-
+            android:textColor="#FF6B00"
             android:text="jp" />
         <TextView
             android:id="@+id/hira"
@@ -72,7 +70,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:textSize="34sp"
-
+            android:textColor="#FF6B00"
             android:text="hira" />
         <TextView
         android:id="@+id/ch"
@@ -81,7 +79,7 @@
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:gravity="center"
-
+            android:textColor="#FF6B00"
         android:textSize="24sp"
         android:text="ch" />
 
@@ -92,7 +90,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:gravity="center"
-
+            android:textColor="#FF6B00"
             android:text="N5"
             android:textSize="22sp" />
     </LinearLayout>

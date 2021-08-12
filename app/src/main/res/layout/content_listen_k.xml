@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/grad_orange">
+        android:background="@drawable/grad_green">
 
         <LinearLayout
             android:id="@+id/L1"
@@ -21,8 +21,8 @@
             <Spinner
                 android:id="@+id/spnlev"
                 android:layout_width="150dp"
-                android:popupBackground="#FFE7CA"
-                android:background="@drawable/bg_spnorange"
+                android:popupBackground="#EAFFF2"
+                android:background="@drawable/bg_spngreen"
                 android:layout_height="wrap_content" />
 
             <Spinner
@@ -30,8 +30,8 @@
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
 
-                android:popupBackground="#FFE7CA"
-                android:background="@drawable/bg_spnorange"
+                android:popupBackground="#EAFFF2"
+                android:background="@drawable/bg_spngreen"
                 android:layout_marginLeft="40dp"
                 />
         </LinearLayout>
@@ -189,7 +189,7 @@
                 android:layout_weight=".1"
                 android:scaleType="fitXY"
 
-                android:background="@drawable/polyorange"
+                android:background="@drawable/polygreen"
                 />
             <TextView
                 android:id="@+id/pretxt"
@@ -222,7 +222,7 @@
                 android:layout_gravity="fill_horizontal|right"
                 android:scaleType="fitXY"
                 android:layout_weight=".1"
-                android:background="@drawable/polyorange2"
+                android:background="@drawable/polygreen2"
                 />
         </LinearLayout>
 

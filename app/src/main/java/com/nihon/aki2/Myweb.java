@@ -55,7 +55,7 @@ public class Myweb extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.icon);
+        //toolbar.setNavigationIcon(R.drawable.icon);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()

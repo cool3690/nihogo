@@ -60,14 +60,14 @@ public class Tango_k extends AppCompatActivity {
     String myjp="";
     String mych="",myhiragana="",mylevel="";
     ////
-    private RelativeLayout R3;
-    ImageView pic3;
+    private RelativeLayout R3,R4,R5;
+    ImageView pic3,showup,showoff;
     TextView jp3,ch3,level3;
 
     String myen;
     double faby=0;
     boolean tf=true;
-    DragFloatActionButton fab;
+    //DragFloatActionButton fab;
 
     Timer timer = new Timer();
     TextView  pretxt,nexttxt;
@@ -82,6 +82,7 @@ public class Tango_k extends AppCompatActivity {
         setContentView(R.layout.tango_k);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -112,16 +113,24 @@ public class Tango_k extends AppCompatActivity {
 ////////////////////////////
         pic3=(ImageView)findViewById(R.id.pic3);
         R3=findViewById(R.id.R3);
+        R4=findViewById(R.id.R4);
+        R5=findViewById(R.id.R5);
+        showup=(ImageView)findViewById(R.id.showup);
+        showoff=(ImageView)findViewById(R.id.showoff);
         ch3=(TextView)findViewById(R.id.ch3);
         jp3=(TextView)findViewById(R.id.jp3);
         level3=(TextView)findViewById(R.id.level3);
-        fab = findViewById(R.id.fab);
-        R3.setVisibility(View.GONE);
+        //fab = findViewById(R.id.fab);
+        R4.setVisibility(View.GONE);
+        showoff.setOnClickListener(showtfbtn);
+        showup.setOnClickListener(showtfbtn);
         ch3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         jp3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         // new Reviewn5.DownloadFileAsync().execute();
-        R3.setOnClickListener(R3btn);
-        fab.setOnClickListener(fabclick);
+       // R3.setOnClickListener(R3btn);
+        R3.setVisibility(View.GONE);
+        //fab.setVisibility(View.GONE);
+      //  fab.setOnClickListener(fabclick);
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         /////////////////
@@ -132,6 +141,7 @@ public class Tango_k extends AppCompatActivity {
         ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,typelist);
         spntype.setAdapter(spntypespn);
         spntype.setOnItemSelectedListener(typebtn);
+        ch3.setOnClickListener(ch3btn);
        new Tango_k.DownloadFileAsync().execute();
 /////////////////////
         BottomNavigationView nav_view=(BottomNavigationView)findViewById(R.id.nav_view);
@@ -158,6 +168,40 @@ public class Tango_k extends AppCompatActivity {
             }
         });
     }
+    private TextView.OnClickListener ch3btn=new TextView.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Tango_k.this, Tangoday.class);
+            Bundle bundle=new Bundle();
+            bundle.putString("JP", myjp);
+            bundle.putString("CH", mych);
+            bundle.putString("HIRA", myhiragana);
+            bundle.putString("PINYIN", mypinyin);
+            bundle.putString("LEVEL", level.getText().toString());////
+            intent.putExtras(bundle);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right,
+                    R.anim.slide_out_left);
+        }
+    };
+    private ImageView.OnClickListener showtfbtn=new ImageView.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.showup:
+                    R4.setVisibility(View.INVISIBLE);
+                    R5.setVisibility(View.VISIBLE);
+                break;
+
+                case  R.id.showoff:
+                    R4.setVisibility(View.VISIBLE);
+                    R5.setVisibility(View.INVISIBLE);
+                break;
+                default:
+                    break;
+            }
+        }
+    };
     private TextView.OnClickListener pretxtbtn=new TextView.OnClickListener(){
         @Override
         public void onClick(View view) {
@@ -352,7 +396,7 @@ public class Tango_k extends AppCompatActivity {
                 faby= dm.heightPixels;// height
 
                 faby=(faby-120)/3;
-
+ /*
                 if(fab.getY()<faby){
 
                     marginParams.setMargins(0, (int)fab.getY(), 0, 0);
@@ -378,7 +422,7 @@ public class Tango_k extends AppCompatActivity {
 
                 }
 
-                /*    */
+
 
 
                 if(tf){
@@ -392,7 +436,7 @@ public class Tango_k extends AppCompatActivity {
                 }
                 else{
 
-                    R3.setVisibility(View.VISIBLE);
+                    //R3.setVisibility(View.VISIBLE);
 
                     Animation  animation = new ScaleAnimation(
                             0f, 1.0f, 0f, 1.0f,
@@ -403,7 +447,7 @@ public class Tango_k extends AppCompatActivity {
                     fab.setImageResource(android.R.drawable.btn_star_big_on);
                     tf=true;
                 }
-
+*/
             }
             else{
                 mLastClickTime = nowTime;
@@ -512,9 +556,9 @@ public class Tango_k extends AppCompatActivity {
                     R.drawable.a27, R.drawable.a28, R.drawable.a29, R.drawable.a30,R.drawable.a31};
             pic3.setImageResource(songfile[r]);
 
-            R3.setVisibility(View.VISIBLE);
+           // R3.setVisibility(View.VISIBLE);
             R3.setGravity(Gravity.BOTTOM);
-
+/*
             ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(R3.getLayoutParams());
 
             marginParams.setMargins(0, (int)fab.getY()-400, 0, 0);
@@ -531,7 +575,7 @@ public class Tango_k extends AppCompatActivity {
             animation.setDuration(500);
             R3.startAnimation(animation);
             tf=true;
-/*
+
             begin();
 */
         }
@@ -680,7 +724,7 @@ public class Tango_k extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    fab.setVisibility(View.VISIBLE);
+                    //fab.setVisibility(View.GONE);
 
                     tf=true;
 

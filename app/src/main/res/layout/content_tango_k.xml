@@ -145,6 +145,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="40dp"
                 />
+            <!--
             <TextView
                 android:id="@+id/jp3"
                 android:layout_width="wrap_content"
@@ -185,7 +186,7 @@
                 android:textSize="14sp"
                 android:textColor="#354BD6"
                 android:text="(N5)level3" />
-
+            -->
         </RelativeLayout>
 
         <!--end-->
@@ -241,8 +242,85 @@
                 />
         </LinearLayout>
 
+<!-- part 4 tango-->
+    <RelativeLayout
+        android:id="@+id/R4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
 
+        android:layout_marginLeft="34dp"
+        android:layout_marginRight="34dp"
+        android:layout_above="@id/nav_view"
+        android:layout_marginBottom="65dp">
+        <ImageView
+            android:id="@+id/showup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/showup"
+            />
+
+    </RelativeLayout>
+        <!-- part 5 tango-->
+        <RelativeLayout
+            android:id="@+id/R5"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+
+            android:background="#FFE7CA"
+            android:layout_marginLeft="34dp"
+            android:layout_marginRight="34dp"
+            android:layout_above="@id/nav_view"
+            android:layout_marginBottom="60dp">
+            <ImageView
+                android:id="@+id/showoff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="3dp"
+                app:srcCompat="@drawable/showoff"
+                />
+            <TextView
+                android:id="@+id/jp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#FF6B00"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_below="@id/showoff"
+                android:layout_marginLeft="22dp"
+                android:textSize="12sp"
+                android:text="每日單詞" />
+            <TextView
+                android:id="@+id/level3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_below="@id/jp3"
+
+                android:layout_marginLeft="22dp"
+                android:textSize="14sp"
+                android:textColor="#FF6B00"
+                android:text="(N5)level3" />
+            <TextView
+                android:id="@+id/ch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/showoff"
+                android:layout_gravity="center"
+                android:layout_marginRight="22dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="ch3"
+                android:textColor="#FF6B00"
+                android:textSize="24sp" />
+        </RelativeLayout>
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"
             android:layout_width="match_parent"

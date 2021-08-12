@@ -77,7 +77,7 @@ public class Menushow extends AppCompatActivity {
         /**/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.icon);
+        //toolbar.setNavigationIcon(R.drawable.icon);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
@@ -248,17 +248,20 @@ public class Menushow extends AppCompatActivity {
             switch (event.getAction()){
 
                 case MotionEvent.ACTION_DOWN:
-                    // btn4.setImageResource(R.drawable.aki_shop);
-                    btn4.setImageResource(R.drawable.k_jishoh);
+                    btn4.setImageResource(R.drawable.k_examh);
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    btn4.setImageResource(R.drawable.k_jisho);
-                    Intent intent=new Intent();
-                    intent.setClass(Menushow.this,Jishoweb.class);
-                    //Work   Info
-                    startActivity(intent);
+                    btn4.setImageResource(R.drawable.k_exam);
 
+                    Intent intent=new Intent();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("ANS","A");
+                    intent.putExtras(bundle);//MainActivity
+                    intent.setClass(Menushow.this, Examk.class);
+                    //Work.class
+                    //intent.setClass(Menushow.this,Listenchild.class);
+                    startActivity(intent);
                     break;
             }
             return true;

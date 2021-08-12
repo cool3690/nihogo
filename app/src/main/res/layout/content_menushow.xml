@@ -61,7 +61,7 @@
         android:paddingLeft="13dp"
         android:paddingRight="13dp"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/k_jisho" />
+        app:srcCompat="@drawable/k_exam" />
    
 </LinearLayout>
         <com.google.android.material.bottomnavigation.BottomNavigationView
