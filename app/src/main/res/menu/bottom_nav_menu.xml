@@ -19,7 +19,12 @@
 
         android:title="資訊" />
 
+    <item
+        android:textSize="12sp"
+        android:id="@+id/btn8"
+        android:icon="@drawable/book_k"
 
+        android:title="繪本" />
 
 
 </menu>

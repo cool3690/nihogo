@@ -34,7 +34,14 @@ android:layout_height="match_parent">
         android:textColor="#050505"
         android:text=" 連絡:sonyzone2004@gmail.com" />
 
-
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:textColor="#050505"
+        android:text=" 日語錄音：金城茉彌" />
 
     <Button
         android:id="@+id/btok"

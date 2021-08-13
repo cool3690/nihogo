@@ -4,15 +4,18 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -49,7 +52,9 @@ import java.util.TimerTask;
 
 public class Menushow extends AppCompatActivity {
     private long mLastClickTime = 0;
+    String[] list = {"關於" };
     public static final long TIME_INTERVAL = 800L;
+    ImageView menulist;
     int i=0;
     DisplayMetrics dm = new DisplayMetrics();
     private RelativeLayout   R3,R0;
@@ -80,6 +85,7 @@ public class Menushow extends AppCompatActivity {
         //toolbar.setNavigationIcon(R.drawable.icon);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        toolbar.inflateMenu(R.menu.menu_main);
         GlobalVariable Account = (GlobalVariable)getApplicationContext();
         account=Account.getAccount();
         passwd=Account.getPasswd();
@@ -90,8 +96,8 @@ public class Menushow extends AppCompatActivity {
         btn2=(ImageView)findViewById(R.id.btn2);
         btn3=(ImageView)findViewById(R.id.btn3);
         btn4=(ImageView)findViewById(R.id.btn4);
-
-
+        menulist=(ImageView)findViewById(R.id.menulist);
+        menulist.setOnClickListener(menulistbtn);
 
 
         btn1.setOnTouchListener(b1);
@@ -131,6 +137,61 @@ public class Menushow extends AppCompatActivity {
         });
     }
 
+    private ImageView.OnClickListener menulistbtn=new ImageView.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dialog_list = new AlertDialog.Builder(Menushow.this);
+           // dialog_list.setTitle(" ");
+            dialog_list.setItems(list, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (which == 0) {
+                        context = Menushow.this;
+                        dia = new Dialog(context, R.style.rightcopystyle);
+                        dia.setContentView(R.layout.copyright);
+                        Button btok=(Button)dia.findViewById(R.id.btok);
+                        dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                        Window w = dia.getWindow();
+                        WindowManager.LayoutParams lp = w.getAttributes();
+                        lp.x = 0; // 新位置X坐標
+                        lp.width =950; // 寬度
+                        dia.show();
+                        dia.onWindowAttributesChanged(lp);
+                        btok.setOnClickListener(
+                                new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        dia.dismiss();
+                                    }
+                                }
+                        );
+                    } /*
+                    else if (which == 1) {
+                        Intent intent = new Intent();
+                        intent.setClass(getApplicationContext(), Examk.class);
+                        startActivity(intent);
+                    }
+*/
+                 }
+                     });
+            /*
+            AlertDialog dialog = dialog_list.create();
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
+
+            wmlp.gravity = Gravity.TOP | Gravity.LEFT;
+            wmlp.width=100;
+            wmlp.x = 0;   //x position
+            wmlp.y = 0;   //y position
+
+            dialog.show();
+            dialog.getWindow().setLayout(400,400);
+*/
+            dialog_list.show();
+        }
+    };
 
     class DownloadFileAsync extends AsyncTask<String, String, String> {
 
@@ -283,6 +344,7 @@ public class Menushow extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -355,18 +417,7 @@ public class Menushow extends AppCompatActivity {
             startActivity(intent);
         }
         if (id == R.id.about) {
-            /*
-            new AlertDialog.Builder(Menushow.this)
-                    .setTitle("版權所有")
-                    .setIcon(R.drawable.righticon)
-                    .setMessage("新澄管理顧問公司"+"\n臺南市私立慶誠文理短期補習班"+"\n連絡：sonyzone2004@gmail.com")
-                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialoginterface, int i)
-                        {
-                        }
-                    })
-                    .show();
-            */
+
             context = Menushow.this;
             dia = new Dialog(context, R.style.rightcopystyle);
             dia.setContentView(R.layout.copyright);
@@ -390,4 +441,6 @@ public class Menushow extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+     */
 }

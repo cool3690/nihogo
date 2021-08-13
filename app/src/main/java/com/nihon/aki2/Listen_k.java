@@ -2,6 +2,7 @@ package com.nihon.aki2;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -19,6 +20,7 @@ import com.nihon.aki2.mydb.dblisten;
 import com.nihon.aki2.mydb.dbsantance;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import pl.droidsonroids.gif.GifDrawable;
@@ -34,6 +36,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -70,6 +73,8 @@ public class Listen_k extends AppCompatActivity {
     String url="https://kei-sei.com/images/listening/primary1/L1/T1.mp3",ans="";
     String []filename=new String[45];
     String []lessons=new String[13];
+
+    String[] list2= {"關於" };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +82,8 @@ public class Listen_k extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ImageView menulist = (ImageView) findViewById(R.id.menulist);
+        menulist.setOnClickListener(menulistbtn);
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -183,6 +190,43 @@ public class Listen_k extends AppCompatActivity {
         });
        /*  */
     }
+    private ImageView.OnClickListener menulistbtn=new ImageView.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dialog_list = new AlertDialog.Builder(Listen_k.this);
+            // dialog_list.setTitle(" ");
+            dialog_list.setItems(list2, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (which == 0) {
+                        context = Listen_k.this;
+                        dia = new Dialog(context, R.style.rightcopystyle);
+                        dia.setContentView(R.layout.copyright);
+                        Button btok=(Button)dia.findViewById(R.id.btok);
+                        dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                        Window w = dia.getWindow();
+                        WindowManager.LayoutParams lp = w.getAttributes();
+                        lp.x = 0; // 新位置X坐標
+                        lp.width =950; // 寬度
+                        dia.show();
+                        dia.onWindowAttributesChanged(lp);
+                        btok.setOnClickListener(
+                                new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        dia.dismiss();
+                                    }
+                                }
+                        );
+                    }
+                }
+            });
+
+            dialog_list.show();
+        }
+    };
     private SeekBar.OnSeekBarChangeListener volbarbtn=new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {

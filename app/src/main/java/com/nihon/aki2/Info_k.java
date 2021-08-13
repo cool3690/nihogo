@@ -1,5 +1,8 @@
 package com.nihon.aki2;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ import com.nihon.aki2.mydb.dbcjlpt;
 import com.nihon.aki2.mydb.dbstudy;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -20,6 +24,9 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +39,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Info_k extends AppCompatActivity {
+    Dialog dia;
+    Context context;
+    String[] list2= {"關於" };
     TextView schooltxt,conschtxt,jobtxt,conjobtxt,examtxt,examyear,mydate,days;
     ImageView left,right,left2,right2,left3,right3;
     String project="",during="",fee="",attend="",mycondition="",account="",shokai="",address="",web="",names="" ;
@@ -50,6 +60,8 @@ public class Info_k extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ImageView menulist = (ImageView) findViewById(R.id.menulist);
+        menulist.setOnClickListener(menulistbtn);
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -107,6 +119,43 @@ public class Info_k extends AppCompatActivity {
             }
         });
     }
+    private ImageView.OnClickListener menulistbtn=new ImageView.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dialog_list = new AlertDialog.Builder(Info_k.this);
+            // dialog_list.setTitle(" ");
+            dialog_list.setItems(list2, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (which == 0) {
+                        context = Info_k.this;
+                        dia = new Dialog(context, R.style.rightcopystyle);
+                        dia.setContentView(R.layout.copyright);
+                        Button btok=(Button)dia.findViewById(R.id.btok);
+                        dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                        Window w = dia.getWindow();
+                        WindowManager.LayoutParams lp = w.getAttributes();
+                        lp.x = 0; // 新位置X坐標
+                        lp.width =950; // 寬度
+                        dia.show();
+                        dia.onWindowAttributesChanged(lp);
+                        btok.setOnClickListener(
+                                new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        dia.dismiss();
+                                    }
+                                }
+                        );
+                    }
+                }
+            });
+
+            dialog_list.show();
+        }
+    };
     private ImageView.OnClickListener n1btn=new ImageView.OnClickListener(){
         @Override
         public void onClick(View view) {

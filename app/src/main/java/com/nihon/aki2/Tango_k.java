@@ -1,6 +1,9 @@
 package com.nihon.aki2;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -20,6 +23,7 @@ import com.nihon.aki2.mydb.dbtango;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -29,11 +33,14 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -49,6 +56,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Tango_k extends AppCompatActivity {
+    Dialog dia;
+    Context context;
+    String[] list2= {"關於" };
+
     private long mLastClickTime = 0;
     public static final long TIME_INTERVAL = 800L;
     String url ="https://kei-sei.com/cram/n5.json";
@@ -83,6 +94,8 @@ public class Tango_k extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ImageView menulist = (ImageView) findViewById(R.id.menulist);
+        menulist.setOnClickListener(menulistbtn);
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -168,6 +181,43 @@ public class Tango_k extends AppCompatActivity {
             }
         });
     }
+    private ImageView.OnClickListener menulistbtn=new ImageView.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dialog_list = new AlertDialog.Builder(Tango_k.this);
+            // dialog_list.setTitle(" ");
+            dialog_list.setItems(list2, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (which == 0) {
+                        context = Tango_k.this;
+                        dia = new Dialog(context, R.style.rightcopystyle);
+                        dia.setContentView(R.layout.copyright);
+                        Button btok=(Button)dia.findViewById(R.id.btok);
+                        dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                        Window w = dia.getWindow();
+                        WindowManager.LayoutParams lp = w.getAttributes();
+                        lp.x = 0; // 新位置X坐標
+                        lp.width =950; // 寬度
+                        dia.show();
+                        dia.onWindowAttributesChanged(lp);
+                        btok.setOnClickListener(
+                                new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        dia.dismiss();
+                                    }
+                                }
+                        );
+                    }
+                }
+            });
+
+            dialog_list.show();
+        }
+    };
     private TextView.OnClickListener ch3btn=new TextView.OnClickListener(){
         @Override
         public void onClick(View view) {

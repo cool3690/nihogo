@@ -1,5 +1,8 @@
 package com.nihon.aki2;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -27,6 +30,7 @@ import com.nihon.aki2.mydb.dbsannum;
 import com.nihon.aki2.mydb.dbsantance;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import pl.droidsonroids.gif.GifDrawable;
@@ -40,6 +44,8 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -68,6 +74,9 @@ import java.util.concurrent.Phaser;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class Examk extends AppCompatActivity {
+    Dialog dia;
+    Context context;
+    String[] list2= {"關於" };
     Spinner spnlev,spntype;
     ListView list;
     boolean lock=true;
@@ -155,7 +164,8 @@ public class Examk extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        ImageView menulist = (ImageView) findViewById(R.id.menulist);
+        menulist.setOnClickListener(menulistbtn);
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -289,6 +299,45 @@ public class Examk extends AppCompatActivity {
             }
         });
     }
+
+
+    private ImageView.OnClickListener menulistbtn=new ImageView.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dialog_list = new AlertDialog.Builder(Examk.this);
+            // dialog_list.setTitle(" ");
+            dialog_list.setItems(list2, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (which == 0) {
+                        context = Examk.this;
+                        dia = new Dialog(context, R.style.rightcopystyle);
+                        dia.setContentView(R.layout.copyright);
+                        Button btok=(Button)dia.findViewById(R.id.btok);
+                        dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                        Window w = dia.getWindow();
+                        WindowManager.LayoutParams lp = w.getAttributes();
+                        lp.x = 0; // 新位置X坐標
+                        lp.width =950; // 寬度
+                        dia.show();
+                        dia.onWindowAttributesChanged(lp);
+                        btok.setOnClickListener(
+                                new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        dia.dismiss();
+                                    }
+                                }
+                        );
+                    }
+                }
+            });
+
+            dialog_list.show();
+        }
+    };
 
     private Spinner.OnItemSelectedListener spnPreferListener=
             new Spinner.OnItemSelectedListener(){
