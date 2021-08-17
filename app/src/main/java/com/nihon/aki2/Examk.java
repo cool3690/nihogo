@@ -290,7 +290,11 @@ public class Examk extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.btn7:
-                        startActivity(new Intent(getApplicationContext(),Change.class));
+                        startActivity(new Intent(getApplicationContext(),Info_k.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn8:
+                        startActivity(new Intent(getApplicationContext(),Book_k.class));
                         overridePendingTransition(0,0);
                         return true;
 

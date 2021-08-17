@@ -74,7 +74,6 @@ public class Qrcode extends AppCompatActivity {
         cameraSource=new CameraSource.Builder(this,barcodeDetector)
                 .setRequestedPreviewSize(1000,1000).build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector).setAutoFocusEnabled(true).build();
-        //cameraSource.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
 
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback(){
             @Override
@@ -85,7 +84,7 @@ public class Qrcode extends AppCompatActivity {
                     return;
                 }
                 if(ActivityCompat.checkSelfPermission(Qrcode.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-//            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
+
                     new AlertDialog.Builder(Qrcode.this)
                             .setCancelable(false)
                             .setTitle("需要相機權限")
@@ -131,39 +130,7 @@ public class Qrcode extends AppCompatActivity {
                     show.post(new Runnable() {
                         @Override
                         public void run() {
-                            /*
-                            if(!TextUtils.isEmpty(show.getText().toString())){
-                                if(show.getText().toString().equals(qrCodes.valueAt(0).displayValue)){
-                                    //mytoast( qrCodes.size()+"");
 
-                                    //show.setText("");
-                                }
-                                else{
-                                    show.setText(qrCodes.valueAt(0).displayValue);
-                                    if(show.getText().toString().contains("http://") ||show.getText().toString().contains("https://")
-                                            ||show.getText().toString().contains("www.")  ){
-                                        Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                                        intent.setData(Uri.parse(show.getText().toString()));
-
-                                        startActivity(intent);
-
-                                    }
-                                }
-                            }
-                            else{
-                                show.setText(qrCodes.valueAt(0).displayValue);
-                                if(show.getText().toString().contains("http://") ||show.getText().toString().contains("https://")
-                                        ||show.getText().toString().contains("www.")  ){
-                                    Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                                    intent.setData(Uri.parse(show.getText().toString()));
-
-                                    startActivity(intent);
-
-                                }
-                            }
-                           // show.setText("");
-                            */
-                            ////////////////////////////
                             try {
                                 if(!TextUtils.isEmpty(show.getText().toString())){
                                     if(show.getText().toString().equals(qrCodes.valueAt(0).displayValue)){

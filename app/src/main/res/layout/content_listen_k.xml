@@ -55,18 +55,18 @@
                 android:background="@drawable/border_bg"/>
 
 
+            <SeekBar
+                android:id="@+id/sbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="38dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="38dp"
+                android:max="100"
+                android:thumbTint="#00D355" />
 
-                <SeekBar android:id="@+id/sbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginRight="38dp"
-                    android:layout_marginLeft="38dp"
-                    android:thumbTint="#00D355"
-                    android:max="100"
-                    />
-<LinearLayout
+            <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/sbar"

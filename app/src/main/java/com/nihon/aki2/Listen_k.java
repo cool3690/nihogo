@@ -54,7 +54,7 @@ public class Listen_k extends AppCompatActivity {
     Spinner spnlev,spntype;
     TextView pretxt,nexttxt;
     View btnpre,btnnext;
-    ImageView play;
+    ImageView play,replay,replay2;
     String course[]={"初級一","初級二","進階一","進階二"};
     ArrayList<String>typelist=new ArrayList();
     /////
@@ -97,6 +97,8 @@ public class Listen_k extends AppCompatActivity {
                 .build());
         mediaplayer=new MediaPlayer();
         play = (ImageView) findViewById(R.id.play);
+        replay = (ImageView) findViewById(R.id.replay);
+        replay2 = (ImageView) findViewById(R.id.replay2);
        remainingTimeLabel= (TextView) findViewById(R.id.remainingTimeLabel);
         totaltime= (TextView) findViewById(R.id.totaltime);
         show= (TextView) findViewById(R.id.show);
@@ -119,6 +121,8 @@ public class Listen_k extends AppCompatActivity {
         btnpre.setOnClickListener(pretxtbtn);
         nexttxt.setOnClickListener(pretxtbtn);
         btnnext.setOnClickListener(pretxtbtn);
+        replay.setOnClickListener(fastbtn);
+        replay2.setOnClickListener(fastbtn);
         ArrayAdapter<String> spnlevpn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,course);
         spnlev.setAdapter(spnlevpn);
         spnlev.setOnItemSelectedListener(levbtn);
@@ -157,6 +161,7 @@ public class Listen_k extends AppCompatActivity {
                     try {
                         Message msg = new Message();
                         msg.what = mediaplayer.getCurrentPosition();
+
                         handler.sendMessage(msg);
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {}
@@ -180,15 +185,90 @@ public class Listen_k extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.btn7:
-                        startActivity(new Intent(getApplicationContext(),Change.class));
+                        startActivity(new Intent(getApplicationContext(),Info_k.class));
                         overridePendingTransition(0,0);
                         return true;
-
+                    case R.id.btn8:
+                        startActivity(new Intent(getApplicationContext(),Book_k.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
         });
        /*  */
+    }
+    private ImageView.OnClickListener fastbtn=new ImageView.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.replay:
+                    pauseplay();
+
+                       int t=0;
+                       if(mediaplayer.getCurrentPosition()-15000 >0){
+                           t=(mediaplayer.getCurrentPosition()-15000);
+
+                           mediaplayer.seekTo(t);
+                       }
+                       else{
+                           mediaplayer.seekTo(0);
+                       }
+
+                  mediaplayer.start();
+
+                    break;
+                case R.id.replay2:
+                    pauseplay();
+
+
+                    if(mediaplayer.getCurrentPosition()+15000 <totalTime){
+                        t=(mediaplayer.getCurrentPosition()+15000);
+
+                        mediaplayer.seekTo(t);
+                    }
+                    else{
+                        mediaplayer.seekTo(totalTime);
+                    }
+
+                    mediaplayer.start();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            int currentPosition = msg.what;
+            // Update positionBar.
+            sbar.setProgress(currentPosition);
+            String remainingTime = createTimeLabel(totalTime-currentPosition);
+            remainingTimeLabel.setText("" + remainingTime);
+
+        }
+    };
+
+    public String createTimeLabel(int time) {
+        String timeLabel = "";
+        int min = time / 1000 / 60;
+        int sec = time / 1000 % 60;
+
+        timeLabel = min + ":";
+        if (sec < 10) timeLabel += "0";
+        timeLabel += sec;
+
+        return timeLabel;
+    }
+
+    private void pauseplay(){
+        if(mediaplayer.isPlaying()){
+            mediaplayer.pause();
+        }
+        else{
+            mediaplayer.start();
+        }
     }
     private ImageView.OnClickListener menulistbtn=new ImageView.OnClickListener(){
 
@@ -582,42 +662,12 @@ public class Listen_k extends AppCompatActivity {
             }
         }
     }
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            int currentPosition = msg.what;
-            // Update positionBar.
-            sbar.setProgress(currentPosition);
-            String remainingTime = createTimeLabel(totalTime-currentPosition);
-            remainingTimeLabel.setText("" + remainingTime);
 
-        }
-    };
-
-    public String createTimeLabel(int time) {
-        String timeLabel = "";
-        int min = time / 1000 / 60;
-        int sec = time / 1000 % 60;
-
-        timeLabel = min + ":";
-        if (sec < 10) timeLabel += "0";
-        timeLabel += sec;
-
-        return timeLabel;
-    }
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
-    }
-    private void pauseplay(){
-        if(mediaplayer.isPlaying()){
-            mediaplayer.pause();
-        }
-        else{
-            mediaplayer.start();
-        }
     }
     /* */
     @Override

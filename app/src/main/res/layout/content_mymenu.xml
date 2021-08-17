@@ -7,25 +7,41 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Mymenu"
     tools:showIn="@layout/mymenu"
+    android:background="@drawable/cover_k"
    >
 
-    <pl.droidsonroids.gif.GifImageView
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/keisei_app2"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <ImageView
+    <Button
         android:id="@+id/btn1"
-        android:layout_width="237dp"
-        android:layout_height="98dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797"
-        app:srcCompat="@drawable/aki_menu" />
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:text="訪客"
+        android:textColor="#fff"
+        android:layout_marginTop="-30dp"
+        android:textSize="14sp"
+        android:background="@drawable/bg_ripple"/>
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:text="繪本"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:background="@drawable/bg_ripple"
+        android:layout_marginTop="25dp"/>
+
+
+
+</LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

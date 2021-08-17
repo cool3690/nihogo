@@ -98,6 +98,7 @@
     <string name="title_activity_listen_k">聽力練習</string>
     <string name="title_activity_info_k">最新消息</string>
     <string name="title_activity_tool_k">工具</string>
+    <string name="title_activity_book_k"></string>
 
 
 </resources>
