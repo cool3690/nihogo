@@ -55,7 +55,7 @@
                         android:layout_marginRight="30dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@id/L2"
-                        app:srcCompat="@drawable/playpurple"/>
+                        app:srcCompat="@drawable/pausepurple"/>
 
                     <ImageView
                         android:id="@+id/replay2"

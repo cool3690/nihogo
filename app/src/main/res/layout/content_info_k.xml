@@ -185,7 +185,7 @@
             <View
                 android:id="@+id/line3"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="132dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/L3"
                 android:layout_marginLeft="32dp"
@@ -274,8 +274,9 @@
             android:layout_weight=".35"
             android:gravity="center"
             android:textSize="40sp"
+                android:layout_marginTop="-2dp"
                 android:textColor="#761DE6"
-            android:text="   120"/>
+            android:text="   "/>
             <TextView
                 android:id="@+id/daytxt"
                 android:layout_width="0dp"
@@ -283,6 +284,7 @@
                 android:layout_weight=".1"
                 android:gravity="center"
                 android:textSize="12sp"
+                android:layout_marginBottom="5dp"
                 android:textColor="#761DE6"
                 android:text="天後"/>
         </LinearLayout>

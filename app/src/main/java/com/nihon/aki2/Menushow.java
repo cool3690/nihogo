@@ -241,7 +241,7 @@ public class Menushow extends AppCompatActivity {
         @Override
         public boolean onTouch(View v, MotionEvent event){
             switch (event.getAction()){//測驗
-
+/*
                 case MotionEvent.ACTION_DOWN:
                     btn1.setImageResource(R.drawable.k_examh);
 
@@ -258,6 +258,8 @@ public class Menushow extends AppCompatActivity {
                     //intent.setClass(Menushow.this,Listenchild.class);
                     startActivity(intent);
                     break;
+
+ */
             }
             return true;
         }

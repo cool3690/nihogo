@@ -32,7 +32,7 @@
            <EditText
                android:id="@+id/TWD"
                android:layout_width="100dp"
-               android:layout_height="40dp"
+               android:layout_height="wrap_content"
                android:ems="10"
                android:layout_weight="1"
                android:layout_marginTop="10dp"
@@ -52,7 +52,7 @@
            <EditText
                android:id="@+id/JPY"
                android:layout_width="100dp"
-               android:layout_height="40dp"
+               android:layout_height="wrap_content"
                android:ems="10"
                android:layout_weight="1"
                android:layout_marginTop="10dp"
@@ -78,7 +78,7 @@
                android:id="@+id/textView23"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_marginLeft="10dp"
+               android:layout_marginLeft="5dp"
                android:layout_weight="1"
                android:textColor="#761DE6"
                android:text="台幣\nTWD" />
@@ -88,15 +88,17 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_weight="1"
-               android:layout_marginLeft="20dp"
-               android:layout_marginRight="20dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:layout_gravity="center"
+               android:gravity="center"
                android:textColor="#761DE6"
                android:text=" 交換貨幣 " />
            <TextView
                android:id="@+id/textView25"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_marginRight="10dp"
+               android:layout_marginRight="5dp"
                android:layout_weight="1"
                android:textColor="#761DE6"
                android:text="日圓\nJPY" />

@@ -61,7 +61,7 @@ public class Book_k extends AppCompatActivity {
     Context context;
     Dialog dia;
     String[] list2= {"關於" };
-    String url="https://kei-sei.com/images/listening/primary1/L1/T1.mp3" ;
+    String url="" ;//https://kei-sei.com/images/listening/primary1/L1/T1.mp3
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +97,7 @@ public class Book_k extends AppCompatActivity {
         getPermission();
         replay.setOnClickListener(fastbtn);
         replay2.setOnClickListener(fastbtn);
+        //play.setImageResource(R.drawable.pausepurple);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.QR_CODE).build();
         cameraSource=new CameraSource.Builder(this,barcodeDetector)
@@ -170,18 +171,8 @@ public class Book_k extends AppCompatActivity {
                                     }
                                     else{
                                         show.setText(qrCodes.valueAt(0).displayValue.replace("https://kei-sei.com/images/listening/",""));
-                                        /*
-                                        String word[]=qrCodes.valueAt(0).displayValue.split("_");
-                                        Intent intent=new Intent();//com.nihon.aki2.Listening
-                                        intent.setClass(getApplicationContext(),Class.forName(word[0]));
-                                        Bundle bundle=new Bundle();
-                                        bundle.putString("ANS", word[1]);
-                                        bundle.putString("L", word[2]+"");
-                                        bundle.putString("T", word[3]+"");
-                                        intent.putExtras(bundle);
-                                        startActivity(intent);
+                                        url=qrCodes.valueAt(0).displayValue;
 
-                                         */
                                         totalTime=0;
                                         mediaplayer.reset();
                                         mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -191,6 +182,8 @@ public class Book_k extends AppCompatActivity {
 
                                             totalTime=mediaplayer.getDuration();
                                             sbar.setMax(totalTime);
+                                        String total = createTimeLabel(totalTime);
+                                        totaltime.setText(total);
                                             mediaplayer.start();
 
 
@@ -199,7 +192,8 @@ public class Book_k extends AppCompatActivity {
                                 }
                                 else{
                                     show.setText(qrCodes.valueAt(0).displayValue.replace("https://kei-sei.com/images/listening/",""));
-                                       /*
+                                    url=qrCodes.valueAt(0).displayValue;
+                                    /*
                                     String word[]=qrCodes.valueAt(0).displayValue.split("_");
                                     Intent intent=new Intent();
                                     intent.setClass(getApplicationContext(),Class.forName(word[0]));
@@ -364,7 +358,7 @@ public class Book_k extends AppCompatActivity {
 
                     try {  Intent intent=new Intent();
                         intent.setClass(getApplicationContext(),Class.forName("com.nihon.aki2.Menushow"));
-                        startActivity(intent);
+                       // startActivity(intent);
                     } catch (ClassNotFoundException e) { }
 
 
@@ -450,7 +444,7 @@ public class Book_k extends AppCompatActivity {
             mediaplayer.start();
         }
     }
-    private void playSong(int song) {
+    private void playSong( ) {
 
 
         String tmp=url;
