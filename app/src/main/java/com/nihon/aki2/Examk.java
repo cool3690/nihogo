@@ -242,7 +242,7 @@ public class Examk extends AppCompatActivity {
         pen.setOnClickListener(penbtn);
 
         ArrayAdapter<String> adapterPage=new ArrayAdapter<String>
-                (this,android.R.layout.simple_spinner_item,mytest);
+                (this,R.layout.exam_blue,mytest);
 
         // 設定Spinner顯示的格式
         adapterPage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -260,11 +260,11 @@ public class Examk extends AppCompatActivity {
         typelist.add("平假名測驗");
         typelist.add("片假名練習");
         typelist.add("片假名測驗");
-        ArrayAdapter<String> spnlevpn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,course);
+        ArrayAdapter<String> spnlevpn=new ArrayAdapter<String>(this, R.layout.exam_blue,course);
         spnlev.setAdapter(spnlevpn);
         spnlev.setOnItemSelectedListener(levbtn);
 
-        ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,typelist);
+        ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, R.layout.exam_blue,typelist);
         spntype.setAdapter(spntypespn);
         spntype.setOnItemSelectedListener(typebtn);
 
@@ -1049,7 +1049,7 @@ public class Examk extends AppCompatActivity {
         }
     };
     public void change(){
-    ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,typelist);
+    ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, R.layout.exam_blue,typelist);
 
   //  spntypespn.clear();
     //spntypespn.addAll(typelist);
@@ -1059,7 +1059,7 @@ public class Examk extends AppCompatActivity {
     public void change_basic(){
         if(lev==0&&spnlesson==0){
             ArrayAdapter<String> adapterPage=new ArrayAdapter<String>
-                    (this,android.R.layout.simple_spinner_item,mytest);
+                    (this,R.layout.exam_blue,mytest);
 
             adapterPage.notifyDataSetChanged();
             // 設定Spinner的資料來源
@@ -1067,7 +1067,7 @@ public class Examk extends AppCompatActivity {
         }
         else if(lev==0&&spnlesson==2){
             ArrayAdapter<String> adapterPage=new ArrayAdapter<String>
-                    (this,android.R.layout.simple_spinner_item,mytest2);
+                    (this,R.layout.exam_blue,mytest2);
 
             adapterPage.notifyDataSetChanged();
             // 設定Spinner的資料來源

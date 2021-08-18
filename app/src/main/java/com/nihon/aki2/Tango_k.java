@@ -137,8 +137,8 @@ public class Tango_k extends AppCompatActivity {
         R4.setVisibility(View.GONE);
         showoff.setOnClickListener(showtfbtn);
         showup.setOnClickListener(showtfbtn);
-        ch3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
-        jp3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
+       // ch3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
+      //  jp3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/epminbld.ttf"));
         // new Reviewn5.DownloadFileAsync().execute();
        // R3.setOnClickListener(R3btn);
         R3.setVisibility(View.GONE);
@@ -146,12 +146,16 @@ public class Tango_k extends AppCompatActivity {
       //  fab.setOnClickListener(fabclick);
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
 
+/////////////////
+
+
         /////////////////
-        ArrayAdapter<String> spnlevpn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,course);
+        ArrayAdapter<String> spnlevpn=new ArrayAdapter<String>(this, R.layout.tango_orange,course);
+
         spnlev.setAdapter(spnlevpn);
         spnlev.setOnItemSelectedListener(levbtn);
 
-        ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,typelist);
+        ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this,R.layout.tango_orange,typelist);
         spntype.setAdapter(spntypespn);
         spntype.setOnItemSelectedListener(typebtn);
         ch3.setOnClickListener(ch3btn);
@@ -283,6 +287,8 @@ public class Tango_k extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> parent, View v,
                                    int position, long id) {
+          //  ((TextView) parent.getChildAt(0)).setTextColor(Color.BLUE);
+          //  ((TextView) parent.getChildAt(0)).setTextSize(25);
             LEV=position;
             if(tf){
 

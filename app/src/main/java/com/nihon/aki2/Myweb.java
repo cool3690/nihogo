@@ -56,13 +56,15 @@ public class Myweb extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myweb);
-
+/*
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.setNavigationIcon(R.drawable.icon);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ImageView menulist = (ImageView) findViewById(R.id.menulist);
         menulist.setOnClickListener(menulistbtn);
+
+ */
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()

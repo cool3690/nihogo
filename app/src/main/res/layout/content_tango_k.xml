@@ -22,6 +22,7 @@
                 android:id="@+id/spnlev"
                 android:layout_width="150dp"
                 android:popupBackground="#FFE7CA"
+
                 android:background="@drawable/bg_spnorange"
                 android:layout_height="wrap_content" />
 
@@ -52,11 +53,12 @@
                 android:layout_width="match_parent"
                 android:minHeight="400dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bg"/>
+                android:background="@drawable/border_bg3"/>
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+   android:layout_marginTop="10dp"
    android:gravity="center"
     android:orientation="vertical">
     <TextView
@@ -194,9 +196,10 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_above="@id/nav_view"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:orientation="horizontal">
             <View
                 android:id="@+id/btnpre"
@@ -213,6 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:layout_weight=".15"
+                android:textColor="#FF6B00"
                 android:text="上一題"
                 android:textSize="15sp" />
 
@@ -230,6 +234,7 @@
                 android:gravity="right"
                 android:layout_weight=".15"
                 android:text="下一題"
+                android:textColor="#FF6B00"
                 android:textSize="15sp" />
             <View
                 android:id="@+id/btnnext"
@@ -252,13 +257,13 @@
         android:layout_marginLeft="34dp"
         android:layout_marginRight="34dp"
         android:layout_above="@id/nav_view"
-        android:layout_marginBottom="65dp">
+        android:layout_marginBottom="62dp">
         <ImageView
             android:id="@+id/showup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             app:srcCompat="@drawable/showup"
             />
 
@@ -270,10 +275,10 @@
             android:layout_height="65dp"
 
             android:background="#FFE7CA"
-            android:layout_marginLeft="34dp"
-            android:layout_marginRight="34dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:layout_above="@id/nav_view"
-            android:layout_marginBottom="60dp">
+            android:layout_marginBottom="62dp">
             <ImageView
                 android:id="@+id/showoff"
                 android:layout_width="match_parent"
@@ -282,18 +287,20 @@
                 android:layout_marginTop="3dp"
                 app:srcCompat="@drawable/showoff"
                 />
+
             <TextView
                 android:id="@+id/jp3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="#FF6B00"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
                 android:layout_below="@id/showoff"
+                android:layout_gravity="center"
                 android:layout_marginLeft="22dp"
-                android:textSize="12sp"
-                android:text="每日單詞" />
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:text="每日單詞"
+                android:textColor="#FF6B00"
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/level3"
                 android:layout_width="wrap_content"
@@ -307,15 +314,17 @@
                 android:textSize="14sp"
                 android:textColor="#FF6B00"
                 android:text="(N5)level3" />
+
             <TextView
                 android:id="@+id/ch3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_below="@id/showoff"
+                android:layout_alignParentRight="true"
                 android:layout_gravity="center"
-                android:layout_marginRight="22dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="22dp"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="ch3"
                 android:textColor="#FF6B00"

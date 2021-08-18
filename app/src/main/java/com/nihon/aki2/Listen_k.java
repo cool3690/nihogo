@@ -123,11 +123,11 @@ public class Listen_k extends AppCompatActivity {
         btnnext.setOnClickListener(pretxtbtn);
         replay.setOnClickListener(fastbtn);
         replay2.setOnClickListener(fastbtn);
-        ArrayAdapter<String> spnlevpn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,course);
+        ArrayAdapter<String> spnlevpn=new ArrayAdapter<String>(this, R.layout.listen_green,course);
         spnlev.setAdapter(spnlevpn);
         spnlev.setOnItemSelectedListener(levbtn);
         play.setOnClickListener(playbyn);
-        ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,typelist);
+        ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, R.layout.listen_green,typelist);
         spntype.setAdapter(spntypespn);
         spntype.setOnItemSelectedListener(typebtn);
         ans="A";
@@ -394,7 +394,7 @@ public class Listen_k extends AppCompatActivity {
         }
     };
     public void change(){
-        ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,typelist);
+        ArrayAdapter<String> spntypespn=new ArrayAdapter<String>(this, R.layout.listen_green,typelist);
 
         spntypespn.notifyDataSetChanged();
         spntype.setAdapter(spntypespn);

@@ -20,9 +20,9 @@
         android:title="資訊" />
 
     <item
-        android:textSize="12sp"
         android:id="@+id/btn8"
         android:icon="@drawable/book_k"
+        android:textSize="12sp"
 
         android:title="繪本" />
 
