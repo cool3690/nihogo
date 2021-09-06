@@ -17,6 +17,6 @@
         android:layout_marginTop="10dp"
         android:text="目錄"
         android:textColor="#0057FF"
-        android:textSize="26sp" />
+        android:textSize="12sp" />
 
 </LinearLayout>

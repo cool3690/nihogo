@@ -59,12 +59,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="380dp"
-        android:layout_marginBottom="20dp">
 
-
-
+        android:padding="20dp"
+        >
     </ListView>
-
 </RelativeLayout>
 
         <!--part2 -->
@@ -91,8 +89,9 @@
                 android:id="@+id/Q1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
                 android:text="TextView"
                 android:textSize="20sp" />
 
@@ -100,8 +99,8 @@
                 android:id="@+id/radiogroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/Q1">
 
@@ -150,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/radiogroup"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="32dp"
                 android:layout_marginTop="10dp"
                 android:text="播放" />
             <TextView
@@ -183,26 +182,28 @@
                 android:minHeight="400dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_bg"/>
-        <TextView
-            android:id="@+id/chinese"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="5dp"
-            android:text="ch"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/chinese"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="ch"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/jp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/chinese"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:text="jp"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/jp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chinese"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="jp"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/L3"
@@ -215,45 +216,45 @@
                 android:paddingLeft="10dp">
                 <Button
                     android:id="@+id/bt1"
-                    style="@style/btn_primary"
+                    style="@style/btn_primary_k"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
 
 
                     android:text="bt1" />
 
                 <Button
                     android:id="@+id/bt2"
-                    style="@style/btn_primary"
+                    style="@style/btn_primary_k"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
 
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:text="bt2" />
 
                 <Button
                     android:id="@+id/bt3"
-                    style="@style/btn_primary"
+                    style="@style/btn_primary_k"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
 
                     android:text="bt3" />
 
                 <Button
                     android:id="@+id/bt0"
-                    style="@style/btn_primary"
+                    style="@style/btn_primary_k"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
 
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:text="bt0" />
 
                 <Button
                     android:id="@+id/ok"
-                    style="@style/btn_primary3"
+                    style="@style/btn_primary3_k"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
 
                     android:layout_marginTop="20dp"
                     android:text="確認" />
@@ -261,14 +262,16 @@
 
 
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/L3"
-            android:layout_marginTop="7dp"
-            android:text="  如需修改選項，再次點擊選項即可" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/L3"
+                android:gravity="center"
+                android:layout_marginTop="7dp"
+                android:textColor="#0057FF"
+                android:text="如需修改選項，再次點擊選項即可" />
+        </RelativeLayout>
 
 
         <!--end-->
@@ -316,19 +319,19 @@
                 android:text="下一題"
                 android:textSize="15sp" />
             <View
-            android:id="@+id/btnnext"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_gravity="fill_horizontal|right"
-            android:scaleType="fitXY"
-            android:layout_weight=".1"
-            android:background="@drawable/polygon2"
-            />
+                android:id="@+id/btnnext"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="fill_horizontal|right"
+                android:scaleType="fitXY"
+                android:layout_weight=".1"
+                android:background="@drawable/polygon2"
+                />
         </LinearLayout>
 
 
 
-<!--R4-->
+        <!--R4-->
         <RelativeLayout
             android:id="@+id/R4"
             android:layout_width="match_parent"
@@ -348,15 +351,19 @@
                 android:background="@drawable/border_bg"/>
             <com.nihon.aki2.control.PaintView
                 android:id="@+id/paintView"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
+               android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 />
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/mygif"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
 
@@ -366,7 +373,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@id/paintView"
                 android:text="clean"
                 app:srcCompat="@drawable/eraser" />
@@ -374,7 +381,7 @@
                 android:id="@+id/pen"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
 
                 android:layout_toRightOf="@id/clean"
@@ -404,7 +411,7 @@
                 android:id="@+id/img"
                 android:layout_width="140dp"
                 android:layout_height="120dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/paintView"
                 app:srcCompat="@drawable/a_1" />
@@ -427,22 +434,25 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:text="假名選擇" />
 
             <Spinner
                 android:id="@+id/page"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#D2E2FF"
+                android:layout_height="20dp"
+                android:background="@drawable/border_bg5"
                 android:dropDownSelector="#000"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/textView11"/>
 
 
         </RelativeLayout>
+
+
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"
             android:layout_width="match_parent"

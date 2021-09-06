@@ -236,7 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="13dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-black"
                     android:gravity="center"
@@ -248,6 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="13sp"
+                    android:layout_marginBottom="10dp"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textColor="#761DE6"
@@ -264,8 +265,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginLeft="28dp"
                     android:fontFamily="sans-serif-black"
-                    android:gravity="center"
+
                     android:text="考試時間："
                     android:textSize="13sp" />
                 <LinearLayout
@@ -275,13 +277,13 @@
 
                     <TextView
                         android:id="@+id/days"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-2dp"
-                        android:layout_weight="1"
 
-                        android:gravity="center"
-                        android:text="  0 "
+                        android:layout_marginLeft="28dp"
+
+                        android:text="055"
                         android:textColor="#761DE6"
                         android:textSize="40sp"
                         android:textStyle="bold" />
