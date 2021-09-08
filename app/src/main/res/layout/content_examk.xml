@@ -43,8 +43,8 @@
     android:layout_below="@id/L1"
     android:minHeight="400dp"
     android:layout_marginTop="26dp"
-    android:layout_marginLeft="34dp"
-    android:layout_marginRight="34dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:layout_above="@id/nav_view"
     android:layout_marginBottom="60dp">
     <View
@@ -59,7 +59,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="380dp"
-
+        android:listSelector= "#E9F0FF"
+        android:divider="#00000000"
+        android:fadingEdge="none"
         android:padding="20dp"
         >
     </ListView>
@@ -210,44 +212,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingRight="10dp"
+                android:paddingRight="32dp"
+
                 android:layout_below="@id/jp"
                 android:layout_marginTop="20dp"
-                android:paddingLeft="10dp">
+                android:paddingLeft="32dp">
                 <Button
                     android:id="@+id/bt1"
-                    style="@style/btn_primary_k"
+
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-
-
+                    android:textSize="12sp"
+                    android:background="@drawable/border_bg5"
+                    android:textColor="#0057FF"
+                    android:stateListAnimator="@null"
                     android:text="bt1" />
 
                 <Button
                     android:id="@+id/bt2"
-                    style="@style/btn_primary_k"
+
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-
+                    android:textColor="#0057FF"
+                    android:background="@drawable/border_bg5"
                     android:layout_marginTop="8dp"
+                    android:textSize="12sp"
+                    android:stateListAnimator="@null"
                     android:text="bt2" />
 
                 <Button
                     android:id="@+id/bt3"
-                    style="@style/btn_primary_k"
+                    android:background="@drawable/border_bg5"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginTop="8dp"
-
+                    android:textColor="#0057FF"
+                    android:textSize="12sp"
+                    android:stateListAnimator="@null"
                     android:text="bt3" />
 
                 <Button
                     android:id="@+id/bt0"
-                    style="@style/btn_primary_k"
+                    android:background="@drawable/border_bg5"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-
+                    android:textColor="#0057FF"
                     android:layout_marginTop="8dp"
+                    android:textSize="12sp"
+                    android:stateListAnimator="@null"
                     android:text="bt0" />
 
                 <Button
@@ -255,7 +267,7 @@
                     style="@style/btn_primary3_k"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-
+                    android:textColor="#fff"
                     android:layout_marginTop="20dp"
                     android:text="確認" />
             </LinearLayout>

@@ -19,6 +19,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -32,6 +34,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -41,6 +44,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nihon.aki2.control.GlobalVariable;
 import com.nihon.aki2.control.MarqueeView;
+import com.nihon.aki2.control.VideoAdapter;
+import com.nihon.aki2.control.YouTubeVideos;
 import com.nihon.aki2.mydb.dbtango;
 
 import org.json.JSONArray;
@@ -49,11 +54,13 @@ import org.json.JSONObject;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Vector;
 
 public class Menushow extends AppCompatActivity {
     private long mLastClickTime = 0;
     String[] list = {"關於" };
     public static final long TIME_INTERVAL = 800L;
+    Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
     ImageView menulist;
     int i=0;
     DisplayMetrics dm = new DisplayMetrics();
@@ -71,6 +78,8 @@ public class Menushow extends AppCompatActivity {
     boolean tf=true;
     DragFloatActionButton fab;
     private Menu menu;
+    WebView videoWebView;
+    RecyclerView recyclerView;
     Timer timer = new Timer();
     Dialog dia;
     int x=0;
@@ -91,16 +100,21 @@ public class Menushow extends AppCompatActivity {
         passwd=Account.getPasswd();
         names=Account.getNames();
 
-        btn1=(ImageView)findViewById(R.id.btn1);
+        //btn1=(ImageView)findViewById(R.id.btn1);
 
         btn2=(ImageView)findViewById(R.id.btn2);
         btn3=(ImageView)findViewById(R.id.btn3);
         btn4=(ImageView)findViewById(R.id.btn4);
         menulist=(ImageView)findViewById(R.id.menulist);
         menulist.setOnClickListener(menulistbtn);
+          videoWebView=(WebView) findViewById(R.id.videoWebView);
+        videoWebView.getSettings().setJavaScriptEnabled(true);
+        String frameVideo = "<html><body>  <iframe width=\"100%\" height=\"100%\"  src=\"https://www.youtube.com/embed/26zyOHvi7aI\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
 
+        videoWebView.loadData(frameVideo, "text/html", "utf-8");
+      //videoWebView.loadUrl("https://www.youtube.com/embed/26zyOHvi7aI");
 
-        btn1.setOnTouchListener(b1);
+      //  btn1.setOnTouchListener(b1);
         btn2.setOnTouchListener(b2);
         btn3.setOnTouchListener(b3);
         btn4.setOnTouchListener(b4);
@@ -139,7 +153,10 @@ public class Menushow extends AppCompatActivity {
             }
         });
     }
+    public void play0(){
 
+        /* */
+    }
     private ImageView.OnClickListener menulistbtn=new ImageView.OnClickListener(){
 
         @Override
