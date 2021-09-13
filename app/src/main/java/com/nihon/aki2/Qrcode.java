@@ -29,7 +29,11 @@ import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.nihon.aki2.mydb.dbbasic50;
+import com.nihon.aki2.mydb.dbproperty;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -43,7 +47,7 @@ public class Qrcode extends AppCompatActivity {
     Toolbar toolbar;
     ImageView toback;
     SurfaceView surfaceView;
-    TextView show;
+    TextView show,showdb;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     @Override
@@ -67,6 +71,7 @@ public class Qrcode extends AppCompatActivity {
         toback.setOnClickListener(backbtn);
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         show=(TextView)findViewById(R.id.show);
+        showdb=(TextView)findViewById(R.id.showdb);
         show.setOnClickListener(showclick);
         getPermission();
         barcodeDetector = new BarcodeDetector.Builder(this)
@@ -133,48 +138,83 @@ public class Qrcode extends AppCompatActivity {
 
                             try {
                                 if(!TextUtils.isEmpty(show.getText().toString())){
-                                    if(show.getText().toString().equals(qrCodes.valueAt(0).displayValue)){
+                                    if(show.getText().toString().equals("產編:"+qrCodes.valueAt(0).displayValue)){
                                         //mytoast( qrCodes.size()+"");
 
                                         //show.setText("");
                                     }
                                     else{
-                                        show.setText(qrCodes.valueAt(0).displayValue);
+                                        show.setText("產編:"+qrCodes.valueAt(0).displayValue);
+                                        pre(qrCodes.valueAt(0).displayValue);
+                                        /*
+
                                         String word[]=qrCodes.valueAt(0).displayValue.split("_");
                                         Intent intent=new Intent();//com.nihon.aki2.Listening
                                         intent.setClass(Qrcode.this,Class.forName(word[0]));
                                         Bundle bundle=new Bundle();
                                         bundle.putString("ANS", word[1]);
-                                         bundle.putString("L", word[2]+"");
-                                         bundle.putString("T", word[3]+"");
+                                        bundle.putString("L", word[2]+"");
+                                        bundle.putString("T", word[3]+"");
                                         intent.putExtras(bundle);
                                         startActivity(intent);
+
+                                         */
                                     }
                                 }
                                 else{
-                                    show.setText(qrCodes.valueAt(0).displayValue);
+                                    show.setText("產編:"+qrCodes.valueAt(0).displayValue);
+                                    pre(qrCodes.valueAt(0).displayValue);
+                                    /*
+
                                     String word[]=qrCodes.valueAt(0).displayValue.split("_");
                                     Intent intent=new Intent();
                                     intent.setClass(Qrcode.this,Class.forName(word[0]));
                                     Bundle bundle=new Bundle();
                                     bundle.putString("ANS", word[1]);
-                                   bundle.putString("L", word[2]+"");
-                                     bundle.putString("T", word[3]+"");
+                                    bundle.putString("L", word[2]+"");
+                                    bundle.putString("T", word[3]+"");
                                     intent.putExtras(bundle);
                                     startActivity(intent);
+
+                                     */
                                 }
                                 /////////////
 
-                            } catch (ClassNotFoundException e) { }
+                            } catch (Exception e) { }
                         }
 
 
                     });
-                   // show.postDelayed(Runnable, 1000);
+                    // show.postDelayed(Runnable, 1000);
 
                 }
             }
         });
+
+    }
+    public void pre(String s){
+
+        String result = dbproperty.executeQuery(s+"");
+
+        try{
+            JSONArray jsonArray = new JSONArray(result);
+
+            for(int i = 0; i < jsonArray.length(); i++) //代理或主管有工號者顯示
+            {
+                JSONObject jsonData = jsonArray.getJSONObject(i);
+
+                String sdate=jsonData.getString("sdate");
+                String name=jsonData.getString("name");
+                String content=jsonData.getString("content");
+                String year=jsonData.getString("year");
+                String num=jsonData.getString("num");
+                String unit=jsonData.getString("unit");
+                showdb.setText("建立日期:"+sdate+" \n財產名稱: "+name+" \n內容: "+content+" \n年度: "+year+" \n數量: "+num+" "+unit);
+            }
+
+        }
+
+        catch(Exception e){}
 
     }
     private TextView.OnClickListener showclick=new TextView.OnClickListener(){

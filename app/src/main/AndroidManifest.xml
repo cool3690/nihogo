@@ -64,9 +64,7 @@
             android:name=".Jlptword"
             android:label="@string/title_activity_jlptword"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Qrcode"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".Listenchild"
             android:label="@string/title_activity_listenchild"
@@ -272,6 +270,10 @@
             android:label="@string/title_activity_change"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Qrcode"
+            android:theme="@style/AppTheme.NoActionBar" />
+        
         <activity
             android:name=".Mymenu"
             android:label="@string/app_name"

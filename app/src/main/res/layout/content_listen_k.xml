@@ -27,13 +27,12 @@
 
             <Spinner
                 android:id="@+id/spntype"
-                android:layout_width="160dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
 
-                android:popupBackground="#EAFFF2"
+                android:layout_marginLeft="30dp"
                 android:background="@drawable/bg_spngreen"
-                android:layout_marginLeft="40dp"
-                />
+                android:popupBackground="#EAFFF2" />
         </LinearLayout>
         <!--part 1-->
         <RelativeLayout

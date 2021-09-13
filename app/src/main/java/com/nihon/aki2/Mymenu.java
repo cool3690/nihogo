@@ -139,8 +139,8 @@ public class Mymenu extends AppCompatActivity {
             }
             else{
 
-                Intent intent=new Intent();
-                intent.setClass(Mymenu.this, Book_k.class);
+                Intent intent=new Intent();//Book_k.class
+                intent.setClass(Mymenu.this, Qrcode.class);
                 startActivity(intent);
             }
         }

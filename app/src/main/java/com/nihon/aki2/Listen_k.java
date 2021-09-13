@@ -55,7 +55,7 @@ public class Listen_k extends AppCompatActivity {
     TextView pretxt,nexttxt;
     View btnpre,btnnext;
     ImageView play,replay,replay2;
-    String course[]={"初級一","初級二","進階一","進階二"};
+    String course[]={"  初級一","  初級二","  進階一","  進階二"};
     ArrayList<String>typelist=new ArrayList();
     /////
     String level="";

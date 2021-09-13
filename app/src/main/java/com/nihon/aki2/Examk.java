@@ -111,7 +111,7 @@ public class Examk extends AppCompatActivity {
             R.drawable.ta_g, R.drawable.chi_g, R.drawable.tsu_g, R.drawable.te_g, R.drawable.to_g,R.drawable.na_g, R.drawable.ni_g, R.drawable.nu_g, R.drawable.ne_g, R.drawable.no_g,R.drawable.ha_g, R.drawable.hi_g, R.drawable.fu_g, R.drawable.he_g, R.drawable.ho_g,R.drawable.ma_g, R.drawable.mi_g, R.drawable.mu_g,
             R.drawable.me_g, R.drawable.mo_g,R.drawable.ya_g, R.drawable.yu_g, R.drawable.yo_g,R.drawable.ra_g, R.drawable.ri_g, R.drawable.ru_g, R.drawable.re_g, R.drawable.ro_g,R.drawable.wa_g,R.drawable.wo_g,R.drawable.n_g};
 
-    String course[]={"五十音","初級一","初級二","進階一","進階二"};
+    String course[]={"  五十音",   "初級一","  初級二","  進階一","  進階二"};
     public MediaPlayer mediaplayer;
     int[] songfile=new int[] {R.raw.a, R.raw.i, R.raw.u, R.raw.e, R.raw.o,R.raw.ka, R.raw.ki, R.raw.ku, R.raw.ke, R.raw.ko,R.raw.sa, R.raw.shi, R.raw.su, R.raw.se, R.raw.so,
             R.raw.ta, R.raw.chi, R.raw.tsu, R.raw.te, R.raw.to,R.raw.na, R.raw.ni, R.raw.nu, R.raw.ne, R.raw.no,R.raw.ha, R.raw.hi, R.raw.hu, R.raw.he, R.raw.ho,R.raw.ma, R.raw.mi, R.raw.mu,
