@@ -99,6 +99,7 @@
     <string name="title_activity_info_k">最新消息</string>
     <string name="title_activity_tool_k">工具</string>
     <string name="title_activity_book_k"></string>
+    <string name="title_activity_change_k"></string>
 
 
 </resources>

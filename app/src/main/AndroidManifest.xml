@@ -23,9 +23,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Change_k"
+            android:label="@string/title_activity_change_k"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Book_k"
             android:label="@string/title_activity_book_k"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Tool_k"
             android:label="@string/title_activity_tool_k"
@@ -64,7 +68,6 @@
             android:name=".Jlptword"
             android:label="@string/title_activity_jlptword"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Listenchild"
             android:label="@string/title_activity_listenchild"
@@ -273,7 +276,6 @@
         <activity
             android:name=".Qrcode"
             android:theme="@style/AppTheme.NoActionBar" />
-        
         <activity
             android:name=".Mymenu"
             android:label="@string/app_name"

@@ -234,7 +234,7 @@ public class Tango_k extends AppCompatActivity {
             bundle.putString("CH", mych);
             bundle.putString("HIRA", myhiragana);
             bundle.putString("PINYIN", mypinyin);
-            bundle.putString("LEVEL", level.getText().toString());////
+            bundle.putString("LEVEL", mylevel);////
             intent.putExtras(bundle);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right,
@@ -671,6 +671,7 @@ public class Tango_k extends AppCompatActivity {
              myhiragana = jsonObject.getString("hiragana");
             mypinyin= jsonObject.getString("romaji");
             mych= jsonObject.getString("meaning");
+            mylevel="N5";
             ch3.setText(myjp);
             level3.setText("N5");
         }

@@ -33,31 +33,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Tool_k extends AppCompatActivity {
+public class Change_k extends AppCompatActivity {
     Dialog dia;
     Context context;
     String[] list2= {"關於" };
     String account="",passwd="",names="";
+    EditText TWD,JPY;
+    TextView trantxt;
+    Button transbtn;
+    double twd=0,jpy=0;
 
-    ImageView news,jisho,change;
     private static final String url ="https://kei-sei.com/cram/a.php";
     double sum=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tool_k);
+        setContentView(R.layout.change_k);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ImageView menulist = (ImageView) findViewById(R.id.menulist);
         menulist.setOnClickListener(menulistbtn);
+        TWD=(EditText)findViewById(R.id.TWD);
+        JPY=(EditText)findViewById(R.id.JPY);
+        trantxt=(TextView)findViewById(R.id.trantxt);
+        trantxt.setText("<== 交換貨幣 ==>");
+        transbtn=(Button)findViewById(R.id.trabsbtn);
 
-        news=(ImageView)findViewById(R.id.news);
-        jisho=(ImageView)findViewById(R.id.jisho);
-        change=(ImageView)findViewById(R.id.change);
-        news.setOnTouchListener(newsbtn);
-        jisho.setOnTouchListener(jishobtn);
-        change.setOnTouchListener(changebtn);
+        transbtn.setOnClickListener(transbtnbtn);
         new DownloadFileAsync().execute();
         //jprate2();
 //////////////
@@ -95,14 +98,14 @@ public class Tool_k extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-            AlertDialog.Builder dialog_list = new AlertDialog.Builder(Tool_k.this);
+            AlertDialog.Builder dialog_list = new AlertDialog.Builder(Change_k.this);
             // dialog_list.setTitle(" ");
             dialog_list.setItems(list2, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
                     if (which == 0) {
-                        context = Tool_k.this;
+                        context = Change_k.this;
                         dia = new Dialog(context, R.style.rightcopystyle);
                         dia.setContentView(R.layout.copyright);
                         Button btok=(Button)dia.findViewById(R.id.btok);
@@ -165,72 +168,70 @@ public class Tool_k extends AppCompatActivity {
             }
         }
     }
-    private ImageView.OnTouchListener changebtn=new ImageView.OnTouchListener(){
+    private Button.OnClickListener transbtnbtn=new Button.OnClickListener(){
         @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {//news
-            switch(motionEvent.getAction()){
-                case MotionEvent.ACTION_DOWN:
-                    change.setImageResource(R.drawable.change);
-
-                    break;
-                case MotionEvent.ACTION_UP:
-                    change.setImageResource(R.drawable.change);
-
-                    Intent intent=new Intent();
-                    intent.setClass(getApplicationContext(),Change_k.class);
-                    //Work   Info
-                    startActivity(intent);
-                    break;
+        public void onClick(View view) {
+            double tmp=0;
+            if(!TextUtils.isEmpty(TWD.getText().toString()) && TextUtils.isEmpty(JPY.getText().toString())){
+                tmp=Double.parseDouble(TWD.getText().toString())/sum;
+                jpy=Double.parseDouble(String.format("%.2f",tmp));
+                twd=Double.parseDouble(String.format("%.2f",Double.parseDouble(TWD.getText().toString())));
+                JPY.setText(jpy+"");
             }
-            return true;
+            else if(TextUtils.isEmpty(TWD.getText().toString()) && !TextUtils.isEmpty(JPY.getText().toString())){
+                tmp=Double.parseDouble(JPY.getText().toString())*sum;
+                twd=Double.parseDouble(String.format("%.2f",tmp));
+                jpy=Double.parseDouble(String.format("%.2f",Double.parseDouble(JPY.getText().toString())));
+                TWD.setText(twd+"");
+            }
+            else if(!TextUtils.isEmpty(TWD.getText().toString()) && !TextUtils.isEmpty(JPY.getText().toString())){
+                if(Double.parseDouble(JPY.getText().toString())!=jpy){
+                    tmp=Double.parseDouble(JPY.getText().toString())*sum;
+                    twd=Double.parseDouble(String.format("%.2f",tmp));
+                    jpy=Double.parseDouble(String.format("%.2f",Double.parseDouble(JPY.getText().toString())));
+                    TWD.setText(twd+"");
+                }
+                else if(Double.parseDouble(TWD.getText().toString())!=twd){
+                    tmp=Double.parseDouble(TWD.getText().toString())/sum;
+                    jpy=Double.parseDouble(String.format("%.2f",tmp));
+                    twd=Double.parseDouble(String.format("%.2f",Double.parseDouble(TWD.getText().toString())));
+                    JPY.setText(jpy+"");
+                }
+
+            }
         }
     };
-    private ImageView.OnTouchListener newsbtn=new ImageView.OnTouchListener(){
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {//news
-            switch(motionEvent.getAction()){
-                case MotionEvent.ACTION_DOWN:
-                    news.setImageResource(R.drawable.k_newsh);
 
-                    break;
-                case MotionEvent.ACTION_UP:
-                    news.setImageResource(R.drawable.k_news);
-
-                    Intent intent=new Intent();
-                    intent.setClass(getApplicationContext(),Myweb.class);
-                    //Work   Info
-                    startActivity(intent);
-                    break;
-            }
-            return true;
-        }
-    };
-    private ImageView.OnTouchListener jishobtn=new ImageView.OnTouchListener(){
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            switch(motionEvent.getAction()){
-                case MotionEvent.ACTION_DOWN:
-                    jisho.setImageResource(R.drawable.k_jishoh);
-
-                    break;
-                case MotionEvent.ACTION_UP:
-                    jisho.setImageResource(R.drawable.k_jisho);
-                    Intent intent=new Intent();
-                    intent.setClass(getApplicationContext(),Jishoweb.class);
-                    //Work   Info
-                    startActivity(intent);
-                    break;
-            }
-            return true;
-        }
-    };
     public void store(double str){
         SharedPreferences myrecord=getPreferences(Activity.MODE_PRIVATE);
         SharedPreferences.Editor edit=myrecord.edit();
         edit.putFloat("sum", (float) str );
         edit.commit();
     }
+    public void jprate2(){
+        String a= dbchange2.executeQuery();
 
+        // Pattern pattern = Pattern.compile("^[-\\+]?[.\\d]*$");
+
+        // if( pattern.matcher(a).matches()){}
+
+        sum= Double.valueOf(a);
+        if(sum>0){
+            GlobalVariable Account = (GlobalVariable)getApplicationContext();
+            Account.setDollar(sum);
+            store(sum);
+
+        }
+        else{
+            SharedPreferences remdname=getPreferences(Activity.MODE_PRIVATE);
+            float name_str=remdname.getFloat("sum", 0.0f);
+            //  GlobalVariable Account = (GlobalVariable)getApplicationContext();
+            //sum=Account.getDollar();
+            sum=name_str;
+        }
+
+
+    }
     private void mytoast(String str)
     {
         Toast toast=Toast.makeText(this, str, Toast.LENGTH_LONG);
