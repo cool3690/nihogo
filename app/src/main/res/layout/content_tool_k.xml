@@ -15,7 +15,7 @@
 
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="40dp"
             app:srcCompat="@drawable/change" />
         <ImageView
             android:id="@+id/news"
