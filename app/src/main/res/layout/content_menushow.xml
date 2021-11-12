@@ -1,359 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:fillViewport="true"
     tools:context=".Menushow"
-    tools:showIn="@layout/menushow">
+    android:background="@drawable/grad_blue"
+    tools:showIn="@layout/menushow"
 
-    <RelativeLayout
-        android:id="@+id/R0"
+    >
+
+    <WebView
+        android:id="@+id/videoWebView"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_heightPercent="25%"
+        app:layout_widthPercent="100%"
+        android:layout_marginTop="24dp"
+
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginRightPercent="5%"
+         />
+
+ <!--
+    <ImageView
+        android:id="@+id/videoWebView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_heightPercent="25%"
+        app:layout_widthPercent="42.5%"
+        android:layout_marginTop="24dp"
+
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginRightPercent="5%"
+        app:srcCompat="@drawable/k_tango"/>
+    -->
+    <ImageView
+        android:id="@+id/btn2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_heightPercent="25%"
+        app:layout_widthPercent="42.5%"
+        android:layout_marginTop="24dp"
+        android:layout_below="@id/videoWebView"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginRightPercent="5%"
+        app:srcCompat="@drawable/k_tango" />
+    <ImageView
+        android:id="@+id/btn3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_heightPercent="25%"
+        app:layout_widthPercent="42.5%"
+        android:layout_marginTop="24dp"
+        android:layout_toRightOf="@id/btn2"
+        android:layout_below="@id/videoWebView"
+
+        app:layout_marginRightPercent="5%"
+        app:srcCompat="@drawable/k_listen" />
+    <ImageView
+        android:id="@+id/btn4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="86%"
+        android:layout_marginTop="24dp"
+
+        android:layout_below="@id/btn3"
+        app:layout_marginLeftPercent="7%"
+        app:layout_marginRightPercent="7%"
+        app:srcCompat="@drawable/k_exam" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="@drawable/aki_bg">
+        android:layout_height="72dp"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
+        android:background="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu" />
 
-        <ImageView
-            android:id="@+id/btn1"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="25dp"
-            app:srcCompat="@drawable/aki_courseh" />
-
-        <ImageView
-            android:id="@+id/btn2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/btn5"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_rateh" />
-        <ImageView
-            android:id="@+id/btn5"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/btn1"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_testh" />
-        <ImageView
-            android:id="@+id/btn3"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/btn2"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_newh" />
-
-        <ImageView
-            android:id="@+id/btn4"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/btn3"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_jlpt" />
-
-        <!-- btn6 is nothing-->
-        <ImageView
-            android:id="@+id/btn6"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/btn4"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_listen"
-            />
-        <ImageView
-            android:id="@+id/btn9"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/btn6"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_jisho"
-            />
-        <ImageView
-            android:id="@+id/btn10"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/btn9"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/aki_review"
-            />
-        <RelativeLayout
-            android:id="@+id/R2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn9"
-            android:layout_marginTop="8dp">
-            <ImageView
-                android:id="@+id/btn7"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-
-                android:layout_marginTop="8dp"
-                app:srcCompat="@drawable/aki_daysbg01"
-                />
-            <ImageView
-                android:id="@+id/pic2"
-                android:background="@drawable/aki_snow"
-                android:layout_width="wrap_content"
-
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="16dp"
-                android:layout_height="80dp" />
-            <TextView
-                android:id="@+id/jp2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:layout_toRightOf="@id/pic2"
-                android:layout_marginLeft="30dp"
-                android:textSize="28sp"
-                android:text="每日單詞" />
-
-            <TextView
-                android:id="@+id/ch2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_below="@id/jp2"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/pic2"
-                android:layout_marginLeft="40dp"
-                android:textSize="24sp"
-                android:textColor="#354BD6"
-                android:text="ch" />
-            <TextView
-                android:id="@+id/level2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_below="@id/jp2"
-                android:layout_toRightOf="@id/ch2"
-                android:layout_marginLeft="20dp"
-                android:textSize="14sp"
-                android:textColor="#354BD6"
-                android:text="(N5)" />
-        </RelativeLayout>
-
-        <!--
-        scroll
-        -->
-
-
-        <RelativeLayout
-            android:id="@+id/marqueeLayout"
-
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:layout_below="@id/btn2"
-            android:layout_marginTop="0dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="120dp"
-                android:layout_marginTop="400dp"
-                android:background="@drawable/aki_daysbg01" />
-
-            <ImageView
-                android:id="@+id/pic"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="420dp"
-                android:background="@drawable/aki_snow" />
-
-            <TextView
-                android:id="@+id/jp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="410dp"
-                android:layout_toRightOf="@id/pic"
-                android:gravity="center"
-                android:text="每日單詞"
-
-                android:textSize="28sp" />
-
-            <TextView
-                android:id="@+id/ch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/jp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/pic"
-                android:gravity="center"
-                android:text="ch"
-                android:textColor="#354BD6"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/level"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/jp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/ch"
-                android:gravity="center"
-                android:text="(N5)"
-                android:textColor="#354BD6"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-        <com.nihon.aki2.control.MarqueeView
-            android:id="@+id/marquee_view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fillViewport="true"
-            android:gravity="center"
-            android:marqueeRepeatLimit="1"
-            android:padding="5dp">
-        </com.nihon.aki2.control.MarqueeView>
-        <!--  -->
-<!--
-        <RelativeLayout
-            android:id="@+id/R3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:layout_marginTop="8dp">
-            <ImageView
-                android:id="@+id/btn8"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-
-                android:layout_marginTop="8dp"
-                app:srcCompat="@drawable/aki_daysbg01"
-                />
-            <ImageView
-                android:id="@+id/pic3"
-                android:background="@drawable/aki_snow"
-                android:layout_width="wrap_content"
-
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="16dp"
-                android:layout_height="80dp" />
-            <TextView
-                android:id="@+id/jp3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:layout_toRightOf="@id/pic3"
-                android:layout_marginLeft="30dp"
-                android:textSize="28sp"
-                android:text="每日單詞" />
-
-            <TextView
-                android:id="@+id/ch3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_below="@id/jp3"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/pic3"
-                android:layout_marginLeft="40dp"
-                android:textSize="24sp"
-                android:textColor="#354BD6"
-                android:text="ch" />
-            <TextView
-                android:id="@+id/level3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_below="@id/jp3"
-                android:layout_toRightOf="@id/ch3"
-                android:layout_marginLeft="20dp"
-                android:textSize="14sp"
-                android:textColor="#354BD6"
-                android:text="(N5)" />
-        </RelativeLayout>
-        -->
-        <RelativeLayout
-            android:id="@+id/R3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical"
-            >
-            <ImageView
-                android:id="@+id/btn8"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-
-                android:layout_marginTop="8dp"
-                app:srcCompat="@drawable/aki_daysbg01"
-                />
-            <ImageView
-                android:id="@+id/pic3"
-                app:srcCompat="@drawable/aki_snow"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="40dp"
-                />
-            <TextView
-                android:id="@+id/jp3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:layout_toRightOf="@id/pic3"
-                android:layout_marginLeft="20dp"
-                android:textSize="22sp"
-                android:text="每日單詞" />
-
-            <TextView
-                android:id="@+id/ch3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_below="@id/jp3"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/pic3"
-                android:gravity="center"
-                android:text="ch"
-                android:textColor="#227FE3"
-                android:textSize="28sp" />
-            <TextView
-                android:id="@+id/level3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_below="@id/jp3"
-                android:layout_toRightOf="@id/ch3"
-                android:layout_marginLeft="10dp"
-                android:textSize="14sp"
-                android:textColor="#354BD6"
-                android:text="(N5)" />
-
-        </RelativeLayout>
-    </RelativeLayout>
-
-</ScrollView>
+</androidx.percentlayout.widget.PercentRelativeLayout>

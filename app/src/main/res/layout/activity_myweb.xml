@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Myweb">
-
+<!--
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,13 +14,26 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize">
+            <ImageView
+                android:id="@+id/menulist"
+                android:layout_width="wrap_content"
+                android:contentDescription=""
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:src="@drawable/ic_baseline_menu_24"/>
+            <ImageView
 
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
+                android:layout_width="wrap_content"
+                android:contentDescription=""
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/icon"/>
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
+-->
     <include layout="@layout/content_myweb" />
+
 <!--
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

@@ -61,11 +61,9 @@ public class Listening extends AppCompatActivity  {
     Dialog dia;
     ImageView play,btnpre,btnnext,pic;
     private Dialog dialog;
-  //  TransparentProgressDialog mProgressDialog;
-  //  private  AlertDialog dia ;
+
     private Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12,bt13;
-    // ImageView []btarr=new ImageView[]{bt0,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9};
-    Button[] btarr=new Button[]{bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12} ;
+
     SeekBar sbar;
     int count=0;
     boolean tf=true;

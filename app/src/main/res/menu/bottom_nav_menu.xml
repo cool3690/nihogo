@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:textSize="12sp"
+        android:id="@+id/btn5"
+        android:icon="@drawable/k_practice"
+        app:itemIconPadding="@dimen/design_bottom_navigation_height"
+        android:title="學習" />
+    <item
+        android:textSize="12sp"
+        android:id="@+id/btn6"
+        android:icon="@drawable/k_tool"
+        android:title="工具" />
+    <item
+        android:textSize="12sp"
+        android:id="@+id/btn7"
+        android:icon="@drawable/k_info"
+
+        android:title="資訊" />
+
+    <item
+        android:id="@+id/btn8"
+        android:icon="@drawable/book_k"
+        android:textSize="12sp"
+
+        android:title="繪本" />
+
+
+</menu>

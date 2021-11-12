@@ -2,9 +2,13 @@ package com.nihon.aki2;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,12 +23,14 @@ import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nihon.aki2.control.GlobalVariable;
 import com.nihon.aki2.control.VideoAdapter;
 import com.nihon.aki2.control.YouTubeVideos;
@@ -44,16 +50,21 @@ public class Myweb extends AppCompatActivity {
     Timer timer = new Timer();
     Context context;
     Dialog dia;
+    String[] list2= {"關於" };
     Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myweb);
-
+/*
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.icon);
+        //toolbar.setNavigationIcon(R.drawable.icon);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ImageView menulist = (ImageView) findViewById(R.id.menulist);
+        menulist.setOnClickListener(menulistbtn);
+
+ */
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -115,7 +126,70 @@ public class Myweb extends AppCompatActivity {
             }
         });
         */
+        BottomNavigationView nav_view=(BottomNavigationView)findViewById(R.id.nav_view);
+        nav_view.setSelectedItemId(R.id.btn6);
+        nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.btn5:
+                        startActivity(new Intent(getApplicationContext(),Menushow.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn6:
+                        startActivity(new Intent(getApplicationContext(),Tool_k.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn7:
+                        startActivity(new Intent(getApplicationContext(),Info_k.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.btn8:
+                        startActivity(new Intent(getApplicationContext(),Book_k.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
+    private ImageView.OnClickListener menulistbtn=new ImageView.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dialog_list = new AlertDialog.Builder(Myweb.this);
+            // dialog_list.setTitle(" ");
+            dialog_list.setItems(list2, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (which == 0) {
+                        context = Myweb.this;
+                        dia = new Dialog(context, R.style.rightcopystyle);
+                        dia.setContentView(R.layout.copyright);
+                        Button btok=(Button)dia.findViewById(R.id.btok);
+                        dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
+                        Window w = dia.getWindow();
+                        WindowManager.LayoutParams lp = w.getAttributes();
+                        lp.x = 0; // 新位置X坐標
+                        lp.width =950; // 寬度
+                        dia.show();
+                        dia.onWindowAttributesChanged(lp);
+                        btok.setOnClickListener(
+                                new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        dia.dismiss();
+                                    }
+                                }
+                        );
+                    }
+                }
+            });
+
+            dialog_list.show();
+        }
+    };
     public void begin() {
         timer.schedule(task, 1000, 1000) ;       }
 
@@ -157,6 +231,7 @@ public class Myweb extends AppCompatActivity {
         }
         super.onBackPressed();
     }
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -258,18 +333,7 @@ public class Myweb extends AppCompatActivity {
             startActivity(intent);
         }
         if (id == R.id.about) {
-              /*
-            new AlertDialog.Builder(Basic.this)
-                    .setTitle("版權所有")
-                    .setIcon(R.drawable.righticon)
-                    .setMessage("新澄管理顧問公司"+"\n臺南市私立慶誠文理短期補習班"+"\n連絡：sonyzone2004@gmail.com")
-                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialoginterface, int i)
-                        {
-                        }
-                    })
-                    .show();
-            */
+
             context = Myweb.this;
             dia = new Dialog(context, R.style.rightcopystyle);
             dia.setContentView(R.layout.copyright);
@@ -292,4 +356,6 @@ public class Myweb extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+     */
 }

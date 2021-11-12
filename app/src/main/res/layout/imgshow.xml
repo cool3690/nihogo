@@ -4,22 +4,23 @@
     android:orientation="vertical"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
+    <!--
 
 
-<!--@drawable/svacationcourse
-    <ImageView
-        android:id="@+id/start_img"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:padding="20dp"
-        app:srcCompat="@drawable/svacationcourse" />
-        -->
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/start_img"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-     />
+      <ImageView
+          android:id="@+id/start_img"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_gravity="center"
+          android:layout_marginTop="20dp"
+          android:padding="20dp"
+          app:srcCompat="@drawable/svacatawable/svacationcourse/>
+
+          -->
+      <pl.droidsonroids.gif.GifImageView
+          android:id="@+id/start_img"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"/>
+
 </LinearLayout>

@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,11 +35,11 @@ import java.io.File;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Mymenu extends AppCompatActivity {
-    ImageView btn1,btn2,btn3,btn4;
+   // ImageView btn1,btn2,btn3,btn4;
     String key="";
    String account="",passwd="",names="";  private Menu menu;
     public static final String KEY = "com.example.aki2";
-
+    Button btn1,btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +60,10 @@ public class Mymenu extends AppCompatActivity {
         account=Account.getAccount();
         passwd=Account.getPasswd();
         names=Account.getNames();
-        btn1=(ImageView)findViewById(R.id.btn1);
-        btn1.setOnTouchListener(b1);
+        btn1=(Button)findViewById(R.id.btn1);
+        btn2=(Button)findViewById(R.id.btn2);
+        btn1.setOnClickListener(b1);
+        btn2.setOnClickListener(b2);
         SharedPreferences sharedPreferences = getSharedPreferences("data" , MODE_PRIVATE);
         String h = sharedPreferences.getString("input" , "0");
 
@@ -101,37 +104,45 @@ public class Mymenu extends AppCompatActivity {
         toast.show();
     }
 
-    private ImageView.OnTouchListener b1=new ImageView.OnTouchListener(){
+    private Button.OnClickListener b1=new Button.OnClickListener(){
         @Override
-        public boolean onTouch(View v, MotionEvent event){
-            switch (event.getAction()){
+        public void onClick(View view) {
 
-                case MotionEvent.ACTION_DOWN:
-                    btn1.setImageResource(R.drawable.aki_menuh);
 
-                    //h
-                    break;
-                case MotionEvent.ACTION_UP:
-                    btn1.setImageResource(R.drawable.aki_menu);
-
-                    ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                    NetworkInfo info=connManager.getActiveNetworkInfo();
-                    if (info == null || !info.isConnected())
-                    {
-                        mytoast("請開啟網路!");
-                    }
-                    else{
-
-                        Intent intent=new Intent();
-                       
-                          //Menushow.class  Jlptword
-                        //  intent.setClass(Mymenu.this,Listenchild.class);
-                         intent.setClass(Mymenu.this, Menushow.class);
-                        startActivity(intent);
-                    }
-                    break;
+            ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo info=connManager.getActiveNetworkInfo();
+            if (info == null || !info.isConnected())
+            {
+                mytoast("請開啟網路!");
             }
-            return true;
+            else{
+
+                Intent intent=new Intent();
+
+                //Menushow.class  Jlptword
+                //  intent.setClass(Mymenu.this,Listenchild.class);
+                intent.setClass(Mymenu.this, Menushow.class);
+                startActivity(intent);
+            }
+        }
+    };
+    private Button.OnClickListener b2=new Button.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+
+
+            ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo info=connManager.getActiveNetworkInfo();
+            if (info == null || !info.isConnected())
+            {
+                mytoast("請開啟網路!");
+            }
+            else{
+
+                Intent intent=new Intent();//Book_k.class
+                intent.setClass(Mymenu.this, Qrcode.class);
+                startActivity(intent);
+            }
         }
     };
     public void clearApplicationData() {
